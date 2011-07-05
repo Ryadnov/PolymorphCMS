@@ -1,0 +1,11 @@
+<ul>
+    {% for widget in widgets %}
+        <li class='exists-widget btn-blue'>
+            <div>
+                {{ widget.alias }}
+            </div>
+        </li>
+    {% else %}
+        Нет доступных виджетов
+    {% endfor %}
+</ul>

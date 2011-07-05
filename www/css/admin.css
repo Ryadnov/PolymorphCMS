@@ -1,0 +1,410 @@
+@CHARSET "UTF-8";
+html, body, form, ol, ul, p, dl, dt, dd{
+    margin: 0;
+    padding: 0;
+}
+body{
+    color: #383f42;
+    background: #1c1c1c url(/images/bg.gif);
+    font-family: Calibri, "Times New Roman", Times, serif;
+    font-size: 13px;
+}
+h1, h2, h3, h4, h5, h6{
+    margin: 0px;
+    padding: 0px;
+    font-size: 24px;
+    font-weight: bold;
+}
+:focus{
+    -moz-outline-style: none;
+}
+a img, :link img, :visited img {
+	border: 0;
+}
+a{
+    outline: 0;
+    color: #003f00;
+    text-decoration: underline;
+}
+a:hover{
+    color: #003f00;
+    text-decoration: none;
+}
+
+#wrap{
+    width: 100%;
+    margin: 0px auto;
+}
+.container{
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    _zoom: 1;
+    behavior: url(js/PIE.htc);    
+}
+
+
+/* LEFT */
+.left-col {width:200px; height: 100%; background: #D5D5D5 url('/images/shadow-left.png') repeat-y top right; padding: 10px 0 10px 20px; float:left}
+hr{width: 90%; display:inline-block;}
+/* LEFT end */
+
+
+/* show shit */
+.content-wrapper{display:inline;}
+.content{
+	padding: 0 10px 0 10px;
+    overflow: hidden;
+    line-height: 1.4em;
+}
+
+.content h2{
+    font-size: 38px;
+    line-height: 24px;
+    margin-bottom: 14px;
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+.content h2 span{
+    font-size: 26px;
+    line-height: 30px;
+    margin-bottom: 14px;
+    font-weight: normal;
+    color: #b2b2b2;
+}
+.content h3{
+    font-size: 24px;
+    line-height: 20px;
+    margin: 18px 0px;
+    font-weight: normal;
+}
+.content h4{
+    font-size: 20px;
+    line-height: 20px;
+    margin: 16px 0px;
+    padding-bottom: 4px;
+    border-bottom: solid 1px #eee;
+    font-weight: normal;
+}
+.content p{
+    margin: 16px 0px;
+}
+.content ul,
+.content ol{
+    margin: 16px 16px 16px 32px;
+}
+.content a{
+    color: #00C;
+    text-decoration: underline;
+}
+.content a:hover{
+    color: #00C;
+    text-decoration: none;
+}
+
+/* show shit end */
+
+
+a.block-preview {
+	float:left;
+	width: 24px;
+	height: 24px;
+	margin: 2px;
+	background: url('/images/eyes.png') no-repeat;
+}
+.btn-blue {
+	background: url('/images/gradients.png') repeat-x;
+	float:left;
+	height: 28px;
+	border: 1px #AAA solid;
+	border-radius: 4px;	
+	margin: 2px;
+}
+li.block-item div{
+	float:left;
+	font-weight:bold;
+	font-size: 120%;
+	vertical-align: top;
+	margin: 4px 5px 2px 5px;	
+}
+a.block-delete{
+	vertical-align: top;
+	font-weight:bold;
+	font-size: 150%;
+	line-height: 50%;
+	color: #666;
+	text-decoration:none;
+	margin: -2px 4px;
+}
+a.block-settings{
+	float:left;
+	width: 24px;
+	height: 24px;
+	margin: 3px 0 0 4px;
+	background: url('/images/upd24.png') no-repeat;		
+}
+a.add-block {
+	font-weight:bold;
+	font-size: 350%;
+	color: #666;
+	text-decoration:none;
+	margin: 3px;	
+}
+#block-widgets {
+	clear:both;	
+}
+ul {
+	list-style: none;
+		
+}
+
+/* Other */
+.render-errors {
+	font-weight: bold;
+	font-size: 130%;
+	color: #EEE;	
+}
+.row{clear:both}
+	.row .left{float:left; width:15%}
+	.row .right{float:left; width:84%; margin: 0 0 0 1%}
+
+div.flash-error, div.flash-notice, div.flash-success
+{
+	padding:.8em;
+	margin-bottom:1em;
+	border:2px solid #ddd;
+}
+
+div.flash-error
+{
+	background:#FBE3E4;
+	color:#8a1f11;
+	border-color:#FBC2C4;
+}
+
+div.flash-notice
+{
+	background:#FFF6BF;
+	color:#514721;
+	border-color:#FFD324;
+}
+
+div.flash-success
+{
+	background:#E6EFC2;
+	color:#264409;
+	border-color:#C6D880;
+}
+
+div.flash-error a
+{
+	color:#8a1f11;
+}
+
+div.flash-notice a
+{
+	color:#514721;
+}
+
+div.flash-success a
+{
+	color:#264409;
+}
+
+div.form .rememberMe label
+{
+	display: inline;
+}
+
+div.view
+{
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px solid #C9E0ED;
+}
+
+div.breadcrumbs
+{
+	font-size: 0.9em;
+	padding: 5px 20px;
+}
+
+div.breadcrumbs span
+{
+	font-weight: bold;
+}
+
+div.search-form
+{
+	padding: 10px;
+	margin: 10px 0;
+	background: #eee;
+}
+
+
+div.form span.required
+{
+	color: red;
+}
+
+div.form div.error label,
+div.form label.error,
+div.form span.error
+{
+	color: #C00;
+}
+
+div.form div.error input,
+div.form div.error textarea,
+div.form div.error select,
+div.form input.error,
+div.form textarea.error,
+div.form select.error
+{
+	background: #FEE;
+	border-color: #C00;
+}
+
+div.form div.success input,
+div.form div.success textarea,
+div.form div.success select,
+div.form input.success,
+div.form textarea.success,
+div.form select.success
+{
+	background: #E6EFC2;
+	border-color: #C6D880;
+}
+
+
+div.form .errorSummary
+{
+	border: 2px solid #C00;
+	padding: 7px 7px 12px 7px;
+	margin: 0 0 20px 0;
+	background: #FEE;
+	font-size: 0.9em;
+}
+
+div.form .errorMessage
+{
+	color: red;
+	font-size: 0.9em;
+}
+
+div.form .errorSummary p
+{
+	margin: 0;
+	padding: 5px;
+}
+
+div.form .errorSummary ul
+{
+	margin: 0;
+	padding: 0 0 0 20px;
+}
+
+div.wide.form label
+{
+	float: left;
+	margin-right: 10px;
+	position: relative;
+	text-align: right;
+	width: 100px;
+}
+
+div.wide.form .row
+{
+	clear: left;
+}
+
+div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
+{
+	clear: left;
+	padding-left: 110px;
+}
+
+.buttons{margin:3px;}
+
+.templates-tree
+{
+	float:left;
+	width: 180px	
+}
+
+.templates-tree-delimetr
+{
+	float:left;
+	padding-top: 20px;
+	font-weight: bold
+}
+
+.templates-tree a, .templates-tree a:hover
+{
+	color:#333;
+}
+
+.templates-tree .red a, .templates-tree .red a:hover 
+{
+	color:#C00;
+}
+
+.templates-tree .green a, .templates-tree .green a:hover
+{
+	color:#090;
+}
+
+.CodeMirror
+{
+	border-bottom:1px solid black;
+	border-right:1px solid black;
+	border-top:1px solid black
+}
+.activeline {background: #f0fcff !important;}
+.completions 
+{
+    position: absolute;
+    z-index: 10;
+    overflow: hidden;
+    -webkit-box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+    -moz-box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+    box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+}
+.completions select {
+    background: #fafafa;
+    outline: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+}
+.gallery-img {
+	position:relative;
+	float:left; 
+	padding:3px;	
+}
+.clear {
+	clear:both;
+}
+.gallery-img .gallery-delete {
+	position:absolute;
+	background:url(/images/del.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	bottom: 3px;
+	right: 3px;
+}
+.gallery-img .gallery-update {
+	position:absolute;
+	background:url(/images/upd.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	bottom: 3px;
+	right: 19px;
+}
+.add_file {
+	background: url(/images/add_file.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	position: absolute;	
+}

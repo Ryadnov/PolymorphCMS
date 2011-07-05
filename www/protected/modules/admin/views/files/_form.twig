@@ -1,0 +1,5 @@
+<?php echo CHtml::form('','POST',array('id'=>'file_form'));?>
+<?php echo CHtml::textField('file_name')?>
+<com:CodeMirror type={$type} id='template_text_area' name='file_content' content={$content} />
+<?php echo CHtml::submitButton('Сохранить');?>			
+<?php echo CHtml::endForm();?>

@@ -1,0 +1,46 @@
+<div id="design-wrapper">
+    <div style="display:block; clear:both;">
+        <h3>Блоки</h3>
+        <div id="template-blocks">
+            {{ this.renderPartial('/blocks/list', {'cat':cat}) }}
+        </div>
+    </div>
+
+    <div style="display:block; clear:both;">
+        <h3>Существующие виджеты</h3>
+        <div id="exists-widgets">
+            {{ existWidgets }}
+        </div>
+    </div>
+    <div style="display:block; clear:both;">
+        <h3>Виджеты</h3>
+        <div id="block-widgets">
+        </div>
+    </div>
+</div>
+
+{# register scripts section #}
+{{ Admin.ascWindow({
+	'id':'create-block',
+    'wrapper':'design-wrapper',
+	'fields':{
+	    'textField':'alias'
+	},
+	'windowTitle':'Введите название нового блока'
+}) }}
+
+{{ Admin.ascWindow({
+	'id':'create-widget',
+    'wrapper':'design-wrapper',
+    'live':'true',
+    'fields':{
+        'textField':'alias',
+    },
+	'windowTitle':'Введите название нового блока'
+}) }}
+
+{{ Admin.jsDeleteLi('template-blocks', 'block-delete') }}
+{{ Admin.jsOpenLi('template-blocks', 'block-preview', 'block-widgets') }}
+{{ Admin.jsDeleteLi('block-preview > ul', 'widget-delete') }}
+{{ Admin.jsOpenLi('widget-preview', 'block-delete', 'block-preview') }}
+{{ Admin.jsSortableLi('block-preview > ul', '/admin/blocks/saveWidgetsPosition', ['block_pk']) }}

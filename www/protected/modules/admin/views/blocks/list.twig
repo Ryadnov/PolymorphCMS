@@ -1,0 +1,14 @@
+<ul>
+    {% for block in cat.blocks %}
+        <li class="block-item btn-blue" id="template-blocks_{{ block.pk }}">
+            {{ Admin.link('', 'blocks/see', {'pk':block.pk}, {'class':'block-preview'}) }}
+            {{ Admin.link('', 'blocks/settings', {'pk':block.pk}, {'class':'block-settings'}) }}
+            <div>{{ block.alias }}</div>
+            {{ Admin.link('x', 'blocks/delete', {'pk':block.pk}, {'class':'block-delete'}) }}
+        </li>
+    {% endfor %}
+
+    <li class="block-item">
+        {{ Admin.link('+', 'blocks/add', {'catPk':cat.pk}, {'id':'create-block-link', 'class':'add-block btn-blue'}) }}
+    </li>
+</ul>

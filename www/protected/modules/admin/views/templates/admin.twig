@@ -1,0 +1,12 @@
+<?php
+while($tree = array_pop($trees)) {?>
+	<div class="templates-tree">
+		<?php $this->widget('CTreeView', array(
+			'collapsed'=>false,
+			'data' => array($tree)
+		))?>
+	</div>
+	<?php if($trees) 
+				echo CHtml::tag('div', array('class'=>"templates-tree-delimetr"), "->")?>
+<?php }?>
+

@@ -17,20 +17,20 @@ class ListView extends CListView
 	public $enableSorting = true;
 	public $_attributes = array();
 	public $pager=array('class'=>'LinkPager');
-	public $parts;
 	public $itemsHtmlOptions;
-	
+    public $isEvenOdd = false;
+    public $contextWidget;
+    
 	public $sortableAttributes = array('title', 'date'); 
 	
 	public function init() 
 	{
-		
-		if (isset($_GET['filter']) && isset($_GET['filterDetails']) && $_GET['filterDetails'] != 0) 
+		if (isset($_GET['filter']) && isset($_GET['filterDetails']) && $_GET['filterDetails'] != 0)
 			$this->dataProvider->setScopes(array($_GET['filter']=>$_GET['filterDetails']));
 		
 		parent::init();
 	}
-	
+
 	//don't remove it, beacause it is redefine parent function
 	public function renderItems()
 	{
@@ -76,50 +76,35 @@ class ListView extends CListView
 	
 	protected function renderSection($matches)
 	{
-		$method='render'.$matches[1];
-		if(method_exists($this,$method))
+        $method='render'.$matches[1];
+        if (method_exists($this,$method))
 			$this->$method();
 		else
 			$this->_baseRender(substr($matches[1], 0, strlen($matches[1])-1));
 		
 		$html=ob_get_contents();
 		ob_clean();
-		return $html;
+        return $html;
 	}
 
 	private function _baseRender($part)
 	{
-		if (empty($this->category))
+        if (empty($this->category))
 			throw new CException("category - обязательный параметр для ListView");
 
 		$opts = array();
-		if (isset($this->itemsHtmlOptions[$part.'sClass'])) 
-			$opts['class'] = $this->itemsHtmlOptions[$part.'sClass'];
-			
-		if (isset($this->itemsHtmlOptions[$part.'sId']))
-			$opts['id'] = $this->itemsHtmlOptions[$part.'sId'];
-
-		if (isset($this->itemsHtmlOptions[$part.'sTagName'])) 
-			echo CHtml::openTag($this->itemsHtmlOptions[$part.'sTagName'],$opts)."\n";
-		
 		$data=$this->dataProvider->getData();
 		if (($n=count($data))>0) {
 			$j=0;
 			foreach ($data as $i=>$item) {
 				$template = null;
 				//may be isset odd or even templates
-				$tmplName = $j%2 == 0 ? $part.'Even' : $part.'Odd';
-				
-				if (isset($this->parts[$tmplName])) {
-					$template = $this->parts[$tmplName];
-				} else {
-					if (isset($this->parts[$part]))
-						$template = $this->parts[$part];
-					else 
-						throw new CException("Если не определен параметн parts[".$part."Odd] или parts[".$part."Even] для ListView, то вместо него должен быть определен parts[".$part."]");
-				}
-				
-				Y::controller()->renderItem($item, $this->category, $template);
+                if ($this->isEvenOdd)
+                    $tmplName = $j%2 == 0 ? $part.'Even' : $part.'Odd';
+                else
+                	$tmplName = $part;
+            
+				$this->contextWidget->render($tmplName, array('item' => $item));
 				if ($j++ < $n-1)
 					echo $this->separator;
 			}

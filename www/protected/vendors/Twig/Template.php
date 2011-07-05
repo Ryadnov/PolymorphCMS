@@ -359,7 +359,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
         if ($this->env->hasExtension('sandbox')) {
             $this->env->getExtension('sandbox')->checkMethodAllowed($object, $method);
         }
-
+        
         $ret = call_user_func_array(array($object, $method), $arguments);
 
         if ($object instanceof Twig_TemplateInterface) {

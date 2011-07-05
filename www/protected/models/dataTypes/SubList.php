@@ -1,5 +1,5 @@
 <?php
-class SubListType extends VariantListBase
+class SubList extends VariantListBase
 {
 	public static function model($className=__CLASS__)
 	{

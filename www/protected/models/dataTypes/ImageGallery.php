@@ -18,7 +18,7 @@ class ImageGallery extends BaseDataType
 		return 'portfolio_gallery';
 	}
 	
-	public static function getIdAttr()
+	public static function getPkAttr()
 	{
 		return 'image_id';
 	}

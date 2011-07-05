@@ -219,12 +219,7 @@ class ModelFactory
 	{
 		switch ($type) {
 			case 'page': 		return "function() {}";
-			case 'news': 		return "function() {}";
-			case 'portfolio': 	return 'function() {$("#filter-wrapper input").hide();}';
-			case 'partners': 	return "function() {}";
-			case 'clients': 	return "function() {}";
-			case 'publications':return "function() {}";
-			case 'partners': 	return "function() {}";
+			case 'records': 	return "function() {}";
 			default: 			self::exception($cat);
 		}	
 	}
@@ -233,11 +228,7 @@ class ModelFactory
 	{
 		switch ($type) {
 			case 'page': 		return "function() {}";
-			case 'news': 		return "function() {}";
-			case 'portfolio': 	return "function() {}";
-			case 'partners': 	return "function() {}";
-			case 'clients': 	return "function() {}";
-			case 'publications':return "function() {}";
+			case 'records':     return "function() {}";
 			default: 			self::exception($cat);
 		}
 	}
@@ -246,11 +237,7 @@ class ModelFactory
 	{
 		return array(
 			'page'=>'страница',
-			'news'=>'новости',
-			'portfolio'=>'портфолио',
-			'partners'=>'партнеры',
-			'clients'=>'клиенты',
-			'publications'=>'публикации'
+			'records'=>'записи'
 		);	
 	}
 

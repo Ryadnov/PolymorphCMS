@@ -104,10 +104,7 @@ class SiteController extends RenderController
 
         $this->render('main', array(
 			'menu'=>new Menu,
-			'header'=>new BlockViewer('header', $category),
-			'footer'=>new BlockViewer('footer', $category),
-			'content'=>new BlockViewer('content', $category),
-			'block'=>new BlockViewer(null, $category),
+			'block'=>new BlockViewer($category),
 			'meta'=>new MetaViewer($category),
 			'item'=>$model,
 			'breadcrumbs'=>new BreadCrumb,

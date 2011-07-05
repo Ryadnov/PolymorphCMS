@@ -2,7 +2,6 @@
 class DummyWidget extends Widget
 {
 	public $template;
-	public $category;
 	
 	public static function getDefaultSettings() 
 	{

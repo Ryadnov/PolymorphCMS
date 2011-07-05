@@ -15,20 +15,20 @@
       <div class="container">
         <div class="index-left">
 			<a href="#"><img src="/images/ir.gif" alt="ir.kz" /></a>
-		    {{ menu.get('main') }}
+		    {{ block.left }}
 		</div>
         
-        {{ header }}
+        {{ block.header }}
         
         <div class="container-show">
           <div id="content-wide" class="content">
-            {{ content }}
+            {{ block.content }}
           </div>
         </div>
-        
+
         <div class="footer">
           <div class="footer-block1">
-            {{ footer }}
+            {{ block.footer }}
           </div>
           <p class="ir">© 1999-2010 Группа компаний «Интернет Решения»</p>
         </div>

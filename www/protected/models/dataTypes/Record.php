@@ -37,7 +37,7 @@ class Record extends BaseDataType
 			'image_gallery' => array(self::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()),
 			
 			//написать BELONGS_TO и HAS_MANY
-			'workType' => array(self::BELONGS_TO, 'PortfolioWorkType', PortfolioWorkType::getPkAttr()),
+			///'workType' => array(self::BELONGS_TO, 'PortfolioWorkType', PortfolioWorkType::getPkAttr()),
 		));
 	}
 	
@@ -63,19 +63,19 @@ class Record extends BaseDataType
     
     public function inYear($year)
     {
-    	$this->getDbCriteria()->compare('t.year',$year,true);
+    	//$this->getDbCriteria()->compare('t.year',$year,true);
     	return $this;
     }
     
     public function inWorkType($workTypeId) 
     {
-    	$this->getDbCriteria()->compare('t.portfolio_work_type_id',$workTypeId);
+    	//$this->getDbCriteria()->compare('t.portfolio_work_type_id',$workTypeId);
     	return $this;
     }
     
     public function inCity($cityId)
     {
-    	$this->getDbCriteria()->compare('t.city_id',$cityId);
+    	//$this->getDbCriteria()->compare('t.city_id',$cityId);
     	return $this;
     }
     
@@ -116,7 +116,7 @@ class Record extends BaseDataType
 	{
 		return 'portfolios';	
 	}
-	
+	/*
 	public function getPortfolioWorksArray()
 	{
 		$res = array();
@@ -134,7 +134,7 @@ class Record extends BaseDataType
 		}
 		
 		parent::afterFind();
-	}
+	}*/
 	
 	public function beforeSave()
 	{

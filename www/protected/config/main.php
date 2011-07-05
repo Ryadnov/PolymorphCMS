@@ -72,7 +72,7 @@ return array(
         	'class'=>'application.components.FileCache',
 		),
 		'viewRenderer'=>array(
-            'class'=>'application.extensions.renderers.twig.CTwigViewRenderer',
+            'class'=>'application.extensions.renderers.twig.ETwigViewRenderer',
      		'fileExtension' => '.twig',
         ),
     	'request'=>array(

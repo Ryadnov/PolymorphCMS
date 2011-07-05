@@ -1,65 +1,74 @@
 <?php
 class MainContentWidget extends Widget
 {
+    public $scopes = array();
+    
     public static function getDefaultSettings()
 	{
 		return array();
 	}
-	
+
 	public static function getDefaultTitle()
 	{
 		return 'Родительский блок';
 	}
-	
+
 	protected function renderContent()
 	{
         if (isset($this->model->pk)) {    //full record
-            $this->render($this->block->pk.'/full', array());
+            $this->render('full', array('item'=>$this->model, 'category'=>$this->category));
         } else {                          //record-list
-            if (isset($this->settings['scopes'])) {
-                foreach ($this->settings['scopes'] as $scope=>$params)
+            if (!empty($this->scopes)) {
+                foreach ($this->scopes as $scope=>$params)
                     $this->model->$scope($params);
             }
 
             $criteria = $this->model->getDbCriteria();
-            //return $this->getListView($criteria, $params, $model);
-        
-//            $this->category->getTemplate('single');
-//            $this->category->getTemplate('listTemplate');
+            $this->getListView($criteria);
         }
     }
 
-
-    public function getListView(&$criteria, &$params, &$model)
+    public function render($view, $data = array(), $return = false)
     {
-        $dpParams = $this->settings->dataProvider;
-        $dataProvider = new EActiveDataProvider(get_class($model), $dpParams);
-        $pager = $this->settings->pager;
+        return parent::render($this->block->pk.'/'.$view, $data, $return);
+    }
 
+    public function getListView(&$criteria, $return = false)
+    {
+        $dp = new EActiveDataProvider(get_class($this->model), array(
+            'criteria' => $criteria,
+            //'pagination' => $this->settings['pagination'],
+        ));
+        
         //default params
         $params = array(
+            'dataProvider'=>$dp,
             'pager'=>array(
-                'id'=>$this->command.'Pager', 'class'=>'LinkPager', 'htmlOptions'=>array('class'=>'pager'),
+                'id'=>$this->widgetModel->pk.'Pager', 'class'=>'LinkPager', 'htmlOptions'=>array('class'=>'pager'),
                 'cssFile'=>'/css/pager.css'
             ),
             'ajaxUpdate'=>true,
-            'template'=>file_get_contents(Yii::getPathOfAlias($cat->pk.'listTemplate')),
-            'afterAjaxUpdate' => ModelFactory::getAfterAjaxUpdateFunction($this->command),
-            'beforeAjaxUpdate' => ModelFactory::getBeforeAjaxUpdateFunction($this->command),
-            'category' => $this->category
+            'template'=>$this->render('listTemplate', array(), true),
+            'afterAjaxUpdate' => ModelFactory::getAfterAjaxUpdateFunction($this->category->type),
+            'beforeAjaxUpdate' => ModelFactory::getBeforeAjaxUpdateFunction($this->category->type),
+            'category' => $this->category,
+            'contextWidget' => $this
         );
-        
-        try {
-            $res = Y::controller()->widget('ListView',$params, true);
 
+        try {
+            $res = Y::controller()->widget('ListView', $params, true);
         } catch (CException $e) {
-            Y::dump($e->getMessage());
+            Y::dump($e->__toString());
         }
 
-        return $res;
+        if ($return)
+            return $res;
+        else
+            echo $res;
     }
 
-    public static function removeWidget() {
-        
+    public static function removeWidget()
+    {
+        //remove all resources
     }
 }

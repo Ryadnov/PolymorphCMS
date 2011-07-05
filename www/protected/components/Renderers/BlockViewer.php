@@ -4,10 +4,9 @@ class BlockViewer extends CComponent
 	private $templateAlias;
 	private $cat;
 	
-	public function __construct($templateAlias = null, $category = null)
+	public function __construct($category = null)
 	{
-        $this->templateAlias = $templateAlias;
-		$this->cat = $category;
+        $this->cat = $category;
 	}
 	
 	public function __toString() //__toString can't throw Exception in PHP
@@ -18,9 +17,19 @@ class BlockViewer extends CComponent
             Y::dump($e->__toString());
 		}
 	}
-	
-	public function __get($alias) 
-	{
+
+    public function __call($alias, $args)
+    {
+        return $this->renderBlock($alias);
+    }
+
+    public function __get($alias)
+    {
+        return $this->renderBlock($alias);
+    }
+
+    private function renderBlock($alias)
+    {
         if (($block = $this->cat->getBlock($alias)) === null)
 			return '{{'.$alias.'}}';
 
@@ -31,8 +40,8 @@ class BlockViewer extends CComponent
 		}
 
         return $res;
-	}
-	
+    }
+
 	private function renderWidget($widget, $block)
 	{
         $settings = CMap::mergeArray($widget->settings, array(

@@ -60,6 +60,7 @@ class AdminBaseController extends Controller
 	{
 		$children = $node->children()->findAll();
 		$res = array();
+        
 		foreach ($children as $child) {
 			$tmp = array();
 			$tmp['text'] = ModelFactory::adminViewCategoryLink($child);

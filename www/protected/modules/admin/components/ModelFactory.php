@@ -48,11 +48,8 @@ class ModelFactory
 	{
 		switch ($type) {
 			case 'page': 		return false;
-			case 'news': 		return true;
-			case 'portfolio': 	return true;
-			case 'partners': 	return true;
-			case 'client': 		return true;
-			case 'publication': return true;
+            case 'records':     return true;
+			
 			default: 			self::exception($cat);
 		}
 	}	
@@ -68,7 +65,8 @@ class ModelFactory
 			case 'page':
 				$page = $cat->page;
  				if($page == null) {
-					$page = new Page;
+					$page =
+                        new Page;
 					$page->text = 'Пока здесь ничего не написано';
 					$page->category_id = $cat->pk;
 					if(!$page->save())
@@ -76,16 +74,8 @@ class ModelFactory
 				}
 				
 				return Admin::url('pages/update', array('pk'=>$page->pk));
-			case 'news':
+			case 'records':
 				return Admin::url('records/admin', array('catId'=>$cat->pk));
-			case 'portfolio':
-				return Admin::url('portfolios/admin', array('catId'=>$cat->pk));
-			case 'partners':
-				return Admin::url('partners/admin', array('catId'=>$cat->pk));
-			case 'clients':
-				return Admin::url('clients/admin', array('catId'=>$cat->pk));
-			case 'publications':
-				return Admin::url('publications/admin', array('catId'=>$cat->pk));
 			default:
 				self::exception($cat);
 		}
@@ -93,7 +83,7 @@ class ModelFactory
 
 	public static function getTemplatePatterns()
 	{
-		return 'page|news|portfolio|partners|clients|publications';	
+		return 'page|records';
 	}
 	
 	public static function cutRelations($fromCat, $toCat)
@@ -101,24 +91,8 @@ class ModelFactory
 		switch ($toCat->type) {
 			case 'page':
 				throw new CException("Нельзя копировать данные типа 'Страница'");
-			case 'news':
+			case 'records':
 				$toCat->records = $fromCat->records;
-				$toCat->save();
-				break;
-			case 'portfolio':
-				$toCat->portfolios = $fromCat->with('portfolioWorks')->portfolios;
-				$toCat->save();
-				break;
-			case 'partners':
-				$toCat->partners = $fromCat->partners;
-				$toCat->save();
-				break;
-			case 'clients':
-				$toCat->clients = $fromCat->clients;
-				$toCat->save();
-				break;
-			case 'partners':
-				$toCat->publications = $fromCat->publications;
 				$toCat->save();
 				break;
 			default:
@@ -131,25 +105,9 @@ class ModelFactory
 		switch ($toCat->type) {
 			case 'page':
 				throw new CException("Нельзя копировать данные типа 'Страница'");
-			case 'news':
+			case 'records':
 				 $toCat->records = self::destroyAllId($fromCat->records);
 				 $toCat->save();
-				break;
-			case 'portfolio':
-				$toCat->portfolios = self::destroyAllId($fromCat->with('portfolioWorks')->portfolios);
-				$toCat->save();
-				break;
-			case 'partners':
-				$toCat->partners = self::destroyAllId($fromCat->partners);
-				$toCat->save();
-				break;
-			case 'clients':
-				$toCat->clients = self::destroyAllId($fromCat->clients);
-				$toCat->save();
-				break;
-			case 'publications':
-				$toCat->publications = self::destroyAllId($fromCat->publications);
-				$toCat->save();
 				break;
 			default:
 				self::exception($cat);
@@ -174,19 +132,9 @@ class ModelFactory
 				if ($cat->page != null)
 					$cat->page->delete();
 				break;
-			case 'news':
+			case 'records':
 				 $cat->records = array();
 				 break;
-			case 'portfolio':
-				$cat->portfolios->portfolioWorks = array();
-				$cat->portfolios = array();
-				break;
-			case 'clients':
-				$cat->clients = array();
-				break;
-			case 'publications':
-				$cat->publications = array();
-				break;
 			default:
 				self::exception($cat);
 		}
@@ -206,11 +154,7 @@ class ModelFactory
 	{
 		switch ($type) {
 			case 'page': 		return array();
-			case 'news': 		return array();
-			case 'portfolio': 	return array('city', 'workType');
-			case 'partners': 	return array();
-			case 'clients': 	return array();
-			case 'publications':return array();
+			case 'records':     return array();
 			default: 			self::exception($cat);
 		}
 	}

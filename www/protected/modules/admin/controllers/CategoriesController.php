@@ -164,10 +164,7 @@ class CategoriesController extends AdminBaseController
 	{
 		$cat = $this->loadModel($pk);
 
-        $existWidgets = TemplateWidget::getExistsWidgets();
-        $existWidgets = $this->renderPartial('/widgets/_existsWidgets', array('widgets' => $existWidgets), true);
-
-        $this->render('viewSettings', array('cat'=>$cat, 'existWidgets'=>$existWidgets));
+        $this->render('ViewSettings', array('cat'=>$cat));
 	} 
 	
 }

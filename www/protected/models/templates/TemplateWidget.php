@@ -21,17 +21,15 @@ class TemplateWidget extends ActiveRecord
 	public function rules()
 	{
 		return array(
-			array('alias, template, block_id', 'safe', 'on'=>'create'),
-			array('alias, template', 'safe', 'on'=>array('search', 'update')),
-			array('alias', 'required'),
-			array('alias', 'length', 'max'=>255)
+			array('template, block_id', 'safe', 'on'=>'create'),
+			array('template', 'safe', 'on'=>array('search', 'update')),
 		);
 	}
 	
 	public function relations()
 	{
 		return array(
-			'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
+			'block' => array(self::BELONGS_TO, 'TemplateBlock', 'block_id'),
 		);
 	}
 
@@ -57,7 +55,7 @@ class TemplateWidget extends ActiveRecord
     	$res = array();
 
     	foreach ($map as $folder) {
-    		if ($config = FileSystem::read($path.'/'.$folder['text'].'/config.json')) {
+            if ($config = FileSystem::read($path.'/'.$folder['text'].'/config.json')) {
     			$config = json_decode($config);
 
     			$class = $config->class;
@@ -65,10 +63,10 @@ class TemplateWidget extends ActiveRecord
 
                 $widget = new TemplateWidget;
                 $widget->class = $class;
-                $widget->alias = $config->alias;
                 $widget->title = $class::getDefaultTitle();
     
     			array_push($res, $widget);
+
     		}
         }
 
@@ -100,4 +98,8 @@ class TemplateWidget extends ActiveRecord
 		return CHtml::link($this->alias, $this->adminUrl);
 	}
 
+    public function getDetailsLink($htmlOptions = array())
+    {
+        return Admin::link($this->title, 'widgets/details', array('pk'=>$this->pk), $htmlOptions);
+    }
 }

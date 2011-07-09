@@ -11,12 +11,24 @@ class BlocksController extends AdminBaseController
 		return parent::loadModel('TemplateBlock', $pk, $scenario, false);
 	}
 	
-	public function actionAdd($catPk, $alias)
+	public function actionAdd()
 	{
-		$model = $this->loadModel();
-		$model->category_id = $catPk;
-		$model->alias = $alias;
-		$model->save();
+        if (isset($_POST['alias']) && isset($_POST['catPk'])) {
+            $model = $this->loadModel();
+            $model->category_id = $_POST['catPk'];
+            $model->alias = $_POST['alias'];
+            $model->save();
+
+            $this->renderPartial('item', array('model'=>$model));
+            
+        } else {
+            echo CHtml::beginForm();
+            echo CHtml::hiddenField('catPk', $_GET['catPk']);
+            echo '<p>Название</p>';
+            echo CHtml::textField('alias');
+            echo CHtml::submitButton('Готово');
+            echo CHtml::endForm();
+        }
 	}
 	
 	public function saveWidgetsPosition()
@@ -24,20 +36,47 @@ class BlocksController extends AdminBaseController
 		
 	}
 
-	public function actionSee($pk)
+	public function actionDetails($pk)
 	{
 		$block = $this->loadModel($pk);
 		
 		$res = '';
-		foreach($block->widgets as $widget) {
-			$content = Admin::link('', 'widgets/see', array('pk'=>$widget->pk), array('class'=>'widget-preview'));
-			$content.= Admin::link('', 'widgets/settings', array('pk'=>$widget->pk), array('class'=>'widget-settings'));
-			$content.= CHtml::tag('div', array(), $widget->alias);
-			$content.= Admin::link('x', 'widgets/delete', array('pk'=>$widget->pk), array('class'=>'widget-delete'));
-			$res .= CHtml::tag('li', array('class'=>'widget btn-blue'), $content);
-		}
-
-		echo CHtml::tag('ul', array(), $res);
+		foreach($block->widgets as $widget)
+            $res .= $this->renderPartial('/widgets/item', array('model'=>$widget), true);
+		
+        echo CHtml::tag('ul', array(), $res);
+        echo Admin::link('Добавить виджеты', 'blocks/addWidgets', array('blockPk'=>$block->pk), array('class'=>'add-widgets'));
 	}
-	
+
+    public function actionAddWidgets($blockPk)
+    {
+        if (isset($_POST['newWidgets'])) {
+            $widgets = array();
+            foreach ($_POST['newWidgets'] as $class) {
+                Yii::import('widgets.'.$class.'.*');
+
+                $widget = new TemplateWidget();
+                $widget->settings = $class::getDefaultSettings();
+                $widget->class = $class;
+                $widget->published = TemplateWidget::NOT_PUBLISHED;
+                $widget->title = $class::getDefaultTitle();
+                $widget->block_id = $blockPk;
+                $widget->save();
+
+                $widgets[] = $widget;
+            }
+
+            $this->renderPartial('item', array('models'=>$widgets));
+        } else {
+            $widgets = TemplateWidget::getExistsWidgets();
+            $list = CHtml::listData($widgets, 'class', 'title');
+
+            echo CHtml::beginForm();
+                echo CHtml::checkBoxList('newWidgets', '', $list);
+                echo CHtml::submitButton('Готово');
+            echo CHtml::endForm();
+        }
+    }
+
+    
 }

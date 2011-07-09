@@ -7,6 +7,17 @@ class AdminBaseController extends Controller
 			Y::redir(Admin::url('login'));
 		if(!Y::checkAccess('moderator'))
 			Y::end($this->render('accessDenied'));
+
+        parent::init();
+        Y::clientScript()
+            ->registerScriptFile('/js/jquery-ui.min.js')
+            ->registerCssFile('/css/jui/redmond/jquery-ui.css')
+            ->registerScriptFile('/js/plugins/jquery.form.js')
+            ->registerScriptFile('/js/plugins/multiple-accordion.js')
+            ->registerScriptFile('/js/plugins/cms/deleteLi.js')
+            ->registerScriptFile('/js/plugins/cms/openLi.js')
+            ->registerScriptFile('/js/plugins/cms/ascWindow.js')
+            ->registerScriptFile('/js/plugins/cms/asc.js');
 	}
 	
 	public $layout='//layouts/admin';

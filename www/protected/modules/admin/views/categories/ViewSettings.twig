@@ -1,46 +1,98 @@
 <div id="design-wrapper">
+    <div id="trash"></div>
     <div style="display:block; clear:both;">
         <h3>Блоки</h3>
-        <div id="template-blocks">
-            {{ this.renderPartial('/blocks/list', {'cat':cat}) }}
-        </div>
+        <ul id="template-blocks">
+            {% for block in cat.blocks %}
+                {{ this.renderPartial('/blocks/item', {'model':block}) }}
+            {% endfor %}
+        </ul>
     </div>
 
-    <div style="display:block; clear:both;">
-        <h3>Существующие виджеты</h3>
-        <div id="exists-widgets">
-            {{ existWidgets }}
-        </div>
-    </div>
     <div style="display:block; clear:both;">
         <h3>Виджеты</h3>
-        <div id="block-widgets">
-        </div>
+        <div id="block-widgets"></div>
     </div>
 </div>
+<br/><br/><br/><br/><br/>
 
-{# register scripts section #}
-{{ Admin.ascWindow({
-	'id':'create-block',
-    'wrapper':'design-wrapper',
-	'fields':{
-	    'textField':'alias'
-	},
-	'windowTitle':'Введите название нового блока'
-}) }}
+<script type="text/javascript">
+$(document).ready(function() {
 
-{{ Admin.ascWindow({
-	'id':'create-widget',
-    'wrapper':'design-wrapper',
-    'live':'true',
-    'fields':{
-        'textField':'alias',
-    },
-	'windowTitle':'Введите название нового блока'
-}) }}
+    $("#template-blocks").accordion({
+		accordion:false,
+		speed: 500,
+		closedSign: '[+]',
+		openedSign: '[-]'
+	});
 
-{{ Admin.jsDeleteLi('template-blocks', 'block-delete') }}
-{{ Admin.jsOpenLi('template-blocks', 'block-preview', 'block-widgets') }}
-{{ Admin.jsDeleteLi('block-preview > ul', 'widget-delete') }}
-{{ Admin.jsOpenLi('widget-preview', 'block-delete', 'block-preview') }}
-{{ Admin.jsSortableLi('block-preview > ul', '/admin/blocks/saveWidgetsPosition', ['block_pk']) }}
+/*
+    var tb = $('#template-blocks'),
+        all = tb.find('.acc_container');
+
+    all.hide(); //схлопываем (закрываем) все  панели (контейнеры)
+
+    //По клику
+    tb.find('.acc_header').click(function(){
+        if( $(this).next().is(':hidden') ) { //Если следующий  сразу за триггером контейнер закрыт, то…
+            all.removeClass('active').slideUp(); //Убираем класс "active" и схлопываем открытый  контейнер
+            $(this).toggleClass('active').next().slideDown(); // Добавляем класс "active" к триггеру, на котором  был произведён щелчок мышкой, и разворачиваем следующий за ним контейнер.
+        }
+        return false; //Завершаем обработку события  – прерываем цикл
+
+    });
+*/
+    $('#template-blocks').asc({
+        linkClass: 'add-block',
+        success: function(responseText, statusText, xhr, $form)  {
+            $form.parent().dialog('close');
+            $('#template-blocks > ul').append(responseText);
+        }
+    });
+
+    $('#block-widgets').asc({
+        linkClass: 'add-widgets',
+        success: function () {
+
+        }
+    });
+
+    $('#block-widgets').asc({
+        linkClass: 'widget-details',
+        success: function () {
+
+        }
+    });
+
+    //delete blocks
+    $("#template-blocks > li").draggable({
+        helper: "clone",
+        opacity: .75,
+        refreshPositions: true, // Performance?
+        revert: "invalid",
+        revertDuration: 300,
+        scroll: true
+    });
+    
+    $("#trash").droppable({
+        drop: function(e, ui) {
+            var params = $(ui.draggable).attr("id").split('_'),
+                type = params[0],
+                pk = params[1],
+                url;
+                
+            if (type == 'widgets') {
+                url = "/admin/widgets/delete";
+            } else if (type == 'blocks') {
+                url = "/admin/blocks/delete"
+            }
+            
+            $.get(url, {pk : pk}, function() {
+                $(ui.draggable).remove();
+            });
+        },
+        hoverClass: "accept"
+    });
+});
+
+</script>

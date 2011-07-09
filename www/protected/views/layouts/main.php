@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
 
-	<!--  
+	<!--
 	<link rel="stylesheet" type="text/css" href="/css/style.css" media="screen, projection" />
 	-->
 	<link rel="stylesheet" type="text/css" href="/css/admin.css" media="screen, projection" />
@@ -24,7 +24,7 @@
 		</div>
 		<div class="footer-block2">
 		</div>
-		<p class="ir">© 1999-<?php echo date('Y');?> Группа компаний «Интернет Решения»</p>
+		<p class="me"><?php echo date('Y');?> PolymorphCMS - Alexey Sharov</p>
 	</div>
 	
 </div>

@@ -1,7 +1,7 @@
 <?php
 $admin = array(
-	'admin/<c>/<a>' => 'admin/<c>/<a>',	
-	'admin/<c>' => 'admin/<c>/index', 
+	'admin/<m>/<c>/<a>' => '<m>/<c>/<a>',
+	'admin/<m>/<c>' => '<m>/<c>/index',
 	'admin' => 'admin/manage/index',
 );
 

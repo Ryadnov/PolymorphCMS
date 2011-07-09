@@ -1,5 +1,5 @@
 <?php
-class SubList extends VariantListBase
+class Subdata extends VariantListBase
 {
 	public static function model($className=__CLASS__)
 	{
@@ -19,7 +19,7 @@ class SubList extends VariantListBase
 	public function relations()
 	{
 		return array(
-			'records' => array(self::HAS_MANY, 'Records', self::getIdAttr()),
+			'records' => array(self::HAS_MANY, 'Records', self::getPkAttr()),
 		);
 	}
 	

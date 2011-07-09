@@ -10,7 +10,7 @@ class MainContentWidget extends Widget
 
 	public static function getDefaultTitle()
 	{
-		return 'Родительский блок';
+		return 'Гланвый контент';
 	}
 
 	protected function renderContent()
@@ -22,7 +22,7 @@ class MainContentWidget extends Widget
                 foreach ($this->scopes as $scope=>$params)
                     $this->model->$scope($params);
             }
-
+            
             $criteria = $this->model->getDbCriteria();
             $this->getListView($criteria);
         }
@@ -30,7 +30,12 @@ class MainContentWidget extends Widget
 
     public function render($view, $data = array(), $return = false)
     {
-        return parent::render($this->block->pk.'/'.$view, $data, $return);
+        if (isset($this->block)) {
+            return parent::render($this->block->pk.'/'.$view, $data, $return);
+        } else {
+            return parent::render($view, $data, $return);
+        }
+
     }
 
     public function getListView(&$criteria, $return = false)

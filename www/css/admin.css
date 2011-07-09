@@ -72,12 +72,6 @@ hr{width: 90%; display:inline-block;}
     font-weight: normal;
     color: #b2b2b2;
 }
-.content h3{
-    font-size: 24px;
-    line-height: 20px;
-    margin: 18px 0px;
-    font-weight: normal;
-}
 .content h4{
     font-size: 20px;
     line-height: 20px;
@@ -89,74 +83,36 @@ hr{width: 90%; display:inline-block;}
 .content p{
     margin: 16px 0px;
 }
-.content ul,
-.content ol{
-    margin: 16px 16px 16px 32px;
-}
 .content a{
-    color: #00C;
     text-decoration: underline;
 }
 .content a:hover{
-    color: #00C;
     text-decoration: none;
 }
 
 /* show shit end */
 
+/* Templates */
+ul {list-style: none;height: auto;}
+a{color:#333;}
 
-a.block-preview {
-	float:left;
-	width: 24px;
-	height: 24px;
-	margin: 2px;
-	background: url('/images/eyes.png') no-repeat;
-}
-.btn-blue {
-	background: url('/images/gradients.png') repeat-x;
-	float:left;
-	height: 28px;
-	border: 1px #AAA solid;
-	border-radius: 4px;	
-	margin: 2px;
-}
-li.block-item div{
-	float:left;
-	font-weight:bold;
-	font-size: 120%;
-	vertical-align: top;
-	margin: 4px 5px 2px 5px;	
-}
-a.block-delete{
-	vertical-align: top;
-	font-weight:bold;
-	font-size: 150%;
-	line-height: 50%;
-	color: #666;
-	text-decoration:none;
-	margin: -2px 4px;
-}
-a.block-settings{
-	float:left;
-	width: 24px;
-	height: 24px;
-	margin: 3px 0 0 4px;
-	background: url('/images/upd24.png') no-repeat;		
-}
-a.add-block {
-	font-weight:bold;
-	font-size: 350%;
-	color: #666;
-	text-decoration:none;
-	margin: 3px;	
-}
-#block-widgets {
-	clear:both;	
-}
-ul {
-	list-style: none;
-		
-}
+#template-blocks{float: left; width: 250px;}
+#template-blocks h3{font-size: 16px;}
+#template-blocks .block-settings{padding-left: 0;}
+#block-widgets {font-size: 100%; font-weight: bold; padding: 0 4px; text-align: center;}
+    #block-widgets li a{margin: 5px 0 0 0; position: relative; top: 4px;}
+    
+#design-wrapper{float: left; width: 100%}
+.btn-blue {height: 28px;border: 1px #999 solid;border-radius: 4px;margin: 2px;background: url('/images/gradients.png') repeat-x;}
+
+a.block-preview {font-weight:bold; float:left; width:auto; height:auto; margin: 3px 2px 0 5px;}
+a.block-settings {float:left; width:24px; height:24px; margin:2px; background: url('/images/upd24.png') no-repeat;}
+
+#block-widgets {clear:both; float:left;}
+
+#trash {background: url(/images/trash.png) no-repeat; float:right; width:64px; height:64px;}
+#trash.accept {background-color: #999;}
+
 
 /* Other */
 .render-errors {

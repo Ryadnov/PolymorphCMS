@@ -32,7 +32,7 @@ return array(
 		'components.Behaviors.*',
 		'components.BaseClasses.*',
 		'components.Interfaces.*',
-		'components.Twig.*',
+		'components.Other.*',
 		'modules.users.components.*',
 		'modules.users.UsersModule',
 		'modules.users.models.*',

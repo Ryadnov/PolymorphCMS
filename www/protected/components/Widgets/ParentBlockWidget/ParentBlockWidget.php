@@ -19,5 +19,8 @@ class ParentBlockWidget extends Widget
 		echo new BlockViewer($this->blockAlias, $this->category->parent);
 	}
 
-	
+	public static function removeWidget()
+	{
+	    CJuiTabs::
+	}
 }

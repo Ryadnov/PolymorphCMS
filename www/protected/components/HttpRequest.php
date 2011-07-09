@@ -3,7 +3,7 @@
  * Description of HttpRequest
  *
  *
- * Used in config/main.twig
+ * Used in config/main.php
  * <pre>
  *    'request'=>array(
  *        'class'=>'HttpRequest',

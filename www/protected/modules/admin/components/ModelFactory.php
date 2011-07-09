@@ -65,8 +65,7 @@ class ModelFactory
 			case 'page':
 				$page = $cat->page;
  				if($page == null) {
-					$page =
-                        new Page;
+					$page = new Page;
 					$page->text = 'Пока здесь ничего не написано';
 					$page->category_id = $cat->pk;
 					if(!$page->save())

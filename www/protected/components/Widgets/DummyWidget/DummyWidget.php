@@ -10,12 +10,16 @@ class DummyWidget extends Widget
 	
 	public static function getDefaultTitle()
 	{
-		return 'Пустой';	
+		return 'Простой текст';
 	}
 	
 	public function renderContent()
 	{
 		$this->render('template', $this->settings);
 	}
-	
+
+    public static function removeWidget()
+    {
+        
+    }
 }

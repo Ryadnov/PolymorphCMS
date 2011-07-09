@@ -41,8 +41,10 @@ class RecordsController extends AdminBaseController
 		return parent::loadModel('Record', $id, $scenario, true);
 	}
 	
-	public function filterDateConvert() 
+	public function actionUpdate($pk)
 	{
-		//Y::dump(4);
-	} 
+		$model = $this->loadModel($pk);
+        Y::dump($model->subdata('tmp'));
+	}
+
 }

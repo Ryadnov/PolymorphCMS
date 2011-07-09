@@ -1,8 +1,8 @@
-<ul>
+<ul id="exists-widgets">
     {% for widget in widgets %}
-        <li class='exists-widget btn-blue'>
+        <li class='exists-widget btn-blue' id="exist-widget_{{ widget.class }}">
             <div>
-                {{ widget.alias }}
+                {{ widget.title }}
             </div>
         </li>
     {% else %}

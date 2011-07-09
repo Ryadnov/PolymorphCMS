@@ -63,19 +63,14 @@ class TemplateBlock extends ActiveRecord
 		return Admin::url('templateBlocks/delete', array('pk' => $this->pk));
 	}
 	
-	public function getAdminUrl()
-	{
-		return Admin::url('templateBlocks/admin', array('catId'=>$this->category_id));
-	}
-	
-	public function getUpdateLink()
-	{
-		return CHtml::link($this->alias, $this->updateUrl);
-	}
-	
 	public function getAdminLink()
 	{
 		return CHtml::link($this->alias, $this->adminUrl);
 	}
+
+    public function getSettingsLink($htmlOptions = array())
+    {
+        return Admin::link('', 'blocks/settings', array('pk'=>$this->pk), $htmlOptions);
+    }
 
 }

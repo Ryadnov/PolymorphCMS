@@ -140,7 +140,7 @@ class Admin
 	
 	public static function makeDateFields($form, $model, $attributes, $dateFormat = 'yy.mm.dd', $phpDateFormat = 'd.m.Y')
 	{
-		foreach ((array)$attributes as $attr) {
+        foreach ((array)$attributes as $attr) {
 			echo '<div class="row">
 				<div class="left">'.$form->labelEx($model,$attr).'</div>
 				<div class="right">';
@@ -164,70 +164,75 @@ class Admin
 			</div>';	
 		}	
 	}
-	
-	public static function ascWindow($options)
-	{
-        extract($options);
-		
-		Y::clientScript()
-            ->registerScriptFile('/js/plugins/cms/ascWindow.js')
-            ->registerScript($id, "$('#$wrapper').ascWindow({windowId : '$id'});");
 
-		Y::controller()->beginWidget('zii.widgets.jui.CJuiDialog', array(
-			'id'=>$id,
-			'htmlOptions'=>array(
-				'title'=>$windowTitle,
-			),
-			'options'=>array(
-				'autoOpen'=>false,
-				'modal'=>true,
-				'width'=>isset($w) ? $w : 'auto',
-				'height'=>isset($h) ? $h : 'auto',
-			),	
-		));
-    
-        echo CHtml::beginForm();
-        foreach ($fields as $type=>$name) {
-            echo CHtml::$type($name);
-        }
-        echo CHtml::submitButton('Готово');
-        echo CHtml::endForm();
+    public static $tabs = array();
+    public static $curTabName;
 
-		Y::controller()->endWidget();
-	}
-	
-	public static function jsDeleteLi($id, $linkClass)
-	{
-        Y::clientScript()
-            ->registerScriptFile('/js/plugins/cms/deleteLi.js')
-            ->registerScript("delete-$id", "$('#$id').deleteLi({'linkClass':'$linkClass'})");
-	}
-	
-	public static function jsSortableLi($id, $url, $hiddenFields)
-	{
-		Y::controller()->widget('zii.widgets.jui.CJuiDialog', array(
-            'id'=>$id,
-            // additional javascript options for the accordion plugin
+    public static function beginTab($tabName)
+    {
+        ob_start();
+        ob_implicit_flush(false);
+        self::$curTabName = $tabName;
+    }
+
+    public static function endTab()
+    {
+        self::$tabs[self::$curTabName] = array('content' => ob_get_contents());
+        ob_end_clean();
+    }
+
+    public static function tab($tabName, $content)
+    {
+        self::$tabs[$tabName] = array('content' => $content);
+    }
+
+    public function getTabs($id = null, $return = false)
+    {
+        return Y::controller()->widget('JuiTabs', array(
+            'tabs'=>self::$tabs,
+            'cssFile'=>'jquery-ui.css',
+            'themeUrl'=>'/css/jui',
+            'theme'=>'base',
             'options'=>array(
-                'opacity'=> 0.6,
-                'stop'=> "function (e, ui) {
-                    var hiddenFields = new Array(".implode(',',$hiddenFields)."),
-                        obj = new Object;
-                    for(var name in hiddenFields) {
-                        obj.name = $(this).find('input[name=\"name\"]').val();
-                    }
-                    $.get('{$url}?'+$(this).sortable('serialize'), obj);
-                }"
-            )
-        ));
-	}
-	
-	public static function jsOpenLi($id, $linkClass, $targetId)
-	{
-        Y::clientScript()
-            ->registerScriptFile('/js/plugins/cms/openLi.js')
-            ->registerScript("delete-$id", "
-			$('#$id').openLi({'linkClass':'$linkClass','targetId':'$targetId'})"
-		);	
-	}
+                'collapsible'=>false,
+            ),
+            'htmlOptions'=>array('id'=>$id)
+        ), $return);
+    }
+
+    public static $panels = array();
+    public static $curPanelName;
+
+    public static function beginPanel($panelName)
+    {
+        ob_start();
+        ob_implicit_flush(false);
+        self::$curTabName = $panelName;
+    }
+
+    public static function endPanel()
+    {
+        self::$panels[self::$curPanelName] = ob_get_contents();
+        ob_end_clean();
+    }
+
+    public static function panel($panelName, $content)
+    {
+        self::$tabs[$panelName] = $content;
+    }
+
+    public function getPanels($id = null, $return = false)
+    {
+        return Y::controller()->widget('zii.widgets.jui.CJuiAccordion', array(
+            'panels'=>self::$panels,
+            'cssFile'=>'jquery-ui.css',
+            'themeUrl'=>'/css/jui',
+            'theme'=>'base',
+            'options'=>array(
+                'collapsible'=>false,
+            ),
+            'htmlOptions'=>array('id'=>$id)
+        ), $return);
+    }
+
 }

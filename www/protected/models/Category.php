@@ -261,24 +261,8 @@ class Category extends ActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
-	/**
-	 * make recursive cast all values in array to string
-	 * @param array $arr
-	 * @return array
-	 */
-	private static function castArray($arr)
-	{
-		$res = array();
-		foreach ($arr as $key=>$val) {
-			if (is_array($val))
-				$res[$key] = self::castArray($arr);
-			else
-				$res[$key] = (string)$val;
-		}
-		return $res;
-	}
-	
+
+
 	public function getUpdateUrl()
 	{
 		return Admin::url('categories/update', array('pk' => $this->pk));

@@ -3,21 +3,25 @@
     var defaults = {
         version : '1.0',
         linkClass : '',
-        targetId : ''
-    },
-
-    opts = {};
+        targetId : '',
+        onStart : function() {},
+        onComplete : function() {},
+        onResponse : function() {}
+    };
 
 	$.fn.openLi = function (options) {
 
-        opts = $.extend(defaults, options);
         return this.each(plugin);
 
         function plugin () {
-            var $t = $(this);
+            var opts = $.extend(defaults, options),
+                $t = $(this);
             $t.delegate('.'+opts.linkClass, 'click', function() {
+                opts.onStart($t);
 				$.get($(this).attr('href'), {}, function(data) {
-					$('#'+opts.targetId).html(data);
+                    opts.onResponse(data);
+                    $('#'+opts.targetId).html(data);
+                    opts.onComplete(data);
 				});
 				return false;
 			});

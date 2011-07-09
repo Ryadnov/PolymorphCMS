@@ -2,7 +2,12 @@
 class Record extends BaseDataType
 {
 	public $portfolioWorksIds;
-	
+
+    public function tableName()
+    {
+        return "records1`q";
+    }
+
 	public static function model()//$type)
 	{
 		return parent::model(__CLASS__);
@@ -31,24 +36,39 @@ class Record extends BaseDataType
 			//!!!don't use this relations!!!
 			//use relations with functions
 			//need set type condition
-			'variant_list' => array(self::MANY_MANY, 'VariantLias', 'variant_list_relations(model_id, variant_id)'),
-			'union_list' => array(self::BELONGS_TO, 'UnionList', UnionList::getPkAttr()),
-			'subdata_list' => array(self::HAS_MANY, 'SubdataList', SubList::getPkAttr()),
-			'image_gallery' => array(self::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()),
-			
-			//написать BELONGS_TO и HAS_MANY
-			///'workType' => array(self::BELONGS_TO, 'PortfolioWorkType', PortfolioWorkType::getPkAttr()),
+			'variants' => array(self::MANY_MANY, 'Variant', 'variant_relations(model_id, variant_id)'),
+			//'union' => array(self::BELONGS_TO, 'Union', UnionList::getPkAttr()),
+            //i think needn't BELONGS_TO relation, we can't use field Type there
+            'union' => array(self::MANY_MANY, 'Union', 'subdata_relations(model_id, union_id)'),
+			'subdata' => array(self::HAS_MANY, 'Subdata', Subdata::getPkAttr()),
+
+            'gallery' => array(self::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()),
 		));
 	}
-	
+
+    public function variants($type)
+    {
+        return $this->type('variants', $type)->variants;
+    }
+
+    public function union($type)
+    {
+        return $this->type('union', $type)->union;
+    }
+
+    public function subdata($type)
+    {
+        return $this->type('subdata', $type)->subdata;
+    }
+
 	function getGallery()
 	{
-		return $this->type(ModelFactory::getType($this->type_id))->image_gallery;
+		return $this->type('gallery', ModelFactory::getType($this->type_id))->image_gallery;
 	}
 	
-	public function type($type)
+	protected function type($tableAlias, $type)
 	{
-		$this->getDbCriteria()->mergeWith(array('condition'=>'type='.$type));
+		$this->getDbCriteria()->mergeWith(array('condition'=>$tableAlias.'.type='.$type));
 		return $this;
 	}
 	
@@ -60,25 +80,7 @@ class Record extends BaseDataType
     {
     	return CMap::mergeArray(parent::scopes(), array());
     }
-    
-    public function inYear($year)
-    {
-    	//$this->getDbCriteria()->compare('t.year',$year,true);
-    	return $this;
-    }
-    
-    public function inWorkType($workTypeId) 
-    {
-    	//$this->getDbCriteria()->compare('t.portfolio_work_type_id',$workTypeId);
-    	return $this;
-    }
-    
-    public function inCity($cityId)
-    {
-    	//$this->getDbCriteria()->compare('t.city_id',$cityId);
-    	return $this;
-    }
-    
+
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
@@ -114,8 +116,9 @@ class Record extends BaseDataType
 
 	public static function getAdminControllerName()
 	{
-		return 'portfolios';	
+		return 'portfolios';
 	}
+
 	/*
 	public function getPortfolioWorksArray()
 	{

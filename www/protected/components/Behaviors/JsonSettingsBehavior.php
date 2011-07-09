@@ -24,5 +24,21 @@ class JsonSettingsBehavior extends CActiveRecordBehavior
 	{
 		$this->owner->json_settings = json_encode(self::castArray($settings));
 	}
-	
+
+    /**
+	 * make recursive cast all values in array to string
+	 * @param array $arr
+	 * @return array
+	 */
+	private static function castArray($arr)
+	{
+		$res = array();
+		foreach ($arr as $key=>$val) {
+			if (is_array($val))
+				$res[$key] = self::castArray($arr);
+			else
+				$res[$key] = (string)$val;
+		}
+		return $res;
+	}
 }

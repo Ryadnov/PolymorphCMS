@@ -15,7 +15,7 @@ class DummyWidget extends Widget
 	
 	public function renderContent()
 	{
-		$this->render('template', $this->settings);
+		$this->render('template');
 	}
 
     public static function removeWidget()

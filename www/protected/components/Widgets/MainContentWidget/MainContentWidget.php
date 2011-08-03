@@ -35,7 +35,6 @@ class MainContentWidget extends Widget
         } else {
             return parent::render($view, $data, $return);
         }
-
     }
 
     public function getListView(&$criteria, $return = false)

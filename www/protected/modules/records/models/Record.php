@@ -5,7 +5,7 @@ class Record extends BaseDataType
 
     public function tableName()
     {
-        return "records1`q";
+        return "records";
     }
 
 	public static function model()//$type)
@@ -38,9 +38,7 @@ class Record extends BaseDataType
 			//need set type condition
 			'variants' => array(self::MANY_MANY, 'Variant', 'variant_relations(model_id, variant_id)'),
 			//'union' => array(self::BELONGS_TO, 'Union', UnionList::getPkAttr()),
-            //i think needn't BELONGS_TO relation, we can't use field Type there
-            'union' => array(self::MANY_MANY, 'Union', 'subdata_relations(model_id, union_id)'),
-			'subdata' => array(self::HAS_MANY, 'Subdata', Subdata::getPkAttr()),
+            'subdata' => array(self::HAS_MANY, 'Subdata', Record::getPkAttr()),
 
             'gallery' => array(self::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()),
 		));

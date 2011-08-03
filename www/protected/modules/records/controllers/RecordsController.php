@@ -40,11 +40,11 @@ class RecordsController extends AdminBaseController
 	{
 		return parent::loadModel('Record', $id, $scenario, true);
 	}
-	
+	/*
 	public function actionUpdate($pk)
 	{
 		$model = $this->loadModel($pk);
-        Y::dump($model->subdata('tmp'));
-	}
+        
+	}*/
 
 }

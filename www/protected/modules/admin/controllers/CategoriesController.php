@@ -162,7 +162,7 @@ class CategoriesController extends AdminBaseController
 
 	public function actionViewSettings($pk)
 	{
-		$cat = $this->loadModel($pk);
+            $cat = $this->loadModel($pk);
 
         $this->render('ViewSettings', array('cat'=>$cat));
 	} 

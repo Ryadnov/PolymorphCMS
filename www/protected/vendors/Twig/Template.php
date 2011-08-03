@@ -181,7 +181,6 @@ abstract class Twig_Template implements Twig_TemplateInterface
      */
     public function display(array $context, array $blocks = array())
     {
-
         try {
             $this->doDisplay($context, $blocks);
         } catch (Twig_Error $e) {
@@ -359,7 +358,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
         if ($this->env->hasExtension('sandbox')) {
             $this->env->getExtension('sandbox')->checkMethodAllowed($object, $method);
         }
-        
+
         $ret = call_user_func_array(array($object, $method), $arguments);
 
         if ($object instanceof Twig_TemplateInterface) {

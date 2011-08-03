@@ -1,8 +1,9 @@
 <?php
 $admin = array(
-	'admin/<m>/<c>/<a>' => '<m>/<c>/<a>',
-	'admin/<m>/<c>' => '<m>/<c>/index',
-	'admin' => 'admin/manage/index',
+//	'admin/<m>/<c>/<a>' => '<m>/<c>/<a>',
+//	'admin/<m>/<c>' => '<m>/<c>/index',
+//	'admin' => 'cms/manage/index',
+    'admin/<c>/<a>' => 'admin/<c>/<a>',
 );
 
 $rbam = array(
@@ -22,8 +23,8 @@ $site = array(
 	'<cat1>/<cat2>/<id:\d+>' => 'site',
 	'<cat1>/<id:\d+>' => 'site',
 
-	'<cat1>/<cat2>/<type:(portfolio|partner|client|publication|news)>-<alias:\w+>' => 'site',
-	'<cat1>/<type:(portfolio|partner|client|publication|news)>-<alias:\w+>' => 'site',
+	'<cat1>/<cat2>/<type:(w+)>-<alias:\w+>' => 'site',
+	'<cat1>/<type:(w+)>-<alias:\w+>' => 'site',
 
 	'<cat1>/<cat2>' => 'site',
 	'<cat1>' => 'site',
@@ -53,7 +54,7 @@ $user = addWay('admin', addModule('users', array(
 
 return array(
 	'urlFormat'=>'path',
-	'rules'=>array_merge($rbam, $user, $admin, $site),
+	'rules'=>array_merge($user, $admin, $site),
 	'showScriptName' => false, 
 );
 

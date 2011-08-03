@@ -93,7 +93,7 @@ class SiteController extends RenderController
 		if (isset($_GET['alias']) || isset($_GET['id'])) {
 			$value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['id'];
 			$attr = isset($_GET['alias']) ? 'alias' : $model->pkAttr;
-			
+
 			$model = $model->published()->findByAttributes(array($attr=>$value));
 		
 			if ($model == NULL)
@@ -103,7 +103,6 @@ class SiteController extends RenderController
 		$this->model = $model;
 
         $this->render('main', array(
-			'menu'=>new Menu,
 			'block'=>new BlockViewer($category),
 			'meta'=>new MetaViewer($category),
 			'item'=>$model,

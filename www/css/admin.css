@@ -93,24 +93,12 @@ hr{width: 90%; display:inline-block;}
 /* show shit end */
 
 /* Templates */
-ul {list-style: none;height: auto;}
-a{color:#333;}
+ul {list-style: none; height: auto;}
+a{color: #333;}
 
-#template-blocks{float: left; width: 250px;}
-#template-blocks h3{font-size: 16px;}
-#template-blocks .block-settings{padding-left: 0;}
-#block-widgets {font-size: 100%; font-weight: bold; padding: 0 4px; text-align: center;}
-    #block-widgets li a{margin: 5px 0 0 0; position: relative; top: 4px;}
-    
-#design-wrapper{float: left; width: 100%}
+#design-wrapper{float: left; width: 100%; border:  1px solid #333;}
 .btn-blue {height: 28px;border: 1px #999 solid;border-radius: 4px;margin: 2px;background: url('/images/gradients.png') repeat-x;}
-
-a.block-preview {font-weight:bold; float:left; width:auto; height:auto; margin: 3px 2px 0 5px;}
-a.block-settings {float:left; width:24px; height:24px; margin:2px; background: url('/images/upd24.png') no-repeat;}
-
-#block-widgets {clear:both; float:left;}
-
-#trash {background: url(/images/trash.png) no-repeat; float:right; width:64px; height:64px;}
+#trash {background: url(/images/trash.png) no-repeat; float:right; width:24px; height:24px; margin: 2px;}
 #trash.accept {background-color: #999;}
 
 

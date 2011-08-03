@@ -6,7 +6,7 @@ abstract class BaseDataType extends ActiveRecord implements IDataType
 	
     public function tableName()
 	{
-		return 'type_'.ModelFactory::getType($this); 
+        return 'type_'.ModelFactory::getType($this);
 	}
 	
 	public function rules() 
@@ -33,28 +33,6 @@ abstract class BaseDataType extends ActiveRecord implements IDataType
 	      	)
     
         );
-	}	
-
-	public function scopes()
-	{
-		$scopes = array();
-		if (!in_array(get_class($this), ModelFactory::modelsWithoutPublished())) {
-			$published = array(
-				'condition'=>'published='.self::PUBLISHED,
-				'order'=>'sort DESC'
-			);
-		} else {
-			$published = array();
-		}
-		
-		$scopes['published'] = $published;
-		
-		return $scopes;	
-	}
-	
-	public function relations()
-	{
-		return array();
 	}
 
 	public function getUrl()
@@ -74,7 +52,7 @@ abstract class BaseDataType extends ActiveRecord implements IDataType
 		
 	public function getUpdateUrl()
 	{
-		return Admin::url($this->adminControllerName.'/update', array('pk' => $this->pk));
+		return Y::url(Y::module()->getId().'/'.$this->adminControllerName.'/update', array('pk' => $this->pk));
 	}
 	
 	public function getDeleteUrl()

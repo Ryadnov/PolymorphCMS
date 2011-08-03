@@ -31,7 +31,7 @@ class BlocksController extends AdminBaseController
         }
 	}
 	
-	public function saveWidgetsPosition()
+	public function actionSaveWidgetsPosition($blockPk)
 	{
 		
 	}
@@ -73,10 +73,51 @@ class BlocksController extends AdminBaseController
 
             echo CHtml::beginForm();
                 echo CHtml::checkBoxList('newWidgets', '', $list);
-                echo CHtml::submitButton('Готово');
+                echo '</br>'.CHtml::submitButton('Готово');
             echo CHtml::endForm();
         }
     }
 
-    
+    public function actionAll($catPk)
+    {
+        $cat = Category::model()->findByPk($catPk);
+
+        $res = array();
+        foreach ($cat->allBlocks as $item) {
+            $children = array();
+            $block = $item['block'];
+            foreach ($block->widgets as $widget) {
+                $children[] = array(
+                    'text'=>$widget->detailsLink,
+                    'htmlOptions'=>array(
+                        'id'=>"widgets_".$widget->pk,
+                        'class'=>'widget-link'
+                    )
+                );
+            }
+
+            $res[] = array(
+                'text'=>'<span>'.$block->alias.'</span>'.$this->renderPartial('block_btns', array('item'=>$item, 'cat'=>$cat), true),
+                'children'=>$children,
+                'htmlOptions'=>array(
+                    'id'=>"block_".$block->pk,
+                    'class'=> $item['isOwn'] ? 'own' : 'parents'
+                )
+            );
+        }
+        
+        $this->renderAjax('all', array('blocks'=> $res, 'cat'=> $cat));
+    }
+
+    public function actionMakeOwn($catPk, $blockPk)
+    {
+        $cat = Category::model()->findByPk($catPk);
+        $block = Block::model()->findByPk($blockPk);
+
+        //создать новый блок
+        //получить копии виджетов
+        //сохранить виджеты
+
+        
+    }
 }

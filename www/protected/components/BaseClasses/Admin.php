@@ -4,7 +4,7 @@ class Admin
 	public static function t($str='',$dic='interface', $params=array()) {
 		return Yii::t("AdminModule.".$dic, $str, $params);
 	}
-		
+
 	public static function url($url, $params = array()) 
     {
     	return Y::url('admin/'.$url, $params);
@@ -146,10 +146,14 @@ class Admin
 				<div class="right">';
 
 			$name = get_class($model).'['.$attr.']';
-        	$time = date($phpDateFormat,strtotime($model->{$attr}));
+            if ($model->isNewRecord) {
+                    $model->{$attr} = date('d.m.Y');
+            }
+            $time = date($phpDateFormat,strtotime($model->{$attr}));
         	
 			Y::controller()->widget('zii.widgets.jui.CJuiDatePicker', array(
 				'attribute'=>$attr,
+                'scriptFile'=>'/js/jquery-ui.min.js',
 				'model'=>$model,
 				'language'=>Yii::app()->language,
 				'options'=>array(
@@ -162,7 +166,7 @@ class Admin
 			
 			echo '</div>
 			</div>';	
-		}	
+		}
 	}
 
     public static $tabs = array();
@@ -186,47 +190,12 @@ class Admin
         self::$tabs[$tabName] = array('content' => $content);
     }
 
-    public function getTabs($id = null, $return = false)
+    public function getTabs($id = null, $return = true)
     {
         return Y::controller()->widget('JuiTabs', array(
             'tabs'=>self::$tabs,
             'cssFile'=>'jquery-ui.css',
-            'themeUrl'=>'/css/jui',
-            'theme'=>'base',
-            'options'=>array(
-                'collapsible'=>false,
-            ),
-            'htmlOptions'=>array('id'=>$id)
-        ), $return);
-    }
-
-    public static $panels = array();
-    public static $curPanelName;
-
-    public static function beginPanel($panelName)
-    {
-        ob_start();
-        ob_implicit_flush(false);
-        self::$curTabName = $panelName;
-    }
-
-    public static function endPanel()
-    {
-        self::$panels[self::$curPanelName] = ob_get_contents();
-        ob_end_clean();
-    }
-
-    public static function panel($panelName, $content)
-    {
-        self::$tabs[$panelName] = $content;
-    }
-
-    public function getPanels($id = null, $return = false)
-    {
-        return Y::controller()->widget('zii.widgets.jui.CJuiAccordion', array(
-            'panels'=>self::$panels,
-            'cssFile'=>'jquery-ui.css',
-            'themeUrl'=>'/css/jui',
+            'themeUrl'=>'/css/jui/base/',
             'theme'=>'base',
             'options'=>array(
                 'collapsible'=>false,

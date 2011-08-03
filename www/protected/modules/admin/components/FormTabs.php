@@ -1,15 +1,14 @@
 <?php
-Yii::import('zii.widgets.jui.CJuiTabs');
+
 /*
  * class for ajax echo tabs
  * not registered script as parent class
  * but echo scripts in <script type='text/javascript'></script> tags
  */
-class JuiTabs extends CJuiTabs
+class FormTabs extends JuiTabs
 {
-    public $theme='base';
-    public $cssFile='jquery-ui.css';
-    public $themeUrl='/css/jui';
+    public $buttons;
+    public $extHeaderHtml;
     
     public function run()
     {
@@ -45,7 +44,14 @@ class JuiTabs extends CJuiTabs
                     $contentOut .= strtr($this->contentTemplate, array('{content}'=>$content['content'],'{id}'=>$tabId))."\n";
             }
         }
-        echo "<ul>\n" . $tabsOut . "</ul>\n";
+
+        foreach((array)$this->buttons as $button)
+            $tabsOut .= $button;
+
+        foreach((array)$this->extHeaderHtml as $html)
+            $tabsOut .= $html;
+
+        echo "<ul>\n".  $tabsOut . "</ul>\n";
         echo $contentOut;
 
         echo CHtml::closeTag($this->tagName)."\n";
@@ -55,6 +61,4 @@ class JuiTabs extends CJuiTabs
                 $('#{$id}').tabs($options);
             </script>";
     }
-
-
 }

@@ -21,6 +21,6 @@ class ParentBlockWidget extends Widget
 
 	public static function removeWidget()
 	{
-	    CJuiTabs::
+	    
 	}
 }

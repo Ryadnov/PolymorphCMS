@@ -1,15 +1,19 @@
 <?php
 class FilesController extends AdminBaseController
 {
-	public function actionManage() 
+	public function actionCssManage()
 	{	
-		list ($cssFiles, $jsFiles) = File::getCssJsTrees();
-		
-		$this->render('directories', array(
-			'cssFiles' => $cssFiles,
-			'jsFiles' => $jsFiles
+		$this->renderAjax('css', array(
+			'cssFiles' => File::getCssTree(),
 		));
 	}
+
+    public function actionJsManage()
+    {
+		$this->renderAjax('js', array(
+			'jsFiles' => File::getJsTree()
+		));
+    }
 	
 	public function actionUpdate($dir, $fileName)
 	{

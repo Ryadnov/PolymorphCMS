@@ -19,7 +19,7 @@ class Subdata extends VariantListBase
 	public function relations()
 	{
 		return array(
-			'records' => array(self::HAS_MANY, 'Records', self::getPkAttr()),
+			'records' => array(self::HAS_MANY, 'records', self::getPkAttr()),
 		);
 	}
 	

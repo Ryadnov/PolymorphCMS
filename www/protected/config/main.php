@@ -26,19 +26,25 @@ return array(
 		'models.*',
 		'models.dataTypes.*',
 		'models.templates.*',
-		'components.*',
+
+        'components.*',
 		'components.Renderers.*',
 		'components.Helpers.*',
 		'components.Behaviors.*',
 		'components.BaseClasses.*',
 		'components.Interfaces.*',
 		'components.Other.*',
+
+        //models and components
 		'modules.users.components.*',
-		'modules.users.UsersModule',
 		'modules.users.models.*',
-		'modules.admin.AdminModule',
-		'modules.admin.components.*'
-	),
+		'modules.admin.components.*',
+        'modules.admin.models.*',
+        'modules.records.components.*',
+        'modules.records.models.*',
+        'modules.cms.components.*',
+        'modules.cms.models.*',
+    ),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
@@ -53,13 +59,13 @@ return array(
 			'activeAfterRegister' => true,
 			'isRegistrationClose' => true
 		),
-		'admin' => array(
-			'class'=>'application.modules.admin.AdminModule'
-		),
 		'rbam'=>array(
 		    'class'=>'application.modules.rbam.RbamModule',
 			'initialise'=>TRUE,
 		),
+        'admin',
+		'cms',
+        'records'
     ),
 
 	// application components
@@ -104,11 +110,11 @@ return array(
     	),
     	
 		'clientScript' => array(
-			'class' => 'ext.minify.EClientScript',
-			'combineScriptFiles' => false, // By default this is set to false, set this to true if you'd like to combine the script files
-			'combineCssFiles' => false, // By default this is set to false, set this to true if you'd like to combine the css files
-			'optimizeCssFiles' => false,  // @since: 1.1
-			'optimizeScriptFiles' => false,   // @since: 1.1
+			'class' => 'CClientScript',//'ext.minify.EClientScript',
+//			'combineScriptFiles' => false, // By default this is set to false, set this to true if you'd like to combine the script files
+//			'combineCssFiles' => false, // By default this is set to false, set this to true if you'd like to combine the css files
+//			'optimizeCssFiles' => false,  // @since: 1.1
+//			'optimizeScriptFiles' => false,   // @since: 1.1
 		),
 		
 		'urlManager'=> require("route.php"),

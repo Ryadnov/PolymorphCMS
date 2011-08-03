@@ -1,9 +1,7 @@
 ﻿<div class="form">
-<?php 
-$form=Admin::beginForm($model, array('id'=>'page-form'));	
-	Admin::submit($model);
-	Admin::makeTinyTabs($form, $model, array('text', 'sidebar_text'));
-	$this->getTabs();	
-$this->endWidget(); 
-?>
+{% set form = Admin.beginForm(model, {'id':'page-form'}) %}
+	{{ Admin.submit(model) }}
+	{{ Admin.makeTinyTabs(form, model, ['text', 'sidebar_text']) }}
+	{{ this.getTabs() }}
+{% set widget = this.endWidget() %}
 </div><!-- form -->

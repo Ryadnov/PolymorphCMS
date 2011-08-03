@@ -1,0 +1,32 @@
+﻿<div class="form">
+{% set form = this.beginWidget('CActiveForm', {
+	'id':'posts-form',
+	'enableAjaxValidation':true,
+	'enableClientValidation':true,
+	'htmlOptions' : {
+		'enctype':'multipart/form-data'
+	}
+}) %}
+
+	{{ form.errorSummary(model) }}
+	
+{{ this.beginTab('Настройки') }}
+	{{ Admin.makeTextFields(form, model, ['title', 'second_title', 'alias']) }}
+	<div class="row">
+		<div class="left">{{ form.labelEx(model,'published') }}</div>
+		<div class="right">
+			{{ form.radioButtonList(model,'published',Lookup.items('FPublished')) }}
+		</div>
+	</div>
+	{#{{ Admin.makeDateFields(form, model, 'date', 'dd.mm.yy') }}#}
+{{ this.endTab() }}
+
+{{ Admin.makeTinyTabs(form, model, ['text', 'descr']) }}
+	
+{{ this.getTabs() }}
+	<div class="row buttons">
+		{{ CHtml.submitButton(model.isNewRecord ? 'Создать' : 'Сохранить') }}
+	</div>
+
+{% set widget = this.endWidget() %}
+</div><!-- form -->

@@ -1,21 +1,22 @@
 <?php
 class File extends CModel
 {
-	public static function getCssJsTrees()
-	{
-		$cssFiles = array(0 => array(
-			'text'=>'css',
+	public static function getCssTree()
+	{			
+		return array(0 => array(
+			'text'=>'css'.CHtml::link('', Admin::url('files/create', array('dir'=>'/css')), array('class'=>'add_file')),
 			'children'=>self::addLinks(FileSystem::directoryMap('./css'), 'css')
 		));
-		
-		$jsFiles = array(0 => array(
-			'text'=>'js', 
+	}
+
+    public static function getJsTree()
+	{
+		return array(0 => array(
+			'text'=>'js'.CHtml::link('', Admin::url('files/create', array('dir'=>'/js')), array('class'=>'add_file')),
 			'children'=>self::addLinks(FileSystem::directoryMap('./js'), 'js')
 		));
-
-		return array($cssFiles, $jsFiles);
-	}
-	
+    }
+	    
 	protected static function addLinks($arr, $dir)
 	{
 		$res = array(); 

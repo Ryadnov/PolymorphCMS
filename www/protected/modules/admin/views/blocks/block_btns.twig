@@ -1,0 +1,24 @@
+<style type="text/css">
+#blocks > li .add-widgets-btn{display: none; background: url(/images/plus16.png) no-repeat; height: 16px; width: 16px}
+#blocks > li:hover .add-widgets-btn{display: block; float: right; opacity: 0.3;}
+#blocks > li:hover .add-widgets-btn:hover{opacity: 1;}
+#blocks > li .make-own-btn{display: none; background: url(/images/refresh16.png) no-repeat; height: 16px; width: 16px}
+#blocks > li:hover .make-own-btn{display: block; float: right; opacity: 0.3;}
+#blocks > li:hover .make-own-btn:hover{opacity: 1;}
+</style>
+
+{% set block = item['block'] %}
+
+{% if item['isOwn'] %}
+    {{ Admin.link('', 'blocks/addWidgets', {'blockPk':block.pk}, {
+        'class':'add-widgets-btn',
+        'id':'add-block-btn_'.block.pk,
+        'title':'Добавить виджетов'
+    }) }}
+{% else %}
+    {{ Admin.link('', 'blocks/makeOwn', {'catPk':cat.pk, 'blockPk':block.pk}, {
+        'class':'make-own-btn',
+        'id':'make-own-btn_'.block.pk,
+        'title':'Это родительский блок, хотите переопределить его?'
+    }) }}
+{% endif %}

@@ -34,15 +34,18 @@ class WidgetsController extends AdminBaseController
     {
         if (count($_POST) > 0) {
             $model = $this->loadModel($pk);
-            $model->attributes = $_POST['extra'];
-            unset($_POST['extra']);
+            $model->attributes = $_POST['Extra'];
+            unset($_POST['Extra']);
             $model->settings = $_POST;
         } else {
             $model = $this->loadModel($pk);
             Yii::import('widgets.'.$model->class.'.*');
             $widget = new $model->class;
             $widget->setWidgetModel($model);
-            echo $widget->adminForm($model);
+
+            $output = $widget->adminForm($model);
+            Y::clientScript()->render($output);
+            echo $output;
         }
     }
 

@@ -9,15 +9,32 @@ class AdminBaseController extends Controller
 			Y::end($this->render('accessDenied'));
 
         parent::init();
+
         Y::clientScript()
-            ->registerScriptFile('/js/jquery-ui.min.js')
-            ->registerCssFile('/css/jui/redmond/jquery-ui.css')
+            ->registerCoreScript('jquery.ui')
             ->registerScriptFile('/js/plugins/jquery.form.js')
-            ->registerScriptFile('/js/plugins/multiple-accordion.js')
-            ->registerScriptFile('/js/plugins/cms/deleteLi.js')
-            ->registerScriptFile('/js/plugins/cms/openLi.js')
-            ->registerScriptFile('/js/plugins/cms/ascWindow.js')
+//            ->registerScriptFile('/js/plugins/cms/deleteLi.js')
+//            ->registerScriptFile('/js/plugins/cms/openLi.js')
+            ->registerScriptFile('/js/plugins/chosen/chosen.js')
+            ->registerCssFile('/js/plugins/chosen/chosen.css')
             ->registerScriptFile('/js/plugins/cms/asc.js');
+
+        if (Yii::app()->request->isAjaxRequest) {
+            Y::clientScript()->scriptMap = array(
+                'jquery.js' => false,
+                'jquery-ui.min.js' => false,
+                'jquery-ui.css' => false,
+
+                //treeview
+                'jquery.treeview.js' => false,
+                'jquery.cookie.js' => false,
+                'jquery.treeview.edit.js' => false,
+                'jquery.treeview.async.js' => false,
+
+                'jquery.form.js'=>false,
+                'asc.js'=>false
+            );
+        }
 	}
 	
 	public $layout='//layouts/admin';
@@ -226,11 +243,8 @@ class AdminBaseController extends Controller
 
 	public function getTabs($id = null)
 	{
-        $this->widget('zii.widgets.jui.CJuiTabs', array(
+        $this->widget('JuiTabs', array(
 			'tabs'=>$this->tabs,
-			'cssFile'=>'jquery-ui.css',
-		    'themeUrl'=>'/css/jui',
-			'theme'=>'base',
 			'options'=>array(
 		    	'collapsible'=>false,
 			),
@@ -291,4 +305,9 @@ class AdminBaseController extends Controller
 
         return $model;
 	}
+
+    public function renderAjax($view, $data=null, $return=false)
+    {
+        $output = parent::renderPartial($view, $data, $return, true);
+    }
 }

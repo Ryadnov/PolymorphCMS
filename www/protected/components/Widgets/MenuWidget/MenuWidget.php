@@ -9,8 +9,7 @@ class MenuWidget extends Widget
     {
         $alias = $this->alias;
         if (($menuRoot = Category::model()->menuRoot($alias)) == null) {
-            $this->error("Параметр tag для menu не верен. Шаблон $this->tmplAlias");
-            $res = $this->command;
+            echo "Параметр tag для menu не верен. Шаблон $alias";
         }
 
         if ($this->expand) {

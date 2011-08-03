@@ -76,6 +76,19 @@ class Category extends ActiveRecord
 		else
 			return $this->parent->getBlock($alias);
 	}
+
+    public function getAllBlocks($existsBlocks = array(), $isCurCat = true)
+	{
+        $res = array();
+		foreach ($this->blocks as $block) {
+			$res[] = array('block'=>$block, 'isOwn'=>$isCurCat);
+		}
+
+		if ($this->isRoot())
+			return $res;
+		else
+            return CMap::mergeArray($this->parent->getAllBlocks($res, false), $res);
+	}
 	
 	public function menuRoot($tag)
 	{

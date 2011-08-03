@@ -26,25 +26,53 @@ abstract class Widget extends CPortlet
 	
 	public function adminForm($widgetModel)
 	{
+        parent::render('_adminForm', array('model'=>$widgetModel), true).  //you can override pender method as in MainContentWidget
+            
         $res = '';
         $res .= CHtml::form();
-            Admin::tab('Настройки виджета', parent::render('_adminForm', array('model'=>$widgetModel), true));  //you can override pender method as in MainContentWidget
-            Admin::tab('Дополнительно', $this->renderExternalFields());
-            $res .= Admin::getTabs(get_class($this).'_setttings_tabs', true);
-            $res .= CHtml::submitButton('Сохранить');
+        $id  = get_class($this).'_setttings_tabs';
+        $res .= $this->getTabs($id);
         $res .= CHtml::endForm();
-        $a = '11111';
-        $res .= Y::clientScript()->render($a);
         return $res;
 	}
-    
+
+    public function getTabs($id = null, $return = true)
+    {
+        self::beginTab('Дополнительно');
+        echo $this->renderExternalFields();
+        self::endTab();
+        
+        return Y::controller()->widget(
+            'FormTabs', array(
+                'tabs'=>self::$tabs,
+                'options'=>array(
+                    'collapsible'=>false,
+                ),
+                'id' => $id,
+                'htmlOptions' => array('class'=>'widget_settings_tabs', 'style'=>'height:495px'),
+                'buttons' => array (
+                    $this->widget('JuiButton', array  (
+                        'id' =>'widget-form-save-button',
+                        'htmlOptions' => array ('class'=>'save-button'),
+                        'name'=>'submit',
+                        'caption'=>'Сохранить'
+                    ), true)
+                ),
+                'extHeaderHtml' => '<div class="submit-form-result"></div>'
+            ),
+            $return
+        );
+    }
+
     private function renderExternalFields()
     {
         $res = '<div class="row">';
-        $res .= 'Название '.CHtml::textField('Extra[title]', $this->widgetModel->title);
+            $res .= CHtml::label('Название', 'Extra[title]');
+            $res .= CHtml::textField('Extra[title]', $this->widgetModel->title);
         $res .= '</div>';
         $res .= '<div class="row">';
-        $res .= 'Опубликован '.CHtml::checkbox('Extra[published]', $this->widgetModel->published);
+        $res .= CHtml::label('Опубликован', 'Extra[published]');
+            $res .= CHtml::checkBox('Extra[published]', $this->widgetModel->published);
         $res .= '</div>';
         return $res;
     }
@@ -62,6 +90,22 @@ abstract class Widget extends CPortlet
 	            'class' => 'application.components.Behaviors.JsonSettingsBehavior'
 	      	),
         );
+    }
+
+    public static $tabs = array();
+    public static $curTabName;
+
+    public static function beginTab($tabName)
+    {
+        ob_start();
+        ob_implicit_flush(false);
+        self::$curTabName = $tabName;
+    }
+
+    public static function endTab()
+    {
+        self::$tabs[self::$curTabName] = ob_get_contents();
+        ob_end_clean();
     }
     
 	abstract public static function getDefaultSettings();

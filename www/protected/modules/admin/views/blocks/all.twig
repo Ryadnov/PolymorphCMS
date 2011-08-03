@@ -1,0 +1,50 @@
+<div class="dark-blue-head"><a href="{{ Admin.url('blocks/add', {'catPk':cat.pk}) }}" class="add-block">Добавить блок +</a></div>
+{{ this.widget('CTreeView', {'collapsed':true,'data':blocks, 'id':'blocks'}, true) }}
+<script type="text/javascript">
+$(document).ready(function() {
+
+    $('#blocks-accordion .widgets a').click(function() {
+        $('#widget-details').load($(this).attr('href'));
+        return false;
+    });
+
+    $("#blocks-accordion > li > a").draggable({
+        helper: "clone",
+        opacity: .75,
+        refreshPositions: true, // Performance?
+        revert: "invalid",
+        revertDuration: 300,
+        scroll: true
+    });
+            
+	$('.widgets').each(function() {
+        var $t = $(this),
+            blockPk = $t.closest('.template-block').attr('id').split('_')[1];
+            
+        $t.sortable({
+            stop: function() {
+                $.post('/admin/blocks/saveWidgetsPosition?blockPk='+blockPk,
+                    $t.sortable('serialize')
+                );
+            }
+        });
+    });
+});
+</script>
+
+<style type="text/css">
+.widgets {
+    list-style: disc;
+    margin-left: 15px;
+    list-style-position: inside;
+}
+
+#blocks-accordion {
+    margin-left: 5px;
+    
+}
+.template-block a {
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>

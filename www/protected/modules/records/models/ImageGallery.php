@@ -86,7 +86,7 @@ class ImageGallery extends BaseDataType
 	
 	public function getAdminUrl()
 	{
-		return Admin::url(Portfolio::getAdminControllerName().'/update', array('pk'=>$this->portfolio->pk));
+		return Admin::url('/records/update', array('pk'=>$this->record->pk));
 	}
 	
 	public static function getImgFolder()

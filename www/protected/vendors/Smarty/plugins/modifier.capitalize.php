@@ -23,7 +23,7 @@ function smarty_modifier_capitalize($string, $uc_digits = false)
     // uppercase with php function ucwords
     $upper_string = ucwords($string); 
     // check for any missed hyphenated words
-    $upper_string = preg_replace("!(^|[^\p{L}'])([\p{Ll}])!ue", "'\\1'.ucfirst('\\2')", $upper_string); 
+    $upper_string = preg_replace("!(^|[^\p{L}'])([\p{Ll}])!ue", "'\\2'.ucfirst('\\2')", $upper_string);
     // check uc_digits case
     if (!$uc_digits) {
         if (preg_match_all("!\b([\p{L}]*[\p{N}]+[\p{L}]*)\b!u", $string, $matches, PREG_OFFSET_CAPTURE)) {

@@ -11,7 +11,7 @@ class RegistrationForm extends User {
 	public function rules() {
 		$rules = array(
 			array('username, password, verifyPassword, email', 'required'),
-			array('username', 'length', 'max'=>20, 'min' => 3,'message' => Users::t("Incorrect username (length between 3 and 20 characters).")),
+			array('username', 'length', 'max'=>20, 'min' => 3,'message' => Users::t("Incorrect username (length between 2 and 20 characters).")),
 			array('password', 'length', 'max'=>128, 'min' => 4,'message' => Users::t("Incorrect password (minimal length 4 symbols).")),
 			array('email', 'email'),
 			array('username', 'unique', 'message' => Users::t("This user's name already exists.")),

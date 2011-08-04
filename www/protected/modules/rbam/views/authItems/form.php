@@ -70,7 +70,7 @@ $cs->registerScript('submitForm', 'var jForm = jQuery("#yw0");
 		function(data) {
 			if (data.errors==undefined) {
 				var jDone = jQuery("#rbam-dialog-done");
-				jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$1"+data.content+"$2"));
+				jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$2"+data.content+"$2"));
 				jDone.dialog("option","title","'.($this->action->id==='manage'?Yii::t('RbamModule.rbam','Auth Item Updated'):Yii::t('RbamModule.rbam','Auth Item Created')).'");
 				if (data.redirect!=undefined) {
 					jDone.data("redirect", data.redirect);

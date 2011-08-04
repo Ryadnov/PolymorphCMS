@@ -40,7 +40,7 @@ class Twig_Tests_Node_Expression_Unary_NegTest extends Twig_Tests_Node_TestCase
         $node = new Twig_Node_Expression_Unary_Neg($node, 0);
 
         return array(
-            array($node, '(-1)'),
+            array($node, '(-2)'),
         );
     }
 }

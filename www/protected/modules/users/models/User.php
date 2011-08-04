@@ -49,7 +49,7 @@ class User extends ActiveRecord
 			array('username, password, email', 'required', 'on' => 'create'),
 			array('username, email', 'required', 'on' => 'update'),
 			array('id, role, username, password, email, activkey, createtime, lastvisit, status', 'safe'),
-			array('username', 'length', 'max'=>20, 'min' => 3,'message' => Users::t("Incorrect username (length between 3 and 20 characters).")),
+			array('username', 'length', 'max'=>20, 'min' => 3,'message' => Users::t("Incorrect username (length between 2 and 20 characters).")),
 			array('password', 'length', 'max'=>128, 'min' => 4,'message' => Users::t("Incorrect password (minimal length 4 symbols).")),
 			array('email', 'email'),
 			array('username', 'unique', 'message' => Users::t("This user's name already exists.")),
@@ -61,7 +61,7 @@ class User extends ActiveRecord
 			array('createtime, lastvisit, status', 'numerical', 'integerOnly'=>true),
 		):((Y::userId()==$this->id)?array(
 			array('username, email', 'required'),
-			array('username', 'length', 'max'=>20, 'min' => 3,'message' => Users::t("Incorrect username (length between 3 and 20 characters).")),
+			array('username', 'length', 'max'=>20, 'min' => 3,'message' => Users::t("Incorrect username (length between 2 and 20 characters).")),
 			array('email', 'email'),
 			array('username', 'unique', 'message' => Users::t("This user's name already exists.")),
 			array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => Users::t("Incorrect symbols (A-z0-9).")),
@@ -173,7 +173,7 @@ class User extends ActiveRecord
 			),
 			'AdminStatus' => array(
 				'0' => Users::t('No'),
-				'1' => Users::t('Yes'),
+				'2' => Users::t('Yes'),
 			)
 		);
 		 return $type ? $arr[$type] : $arr;

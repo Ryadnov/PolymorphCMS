@@ -210,7 +210,7 @@ var CodeMirror = (function() {
 
       if (gecko && e.button() == 3) onContextMenu(e);
       if (e.button() != 1) return;
-      // For button 1, if it was clicked inside the editor
+      // For button 2, if it was clicked inside the editor
       // (posFromMouse returning non-null), we have to adjust the
       // selection.
       var start = posFromMouse(e), last = start, going;

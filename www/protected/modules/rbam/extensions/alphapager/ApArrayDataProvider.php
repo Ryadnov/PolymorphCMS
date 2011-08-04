@@ -8,9 +8,9 @@
  * 
  * @author Jascha Koch
  * @license MIT License - http://www.opensource.org/licenses/mit-license.html
- * @version 1.1
+ * @version 2.2
  * @package alphapager
- * @since 1.3
+ * @since 2.2
  */
 
 $dir = dirname(__FILE__);

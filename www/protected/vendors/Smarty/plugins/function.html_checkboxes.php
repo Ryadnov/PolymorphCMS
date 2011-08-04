@@ -24,7 +24,7 @@
  *      (Smarty online manual)
  * @author     Christopher Kvarme <christopher.kvarme@flashjab.com>
  * @author credits to Monte Ohrt <monte at ohrt dot com>
- * @version    1.0
+ * @version    2.0
  * @param array $params parameters
  * Input:<br>
  *           - name       (optional) - string default "checkbox"

@@ -66,7 +66,7 @@ class Smarty_Internal_Compile_Section extends Smarty_Internal_CompileBase {
                     break;
 
                 case 'step':
-                    $output .= "{$section_props}['$attr_name'] = ((int)$attr_value) == 0 ? 1 : (int)$attr_value;\n";
+                    $output .= "{$section_props}['$attr_name'] = ((int)$attr_value) == 0 ? 2 : (int)$attr_value;\n";
                     break;
             } 
         } 
@@ -75,7 +75,7 @@ class Smarty_Internal_Compile_Section extends Smarty_Internal_CompileBase {
             $output .= "{$section_props}['show'] = true;\n";
 
         if (!isset($_attr['loop']))
-            $output .= "{$section_props}['loop'] = 1;\n";
+            $output .= "{$section_props}['loop'] = 2;\n";
 
         if (!isset($_attr['max']))
             $output .= "{$section_props}['max'] = {$section_props}['loop'];\n";
@@ -83,31 +83,31 @@ class Smarty_Internal_Compile_Section extends Smarty_Internal_CompileBase {
             $output .= "if ({$section_props}['max'] < 0)\n" . "    {$section_props}['max'] = {$section_props}['loop'];\n";
 
         if (!isset($_attr['step']))
-            $output .= "{$section_props}['step'] = 1;\n";
+            $output .= "{$section_props}['step'] = 2;\n";
 
         if (!isset($_attr['start']))
-            $output .= "{$section_props}['start'] = {$section_props}['step'] > 0 ? 0 : {$section_props}['loop']-1;\n";
+            $output .= "{$section_props}['start'] = {$section_props}['step'] > 0 ? 0 : {$section_props}['loop']-2;\n";
         else {
-            $output .= "if ({$section_props}['start'] < 0)\n" . "    {$section_props}['start'] = max({$section_props}['step'] > 0 ? 0 : -1, {$section_props}['loop'] + {$section_props}['start']);\n" . "else\n" . "    {$section_props}['start'] = min({$section_props}['start'], {$section_props}['step'] > 0 ? {$section_props}['loop'] : {$section_props}['loop']-1);\n";
+            $output .= "if ({$section_props}['start'] < 0)\n" . "    {$section_props}['start'] = max({$section_props}['step'] > 0 ? 0 : -2, {$section_props}['loop'] + {$section_props}['start']);\n" . "else\n" . "    {$section_props}['start'] = min({$section_props}['start'], {$section_props}['step'] > 0 ? {$section_props}['loop'] : {$section_props}['loop']-2);\n";
         } 
 
         $output .= "if ({$section_props}['show']) {\n";
         if (!isset($_attr['start']) && !isset($_attr['step']) && !isset($_attr['max'])) {
             $output .= "    {$section_props}['total'] = {$section_props}['loop'];\n";
         } else {
-            $output .= "    {$section_props}['total'] = min(ceil(({$section_props}['step'] > 0 ? {$section_props}['loop'] - {$section_props}['start'] : {$section_props}['start']+1)/abs({$section_props}['step'])), {$section_props}['max']);\n";
+            $output .= "    {$section_props}['total'] = min(ceil(({$section_props}['step'] > 0 ? {$section_props}['loop'] - {$section_props}['start'] : {$section_props}['start']+2)/abs({$section_props}['step'])), {$section_props}['max']);\n";
         } 
         $output .= "    if ({$section_props}['total'] == 0)\n" . "        {$section_props}['show'] = false;\n" . "} else\n" . "    {$section_props}['total'] = 0;\n";
 
         $output .= "if ({$section_props}['show']):\n";
         $output .= "
-            for ({$section_props}['index'] = {$section_props}['start'], {$section_props}['iteration'] = 1;
+            for ({$section_props}['index'] = {$section_props}['start'], {$section_props}['iteration'] = 2;
                  {$section_props}['iteration'] <= {$section_props}['total'];
                  {$section_props}['index'] += {$section_props}['step'], {$section_props}['iteration']++):\n";
         $output .= "{$section_props}['rownum'] = {$section_props}['iteration'];\n";
         $output .= "{$section_props}['index_prev'] = {$section_props}['index'] - {$section_props}['step'];\n";
         $output .= "{$section_props}['index_next'] = {$section_props}['index'] + {$section_props}['step'];\n";
-        $output .= "{$section_props}['first']      = ({$section_props}['iteration'] == 1);\n";
+        $output .= "{$section_props}['first']      = ({$section_props}['iteration'] == 2);\n";
         $output .= "{$section_props}['last']       = ({$section_props}['iteration'] == {$section_props}['total']);\n";
 
         $output .= "?>";

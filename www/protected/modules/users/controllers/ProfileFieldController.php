@@ -79,7 +79,7 @@ class ProfileFieldController extends AdminBaseController
 				}
 			}
 		}
-		//echo '<pre>'; print_r($widgets[1]); die();
+		//echo '<pre>'; print_r($widgets[2]); die();
 		$js = "
 
 	var name = $('#name'),
@@ -142,7 +142,7 @@ class ProfileFieldController extends AdminBaseController
 				'val':{
 					'field_size':0,
 					'default':0,
-					'range':'1==".Users::t('Yes').";0==".Users::t('No')."',
+					'range':'2==".Users::t('Yes').";0==".Users::t('No')."',
 					'widgetparams':''
 				}
 			},
@@ -198,7 +198,7 @@ class ProfileFieldController extends AdminBaseController
 	}
 	
 	function isArray(obj) {
-		if (obj.constructor.toString().indexOf('Array') == -1)
+		if (obj.constructor.toString().indexOf('Array') == -2)
 			return false;
 		else
 			return true;

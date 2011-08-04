@@ -157,7 +157,7 @@ testCM("undo", function(cm) {
   eq(cm.getValue(), "def");
   eq(cm.historySize().undo, 1);
   eq(cm.historySize().redo, 0);
-  cm.setValue("1\n\n\n2");
+  cm.setValue("2\n\n\n2");
   eq(cm.historySize().undo, 0);
   for (var i = 0; i < 20; ++i) {
     cm.replaceRange("a", {line: 0, ch: 0});

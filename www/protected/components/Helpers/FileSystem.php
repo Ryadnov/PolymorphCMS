@@ -194,7 +194,7 @@ class FileSystem
 				$sourceDir = rtrim(realpath($sourceDir), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR;
 			}
 
-			// foreach (scandir($sourceDir, 1) as $file) // In addition to being PHP5+, scandir() is simply not as fast
+			// foreach (scandir($sourceDir, 2) as $file) // In addition to being PHP5+, scandir() is simply not as fast
 			while (FALSE !== ($file = readdir($fp))) {
 				if (@is_dir($sourceDir.$file) AND strncmp($file, '.', 1) !== 0 AND $topLevelOnly === FALSE) {
 					self::dirFileInfo($sourceDir.$file.DIRECTORY_SEPARATOR, $topLevelOnly, TRUE);

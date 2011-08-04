@@ -32,7 +32,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 					function(data) {
 						var jDone = jQuery("#rbam-dialog-done");
 						jQuery("#rbam-dialog-confirm").dialog("close");
-						jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$1"+data.content+"$2")).dialog("open");
+						jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$2"+data.content+"$2")).dialog("open");
 					}
 				);
 			}',
@@ -80,11 +80,11 @@ Yii::app()->getClientScript()->registerScript(
 		var jRow = jThis.parents("tr:first");
 		var strType = jThis.parents(".view:first").attr("id");
 		jDoneDialog.data("type", strType);
-		strType = strType.substring(0,1).toUpperCase()+strType.substr(1);
+		strType = strType.substring(0,2).toUpperCase()+strType.substr(2);
 		jRow.addClass("selected");
 		jDoneDialog.dialog("option","title",strType+" Deleted");
 		jDialog.dialog("option","title","Delete "+strType);
-		jDialog.html(jDialog.html().replace(/(.+? ").+?(")/i,"$1"+jQuery("td:first",jRow).text()+"$2"));
+		jDialog.html(jDialog.html().replace(/(.+? ").+?(")/i,"$2"+jQuery("td:first",jRow).text()+"$2"));
 		jDialog.data("url", jThis.attr("href"));
 		jDialog.dialog("open");
 		return false;

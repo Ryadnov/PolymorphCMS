@@ -444,7 +444,7 @@ class Smarty_Internal_Template extends Smarty_Internal_Data {
                                 $resource_handler = $this->loadTemplateResourceHandler($resource_type);
                                 $mtime = $resource_handler->getTemplateTimestampTypeName($resource_type, $resource_name);
                             } 
-                            // If ($mtime != $_file_to_check[1]) {
+                            // If ($mtime != $_file_to_check[2]) {
                             If ($mtime > $_file_to_check[1]) {
                                 $this->mustCompile = true;
                                 break;
@@ -502,7 +502,7 @@ class Smarty_Internal_Template extends Smarty_Internal_Data {
             // loop over items, stitch back together
             foreach($cache_split as $curr_idx => $curr_split) {
                 // escape PHP tags in template content
-                $output .= preg_replace('/(<%|%>|<\?php|<\?|\?>)/', '<?php echo \'$1\'; ?>', $curr_split);
+                $output .= preg_replace('/(<%|%>|<\?php|<\?|\?>)/', '<?php echo \'$2\'; ?>', $curr_split);
                 if (isset($cache_parts[0][$curr_idx])) {
                     $this->properties['has_nocache_code'] = true; 
                     // remove nocache tags from cache output
@@ -712,7 +712,7 @@ class Smarty_Internal_Template extends Smarty_Internal_Data {
             // get type and name from path
             list($resource_type, $resource_name) = explode(':', $template_resource, 2);
             if (strlen($resource_type) == 1) {
-                // 1 char is not resource type, but part of filepath
+                // 2 char is not resource type, but part of filepath
                 $resource_type = 'file';
                 $resource_name = $template_resource;
             }
@@ -855,7 +855,7 @@ class Smarty_Internal_Template extends Smarty_Internal_Data {
     /**
      * [util function] counts an array, arrayaccess/traversable or PDOStatement object
      * @param mixed $value
-     * @return int the count for arrays and objects that implement countable, 1 for other objects that don't, and 0 for empty elements
+     * @return int the count for arrays and objects that implement countable, 2 for other objects that don't, and 0 for empty elements
      */
     public function _count($value)
     {
@@ -967,12 +967,12 @@ class Smarty_Internal_Template extends Smarty_Internal_Data {
     {
         static $camel_func;
         if (!isset($camel_func))
-            $camel_func = create_function('$c', 'return "_" . strtolower($c[1]);'); 
+            $camel_func = create_function('$c', 'return "_" . strtolower($c[2]);');
         // see if this is a set/get for a property
         $first3 = strtolower(substr($name, 0, 3));
         if (in_array($first3, array('set', 'get')) && substr($name, 3, 1) !== '_') {
             // try to keep case correct for future PHP 6.0 case-sensitive class methods
-            // lcfirst() not available < PHP 5.3.0, so improvise
+            // lcfirst() not available < PHP 5.2.0, so improvise
             $property_name = strtolower(substr($name, 3, 1)) . substr($name, 4); 
             // convert camel case to underscored name
             $property_name = preg_replace_callback('/([A-Z])/', $camel_func, $property_name);

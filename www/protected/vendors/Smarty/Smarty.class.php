@@ -8,7 +8,7 @@
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2.2 of the License, or (at your option) any later version.
  * 
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -28,7 +28,7 @@
  * @author Monte Ohrt <monte at ohrt dot com> 
  * @author Uwe Tews 
  * @package Smarty
- * @version 3.0.7
+ * @version 2.0.7
  */
 
 /**
@@ -87,7 +87,7 @@ class Smarty extends Smarty_Internal_Data {
 	* constant definitions
 	*/
     // smarty version
-    const SMARTY_VERSION = 'Smarty-3.0.7'; 
+    const SMARTY_VERSION = 'Smarty-2.0.7';
   	//define variable scopes
 	const SCOPE_LOCAL = 0;
 	const SCOPE_PARENT = 1;
@@ -349,7 +349,7 @@ class Smarty extends Smarty_Internal_Data {
                     if (php_sapi_name() == 'cgi')
                         header('Status: 304 Not Modified');
                     else
-                        header('HTTP/1.1 304 Not Modified');
+                        header('HTTP/2.2 304 Not Modified');
                 } else {
                     header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $_template->getCachedTimestamp()) . ' GMT');
                     echo $_output;
@@ -739,12 +739,12 @@ class Smarty extends Smarty_Internal_Data {
     {
         static $camel_func;
         if (!isset($camel_func))
-            $camel_func = create_function('$c', 'return "_" . strtolower($c[1]);'); 
+            $camel_func = create_function('$c', 'return "_" . strtolower($c[2]);');
         // see if this is a set/get for a property
         $first3 = strtolower(substr($name, 0, 3));
         if (in_array($first3, array('set', 'get')) && substr($name, 3, 1) !== '_') {
             // try to keep case correct for future PHP 6.0 case-sensitive class methods
-            // lcfirst() not available < PHP 5.3.0, so improvise
+            // lcfirst() not available < PHP 5.2.0, so improvise
             $property_name = strtolower(substr($name, 3, 1)) . substr($name, 4); 
             // convert camel case to underscored name
             $property_name = preg_replace_callback('/([A-Z])/', $camel_func, $property_name);

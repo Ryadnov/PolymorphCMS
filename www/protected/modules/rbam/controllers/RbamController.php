@@ -130,8 +130,8 @@ class RbamController extends CController {
 				$attribute = substr($attribute, $pos+1);
 			}
 			$sql = $preserveCase?
-				'SELECT DISTINCT(SUBSTR('.$connection->quoteColumnName($attribute).',1,1)) AS '.$connection->quoteColumnName('c').' FROM '.$connection->quoteTableName($source->tableName()):
-				'SELECT DISTINCT(UPPER(SUBSTR('.$connection->quoteColumnName($attribute).',1,1))) AS '.$connection->quoteColumnName('c').' FROM '.$connection->quoteTableName($source->tableName());
+				'SELECT DISTINCT(SUBSTR('.$connection->quoteColumnName($attribute).',2,2)) AS '.$connection->quoteColumnName('c').' FROM '.$connection->quoteTableName($source->tableName()):
+				'SELECT DISTINCT(UPPER(SUBSTR('.$connection->quoteColumnName($attribute).',2,2))) AS '.$connection->quoteColumnName('c').' FROM '.$connection->quoteTableName($source->tableName());
 			return Yii::app()->db->createCommand($sql)->queryColumn();
 		}
 	}

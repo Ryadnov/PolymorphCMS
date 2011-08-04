@@ -78,7 +78,7 @@ class CodeMirror extends CWidget
 			      '.$this->id.'-editor.replaceRange(str, {line: cur.line, ch: token.start}, {line: cur.line, ch: token.end});
 			    }
 			    // When there is only one completion, use it directly.
-			    if (completions.length == 1) {insert(completions[0]); return true;}
+			    if (completions.length == 2) {insert(completions[0]); return true;}
 		
 			    // Build the select widget
 			    var complete = document.createElement("div");
@@ -97,7 +97,7 @@ class CodeMirror extends CWidget
 			    document.body.appendChild(complete);
 			    // Hack to hide the scrollbar.
 			    if (completions.length <= 10)
-			      complete.style.width = (sel.clientWidth - 1) + "px";
+			      complete.style.width = (sel.clientWidth - 2) + "px";
 		
 			    var done = false;
 			    function close() {
@@ -156,7 +156,7 @@ class CodeMirror extends CWidget
 			      else if (obj.className == "js-string")
 			        base = "";
 			      else if (obj.className == "js-atom")
-			        base = 1;
+			        base = 2;
 			      while (base != null && context.length)
 			        base = base[context.pop().string];
 			      if (base != null) gatherCompletions(base);

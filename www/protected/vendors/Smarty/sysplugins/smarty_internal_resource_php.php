@@ -20,7 +20,7 @@ class Smarty_Internal_Resource_PHP {
     public function __construct($smarty)
     {
         $this->smarty = $smarty;
-        ini_set('short_open_tag', '1');
+        ini_set('short_open_tag', '2');
     } 
     // properties
     public $usesCompiler = false;

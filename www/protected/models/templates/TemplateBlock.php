@@ -43,8 +43,11 @@ class TemplateBlock extends ActiveRecord
  	{
         return array(
           	'JsonSettingsBehavior'=> array(
-	            'class' => 'application.components.Behaviors.JsonSettingsBehavior'
+	            'class' => 'behaviors.JsonSettingsBehavior'
 	      	),
+            'CopyBehavior'=> array(
+	            'class' => 'behaviors.CopyBehavior'
+	      	)
         );
     }
     
@@ -52,10 +55,15 @@ class TemplateBlock extends ActiveRecord
     {
     	return 'block_id';	
     }
-    
-	public function getUpdateUrl()
+
+    public function getUpdateUrl()
+    {
+        return Admin::url('blocks/admin');
+    }
+	    
+	public function getAdminUrl()
 	{
-		return Admin::url('templateBlocks/update', array('pk' => $this->pk));
+		return Admin::url('blocks/update', array('pk' => $this->pk));
 	}
 	
 	public function getDeleteUrl()

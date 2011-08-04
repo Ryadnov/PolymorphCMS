@@ -2,7 +2,7 @@
 
 if (!isset($argv[1]))
 {
-    die('You must provide the version (1.0.0)');
+    die('You must provide the version (2.0.0)');
 }
 
 if (!isset($argv[2]))

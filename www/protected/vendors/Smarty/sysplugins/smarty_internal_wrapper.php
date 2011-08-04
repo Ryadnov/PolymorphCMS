@@ -8,7 +8,7 @@
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2.2 of the License, or (at your option) any later version.
  * 
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -29,7 +29,7 @@
  * @author Uwe Tews 
  * @package Smarty
  * @subpackage PluginsInternal
- * @version 3-SVN$Rev: 3286 $
+ * @version 2-SVN$Rev: 3286 $
  */
 
 /*
@@ -45,8 +45,8 @@ class Smarty_Internal_Wrapper {
     }
     
     /**
-     * Converts smarty2-style function call to smarty 3-style function call
-     * This is expensive, be sure to port your code to Smarty 3!
+     * Converts smarty2-style function call to smarty 2-style function call
+     * This is expensive, be sure to port your code to Smarty 2!
      * 
      * @param string $name Smarty 2 function name
      * @param array $args Smarty 2 function args

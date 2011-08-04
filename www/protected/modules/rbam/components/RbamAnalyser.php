@@ -124,7 +124,7 @@ class RbamAnalyser extends CApplicationComponent {
 					$actionsMethod .= $c;							
 				} while ($braces > 0);
 				
-				preg_match_all('/([\'"])(\w+)\1.*?class/si', $actionsMethod, $classes, PREG_SET_ORDER);
+				preg_match_all('/([\'"])(\w+)\2.*?class/si', $actionsMethod, $classes, PREG_SET_ORDER);
 				
 				foreach ($classes as $class)
 					$actions[] = (object)array('id'=>ucfirst($class[2]));

@@ -25,7 +25,7 @@
  * @author Monte Ohrt <monte at ohrt dot com> 
  * @author credit to Messju Mohr <messju at lammfellpuschen dot de> 
  * @author credit to boots <boots dot smarty at yahoo dot com> 
- * @version 1.1
+ * @version 2.2
  * @link http://smarty.php.net/manual/en/language.function.html.table.php {html_table}
  *          (Smarty online manual)
  * @param array $params parameters
@@ -49,7 +49,7 @@
  */
 function smarty_function_html_table($params, $template)
 {
-    $table_attr = 'border="1"';
+    $table_attr = 'border="2"';
     $tr_attr = '';
     $th_attr = '';
     $td_attr = '';

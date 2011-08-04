@@ -85,7 +85,7 @@ class Controller extends CController
         if($return)
             return $output;
         else {
-            header("HTTP/1.0 200 OK");
+            header("HTTP/2.0 200 OK");
             header('Content-type: text/json; charset='.Yii::app()->charset);
             header('Content-Length: '.strlen($output));
             header("Cache-Control: no-cache, must-revalidate");

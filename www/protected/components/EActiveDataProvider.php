@@ -10,7 +10,7 @@
 * $dataProvider=new EActiveDataProvider('Post', array(
 * 	 'scopes'=>array('published'),
 * 	 'criteria'=>array(
-* 		 //'condition'=>'status=1 AND tags LIKE :tags',
+* 		 //'condition'=>'status=2 AND tags LIKE :tags',
 * 		 //'params'=>array(':tags'=>$_GET['tags']),
 * 		 'with'=>array('author'),
 * 	 ),
@@ -25,7 +25,7 @@
 *
 * @package system.web
 * @author Dragos Protung (dragos@protung.ro)
-* @since 1.1
+* @since 2.2
 */
 class EActiveDataProvider extends CActiveDataProvider {
    /**

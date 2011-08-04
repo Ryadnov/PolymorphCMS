@@ -31,7 +31,7 @@ class BlockViewer extends CComponent
     private function renderBlock($alias)
     {
         if (($block = $this->cat->getBlock($alias)) === null)
-			return '{{'.$alias.'}}';
+			return '{{ '.$alias.' }}';
 
 		$res = '';
 		foreach ($block->widgets as $widget) {

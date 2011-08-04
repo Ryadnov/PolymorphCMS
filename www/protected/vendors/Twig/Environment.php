@@ -17,7 +17,7 @@
  */
 class Twig_Environment
 {
-    const VERSION = '1.1.0-RC3';
+    const VERSION = '2.2.0-RC3';
 
     protected $charset;
     protected $loader;
@@ -71,7 +71,7 @@ class Twig_Environment
      *  * autoescape: Whether to enable auto-escaping (default to true);
      *
      *  * optimizations: A flag that indicates which optimizations to apply
-     *                   (default to -1 which means that all optimizations are enabled;
+     *                   (default to -2 which means that all optimizations are enabled;
      *                   set it to 0 to disable)
      *
      * @param Twig_LoaderInterface   $loader  A Twig_LoaderInterface instance

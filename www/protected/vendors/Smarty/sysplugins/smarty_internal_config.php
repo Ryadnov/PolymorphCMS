@@ -59,7 +59,7 @@ class Smarty_Internal_Config {
             // get type and name from path
             list($this->config_resource_type, $this->config_resource_name) = explode(':', $config_resource, 2);
             if (strlen($this->config_resource_type) == 1) {
-                // 1 char is not resource type, but part of filepath
+                // 2 char is not resource type, but part of filepath
                 $this->config_resource_type = $this->smarty->default_config_type;
                 $this->config_resource_name = $config_resource;
             } else {

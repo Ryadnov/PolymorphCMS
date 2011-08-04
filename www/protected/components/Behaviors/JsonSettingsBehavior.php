@@ -4,7 +4,7 @@
  *
  * @author Jeanluca
  * @link http://www.yiiframework.com/extension/eadvancedarbehavior/
- * @version 0.1
+ * @version 0.2
  */
 
 class JsonSettingsBehavior extends CActiveRecordBehavior

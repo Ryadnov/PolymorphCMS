@@ -51,7 +51,6 @@
 
     <script type="text/javascript">
     $(document).ready(function() {
-
         $('#block-tabs').delegate('#blocks li.widget-link a', 'click', function() {
             $('#widget-details').load($(this).attr('href'));
             return false;
@@ -59,17 +58,22 @@
             linkClass: 'add-widgets-btn'
         }).asc({
             linkClass: 'make-own-btn',
-            isConfirm: true,
+            isStatic: true,
             buttons: {
                 "Да" : function() {
                     var $t = $('#blocks .make-own-btn'),
                         url = $t.attr('href');
-
+var res = '';
+for(var a in $(this))
+    res += a+' = '+$(this)[a]+"</br>\n";
+alert($(this).attr('id'));
+return false;
+                    //make own and reload tab
                     $.get(url, {}, function(data) {
-                        if (data.status == 'ok') {
-                            $t.parent().replaceWith(data.html);
-                        }
-                    }, 'json');
+                        if (data == 'ok')
+                            $('#block-tabs').tabs('load', 0);
+                    });
+                    
                     $(this).dialog("close");
                 },
                 "Отмена" : function() {
@@ -78,10 +82,12 @@
             }
         }).asc({
             linkClass: 'add-block',
-            responseContainerId: 'blocks'
+            success: function() {
+               $('#block-tabs').tabs('load', 0);
+            }
         });
 
-        $("#block-tabs #blocks li a").live("mouseenter", function() {
+        $("#block-tabs").delegate('#blocks li', "mouseenter", function() {
               var $t = $(this);
               if($t.is(":data(draggable)")) return;
               $t.draggable({

@@ -15,8 +15,8 @@ class AdminBaseController extends Controller
             ->registerScriptFile('/js/plugins/jquery.form.js')
 //            ->registerScriptFile('/js/plugins/cms/deleteLi.js')
 //            ->registerScriptFile('/js/plugins/cms/openLi.js')
-            ->registerScriptFile('/js/plugins/chosen/chosen.js')
-            ->registerCssFile('/js/plugins/chosen/chosen.css')
+//            ->registerScriptFile('/js/plugins/chosen/chosen.js')
+//            ->registerCssFile('/js/plugins/chosen/chosen.css')
             ->registerScriptFile('/js/plugins/cms/asc.js');
 
         if (Yii::app()->request->isAjaxRequest) {
@@ -189,7 +189,7 @@ class AdminBaseController extends Controller
 		$model->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_POST['ajax'])) {
+		if(!Y::isAjaxRequest()) {
         	if(isset($_POST['returnUrl'])) 
         		$this->redirect($_POST['returnUrl']);
         	else

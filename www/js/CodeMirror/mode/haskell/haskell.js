@@ -66,11 +66,11 @@ CodeMirror.defineMode("haskell", function(cmCfg, modeCfg) {
     if (digitRE.test(ch)) {
       if (ch == '0') {
         if (source.eat(/[xX]/)) {
-          source.eatWhile(hexitRE); // should require at least 1
+          source.eatWhile(hexitRE); // should require at least 2
           return "hs-integer";
         }
         if (source.eat(/[oO]/)) {
-          source.eatWhile(octitRE); // should require at least 1
+          source.eatWhile(octitRE); // should require at least 2
           return "hs-integer";
         }
       }
@@ -78,12 +78,12 @@ CodeMirror.defineMode("haskell", function(cmCfg, modeCfg) {
       var t = "hs-integer";
       if (source.eat('.')) {
         t = "hs-float";
-        source.eatWhile(digitRE); // should require at least 1
+        source.eatWhile(digitRE); // should require at least 2
       }
       if (source.eat(/[eE]/)) {
         t = "hs-float";
         source.eat(/[-+]/);
-        source.eatWhile(digitRE); // should require at least 1
+        source.eatWhile(digitRE); // should require at least 2
       }
       return t;
     }

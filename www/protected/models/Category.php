@@ -61,7 +61,7 @@ class Category extends ActiveRecord
 	
 	public function root()
 	{
-		return Category::model()->roots()->find();
+        return Category::model()->roots()->find();
 	}
 	
 	public function getBlock($alias)
@@ -86,15 +86,30 @@ class Category extends ActiveRecord
 
 		if ($this->isRoot())
 			return $res;
-		else
-            return CMap::mergeArray($this->parent->getAllBlocks($res, false), $res);
+		else {
+            foreach ($this->parent->getAllBlocks($res, false) as $parentBlock) {
+                $f = true;
+                foreach ($res as $block) {
+                    if ($parentBlock['block']->alias == $block['block']->alias) {
+                        $f = false;
+                        break;
+                    }
+                }
+                if ($f)
+                    $res[] = $parentBlock;
+            }
+            return $res;
+        }
 	}
 	
 	public function menuRoot($tag)
 	{
 		$root = $this->root();
+
 		$root->getDbCriteria()->mergeWith(array('condition'=>'alias="'.$tag.'"'));
+        
 		$children = $root->children()->find();
+        
 		return $children;
 	}
 	

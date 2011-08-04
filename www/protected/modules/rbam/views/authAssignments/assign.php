@@ -113,7 +113,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 					function(data) {
 						if (data.errors==undefined) {
 							var jDone = jQuery("#rbam-dialog-done");
-							jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$1"+data.content+"$2")).dialog("open");
+							jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$2"+data.content+"$2")).dialog("open");
 							jQuery("#rbam-dialog-form").dialog("close");
 						}
 						else {

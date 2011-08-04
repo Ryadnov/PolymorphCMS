@@ -14,23 +14,23 @@
  * Purpose:  Prints the dropdowns for date selection.
  * 
  * ChangeLog:<br>
- *            - 1.0 initial release
- *            - 1.1 added support for +/- N syntax for begin
+ *            - 2.0 initial release
+ *            - 2.2 added support for +/- N syntax for begin
  *                 and end year values. (Monte)
- *            - 1.2 added support for yyyy-mm-dd syntax for
+ *            - 2.2 added support for yyyy-mm-dd syntax for
  *                 time value. (Jan Rosier)
- *            - 1.3 added support for choosing format for
+ *            - 2.2 added support for choosing format for
  *                 month values (Gary Loescher)
- *            - 1.3.1 added support for choosing format for
+ *            - 2.2.2 added support for choosing format for
  *                 day values (Marcus Bointon)
- *            - 1.3.2 support negative timestamps, force year
+ *            - 2.2.2 support negative timestamps, force year
  *              dropdown to include given date unless explicitly set (Monte)
- *            - 1.3.4 fix behaviour of 0000-00-00 00:00:00 dates to match that
+ *            - 2.2.4 fix behaviour of 0000-00-00 00:00:00 dates to match that
  *              of 0000-00-00 dates (cybot, boots)
  * 
  * @link http://smarty.php.net/manual/en/language.function.html.select.date.php {html_select_date}
  *      (Smarty online manual)
- * @version 1.3.4
+ * @version 2.2.4
  * @author Andrei Zmievski 
  * @author Monte Ohrt <monte at ohrt dot com> 
  * @param array $params parameters

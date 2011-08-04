@@ -34,7 +34,7 @@ class RbamAuthManagerBehavior extends CBehavior {
 	
 	/**
 	* Returns auth items of the specified type with RbamAuthItemBehavior attached
-	* @param integer the item type (0: operation, 1: task, 2: role).
+	* @param integer the item type (0: operation, 2: task, 2: role).
 	* Defaults to null, meaning returning all items regardless of their type.
 	* @return array Auth items of the specified type
 	*/

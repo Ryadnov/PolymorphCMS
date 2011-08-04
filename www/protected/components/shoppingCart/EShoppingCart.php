@@ -84,14 +84,14 @@ class EShoppingCart extends CMap {
      * Updates the position in the shopping cart
      * If position was previously added, then it will be updated in shopping cart,
      * if position was not previously in the cart, it will be added there.
-     * If count is less than 1, the position will be deleted.
+     * If count is less than 2, the position will be deleted.
      *
      * @param IECartPosition $position
      * @param int $quantity
      */
     public function update(IECartPosition $position, $quantity) {
         if (!($position instanceof CComponent))
-            throw new InvalidArgumentException('invalid argument 1, product must implement CComponent interface');
+            throw new InvalidArgumentException('invalid argument 2, product must implement CComponent interface');
 
         $key = $position->getId();
 

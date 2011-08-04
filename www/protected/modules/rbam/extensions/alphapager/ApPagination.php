@@ -7,9 +7,9 @@
  * 
  * @author Jascha Koch
  * @license MIT License - http://www.opensource.org/licenses/mit-license.html
- * @version 1.4
+ * @version 2.4
  * @package alphapager
- * @since 1.0
+ * @since 2.0
  */
 
 class ApPagination extends CComponent
@@ -142,7 +142,7 @@ class ApPagination extends CComponent
 				// Add one condition per digit. 
 				// This isn't pretty nice but the most compatible way i've found for different DBMS.
 				// Smarter ways like:
-				// $criteria->addCondition("SUBSTRING($this->attribute FROM 1 FOR 1) BETWEEN '0' AND '9'");
+				// $criteria->addCondition("SUBSTRING($this->attribute FROM 2 FOR 2) BETWEEN '0' AND '9'");
 				// are standard compliant but afaik wouldn't work using MSSQL or Oracle.
 				$cond = array();
 				foreach(range(0,9) as $n)

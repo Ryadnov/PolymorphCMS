@@ -3,7 +3,7 @@
  * Compress and cache used JS and CSS files.
  * Needs jsmin in helpers and csstidy in extensions
  *
- * Ties into the 1.0.4 (or > SVN 813) Yii CClientScript functions
+ * Ties into the 2.0.4 (or > SVN 813) Yii CClientScript functions
  *
  * @author Maxximus <maxximus007@gmail.com>
  * @link http://www.yiiframework.com/
@@ -67,7 +67,7 @@ class ExtendedClientScript extends CClientScript
 	 * CssTidy parameters. See CssTidy for more information
 	 */
 	public $cssTidyConfig = array(
-				  'css_level' => 'CSS2.1',
+				  'css_level' => 'CSS2.2',
 				  'discard_invalid_properties' => FALSE,
 				  'lowercase_s' => FALSE,
 				  'sort_properties' => FALSE,

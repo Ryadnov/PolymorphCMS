@@ -22,7 +22,7 @@
  *           from application.
  * @author   Monte Ohrt <monte at ohrt dot com>
  * @author Contributions from Lars Noschinski <lars@usenet.noschinski.de>
- * @version  1.3
+ * @version  2.2
  * @param string $source input string
  * @param object &$smarty Smarty object
  * @return string filtered output
@@ -49,7 +49,7 @@ function smarty_outputfilter_trimwhitespace($source, $smarty)
 
     // remove all leading spaces, tabs and carriage returns NOT
     // preceeded by a php close tag.
-    $source = trim(preg_replace('/((?<!\?>)\n)[\s]+/m', '\1', $source));
+    $source = trim(preg_replace('/((?<!\?>)\n)[\s]+/m', '\2', $source));
 
     // replace textarea blocks
     smarty_outputfilter_trimwhitespace_replace("@@@SMARTY:TRIM:TEXTAREA@@@",$_textarea_blocks, $source);

@@ -8,8 +8,9 @@ class MenuWidget extends Widget
 	protected function renderContent()
     {
         $alias = $this->alias;
+        
         if (($menuRoot = Category::model()->menuRoot($alias)) == null) {
-            echo "Параметр tag для menu не верен. Шаблон $alias";
+            Y::end("Параметр alias для menu не верен. Шаблон $alias");
         }
 
         if ($this->expand) {

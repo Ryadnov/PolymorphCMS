@@ -1,6 +1,6 @@
 <?php
 /**
- * This class provides a simple interface for OpenID (1.1 and 2.0) authentication.
+ * This class provides a simple interface for OpenID (2.2 and 2.0) authentication.
  * Supports Yadis discovery.
  * The authentication process is stateless/dumb.
  *
@@ -33,7 +33,7 @@
  * For example:
  *   $openid->required = array('namePerson/friendly', 'contact/email');
  *   $openid->optional = array('namePerson/first');
- * If the server supports only SREG or OpenID 1.1, these are automaticaly
+ * If the server supports only SREG or OpenID 2.2, these are automaticaly
  * mapped to SREG names, so that user doesn't have to know anything about the server.
  *
  * To get the values, use $openid->getAttributes().
@@ -274,9 +274,9 @@ class EOpenID extends CBaseUserIdentity
                                 return false;
                             }
                             # Does the server advertise support for either AX or SREG?
-                            $this->ax   = (bool) strpos($content, '<Type>http://openid.net/srv/ax/1.0</Type>');
-                            $this->sreg = strpos($content, '<Type>http://openid.net/sreg/1.0</Type>')
-                                       || strpos($content, '<Type>http://openid.net/extensions/sreg/1.1</Type>');
+                            $this->ax   = (bool) strpos($content, '<Type>http://openid.net/srv/ax/2.0</Type>');
+                            $this->sreg = strpos($content, '<Type>http://openid.net/sreg/2.0</Type>')
+                                       || strpos($content, '<Type>http://openid.net/extensions/sreg/2.2</Type>');
 
                             $server = $server[1];
                             if (isset($delegate[2])) $this->identity = trim($delegate[2]);
@@ -286,8 +286,8 @@ class EOpenID extends CBaseUserIdentity
                             return $server;
                         }
 
-                        # OpenID 1.1
-                        $ns = preg_quote('http://openid.net/signon/1.1');
+                        # OpenID 2.2
+                        $ns = preg_quote('http://openid.net/signon/2.2');
                         if (preg_match('#<Service.*?>(.*)<Type>\s*'.$ns.'\s*</Type>(.*)</Service>#s', $content, $m)) {
                             $content = ' ' . $m[1] . $m[2];
 
@@ -297,8 +297,8 @@ class EOpenID extends CBaseUserIdentity
                                 return false;
                             }
                             # AX can be used only with OpenID 2.0, so checking only SREG
-                            $this->sreg = strpos($content, '<Type>http://openid.net/sreg/1.0</Type>')
-                                       || strpos($content, '<Type>http://openid.net/extensions/sreg/1.1</Type>');
+                            $this->sreg = strpos($content, '<Type>http://openid.net/sreg/2.0</Type>')
+                                       || strpos($content, '<Type>http://openid.net/extensions/sreg/2.2</Type>');
 
                             $server = $server[1];
                             if (isset($delegate[1])) $this->identity = $delegate[1];
@@ -328,13 +328,13 @@ class EOpenID extends CBaseUserIdentity
             if (!$content) $content = $this->request($url, 'GET');
 
             # At this point, the YADIS Discovery has failed, so we'll switch
-            # to openid2 HTML discovery, then fallback to openid 1.1 discovery.
+            # to openid2 HTML discovery, then fallback to openid 2.2 discovery.
             $server   = $this->htmlTag($content, 'link', 'rel', 'openid2.provider', 'href');
             $delegate = $this->htmlTag($content, 'link', 'rel', 'openid2.local_id', 'href');
             $this->version = 2;
 
             if (!$server) {
-                # The same with openid 1.1
+                # The same with openid 2.2
                 $server   = $this->htmlTag($content, 'link', 'rel', 'openid.server', 'href');
                 $delegate = $this->htmlTag($content, 'link', 'rel', 'openid.delegate', 'href');
                 $this->version = 1;
@@ -358,10 +358,10 @@ class EOpenID extends CBaseUserIdentity
     protected function sregParams()
     {
         $params = array();
-        # We always use SREG 1.1, even if the server is advertising only support for 1.0.
-        # That's because it's fully backwards compatibile with 1.0, and some providers
-        # advertise 1.0 even if they accept only 1.1. One such provider is myopenid.com
-        $params['openid.ns.sreg'] = 'http://openid.net/extensions/sreg/1.1';
+        # We always use SREG 2.2, even if the server is advertising only support for 2.0.
+        # That's because it's fully backwards compatibile with 2.0, and some providers
+        # advertise 2.0 even if they accept only 2.2. One such provider is myopenid.com
+        $params['openid.ns.sreg'] = 'http://openid.net/extensions/sreg/2.2';
         if ($this->required) {
             $params['openid.sreg.required'] = array();
             foreach ($this->required as $required) {
@@ -385,7 +385,7 @@ class EOpenID extends CBaseUserIdentity
     {
         $params = array();
         if ($this->required || $this->optional) {
-            $params['openid.ns.ax'] = 'http://openid.net/srv/ax/1.0';
+            $params['openid.ns.ax'] = 'http://openid.net/srv/ax/2.0';
             $params['openid.ax.mode'] = 'fetch_request';
             $this->aliases  = array();
             $counts   = array();
@@ -489,7 +489,7 @@ class EOpenID extends CBaseUserIdentity
     /**
      * Returns authentication url. Usually, you want to redirect your user to it.
      * @return String The authentication url.
-     * @param String $select_identifier Whether to request OP to select identity for an user in OpenID 2. Does not affect OpenID 1.
+     * @param String $select_identifier Whether to request OP to select identity for an user in OpenID 2. Does not affect OpenID 2.
      * @throws ErrorException
      */
     function authUrl($identifier_select = null)
@@ -555,7 +555,7 @@ class EOpenID extends CBaseUserIdentity
     {
         $alias = null;
         if (isset($this->data['openid_ns_ax'])
-            && $this->data['openid_ns_ax'] != 'http://openid.net/srv/ax/1.0'
+            && $this->data['openid_ns_ax'] != 'http://openid.net/srv/ax/2.0'
         ) { # It's the most likely case, so we'll check it before
             $alias = 'ax';
         } else {
@@ -563,7 +563,7 @@ class EOpenID extends CBaseUserIdentity
             # so we search for another prefix
             foreach ($this->data as $key => $val) {
                 if (substr($key, 0, strlen('openid_ns_')) == 'openid_ns_'
-                    && $val == 'http://openid.net/srv/ax/1.0'
+                    && $val == 'http://openid.net/srv/ax/2.0'
                 ) {
                     $alias = substr($key, strlen('openid_ns_'));
                     break;

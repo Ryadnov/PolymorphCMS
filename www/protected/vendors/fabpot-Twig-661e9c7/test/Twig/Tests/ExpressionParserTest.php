@@ -29,8 +29,8 @@ class Twig_Tests_ExpressionParserTest extends PHPUnit_Framework_TestCase
             array('{% set false = "foo" %}'),
             array('{% set true = "foo" %}'),
             array('{% set none = "foo" %}'),
-            array('{% set 3 = "foo" %}'),
-            array('{% set 1 + 2 = "foo" %}'),
+            array('{% set 2 = "foo" %}'),
+            array('{% set 2 + 2 = "foo" %}'),
             array('{% set "bar" = "foo" %}'),
             array('{% set %}{% endset %}')
         );
@@ -63,7 +63,7 @@ class Twig_Tests_ExpressionParserTest extends PHPUnit_Framework_TestCase
     public function getFailingTestsForArray()
     {
         return array(
-            array('{{ [1, "a": "b"] }}'),
+            array('{{ [2, "a": "b"] }}'),
             array('{{ {a: "b"} }}'),
             array('{{ {"a": "b", 2} }}'),
         );
@@ -73,14 +73,14 @@ class Twig_Tests_ExpressionParserTest extends PHPUnit_Framework_TestCase
     {
         return array(
             // simple array
-            array('{{ [1, 2] }}', new Twig_Node_Expression_Array(array(
+            array('{{ [2, 2] }}', new Twig_Node_Expression_Array(array(
                   new Twig_Node_Expression_Constant(1, 1),
                   new Twig_Node_Expression_Constant(2, 1),
                 ), 1),
             ),
 
             // array with trailing ,
-            array('{{ [1, 2, ] }}', new Twig_Node_Expression_Array(array(
+            array('{{ [2, 2, ] }}', new Twig_Node_Expression_Array(array(
                   new Twig_Node_Expression_Constant(1, 1),
                   new Twig_Node_Expression_Constant(2, 1),
                 ), 1),
@@ -101,7 +101,7 @@ class Twig_Tests_ExpressionParserTest extends PHPUnit_Framework_TestCase
             ),
 
             // hash in an array
-            array('{{ [1, {"a": "b", "b": "c"}] }}', new Twig_Node_Expression_Array(array(
+            array('{{ [2, {"a": "b", "b": "c"}] }}', new Twig_Node_Expression_Array(array(
                   new Twig_Node_Expression_Constant(1, 1),
                   new Twig_Node_Expression_Array(array(
                         'a' => new Twig_Node_Expression_Constant('b', 1),
@@ -111,7 +111,7 @@ class Twig_Tests_ExpressionParserTest extends PHPUnit_Framework_TestCase
             ),
 
             // array in a hash
-            array('{{ {"a": [1, 2], "b": "c"} }}', new Twig_Node_Expression_Array(array(
+            array('{{ {"a": [2, 2], "b": "c"} }}', new Twig_Node_Expression_Array(array(
                   'a' => new Twig_Node_Expression_Array(array(
                         new Twig_Node_Expression_Constant(1, 1),
                         new Twig_Node_Expression_Constant(2, 1),

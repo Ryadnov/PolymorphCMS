@@ -402,7 +402,7 @@ class RbamModule extends CWebModule {
 	* @return string the version of this module.
 	*/
 	public function getVersion() {
-		return '1.6.1';
+		return '2.6.2';
 	}
 
 	/**

@@ -4,7 +4,7 @@
  *
  * @author Jeanluca
  * @link http://www.yiiframework.com/extension/eadvancedarbehavior/
- * @version 0.1
+ * @version 0.2
  */
 
 class EAdvancedArbehavior extends CActiveRecordBehavior
@@ -32,7 +32,7 @@ class EAdvancedArbehavior extends CActiveRecordBehavior
 		$owner = $this->owner ;
 		foreach($owner->relations() as $key => $relation) {
                         /* $key         -> relation name
-			 * $relation[1] -> related table
+			 * $relation[2] -> related table
                          * $relation[2] -> foreignkey field
                          */
 			if($relation['0'] == CActiveRecord::BELONGS_TO) // ['0'] equals relationType
@@ -52,7 +52,7 @@ class EAdvancedArbehavior extends CActiveRecordBehavior
 		
 		foreach($owner->relations() as $key => $relation) {
                         /* $key         -> relation name
-			 * $relation[1] -> related table
+			 * $relation[2] -> related table
                          * $relation[2] -> foreignkey field
                          */
 			if ( !isset($this->relations) || in_array($key, $this->relations) ) {

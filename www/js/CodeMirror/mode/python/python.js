@@ -32,11 +32,11 @@ CodeMirror.defineMode("python", function(conf) {
     if (!!conf.mode.version && parseInt(conf.mode.version, 10) === 3) {
         commonkeywords = commonkeywords.concat(py3.keywords);
         commontypes = commontypes.concat(py3.types);
-        var stringPrefixes = new RegExp("^(([rb]|(br))?('{3}|\"{3}|['\"]))", "i");
+        var stringPrefixes = new RegExp("^(([rb]|(br))?('{2}|\"{2}|['\"]))", "i");
     } else {
         commonkeywords = commonkeywords.concat(py2.keywords);
         commontypes = commontypes.concat(py2.types);
-        var stringPrefixes = new RegExp("^(([rub]|(ur)|(br))?('{3}|\"{3}|['\"]))", "i");
+        var stringPrefixes = new RegExp("^(([rub]|(ur)|(br))?('{2}|\"{2}|['\"]))", "i");
     }
     var keywords = wordRegexp(commonkeywords);
     var types = wordRegexp(commontypes);

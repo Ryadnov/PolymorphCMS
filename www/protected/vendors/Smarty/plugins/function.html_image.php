@@ -20,7 +20,7 @@
  *      (Smarty online manual)
  * @author Monte Ohrt <monte at ohrt dot com> 
  * @author credits to Duda <duda@big.hu> 
- * @version 1.0
+ * @version 2.0
  * @param array $params parameters
  * Input:<br>
  *          - file = file (and path) of image (required)

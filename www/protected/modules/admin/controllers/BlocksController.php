@@ -100,7 +100,7 @@ class BlocksController extends AdminBaseController
                 'text'=>'<span>'.$block->alias.'</span>'.$this->renderPartial('block_btns', array('item'=>$item, 'cat'=>$cat), true),
                 'children'=>$children,
                 'htmlOptions'=>array(
-                    'id'=>"block_".$block->pk,
+                    'id'=>"blocks_".$block->pk,
                     'class'=> $item['isOwn'] ? 'own' : 'parents'
                 )
             );
@@ -112,12 +112,33 @@ class BlocksController extends AdminBaseController
     public function actionMakeOwn($catPk, $blockPk)
     {
         $cat = Category::model()->findByPk($catPk);
-        $block = Block::model()->findByPk($blockPk);
+        $block = TemplateBlock::model()->findByPk($blockPk);
+        $newBlock = $block->copy();
 
-        //создать новый блок
-        //получить копии виджетов
-        //сохранить виджеты
+        $db = Yii::app()->db;
+        $transaction = $db->beginTransaction();
+        try {
+            //create new Block
+            $newBlock->category_id = null;
+            $cat->blocks = array($newBlock);
+            $cat->save();
 
-        
+            //Create copies of widgets
+            $widgets = $block->widgets;
+            foreach ($widgets as $widget) {
+                $widget->pk = null;
+                $widget->block_id = null;
+            }
+            //save widgets
+            $newBlock->widgets = $widgets;
+
+            $newBlock->save();
+
+            $transaction->commit();
+            echo 'ok';
+        } catch(CException $e) {
+            $transaction->rollBack();
+            echo $e->__toString();
+        }
     }
 }

@@ -45,7 +45,9 @@ a:hover{
 
 
 /* LEFT */
-.left-col {width:200px; height: 100%; background: #D5D5D5 url('/images/shadow-left.png') repeat-y top right; padding: 10px 0 10px 20px; float:left}
+.left-col {width:200px; font-size: 90%; background: #D5D5D5 url('/images/shadow-left.png') repeat-y top right; padding: 10px 0 0 20px; height: 490px; overflow: auto; float:left}
+    .left-col a{font-size: 90%}
+    .left-col h2{font-size: 22px}
 hr{width: 90%; display:inline-block;}
 /* LEFT end */
 
@@ -53,7 +55,7 @@ hr{width: 90%; display:inline-block;}
 /* show shit */
 .content-wrapper{display:inline;}
 .content{
-	padding: 0 10px 0 10px;
+	/*padding: 0 10px 0 10px;*/
     overflow: hidden;
     line-height: 1.4em;
 }
@@ -96,7 +98,7 @@ hr{width: 90%; display:inline-block;}
 ul {list-style: none; height: auto;}
 a{color: #333;}
 
-#design-wrapper{float: left; width: 100%; border:  1px solid #333;}
+#design-wrapper{float: left; width: 100%;}
 .btn-blue {height: 28px;border: 1px #999 solid;border-radius: 4px;margin: 2px;background: url('/images/gradients.png') repeat-x;}
 #trash {background: url(/images/trash.png) no-repeat; float:right; width:24px; height:24px; margin: 2px;}
 #trash.accept {background-color: #999;}

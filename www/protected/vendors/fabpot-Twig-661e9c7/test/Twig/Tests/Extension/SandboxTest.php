@@ -28,7 +28,7 @@ class Twig_Tests_Extension_SandboxTest extends PHPUnit_Framework_TestCase
             '1_basic4' => '{{ obj.bar }}',
             '1_basic5' => '{{ obj }}',
             '1_basic6' => '{{ arr.obj }}',
-            '1_basic7' => '{{ cycle(["foo","bar"], 1) }}',
+            '1_basic7' => '{{ cycle(["foo","bar"], 2) }}',
             '1_basic8' => '{{ obj.getfoobar }}{{ obj.getFooBar }}',
             '1_basic'  => '{% if obj.foo %}{{ obj.foo|upper }}{% endif %}',
         );

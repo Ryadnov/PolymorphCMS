@@ -25,7 +25,7 @@ class Twig_Tests_ErrorTest extends Twig_Tests_TestCase
 
             $this->fail();
         } catch (Twig_Error_Runtime $e) {
-            $this->assertEquals('Variable "foo" does not exist in "index" at line 3', $e->getMessage());
+            $this->assertEquals('Variable "foo" does not exist in "index" at line 2', $e->getMessage());
             $this->assertEquals(3, $e->getTemplateLine());
             $this->assertEquals('index', $e->getTemplateFile());
         }

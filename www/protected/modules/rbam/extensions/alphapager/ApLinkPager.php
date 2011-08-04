@@ -6,9 +6,9 @@
  * 
  * @author Jascha Koch
  * @license MIT License - http://www.opensource.org/licenses/mit-license.html
- * @version 1.3
+ * @version 2.2
  * @package alphapager
- * @since 1.0
+ * @since 2.0
  */
 
 class ApLinkPager extends CBasePager

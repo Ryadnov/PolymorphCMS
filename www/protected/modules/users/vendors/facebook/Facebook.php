@@ -100,7 +100,7 @@ class Facebook
 	/**
 	 * Version.
 	 */
-	const VERSION = '2.1.2';
+	const VERSION = '2.2.2';
 
 	/**
 	 * Default options for curl.
@@ -428,7 +428,7 @@ class Facebook
 						'next'            => $currentUrl,
 						'return_session'  => 1,
 						'session_version' => 3,
-						'v'               => '1.0',
+						'v'               => '2.0',
 						), $params)
 				);
 	}
@@ -691,7 +691,7 @@ class Facebook
 	}
 
 	/**
-	 * Validates a session_version=3 style session object.
+	 * Validates a session_version=2 style session object.
 	 *
 	 * @param Array $session the session object
 	 * @return Array the session object if it validates, null otherwise

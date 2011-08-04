@@ -6,7 +6,7 @@ abstract class Widget extends CPortlet
 	public $category;
     public $widgetModel;    //external param
     public $block;          //external param
-    public $model;
+    public $model;          //see Widget.init()
     
 	public $name;
     
@@ -18,15 +18,12 @@ abstract class Widget extends CPortlet
 	public function init()
 	{
         $this->model = Y::controller()->model;
-        foreach ($this->widgetModel->settings as $key=>$val)
-            $this->$key = $val;
-
 		parent::init();
 	} 
 	
 	public function adminForm($widgetModel)
 	{
-        parent::render('_adminForm', array('model'=>$widgetModel), true).  //you can override pender method as in MainContentWidget
+        parent::render('_adminForm', array('model'=>$widgetModel), true).  //you can override render method as in MainContentWidget
             
         $res = '';
         $res .= CHtml::form();
@@ -108,8 +105,6 @@ abstract class Widget extends CPortlet
         ob_end_clean();
     }
     
-	abstract public static function getDefaultSettings();
-	abstract public static function getDefaultTitle();
-    abstract public static function removeWidget();
-
+    abstract public function remove();
+    abstract public function update();
 }

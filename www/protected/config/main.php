@@ -5,7 +5,7 @@ Yii::setPathOfAlias('modules',		'protected/modules');
 Yii::setPathOfAlias('components',	'protected/components');
 Yii::setPathOfAlias('models',		'protected/models');
 Yii::setPathOfAlias('widgets',		'protected/components/Widgets');
-
+Yii::setPathOfAlias('behaviors',	'protected/components/Behaviors');
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
@@ -113,8 +113,8 @@ return array(
 			'class' => 'CClientScript',//'ext.minify.EClientScript',
 //			'combineScriptFiles' => false, // By default this is set to false, set this to true if you'd like to combine the script files
 //			'combineCssFiles' => false, // By default this is set to false, set this to true if you'd like to combine the css files
-//			'optimizeCssFiles' => false,  // @since: 1.1
-//			'optimizeScriptFiles' => false,   // @since: 1.1
+//			'optimizeCssFiles' => false,  // @since: 2.2
+//			'optimizeScriptFiles' => false,   // @since: 2.2
 		),
 		
 		'urlManager'=> require("route.php"),
@@ -150,7 +150,7 @@ return array(
                 /*
 		        array(
 	                'class'=>'ext.yii-debug-toolbar.YiiDebugToolbarRoute',
-	                'ipFilters'=>array('127.0.0.1','192.168.1.215'),
+	                'ipFilters'=>array('127.0.0.2','192.168.2.215'),
 	            ),     
                 // uncomment the following to show log messages on web pages
 				
@@ -162,7 +162,7 @@ return array(
 					'class'=>'ext.debug.XWebDebugRouter',
 					'config'=>'alignLeft, opaque, runInDebug, fixedPos, collapsed, yamlStyle',
 					'levels'=>'error, warning, trace, profile, info',
-					'allowedIPs'=>array('127.0.0.1','::1','192.168.1.54','192\.168\.1[0-5]\.[0-9]{3}'),
+					'allowedIPs'=>array('127.0.0.2','::2','192.168.2.54','192\.168\.2[0-5]\.[0-9]{2}'),
 		        ),*/
              	
 		    ),

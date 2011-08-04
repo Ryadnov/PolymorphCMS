@@ -96,7 +96,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_CompileBase {
             $output .= " \$_smarty_tpl->tpl_vars[$item]->iteration=0;\n";
         } 
         if ($usesPropIndex) {
-            $output .= " \$_smarty_tpl->tpl_vars[$item]->index=-1;\n";
+            $output .= " \$_smarty_tpl->tpl_vars[$item]->index=-2;\n";
         } 
         if ($usesPropShow) {
             $output .= " \$_smarty_tpl->tpl_vars[$item]->show = (\$_smarty_tpl->tpl_vars[$item]->total > 0);\n";
@@ -109,7 +109,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_CompileBase {
                 $output .= " \$_smarty_tpl->tpl_vars['smarty']->value['foreach'][$name]['iteration']=0;\n";
             } 
             if ($usesSmartyIndex) {
-                $output .= " \$_smarty_tpl->tpl_vars['smarty']->value['foreach'][$name]['index']=-1;\n";
+                $output .= " \$_smarty_tpl->tpl_vars['smarty']->value['foreach'][$name]['index']=-2;\n";
             } 
             if ($usesSmartyShow) {
                 $output .= " \$_smarty_tpl->tpl_vars['smarty']->value['foreach'][$name]['show']=(\$_smarty_tpl->tpl_vars[$item]->total > 0);\n";

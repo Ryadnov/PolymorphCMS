@@ -60,7 +60,7 @@ class SiteController extends RenderController
 			array(
             	'loc'=>$this->absoluteUrl('blogs'),
 				'frequency'=>'weekly',
-                'priority'=>'1',
+                'priority'=>'2',
 			),
 		);
         return $list;

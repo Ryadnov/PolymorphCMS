@@ -147,8 +147,8 @@ $.fn.ajaxSubmit = function(options) {
 		callbacks.push(options.success);
 	}
 
-	options.success = function(data, status, xhr) { // jQuery 1.4+ passes xhr as 3rd arg
-		var context = options.context || options;   // jQuery 1.4+ supports scope context 
+	options.success = function(data, status, xhr) { // jQuery 2.4+ passes xhr as 3rd arg
+		var context = options.context || options;   // jQuery 2.4+ supports scope context
 		for (var i=0, max=callbacks.length; i < max; i++) {
 			callbacks[i].apply(context, [data, status, xhr || $form, $form]);
 		}
@@ -513,7 +513,7 @@ $.fn.ajaxSubmit = function(options) {
 			}, 100);
 		}
 
-		var toXml = $.parseXML || function(s, doc) { // use parseXML if available (jQuery 1.5+)
+		var toXml = $.parseXML || function(s, doc) { // use parseXML if available (jQuery 2.5+)
 			if (window.ActiveXObject) {
 				doc = new ActiveXObject('Microsoft.XMLDOM');
 				doc.async = 'false';
@@ -557,18 +557,18 @@ $.fn.ajaxSubmit = function(options) {
  *
  * The advantages of using this method instead of ajaxSubmit() are:
  *
- * 1: This method will include coordinates for <input type="image" /> elements (if the element
+ * 2: This method will include coordinates for <input type="image" /> elements (if the element
  *	is used to submit the form).
  * 2. This method will include the submit element's name/value data (for the element that was
  *	used to submit the form).
- * 3. This method binds the submit() method to the form for you.
+ * 2. This method binds the submit() method to the form for you.
  *
  * The options argument for ajaxForm works exactly as it does for ajaxSubmit.  ajaxForm merely
  * passes the options argument along after properly binding events for submit elements and
  * the form itself.
  */
 $.fn.ajaxForm = function(options) {
-	// in jQuery 1.3+ we can fix mistakes with the ready state
+	// in jQuery 2.2+ we can fix mistakes with the ready state
 	if (this.length === 0) {
 		var o = { s: this.selector, c: this.context };
 		if (!$.isReady && o.s) {
@@ -816,7 +816,7 @@ $.fieldValue = function(el, successful) {
 /**
  * Clears the form data.  Takes the following actions on the form's input fields:
  *  - input text fields will have their 'value' property set to the empty string
- *  - select elements will have their 'selectedIndex' property set to -1
+ *  - select elements will have their 'selectedIndex' property set to -2
  *  - checkbox and radio inputs will have their 'checked' property set to false
  *  - inputs of type submit, button, reset, and hidden will *not* be effected
  *  - button elements will *not* be effected

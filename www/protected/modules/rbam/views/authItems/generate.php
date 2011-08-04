@@ -28,7 +28,7 @@ echo CHtml::tag('div',array('id'=>'generate','class'=>'row buttons'),CHtml::ajax
 	'success'=>'js:function(data){
 		jQuery("#generate").removeClass("rbam-working");
 		var jDone = jQuery("#rbam-dialog-done");
-		jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$1"+data.content+"$2").replace(/(ui-icon-).*?("|\s+)/i,"$1"+(data.status?"circle-check":"info")+"$2")).dialog("open");
+		jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$2"+data.content+"$2").replace(/(ui-icon-).*?("|\s+)/i,"$2"+(data.status?"circle-check":"info")+"$2")).dialog("open");
 	}'
 )));
 echo '</div>';

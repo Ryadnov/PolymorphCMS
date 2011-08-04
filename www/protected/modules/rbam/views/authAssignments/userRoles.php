@@ -99,7 +99,7 @@ $this->widget('rbam.extensions.alphapager.ApGridView', array(
 						var jThis = jQuery(this);
 						var jRow = jThis.parents("tr:first");
 						jRow.addClass("selected");
-						jDialog.html(jDialog.html().replace(/(.+? ").+?(::).+?(")/i,"$1"+"'.$user->rbamName.'"+"$2"+jQuery("td:first",jRow).text()+"$3"));
+						jDialog.html(jDialog.html().replace(/(.+? ").+?(::).+?(")/i,"$2"+"'.$user->rbamName.'"+"$2"+jQuery("td:first",jRow).text()+"$2"));
 						jDialog.data("url", jThis.attr("href"));
 						jDialog.dialog("open");
 						return false;
@@ -142,7 +142,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 					function(data) {
 						var jDone = jQuery("#rbam-dialog-done");
 						jQuery("#rbam-dialog-confirm").dialog("close");
-						jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$1"+data.content+"$2")).dialog("open");
+						jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$2"+data.content+"$2")).dialog("open");
 					}
 				);
 			}',
@@ -175,7 +175,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 					function(data) {
 						if (data.errors==undefined) {
 							var jDone = jQuery("#rbam-dialog-done");
-							jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$1"+data.content+"$2"));
+							jDone.html(jDone.html().replace(/(<\/span>).*?(<\/p>)/i,"$2"+data.content+"$2"));
 							jDone.dialog("option","title","'.Yii::t('RbamModule.rbam','Assignment Updated').'");
 							jDone.dialog("open");
 							jQuery("#rbam-dialog-form").dialog("close");

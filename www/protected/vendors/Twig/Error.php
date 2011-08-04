@@ -42,7 +42,7 @@ class Twig_Error extends Exception
 
         $this->updateRepr();
 
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+        if (version_compare(PHP_VERSION, '5.2.0', '<')) {
             $this->previous = $previous;
             parent::__construct($this->message);
         } else {
@@ -105,7 +105,7 @@ class Twig_Error extends Exception
     }
 
     /**
-     * For PHP < 5.3.0, provides access to the getPrevious() method.
+     * For PHP < 5.2.0, provides access to the getPrevious() method.
      *
      * @param  string $method    The method name
      * @param  array  $arguments The parameters to be passed to the method

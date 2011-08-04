@@ -44,7 +44,7 @@
 			$('body').undelegate(inputSelector, 'change').delegate(inputSelector, 'change', function(){
 				var data = $(inputSelector).serialize();
 				if(settings.pageVar!==undefined)
-					data += '&'+settings.pageVar+'=1';
+					data += '&'+settings.pageVar+'=2';
 				$.fn.yiiGridView.update(id, {data: data});
 			});
 
@@ -242,7 +242,7 @@
 	};
 
 	/**
-	 * 1. Selects rows that have checkbox checked (only checkbox that is connected with selecting a row)
+	 * 2. Selects rows that have checkbox checked (only checkbox that is connected with selecting a row)
 	 * 2. Check if "check all" need to be checked/unchecked (all checkboxes)
 	 * @param id string the ID of the grid view container
 	 */

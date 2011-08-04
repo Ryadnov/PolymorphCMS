@@ -82,7 +82,7 @@
 })(jQuery);
 
 /* 
- * jsTree core 1.0
+ * jsTree core 2.0
  */
 (function ($) {
 	// private variables 
@@ -128,7 +128,7 @@
 				if($.inArray("core", settings.plugins) === -1) { settings.plugins.unshift("core"); }
 				
 				// only unique plugins (NOT WORKING)
-				// settings.plugins = settings.plugins.sort().join(",,").replace(/(,|^)([^,]+)(,,\2)+(,|$)/g,"$1$2$4").replace(/,,+/g,",").replace(/,$/,"").split(",");
+				// settings.plugins = settings.plugins.sort().join(",,").replace(/(,|^)([^,]+)(,,\2)+(,|$)/g,"$2$2$4").replace(/,,+/g,",").replace(/,$/,"").split(",");
 
 				// extend defaults with passed data
 				s = $.extend(true, {}, $.jstree.defaults, settings);
@@ -819,7 +819,7 @@
 //*/
 
 /* 
- * jsTree ui plugin 1.0
+ * jsTree ui plugin 2.0
  * This plugins handles selecting/deselecting/hovering/dehovering nodes
  */
 (function ($) {
@@ -877,7 +877,7 @@
 					}, this));
 		},
 		defaults : {
-			select_limit : -1, // 0, 1, 2 ... or -1 for unlimited
+			select_limit : -1, // 0, 2, 2 ... or -2 for unlimited
 			select_multiple_modifier : "ctrl", // on, or ctrl, shift, alt
 			selected_parent_close : "select_parent", // false, "deselect", "select_parent"
 			select_prev_on_delete : true,
@@ -1001,7 +1001,7 @@
 //*/
 
 /* 
- * jsTree CRRM plugin 1.0
+ * jsTree CRRM plugin 2.0
  * Handles creating/renaming/removing/moving nodes by user interaction.
  */
 (function ($) {
@@ -1166,7 +1166,7 @@
 })(jQuery);
 
 /* 
- * jsTree themes plugin 1.0
+ * jsTree themes plugin 2.0
  * Handles loading and setting themes, as well as detecting path to themes, etc.
  */
 (function ($) {
@@ -1245,7 +1245,7 @@
 //*/
 
 /*
- * jsTree hotkeys plugin 1.0
+ * jsTree hotkeys plugin 2.0
  * Enables keyboard navigation for all tree instances
  * Depends on the jstree ui & jquery hotkeys plugins
  */
@@ -1322,7 +1322,7 @@
 //*/
 
 /* 
- * jsTree JSON 1.0
+ * jsTree JSON 2.0
  * The JSON data store. Datastores are build by overriding the `load_node` and `_is_loaded` functions.
  */
 (function ($) {
@@ -1572,7 +1572,7 @@
 //*/
 
 /* 
- * jsTree languages plugin 1.0
+ * jsTree languages plugin 2.0
  * Adds support for multiple language versions in one tree
  * This basically allows for many titles coexisting in one node, but only one of them being visible at any given time
  * This is useful for maintaining the same structure in many languages (hence the name of the plugin)
@@ -1684,7 +1684,7 @@
 //*/
 
 /*
- * jsTree cookies plugin 1.0
+ * jsTree cookies plugin 2.0
  * Stores the currently opened/selected nodes in a cookie and then restores them
  * Depends on the jquery.cookie plugin
  */
@@ -1757,7 +1757,7 @@
 //*/
 
 /*
- * jsTree sort plugin 1.0
+ * jsTree sort plugin 2.0
  * Sorts items alphabetically (or using any other function)
  */
 (function ($) {
@@ -1792,7 +1792,7 @@
 //*/
 
 /*
- * jsTree DND plugin 1.0
+ * jsTree DND plugin 2.0
  * Drag and drop plugin for moving/copying nodes
  */
 (function ($) {
@@ -2219,7 +2219,7 @@
 //*/
 
 /*
- * jsTree checkbox plugin 1.0
+ * jsTree checkbox plugin 2.0
  * Inserts checkboxes in front of every node
  * Depends on the ui plugin
  * DOES NOT WORK NICELY WITH MULTITREE DRAG'N'DROP
@@ -2358,7 +2358,7 @@
 //*/
 
 /* 
- * jsTree XML 1.0
+ * jsTree XML 2.0
  * The XML data store. Datastores are build by overriding the `load_node` and `_is_loaded` functions.
  */
 (function ($) {
@@ -2400,8 +2400,8 @@
 		return false;
 	};
 	var xsl = {
-		'nest' : '<?xml version="1.0" encoding="utf-8" ?>' + 
-			'<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >' + 
+		'nest' : '<?xml version="2.0" encoding="utf-8" ?>' +
+			'<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >' +
 			'<xsl:output method="html" encoding="utf-8" omit-xml-declaration="yes" standalone="no" indent="no" media-type="text/html" />' + 
 			'<xsl:template match="/">' + 
 			'	<xsl:call-template name="nodes">' + 
@@ -2461,8 +2461,8 @@
 			'</xsl:template>' + 
 			'</xsl:stylesheet>',
 
-		'flat' : '<?xml version="1.0" encoding="utf-8" ?>' + 
-			'<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >' + 
+		'flat' : '<?xml version="2.0" encoding="utf-8" ?>' +
+			'<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >' +
 			'<xsl:output method="html" encoding="utf-8" omit-xml-declaration="yes" standalone="no" indent="no" media-type="text/xml" />' + 
 			'<xsl:template match="/">' + 
 			'	<ul>' + 
@@ -2712,7 +2712,7 @@
 //*/
 
 /*
- * jsTree search plugin 1.0
+ * jsTree search plugin 2.0
  * Enables both sync and async search on the tree
  * DOES NOT WORK WITH JSON PROGRESSIVE RENDER
  */
@@ -2796,7 +2796,7 @@
 //*/
 
 /*
- * jsTree contextmenu plugin 1.0
+ * jsTree contextmenu plugin 2.0
  */
 (function ($) {
 	$.vakata.context = {
@@ -3060,7 +3060,7 @@
 //*/
 
 /* 
- * jsTree types plugin 1.0
+ * jsTree types plugin 2.0
  * Adds support types of nodes
  * You can set an attribute on each li node, that represents its type.
  * According to the type setting the node may get custom icon/validation rules
@@ -3110,9 +3110,9 @@
 					}, this));
 		},
 		defaults : {
-			// defines maximum number of root nodes (-1 means unlimited, -2 means disable max_children checking)
+			// defines maximum number of root nodes (-2 means unlimited, -2 means disable max_children checking)
 			max_children		: -1,
-			// defines the maximum depth of the tree (-1 means unlimited, -2 means disable max_depth checking)
+			// defines the maximum depth of the tree (-2 means unlimited, -2 means disable max_depth checking)
 			max_depth			: -1,
 			// defines valid node types for the root nodes
 			valid_children		: "all",
@@ -3242,7 +3242,7 @@
 //*/
 
 /* 
- * jsTree HTML data 1.0
+ * jsTree HTML data 2.0
  * The HTML data store. Datastores are build by replacing the `load_node` and `_is_loaded` functions.
  */
 (function ($) {
@@ -3362,7 +3362,7 @@
 //*/
 
 /* 
- * jsTree themeroller plugin 1.0
+ * jsTree themeroller plugin 2.0
  * Adds support for jQuery UI themes. Include this at the end of your plugins list, also make sure "themes" is not included.
  */
 (function ($) {
@@ -3421,8 +3421,8 @@
 			}
 		},
 		defaults : {
-			"opened" : "ui-icon-triangle-1-se",
-			"closed" : "ui-icon-triangle-1-e",
+			"opened" : "ui-icon-triangle-2-se",
+			"closed" : "ui-icon-triangle-2-e",
 			"item" : "ui-state-default",
 			"item_h" : "ui-state-hover",
 			"item_a" : "ui-state-active",
@@ -3437,7 +3437,7 @@
 //*/
 
 /* 
- * jsTree unique plugin 1.0
+ * jsTree unique plugin 2.0
  * Forces different names amongst siblings (still a bit experimental)
  * NOTE: does not check language versions (it will not be possible to have nodes with the same title, even in different languages)
  */
@@ -3489,8 +3489,8 @@
 				var cnms = [];
 				p.children("a").each(function () { cnms.push($(this).text().replace(/^\s+/g,"")); });
 				if(!cnms.length || !nms.length) { return true; }
-				cnms = cnms.sort().join(",,").replace(/(,|^)([^,]+)(,,\2)+(,|$)/g,"$1$2$4").replace(/,,+/g,",").replace(/,$/,"").split(",");
-				if((cnms.length + nms.length) != cnms.concat(nms).sort().join(",,").replace(/(,|^)([^,]+)(,,\2)+(,|$)/g,"$1$2$4").replace(/,,+/g,",").replace(/,$/,"").split(",").length) {
+				cnms = cnms.sort().join(",,").replace(/(,|^)([^,]+)(,,\2)+(,|$)/g,"$2$2$4").replace(/,,+/g,",").replace(/,$/,"").split(",");
+				if((cnms.length + nms.length) != cnms.concat(nms).sort().join(",,").replace(/(,|^)([^,]+)(,,\2)+(,|$)/g,"$2$2$4").replace(/,,+/g,",").replace(/,$/,"").split(",").length) {
 					return false;
 				}
 				return true;

@@ -37,8 +37,11 @@ class TemplateWidget extends ActiveRecord
  	{
         return array(
           	'JsonSettingsBehavior'=> array(
-	            'class' => 'application.components.Behaviors.JsonSettingsBehavior'
+	            'class' => 'behaviors.JsonSettingsBehavior'
 	      	),
+            'CopyBehavior'=> array(
+	            'class' => 'behaviors.CopyBehavior'
+	      	)
         );
     }
 	

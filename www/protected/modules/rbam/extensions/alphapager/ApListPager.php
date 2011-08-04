@@ -6,9 +6,9 @@
  * 
  * @author Jascha Koch
  * @license MIT License - http://www.opensource.org/licenses/mit-license.html
- * @version 1.3
+ * @version 2.2
  * @package alphapager
- * @since 1.2
+ * @since 2.2
  */
 class ApListPager extends CBasePager
 {

@@ -115,7 +115,7 @@
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @version $Id: CActiveForm.php 2104 2010-05-06 20:52:29Z qiang.xue $
  * @package system.web.widgets
- * @since 1.1.1
+ * @since 2.2.2
  */
 class UActiveForm extends CWidget
 {
@@ -157,7 +157,7 @@ class UActiveForm extends CWidget
 	 * delayed after an input is changed. A value 0 means the validation will be triggered immediately
 	 * when an input is changed. A value greater than 0 means changing several inputs may only
 	 * trigger a single validation if they happen fast enough, which may help reduce the server load.
-	 * Defaults to 100 (0.1 second).</li>
+	 * Defaults to 100 (0.2 second).</li>
 	 * <li>validateOnSubmit: boolean, whether to perform AJAX validation when the form is being submitted.
 	 * If there are any validation errors, the form submission will be stopped.
 	 * Defaults to false.</li>
@@ -188,7 +188,7 @@ class UActiveForm extends CWidget
 	 * will be cancelled.
 	 *
 	 * Note that because this option refers to a js function, you should prefix the value with 'js:' to prevent it
-	 * from being encoded as a string. This option has been available since version 1.1.3.</li>
+	 * from being encoded as a string. This option has been available since version 2.2.2.</li>
 	 * <li>afterValidate: function, the function that will be invoked after performing ajax-based validation
 	 * triggered by form submission action (available only when validateOnSubmit is set true).
 	 * The expected function signature should be <code>afterValidate(form, data, hasError) {...}</code>, where 'form' is
@@ -197,7 +197,7 @@ class UActiveForm extends CWidget
 	 * the normal form submission will be cancelled.
 	 *
 	 * Note that because this option refers to a js function, you should prefix the value with 'js:' to prevent it
-	 * from being encoded as a string. This option has been available since version 1.1.3.</li>
+	 * from being encoded as a string. This option has been available since version 2.2.2.</li>
 	 * <li>beforeValidateAttribute: function, the function that will be invoked before performing ajax-based validation
 	 * triggered by a single attribute input change. The expected function signature should be
 	 * <code>beforeValidateAttribute(form, attribute) {...}</code>, where 'form' is the jquery representation of the form object
@@ -205,7 +205,7 @@ class UActiveForm extends CWidget
 	 * If the return value of this function is NOT true, the validation will be cancelled.
 	 *
 	 * Note that because this option refers to a js function, you should prefix the value with 'js:' to prevent it
-	 * from being encoded as a string. This option has been available since version 1.1.3.</li>
+	 * from being encoded as a string. This option has been available since version 2.2.2.</li>
 	 * <li>afterValidateAttribute: function, the function that will be invoked after performing ajax-based validation
 	 * triggered by a single attribute input change. The expected function signature should be
 	 * <code>beforeValidateAttribute(form, attribute, data, hasError) {...}</code>, where 'form' is the jquery
@@ -214,7 +214,7 @@ class UActiveForm extends CWidget
 	 * there is any validation error.
 	 *
 	 * Note that because this option refers to a js function, you should prefix the value with 'js:' to prevent it
-	 * from being encoded as a string. This option has been available since version 1.1.3.</li>
+	 * from being encoded as a string. This option has been available since version 2.2.2.</li>
 	 * </ul>
 	 *
 	 * Some of the above options may be overridden in individual calls of {@link error()}.

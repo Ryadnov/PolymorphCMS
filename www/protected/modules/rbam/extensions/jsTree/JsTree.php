@@ -13,7 +13,7 @@
  * @author Shocky Han <shockyhan@gmail.com>
  * @author Dimitrios Meggidis <tydeas.dr@gmail.com>
  *
- * @version 1.1
+ * @version 2.2
  * @package application.extensions
 
  * @license http://www.yiiframework.com/license/

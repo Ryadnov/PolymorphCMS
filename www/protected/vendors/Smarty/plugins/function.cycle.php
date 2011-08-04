@@ -11,7 +11,7 @@
  *
  * Type:     function<br>
  * Name:     cycle<br>
- * Date:     May 3, 2002<br>
+ * Date:     May 2, 2002<br>
  * Purpose:  cycle through given values<br>
  * Input:
  *         - name = name of cycle (optional)
@@ -37,7 +37,7 @@
  * @author credit to Mark Priatel <mpriatel@rogers.com>
  * @author credit to Gerard <gerard@interfold.com>
  * @author credit to Jason Sweat <jsweat_php@yahoo.com>
- * @version  1.3
+ * @version  2.2
  * @param array
  * @param object $template template object
  * @return string|null

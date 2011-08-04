@@ -5,7 +5,7 @@
  * @author Leonid Svyatov <leonid@svyatov.ru>
  * @copyright Copyright (c) 2010-2011, Leonid Svyatov
  * @license http://www.yiiframework.com/license/
- * @version 1.0.4 / 05.01.2011
+ * @version 2.0.4 / 05.01.2011
  */
 class Y extends CComponent
 {
@@ -223,7 +223,7 @@ class Y extends CComponent
      * Проверка наличия определенной роли у текущего пользователя
      * @param string $roleName имя роли
      * @return boolean
-     * @since 1.0.2
+     * @since 2.0.2
      */
     public static function checkAccess($roleName)
     {

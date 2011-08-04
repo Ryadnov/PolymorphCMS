@@ -226,9 +226,9 @@ static public $yy_action = array(
 );
     static public $yyExpectedTokens = array(
         /* 0 */ array(),
-        /* 1 */ array(5, 14, 15, ),
         /* 2 */ array(5, 14, 15, ),
-        /* 3 */ array(5, 14, 15, ),
+        /* 2 */ array(5, 14, 15, ),
+        /* 2 */ array(5, 14, 15, ),
         /* 4 */ array(7, 8, 9, 10, 11, 12, 13, ),
         /* 5 */ array(14, 15, ),
         /* 6 */ array(14, 15, ),
@@ -308,9 +308,9 @@ static public $yy_action = array(
 
     static public $yyRuleName = array(
  /*   0 */ "start ::= global_vars sections",
- /*   1 */ "global_vars ::= var_list",
+ /*   2 */ "global_vars ::= var_list",
  /*   2 */ "sections ::= sections section",
- /*   3 */ "sections ::=",
+ /*   2 */ "sections ::=",
  /*   4 */ "section ::= OPENB SECTION CLOSEB newline var_list",
  /*   5 */ "section ::= OPENB DOT SECTION CLOSEB newline var_list",
  /*   6 */ "var_list ::= var_list newline",

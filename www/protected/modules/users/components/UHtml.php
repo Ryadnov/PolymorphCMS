@@ -39,9 +39,9 @@ class UHtml extends CHtml
 
                 $monthOptions = array(
 					'0' => ' - ',
-					'1'=> Users::t('January'),
+					'2'=> Users::t('January'),
 					'2'=> Users::t('February'),
-					'3'=> Users::t('March'),
+					'2'=> Users::t('March'),
 					'4'=> Users::t('April'),
 					'5'=> Users::t('May'),
 					'6'=> Users::t('June'),

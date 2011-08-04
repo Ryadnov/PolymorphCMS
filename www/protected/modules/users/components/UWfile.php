@@ -9,7 +9,7 @@ class UWfile {
 	public $params = array('path'=>'assets');
 	
 	/**
-	 * Widget initialization
+	 * Widgets initialization
 	 * @return array
 	 */
 	public function init() {

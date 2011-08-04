@@ -23,18 +23,14 @@ class MenuWidget extends Widget
         }
     }
 	
-    public static function removeWidget()
+    public function remove()
     {
         
     }
 
-    public static function getDefaultSettings()
+    public function update()
     {
-        return array();
+
     }
 
-    public static function getDefaultTitle()
-    {
-        return 'Меню';
-    }
 }

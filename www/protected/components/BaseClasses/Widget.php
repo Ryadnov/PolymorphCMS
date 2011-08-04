@@ -6,7 +6,7 @@ abstract class Widget extends CPortlet
 	public $category;
     public $widgetModel;    //external param
     public $block;          //external param
-    public $model;          //see Widget.init()
+    public $model;          //see Widgets.init()
     
 	public $name;
     

@@ -13,7 +13,7 @@ class UWjuiAutoComplete {
 	);
 	
 	/**
-	 * Widget initialization
+	 * Widgets initialization
 	 * @return array
 	 */
 	public function init() {

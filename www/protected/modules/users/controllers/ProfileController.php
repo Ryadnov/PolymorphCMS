@@ -14,7 +14,7 @@ class ProfileController extends AdminBaseController
 	public function actionProfile()
 	{
 		$model = $this->loadUser();
-	    $this->render('profile',array(
+	    $this->renderPartial('profile',array(
 	    	'model'=>$model,
 			'profile'=>$model->profile,
 	    ));
@@ -39,10 +39,10 @@ class ProfileController extends AdminBaseController
 		$profile=$model->profile;
 		
 		// ajax validator
-		if(isset($_POST['ajax']) && $_POST['ajax']==='profile-form')
+		if (isset($_POST['ajax']) && $_POST['ajax']==='profile-form')
 			Y::end(UActiveForm::validate(array($model,$profile)));
 		
-		if(isset($_POST['User']))
+		if (isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
 			$profile->attributes=$_POST['Profile'];
@@ -57,7 +57,7 @@ class ProfileController extends AdminBaseController
 				$model->save();
 				
 				$profile->save();
-				Y::flashRedir('profileMessage',Users::t("Changes is saved."), Y::module()->cabinetUrl);
+				Y::flashRedir('profileMessage',Users::t("Changes is saved."), $this->module()->cabinetUrl);
 			} else $profile->validate();
 		}
 
@@ -85,7 +85,7 @@ class ProfileController extends AdminBaseController
 						$new_password->password = UserModule::encrypting($model->password);
 						$new_password->activkey=UserModule::encrypting(microtime().$model->password);
 						$new_password->save();
-						Y::flashRedir('profileMessage',Users::t("New password is saved."),Y::module()->profileUrl);
+						Y::flashRedir('profileMessage',Users::t("New password is saved."),$this->module->profileUrl);
 					}
 			}
 			$this->render('changepassword',array('model'=>$model));
@@ -101,10 +101,10 @@ class ProfileController extends AdminBaseController
 	{
 		if($this->_model===null)
 		{
-			if(Y::userId())
-				$this->_model=Y::module()->user();
+            $this->_model=$this->module->user();
+            if(Y::userId())
 			if($this->_model===null)
-				$this->redirect(Y::module()->loginUrl);
+				$this->redirect($this->module->loginUrl);
 		}
 		return $this->_model;
 	}

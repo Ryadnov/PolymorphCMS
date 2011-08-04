@@ -94,8 +94,8 @@ class ProfileField extends CActiveRecord
 			'error_message' => Users::t('Error Message'),
 			'other_validator' => Users::t('Other Validator'),
 			'default' => Users::t('Default'),
-			'widget' => Users::t('Widget'),
-			'widgetparams' => Users::t('Widget parametrs'),
+			'widget' => Users::t('Widgets'),
+			'widgetparams' => Users::t('Widgets parametrs'),
 			'position' => Users::t('Position'),
 			'visible' => Users::t('Visible'),
 		);

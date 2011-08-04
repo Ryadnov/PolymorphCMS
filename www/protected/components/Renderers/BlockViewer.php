@@ -35,7 +35,8 @@ class BlockViewer extends CComponent
 
 		$res = '';
 		foreach ($block->widgets as $widget) {
-			Yii::import('widgets.'.$widget->class.'.*');
+            Yii::import('widgets.'.$widget->class.'.*');
+            
             $res .= $this->renderWidget($widget, $block);
 		}
 

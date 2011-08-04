@@ -23,7 +23,7 @@ $this->breadcrumbs=array(
 	    'enableAjaxValidation'=>true,
 	    'enableClientValidation'=>false,
 	    'focus'=>array($model,'username'),
-		'action'=>Y::module()->loginUrl)
+		'action'=>$this->module->loginUrl)
 	); ?>
 	<?php echo CHtml::errorSummary($model); ?>
 	
@@ -39,7 +39,7 @@ $this->breadcrumbs=array(
  <!-- 
 	<div class="row">
 		<p class="hint">
-		<?php echo CHtml::link(Users::t("Register"),Y::module('users')->registrationUrl); ?> | <?php echo CHtml::link(Users::t("Lost Password?"),Y::module('users')->recoveryUrl); ?>
+		<?php echo CHtml::link(Users::t("Register"),$this->module->registrationUrl); ?> | <?php echo CHtml::link(Users::t("Lost Password?"),Y::module('users')->recoveryUrl); ?>
 		</p>
 	</div>
 	

@@ -10,24 +10,28 @@ class LoginController extends Controller
 	 */
 	public function actionLogin()
 	{
-		if (!Y::isGuest()) 
-			$this->redirect(Y::module()->returnUrl);
+        if (!Y::isGuest()) {
+            if (Y::checkAccess('moderator'))
+                $this->redirect($this->module->adminReturnUrl);
+            else
+                $this->redirect($this->module->returnUrl);
+        }
 			
-		$model=new UserLogin;
+		$model = new UserLogin;
 		$this->performAjaxValidation($model);
     	// collect user input data
-		if(isset($_POST['UserLogin']))
+		if (isset($_POST['UserLogin']))
 		{
-			$model->attributes=$_POST['UserLogin'];
+			$model->attributes = $_POST['UserLogin'];
 			// validate user input and redirect to previous page if valid
-			if($model->validate()) {
+			if ($model->validate()) {
 				$this->lastViset();
-				$this->redirect(Y::module()->returnUrl);
+				$this->redirect($this->module->returnUrl);
 			}
 		}
 	
 		// display the login form
-		$this->render('/user/login', array('model'=>$model));
+		$this->renderPartial('/user/login', array('model'=>$model));
 	}
 	
 	private function lastViset() 

@@ -71,8 +71,13 @@ class MainContentWidget extends Widget
             echo $res;
     }
 
-    public static function removeWidget()
+    public function remove()
     {
         //remove all resources
+    }
+
+    public function update()
+    {
+        
     }
 }

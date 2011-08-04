@@ -31,7 +31,7 @@ $site = array(
 	''=>'site',
 );
 
-$user = addWay('admin', addModule('users', array( 	
+$user = addModule('users', array(
 	//user module links
 	'login'=>'login',
 	'registration'=>'registration',
@@ -47,7 +47,7 @@ $user = addWay('admin', addModule('users', array(
 	'users/admin'=>'admin',
 	'users/create'=>'admin/create',
 	'<controller:(user|profileField)>/<action:(admin|view|create|update|delete)>'=>'<controller>/<action>',
-)));
+));
 
 //echo '<pre>';
 //print_r(array_merge($admin, $user, $site));

@@ -13,18 +13,6 @@ class RenderController extends Controller
 		
 		$output = $this->processOutput($output);
 
-		/*
-		//error reporting
-		if (!Y::isGuest()) {
-			$errrors = '';
-			foreach ($renderer->getErrors() as $error) {
-				$errrors .= $error.'<br/>';	
-			}
-			
-			$output .= CHtml::tag('div',array('class'=>'render-errors'), $errrors);
-		}
-		*/
-        
 		if($return)
 			return $output;
 		else

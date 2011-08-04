@@ -58,7 +58,8 @@ class UsersModule extends CWebModule
 	public $logoutUrl = "logout";
 	public $cabinetUrl = "profile/cabinet";
 	public $profileUrl = "profile";
-	public $returnUrl = "/admin";
+	public $adminReturnUrl = "/admin";
+    public $returnUrl = "/profile";
 	public $returnLogoutUrl = "login";
 	public $editProfileUrl = "profile/edit";
 	public $changePassUrl = "profile/changepassword";

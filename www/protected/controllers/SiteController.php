@@ -75,40 +75,57 @@ class SiteController extends RenderController
 		//Y::dump(Y::file('css')->contents);
 		Y::clientScript()->registerCoreScript('jquery')
 						->registerCssFile('/css/style.css');
-		
-		$alias = 'index';
-		$i = 0;
-		while (isset($_GET['cat'.++$i])) 
-			$alias = $_GET['cat'.$i];
-		
-		$category = Category::model()->published()->findByAttributes(array('alias'=>$alias));
-		
-		if ($category == NULL)
-			$this->redirect('/errors/not_found');
-		
-		$this->category = $category;
+        
+        if (isset($_GET['cat1']) && ($module = Yii::app()->getModule($_GET['cat1'])) != null) {
+            $route = Yii::app()->getRequest()->getPathInfo();
 
-		$model = ModelFactory::getModel($category);
+            //cut module id from $route
+            if (($pos = strpos($route,'/')) !== false)
+                $route = substr($route, $pos, strlen($route));
+            else
+                $route = '';
 
-		if (isset($_GET['alias']) || isset($_GET['id'])) {
-			$value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['id'];
-			$attr = isset($_GET['alias']) ? 'alias' : $model->pkAttr;
+            //run controller and action in module
+            list($c, $a) = Yii::app()->createController($route, $module);
+            $c->init();
+            $c->run($a);
+            
+        } else {
+            //if no module then it is category
+            $alias = 'index';
+            $i = 0;
+            while (isset($_GET['cat'.++$i]))
+                $alias = $_GET['cat'.$i];
 
-			$model = $model->published()->findByAttributes(array($attr=>$value));
-		
-			if ($model == NULL)
-				$this->redirect('/errors/not_found');
-		}
-		
-		$this->model = $model;
+            $category = Category::model()->published()->findByAttributes(array('alias'=>$alias));
 
-        $this->render('main', array(
-			'block'=>new BlockViewer($category),
-			'meta'=>new MetaViewer($category),
-			'item'=>$model,
-			'breadcrumbs'=>new BreadCrumb,
-			'category'=>$category,
-		));
+            if ($category == NULL)
+                $this->redirect('/errors/not_found');
+
+            $this->category = $category;
+
+            $model = ModelFactory::getModel($category);
+
+            if (isset($_GET['alias']) || isset($_GET['id'])) {
+                $value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['id'];
+                $attr = isset($_GET['alias']) ? 'alias' : $model->pkAttr;
+
+                $model = $model->published()->findByAttributes(array($attr=>$value));
+
+                if ($model == NULL)
+                    $this->redirect('/errors/not_found');
+            }
+
+            $this->model = $model;
+
+            $this->render('main', array(
+                'block'=>new BlockViewer($category),
+                'meta'=>new MetaViewer($category),
+                'item'=>$model,
+                'breadcrumbs'=>new BreadCrumb,
+                'category'=>$category,
+            ));
+        }
     }
     
 	/**

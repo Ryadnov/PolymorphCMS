@@ -67,7 +67,13 @@ class SiteController extends RenderController
 		);
         return $list;
 	}
-	
+
+    public $block;
+    public $meta;
+    public $item;
+    public $breadcrumbs;
+    public $category;
+    
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
@@ -78,73 +84,50 @@ class SiteController extends RenderController
 		Y::clientScript()->registerCoreScript('jquery')
 						->registerCssFile('/css/style.css');
         
-        if (isset($_GET['cat1']) && ($module = Yii::app()->getModule($_GET['cat1'])) != null) {
-            $route = Yii::app()->getRequest()->getPathInfo();
+        //if no module then it is category
+        $alias = 'index';
+        $i = 0;
+        while (isset($_GET['cat'.++$i]))
+            $alias = $_GET['cat'.$i];
 
-            //cut module id from $route
-            if (($pos = strpos($route,'/')) !== false)
-                $route = substr($route, $pos, strlen($route));
-            else
-                $route = '';
+        $category = Category::model()->published()->findByAttributes(array('alias'=>$alias));
 
-            //run controller and action in module
-            list($c, $a) = Yii::app()->createController($route, $module);
-            $c->init();
-            $c->run($a);
-            
-        } else {
-            //if no module then it is category
-            $alias = 'index';
-            $i = 0;
-            while (isset($_GET['cat'.++$i]))
-                $alias = $_GET['cat'.$i];
+        if ($category == NULL)
+            $this->redirect('/errors/not_found');
 
-            $category = Category::model()->published()->findByAttributes(array('alias'=>$alias));
+        $this->category = $category;
 
-            if ($category == NULL)
+        $model = ModelFactory::getModel($category);
+
+        if (isset($_GET['alias']) || isset($_GET['id'])) {
+            $value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['id'];
+            $attr = isset($_GET['alias']) ? 'alias' : $model->pkAttr;
+
+            $model = $model->published()->findByAttributes(array($attr=>$value));
+
+            if ($model == NULL)
                 $this->redirect('/errors/not_found');
-
-            $this->category = $category;
-
-            $model = ModelFactory::getModel($category);
-
-            if (isset($_GET['alias']) || isset($_GET['id'])) {
-                $value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['id'];
-                $attr = isset($_GET['alias']) ? 'alias' : $model->pkAttr;
-
-                $model = $model->published()->findByAttributes(array($attr=>$value));
-
-                if ($model == NULL)
-                    $this->redirect('/errors/not_found');
-            }
-
-            $this->model = $model;
-
-            $this->block = new BlockViewer($category);
-            $this->meta = new MetaViewer($category);
-            $this->item = $model;
-            $this->breadcrumbs = new BreadCrumb;
-            $this->category = $category;
-            
-            $this->render('index', array());
         }
+
+        //set variables for main layout
+        $this->block = new BlockViewer($category);
+        $this->meta = new MetaViewer($category);
+        $this->item = $model;
+        $this->breadcrumbs = new BreadCrumb;
+        $this->category = $category;
+
+        $this->render('index');
     }
-    public $block;
-    public $meta;
-    public $item;
-    public $breadcrumbs;
-    public $category;
     
 	/**
 	 * This is the action to handle external exceptions.
 	 */
 	public function actionError()
 	{
-	    if($error=Yii::app()->errorHandler->error)
-	    {
-	    	if(Y::isAjaxRequest())
+	    if ($error = Yii::app()->errorHandler->error) {
+	    	if(Y::isAjaxRequest()) {
 	    		echo $error['message'];
-	    	else {
+	    	} else {
 				echo CHtml::tag('h2',array(),'Error '.$error['code']);
 				echo CHtml::tag('div',array(),CHtml::encode($error['message']));
 			}

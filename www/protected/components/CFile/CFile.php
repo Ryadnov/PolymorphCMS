@@ -236,7 +236,7 @@ class CFile extends CApplicationComponent
         $this->_dirname = $pathinfo['dirname'];
         $this->_basename = $pathinfo['basename'];
 
-        // PHP version < 5.2 workaround
+        // PHP version < 1.2 workaround
         if(!isset($pathinfo['filename']))
         {
             $this->_filename = substr($pathinfo['basename'], 0, strrpos($pathinfo['basename'], '.'));

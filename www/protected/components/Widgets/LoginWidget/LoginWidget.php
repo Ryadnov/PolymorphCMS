@@ -15,14 +15,21 @@ class LoginWidget extends Widget
         if (Y::isGuest()) {
             $this->runController('login');
         } else {
-            $this->runController('profile');
+            //cabinet
+            $model = $this->module->user();
+//            $this->render('cabinet',array(
+//                'model'=>$model,
+//                'profile'=>$model->profile,
+//            ));
         }
 	}
 
     private function runController($id)
     {
+        ob_start();
         list($c, $a) = Yii::app()->createController($id, $this->module);
         $c->run($a);
+        ob_end_flush();
     }
 
     public function update()

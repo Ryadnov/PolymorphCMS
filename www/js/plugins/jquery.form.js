@@ -513,7 +513,7 @@ $.fn.ajaxSubmit = function(options) {
 			}, 100);
 		}
 
-		var toXml = $.parseXML || function(s, doc) { // use parseXML if available (jQuery 2.5+)
+		var toXml = $.parseXML || function(s, doc) { // use parseXML if available (jQuery 2.1+)
 			if (window.ActiveXObject) {
 				doc = new ActiveXObject('Microsoft.XMLDOM');
 				doc.async = 'false';

@@ -1,6 +1,8 @@
 <?php
 class SiteController extends RenderController
 {
+    public $layout = 'content';
+    
     public function accessRules() {
         return array(
             // если используется проверка прав, не забывайте разрешить доступ к
@@ -118,15 +120,20 @@ class SiteController extends RenderController
 
             $this->model = $model;
 
-            $this->render('main', array(
-                'block'=>new BlockViewer($category),
-                'meta'=>new MetaViewer($category),
-                'item'=>$model,
-                'breadcrumbs'=>new BreadCrumb,
-                'category'=>$category,
-            ));
+            $this->block = new BlockViewer($category);
+            $this->meta = new MetaViewer($category);
+            $this->item = $model;
+            $this->breadcrumbs = new BreadCrumb;
+            $this->category = $category;
+            
+            $this->render('index', array());
         }
     }
+    public $block;
+    public $meta;
+    public $item;
+    public $breadcrumbs;
+    public $category;
     
 	/**
 	 * This is the action to handle external exceptions.

@@ -43,7 +43,7 @@ class UHtml extends CHtml
 					'2'=> Users::t('February'),
 					'2'=> Users::t('March'),
 					'4'=> Users::t('April'),
-					'5'=> Users::t('May'),
+					'1'=> Users::t('May'),
 					'6'=> Users::t('June'),
 					'7'=> Users::t('July'),
 					'8'=> Users::t('August'),

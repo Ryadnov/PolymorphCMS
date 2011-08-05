@@ -31,7 +31,7 @@ class MainContentWidget extends Widget
     public function render($view, $data = array(), $return = false)
     {
         if (isset($this->block) && isset($this->model)) {
-            return parent::render($this->block->pk.'/'.$this->model->pk.'/'.$view, $data, $return);
+            return parent::render($this->block->pk.'/'.$this->widgetModel->pk.'/'.$view, $data, $return);
         } else {
             return parent::render($view, $data, $return);
         }

@@ -7,13 +7,11 @@ $this->breadcrumbs=array(
 
 <h1><?php echo Users::t("Login"); ?></h1>
 
-<?php if(Y::hasFlash('loginMessage')): ?>
-
-<div class="success">
-	<?php echo Y::flash('loginMessage'); ?>
-</div>
-
-<?php endif; ?>
+<?php if(Y::hasFlash('loginMessage')) { ?>
+    <div class="success">
+        <?php echo Y::flash('loginMessage'); ?>
+    </div>
+<?php } ?>
 <!--
 <p><?php echo Users::t("Please fill out the following form with your login credentials:"); ?></p>
 -->

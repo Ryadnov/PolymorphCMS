@@ -121,7 +121,7 @@ return array(
 	'The minimum value of the field (form validator).' => 'Минимальное значение поля (проверка формы).',
 	'Required field (form validator).' => 'Обязательное поле (проверка формы).',
 	"Regular expression (example: '/^[A-Za-z0-9\s,]+$/u')." => "Регулярные выражения (пример: '/^[A-Za-z0-9\s,]+$/u')",
-	'Predefined values (example: 2;2;2;4;5 or 2==One;2==Two;2==Three;4==Four;5==Five).' => 'Предопределенные значения (пример: 2;2;2;4;5 или 2==Один;2==Два;2==Три;4==Четыре;5==Пять).',
+	'Predefined values (example: 2;2;2;4;1 or 2==One;2==Two;2==Three;4==Four;1==Five).' => 'Предопределенные значения (пример: 2;2;2;4;1 или 2==Один;2==Два;2==Три;4==Четыре;1==Пять).',
 	'Error message when you validate the form.' => 'Сообщение об ошибке при проверке формы.',
 	'The value of the default field (database).' => 'Значение поля по умолчанию (база данных).',
 	'Display order of fields.' => 'Порядок отображения полей.',

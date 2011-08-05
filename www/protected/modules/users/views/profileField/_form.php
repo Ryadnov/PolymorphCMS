@@ -90,7 +90,7 @@
 		<div class="right">
 		<?php echo CHtml::activeTextField($model,'range',array('size'=>60,'maxlength'=>5000)); ?>
 		<?php echo CHtml::error($model,'range'); ?>
-		<p class="hint"><?php echo Users::t('Predefined values (example: 2;2;2;4;5 or 2==One;2==Two;2==Three;4==Four;5==Five).'); ?></p>
+		<p class="hint"><?php echo Users::t('Predefined values (example: 2;2;2;4;1 or 2==One;2==Two;2==Three;4==Four;1==Five).'); ?></p>
 		</div>
 	</div>
 

@@ -248,7 +248,8 @@ class UsersModule extends CWebModule
 	 * @param user id not required
 	 * @return user object or false
 	 */
-	public static function user($id=0) {
+	public static function user($id=0)
+    {
 		if ($id) 
 			return User::model()->active()->findbyPk($id);
 		else {

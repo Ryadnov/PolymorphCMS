@@ -183,7 +183,7 @@ Note:
                 character = !special && String.fromCharCode(code).toLowerCase(),
                 shift = event.shiftKey,
                 ctrl = event.ctrlKey,            
-                // patch for jquery 2.2.5 && 2.2.6 see more at:
+                // patch for jquery 2.2.1 && 2.2.6 see more at:
                 // http://groups.google.com/group/jquery-en/browse_thread/thread/83e10b3bb1f1c32b
                 alt = event.altKey || event.originalEvent.altKey,
                 mapPoint = null;

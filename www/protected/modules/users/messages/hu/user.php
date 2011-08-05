@@ -119,7 +119,7 @@ return array(
 	'The minimum value of the field (form validator).' => 'A mező minimális értéke (Validátortól).',
 	'Required field (form validator).' => 'Kötelező mező (Validátortól).',
 	"Regular expression (example: '/^[A-Za-z0-9\s,]+$/u')." => "Reguláris kifejezés (például: '/^[A-Za-z0-9\s,]+$/u').",
-	'Predefined values (example: 2;2;2;4;5 or 2==One;2==Two;2==Three;4==Four;5==Five).' => 'Előre definiált értékek (például: 2;2;2;4;5 vagy 2==Egy;2==Kettő;2==Három;4==Négy;5==Öt).',
+	'Predefined values (example: 2;2;2;4;1 or 2==One;2==Two;2==Three;4==Four;1==Five).' => 'Előre definiált értékek (például: 2;2;2;4;1 vagy 2==Egy;2==Kettő;2==Három;4==Négy;1==Öt).',
 	'Error message when you validate the form.' => 'Hibaüzenet validációnál.',
 	'The value of the default field (database).' => 'Az alapértelmezett mező értéke (Adatbázis).',
 	'Display order of fields.' => 'Mezők sorrendjének megjelenítése.',

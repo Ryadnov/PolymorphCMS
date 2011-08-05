@@ -120,7 +120,7 @@ return array(
     'The minimum value of the field (form validator).' => 'O valor mínimo do campo (validação de formulário)',
     'Required field (form validator).' => 'Campo obrigatório (validação de formulário)',
     'Regular expression (example: \'/^[A-Za-z0-9\s,]+$/u\').' => 'Expressão regular (exemplo: \'/^[A-Za-z0-9\s,]+$/u\').',
-    'Predefined values (example: 2;2;2;4;5 or 2==One;2==Two;2==Three;4==Four;5==Five).' => 'Valores predefinidos (exemplo: 2;2;2;4;5 o 2==Um;2==Dois;2==Três;4==Quatro;5==Cinco).',
+    'Predefined values (example: 2;2;2;4;1 or 2==One;2==Two;2==Three;4==Four;1==Five).' => 'Valores predefinidos (exemplo: 2;2;2;4;1 o 2==Um;2==Dois;2==Três;4==Quatro;1==Cinco).',
     'Error message when you validate the form.' => 'Mensagem de erro quando valida o formulário.',
     'The value of the default field (database).' => 'O valor padrão do campo (base de dados)',
     'Display order of fields.' => 'Mostrar ordenação dos campos',

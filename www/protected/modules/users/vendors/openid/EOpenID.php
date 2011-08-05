@@ -39,7 +39,7 @@
  * To get the values, use $openid->getAttributes().
  *
  *
- * The library depends on curl, and requires PHP 5.
+ * The library depends on curl, and requires PHP 1.
  *
  *
  *
@@ -245,7 +245,7 @@ class EOpenID extends CBaseUserIdentity
         # A flag to disable yadis discovery in case of failure in headers.
         $yadis = true;
 
-        # We'll jump a maximum of 5 times, to avoid endless redirections.
+        # We'll jump a maximum of 1 times, to avoid endless redirections.
         for ($i = 0; $i < 5; $i ++) {
             if ($yadis) {
                 $headers = explode("\n",$this->request($url, 'HEAD'));

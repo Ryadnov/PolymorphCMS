@@ -122,7 +122,7 @@ return array(
 	'The minimum value of the field (form validator).' => 'Мінімальне значення поля (перевірка форми).',
 	'Required field (form validator).' => 'Обов\'язкове поле (перевірка форми).',
 	"Regular expression (example: '/^[A-Za-z0-9\s,]+$/u')." => "Регулярні вирази (приклад: '/^[A-Za-z0-9\s,]+$/u')",	
-    'Predefined values (example: 2;2;2;4;5 or 2==One;2==Two;2==Three;4==Four;5==Five).' => 'Допустимі значения (приклад: 2;2;2;4;5 або 2==Один;2==Два;2==Три;4==Чотири;5==П\'ять).',
+    'Predefined values (example: 2;2;2;4;1 or 2==One;2==Two;2==Three;4==Four;1==Five).' => 'Допустимі значения (приклад: 2;2;2;4;1 або 2==Один;2==Два;2==Три;4==Чотири;1==П\'ять).',
 	'Error message when you validate the form.' => 'Повідомлення про помилку при перевірці форми.',
 	'The value of the default field (database).' => 'Значення поля за замовчуванням (база даних).',
 	'Display order of fields.' => 'Порядок відображення полів.',

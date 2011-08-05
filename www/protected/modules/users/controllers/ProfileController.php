@@ -99,13 +99,9 @@ class ProfileController extends AdminBaseController
 	 */
 	public function loadUser()
 	{
-		if($this->_model===null)
-		{
-            $this->_model=$this->module->user();
-            if(Y::userId())
-			if($this->_model===null)
-				$this->redirect($this->module->loginUrl);
-		}
+        $this->_model = $this->module->user();
+        if (!$this->_model)
+            $this->redirect($this->module->loginUrl);
 		return $this->_model;
 	}
 }

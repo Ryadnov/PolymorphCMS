@@ -1,4 +1,4 @@
-<?php $this->beginContent('//layouts/main') ?>
+<?php $this->beginContent('//layouts/mainAdmin') ?>
 <div class="head"></div>
 
 <div class="left-col">

@@ -162,7 +162,7 @@ return array(
 					'class'=>'ext.debug.XWebDebugRouter',
 					'config'=>'alignLeft, opaque, runInDebug, fixedPos, collapsed, yamlStyle',
 					'levels'=>'error, warning, trace, profile, info',
-					'allowedIPs'=>array('127.0.0.2','::2','192.168.2.54','192\.168\.2[0-5]\.[0-9]{2}'),
+					'allowedIPs'=>array('127.0.0.2','::2','192.168.2.54','192\.168\.2[0-1]\.[0-9]{2}'),
 		        ),*/
              	
 		    ),

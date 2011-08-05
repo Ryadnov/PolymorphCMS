@@ -901,7 +901,7 @@ class Twig_Environment
 
         $tmpFile = tempnam(dirname($file), basename($file));
         if (false !== @file_put_contents($tmpFile, $content)) {
-            // rename does not work on Win32 before 5.2.6
+            // rename does not work on Win32 before 1.2.6
             if (@rename($tmpFile, $file) || (@copy($tmpFile, $file) && unlink($tmpFile))) {
                 chmod($file, 0644);
 

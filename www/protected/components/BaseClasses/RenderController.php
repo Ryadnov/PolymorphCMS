@@ -6,27 +6,6 @@ class RenderController extends Controller
 	
 	public $options;
 		
-	public function render($tmplAlias, $data = array(), $return = false, $noCache = false)
-	{
-		$this->options = $data;
-		$output = $this->renderPartial($tmplAlias, $this->options, true);
-		
-		$output = $this->processOutput($output);
-
-		if($return)
-			return $output;
-		else
-			echo $output;
-	}
-	
-	public function renderPartial($tmplAlias, $data = array(), $return = false)
-	{
-		$options = CMap::mergeArray($this->options, $data);
-		$tmplPath = $options['category']->getTemplate($tmplAlias, true);
-		
-		return $output = parent::renderPartial($tmplPath, $options, $return);
-	}
-	
 	public function renderItem(&$item, &$cat, &$templateAlias, $return = false, $noCache = false)
 	{
 		$renderer = new ItemRenderer($cat, $item);

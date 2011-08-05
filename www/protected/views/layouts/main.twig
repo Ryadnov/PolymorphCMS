@@ -7,7 +7,7 @@
     <!--[if lt IE 8]>
     <link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen, projection" />
     <![endif]-->
-    {{ meta.title }}
+    {{ this.meta.title }}
   </head>
   
   <body>
@@ -15,20 +15,20 @@
       <div class="container">
         <div class="index-left">
 			<a href="#"><img src="/images/ir.gif" alt="ir.kz" /></a>
-		    {{ block.left }}
+		    {{ this.block.left }}
 		</div>
         
-        {{ block.header }}
+        {{ this.block.header }}
         
         <div class="container-show">
           <div id="content-wide" class="content">
-            {{ block.content }}
+            {{ content }}
           </div>
         </div>
 
         <div class="footer">
           <div class="footer-block1">
-            {{ block.footer }}
+            {{ this.block.footer }}
           </div>
           <p class="ir">© 1999-2010 Группа компаний «Интернет Решения»</p>
         </div>

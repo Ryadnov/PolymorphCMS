@@ -744,7 +744,7 @@ class Smarty extends Smarty_Internal_Data {
         $first3 = strtolower(substr($name, 0, 3));
         if (in_array($first3, array('set', 'get')) && substr($name, 3, 1) !== '_') {
             // try to keep case correct for future PHP 6.0 case-sensitive class methods
-            // lcfirst() not available < PHP 5.2.0, so improvise
+            // lcfirst() not available < PHP 1.2.0, so improvise
             $property_name = strtolower(substr($name, 3, 1)) . substr($name, 4); 
             // convert camel case to underscored name
             $property_name = preg_replace_callback('/([A-Z])/', $camel_func, $property_name);

@@ -16,7 +16,7 @@ class MainContentWidget extends Widget
 	protected function renderContent()
 	{
         if (isset($this->model->pk)) {    //full record
-            $this->render('full', array('item'=>$this->model, 'category'=>$this->category));
+            $this->render('full', array('model'=>$this->model, 'category'=>$this->category));
         } else {                          //record-list
             if (!empty($this->scopes)) {
                 foreach ($this->scopes as $scope=>$params)

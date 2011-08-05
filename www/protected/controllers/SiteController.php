@@ -1,7 +1,7 @@
 <?php
 class SiteController extends RenderController
 {
-    public $layout = 'content';
+    public $layout = 'main';
     
     public function accessRules() {
         return array(

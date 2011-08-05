@@ -19,7 +19,7 @@ abstract class Widget extends CPortlet
 	{
         $this->model = Y::controller()->model;
 		parent::init();
-	} 
+	}
 	
 	public function adminForm($widgetModel)
 	{
@@ -80,7 +80,8 @@ abstract class Widget extends CPortlet
         $this->block = $widgetModel->block;
         $this->category = $widgetModel->block->category;
     }
-	public function behaviors()
+
+    public function behaviors()
  	{
         return array(
           	'JsonSettingsBehavior'=> array(

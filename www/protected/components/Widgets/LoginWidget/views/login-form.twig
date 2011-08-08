@@ -1,0 +1,46 @@
+<div>{{ Users.t("Login") }}</div>
+<div>{{ CHtml.link(Users.t("Register"),this.module.registrationUrl) }}</div>
+
+{% if(Y::hasFlash('loginMessage')) %}
+    <div class="success">
+        {% Y::flash('loginMessage') %}
+    </div>
+{% endif %}
+
+<div class="form">
+    {% set form = this.beginWidget('CActiveForm', {
+        'id':'login-form',
+        'enableAjaxValidation':true,
+        'enableClientValidation':false,
+        'focus':{model,'username'},
+        'action':this.module.loginUrl
+    }) %}
+	{{ CHtml.errorSummary(model) }}
+
+    <div class="row">
+        {{ form.label(model,'username') }}
+        {{ form>textField(model,'username') }}
+    </div>
+
+    <div class="row">
+        {{ form.label(model,'password') }}
+        {{ form.passwordField(model,'password') }}
+    </div>
+ 
+	<div class="row">
+		<p class="hint">
+		 {{ CHtml.link(Users.t("Lost Password?"),this.module.recoveryUrl) }}
+		</p>
+	</div>
+
+    <div class="row rememberMe">
+        {{ form.checkBox(model,'rememberMe') }}
+        {{ form.label(model,'rememberMe') }}
+    </div>
+ 
+    <div class="row submit">
+        {{ CHtml.submitButton('Войти') }}
+    </div>
+
+{{ this.endWidget() }}
+</div>

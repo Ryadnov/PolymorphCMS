@@ -399,7 +399,7 @@ class Y extends CComponent
     public static function controller($id = '') 
     {
     	if($id) { //ssory, it work only with controllers outside of a modules
-    		return new Controller($id);
+    		return Yii::app()->createController($id);
     	}
     	else
     		return Yii::app()->controller;

@@ -12,25 +12,18 @@ class LoginWidget extends Widget
 	
 	public function renderContent()
 	{
+        $route = isset($_GET['users']) ? urldecode($_GET['users']) : '';
         if (Y::isGuest()) {
-            $this->runController('login');
+            Yii::app()->runController('users/'.$route);
         } else {
             //cabinet
             $model = $this->module->user();
-//            $this->render('cabinet',array(
-//                'model'=>$model,
-//                'profile'=>$model->profile,
-//            ));
+            $this->render('user-info',array(
+                'model'=>$model,
+                'profile'=>$model->profile,
+            ));
         }
 	}
-
-    private function runController($id)
-    {
-        ob_start();
-        list($c, $a) = Yii::app()->createController($id, $this->module);
-        $c->run($a);
-        ob_end_flush();
-    }
 
     public function update()
     {

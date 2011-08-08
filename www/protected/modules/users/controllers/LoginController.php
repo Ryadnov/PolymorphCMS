@@ -16,7 +16,7 @@ class LoginController extends ModuleController
             else
                 $this->redirect($this->module->returnUrl);
         }
-			
+
 		$model = new UserLogin;
 		$this->performAjaxValidation($model);
     	// collect user input data
@@ -31,7 +31,7 @@ class LoginController extends ModuleController
 		}
 	
 		// display the login form
-		$this->render('/user/login', array('model'=>$model));
+		$this->renderPartial('/user/login', array('model'=>$model));
 	}
 	
 	private function lastViset() 

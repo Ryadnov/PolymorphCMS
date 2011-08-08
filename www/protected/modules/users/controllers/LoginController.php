@@ -1,6 +1,6 @@
 <?php
 
-class LoginController extends Controller
+class LoginController extends ModuleController
 {
 	public $defaultAction = 'login';
 	//public $layout='//layouts/admin';
@@ -31,7 +31,7 @@ class LoginController extends Controller
 		}
 	
 		// display the login form
-		$this->renderPartial('/user/login', array('model'=>$model));
+		$this->render('/user/login', array('model'=>$model));
 	}
 	
 	private function lastViset() 

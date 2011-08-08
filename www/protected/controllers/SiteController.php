@@ -68,9 +68,10 @@ class SiteController extends RenderController
         return $list;
 	}
 
+
     public $block;
     public $meta;
-    public $item;
+    public $model;
     public $breadcrumbs;
     public $category;
     
@@ -83,40 +84,57 @@ class SiteController extends RenderController
 		//Y::dump(Y::file('css')->contents);
 		Y::clientScript()->registerCoreScript('jquery')
 						->registerCssFile('/css/style.css');
-        
-        //if no module then it is category
-        $alias = 'index';
-        $i = 0;
-        while (isset($_GET['cat'.++$i]))
-            $alias = $_GET['cat'.$i];
 
-        $category = Category::model()->published()->findByAttributes(array('alias'=>$alias));
+        if (isset($_GET['cat1']) && ($module = Yii::app()->getModule($_GET['cat1'])) != null) {
+            $route = Yii::app()->request->pathInfo;
 
-        if ($category == NULL)
-            $this->redirect('/errors/not_found');
+            //cut module id from $route
+            if (($pos = strpos($route,'/')) !== false)
+                $route = substr($route, $pos, strlen($route));
+            else
+                $route = '';
 
-        $this->category = $category;
+            //run controller and action in module
+            list($c, $a) = Yii::app()->createController($route, $module);
+            $c->init();
+            $c->run($a);
 
-        $model = ModelFactory::getModel($category);
+        } else {
+            //if no module then it is category
+            $alias = 'index';
+            $i = 0;
+            while (isset($_GET['cat'.++$i]))
+                $alias = $_GET['cat'.$i];
 
-        if (isset($_GET['alias']) || isset($_GET['id'])) {
-            $value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['id'];
-            $attr = isset($_GET['alias']) ? 'alias' : $model->pkAttr;
+            $category = Category::model()->published()->findByAttributes(array('alias'=>$alias));
 
-            $model = $model->published()->findByAttributes(array($attr=>$value));
-
-            if ($model == NULL)
+            if ($category == NULL)
                 $this->redirect('/errors/not_found');
+
+            $this->category = $category;
+
+            $model = ModelFactory::getModel($category);
+
+            if (isset($_GET['alias']) || isset($_GET['id'])) {
+                $value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['id'];
+                $attr = isset($_GET['alias']) ? 'alias' : $model->pkAttr;
+
+                $model = $model->published()->findByAttributes(array($attr=>$value));
+
+                if ($model == NULL)
+                    $this->redirect('/errors/not_found');
+            }
+
+            $this->model = $model;
+
+            $this->block = new BlockViewer($category);
+            $this->meta = new MetaViewer($category);
+            $this->model = $model;
+            $this->breadcrumbs = new BreadCrumb;
+            $this->category = $category;
+
+            $this->render('index', array());
         }
-
-        //set variables for main layout
-        $this->block = new BlockViewer($category);
-        $this->meta = new MetaViewer($category);
-        $this->item = $model;
-        $this->breadcrumbs = new BreadCrumb;
-        $this->category = $category;
-
-        $this->render('index');
     }
     
 	/**
@@ -132,26 +150,6 @@ class SiteController extends RenderController
 				echo CHtml::tag('div',array(),CHtml::encode($error['message']));
 			}
 	    }
-	}
-
-	/**
-	 * Displays the contact page
-	 */
-	public function actionContact()
-	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$headers="From: {$model->email}\r\nReply-To: {$model->email}";
-				mail(Yii::app()->params['adminEmail'],$model->subject,$model->body,$headers);
-				Y::flash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
-			}
-		}
-		$this->render('contact',array('model'=>$model));
 	}
 
 	public function actionRss() {

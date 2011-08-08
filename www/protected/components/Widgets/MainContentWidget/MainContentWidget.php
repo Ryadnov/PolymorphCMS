@@ -2,16 +2,6 @@
 class MainContentWidget extends Widget
 {
     public $scopes = array();
-    
-    public static function getDefaultSettings()
-	{
-		return array();
-	}
-
-	public static function getDefaultTitle()
-	{
-		return 'Гланвый контент';
-	}
 
 	protected function renderContent()
 	{
@@ -26,12 +16,18 @@ class MainContentWidget extends Widget
             $criteria = $this->model->getDbCriteria();
             $this->getListView($criteria);
         }
+        $this->block->onBlockEnd = array($this, 'go');
+    }
+
+    public function go($event)
+    {
+        $event->content .= 4;
     }
 
     public function render($view, $data = array(), $return = false)
     {
-        if (isset($this->block) && isset($this->model)) {
-            return parent::render($this->block->pk.'/'.$this->widgetModel->pk.'/'.$view, $data, $return);
+        if (isset($this->blockModel) && isset($this->model)) {
+            return parent::render($this->blockModel->pk.'/'.$this->widgetModel->pk.'/'.$view, $data, $return);
         } else {
             return parent::render($view, $data, $return);
         }

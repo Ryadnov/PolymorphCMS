@@ -3,7 +3,7 @@ class BlockViewer extends CComponent
 {
 	private $templateAlias;
 	private $cat;
-	
+
 	public function __construct($category = null)
 	{
         $this->cat = $category;
@@ -28,30 +28,11 @@ class BlockViewer extends CComponent
         return $this->renderBlock($alias);
     }
 
-    private function renderBlock($alias)
+    public function renderBlock($alias)
     {
         if (($block = $this->cat->getBlock($alias)) === null)
-			return '{{ '.$alias.' }}';
+            return '{{ '.$alias.' }}';
 
-		$res = '';
-		foreach ($block->widgets as $widget) {
-            Yii::import('widgets.'.$widget->class.'.*');
-            
-            $res .= $this->renderWidget($widget, $block);
-		}
-
-        return $res;
+        return $block->renderBlock();
     }
-
-	private function renderWidget($widget, $block)
-	{
-        $settings = CMap::mergeArray($widget->settings, array(
-			'category' => $this->cat,
-            'block' => $block,
-            'widgetModel' => $widget
-		));
-        
-		return Y::controller()->widget($widget->class, $settings, true);
-	}
-
 }

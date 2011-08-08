@@ -2,7 +2,7 @@
 $admin = array(
 //	'admin/<m>/<c>/<a>' => '<m>/<c>/<a>',
 //	'admin/<m>/<c>' => '<m>/<c>/index',
-//	'admin' => 'cms/manage/index',
+	'admin' => 'admin/manage/index',
     'admin/<c>/<a>' => 'admin/<c>/<a>',
 );
 
@@ -31,7 +31,7 @@ $site = array(
 	''=>'site',
 );
 
-$user = addModule('users', array(
+$users = addModule('users', array(
 	//user module links
 	'login'=>'login',
 	'registration'=>'registration',
@@ -54,11 +54,9 @@ $user = addModule('users', array(
 
 return array(
 	'urlFormat'=>'path',
-	'rules'=>array_merge($user, $admin, $site),
+	'rules'=>array_merge($admin, $users, $site),
 	'showScriptName' => false, 
 );
-
-
 
 function addModule($moduleId, $array) 
 {

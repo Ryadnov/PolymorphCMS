@@ -56,6 +56,63 @@ class TemplateBlock extends ActiveRecord
     	return 'block_id';	
     }
 
+    public function renderBlock()
+    {
+        $content = '';
+        $this->event('onBlockStart');
+
+		foreach ($this->widgets as $widget) {
+            Yii::import('widgets.'.$widget->class.'.*');
+
+            $content .= $widgetContent = $this->renderWidget($widget);
+		}
+
+        $this->event('onBlockEnd', array('content'=>&$content));
+
+        return $content;
+    }
+
+    public function event($eventName, $params = array())
+    {
+        $this->$eventName(new RenderEvent($this, $params));
+    }
+
+    public function onBlockEnd($event)
+    {
+         $this->raiseEvent('onBlockEnd', $event);
+    }
+
+    public function onBlockStart($event)
+    {
+         $this->raiseEvent('onBlockEnd', $event);
+    }
+
+	private function renderWidget($widget)
+	{
+        $settings = CMap::mergeArray($widget->settings, array(
+			'category' => $this->category,
+            'blockModel' => $this,
+            'widgetModel' => $widget,
+            'block' => $this
+		));
+
+		return Y::controller()->widget($widget->class, $settings, true);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function getUpdateUrl()
     {
         return Admin::url('blocks/admin');

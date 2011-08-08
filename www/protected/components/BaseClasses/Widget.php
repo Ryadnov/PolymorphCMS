@@ -5,6 +5,7 @@ abstract class Widget extends CPortlet
 {
 	public $category;
     public $widgetModel;    //external param
+    public $blockModel;          //external param
     public $block;          //external param
     public $model;          //see Widgets.init()
     
@@ -17,10 +18,10 @@ abstract class Widget extends CPortlet
 	
 	public function init()
 	{
+        parent::init();
         $this->model = Y::controller()->model;
-		parent::init();
 	}
-	
+
 	public function adminForm($widgetModel)
 	{
         parent::render('_adminForm', array('model'=>$widgetModel), true).  //you can override render method as in MainContentWidget

@@ -22,7 +22,7 @@ class Y extends CComponent
         if ($alias) {
             return Category::model()->published()->findByAttributes(array('alias' => $alias));
         } else {
-            if (Y::controller()->category)
+            if (isset(Y::controller()->category) && Y::controller()->category)
                 return Y::controller()->category;
             else
                 return Y::module()->category;

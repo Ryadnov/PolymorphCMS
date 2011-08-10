@@ -11,7 +11,7 @@
 {{ form.errorSummary(model) }}
 
 {{ this.beginTab('Настройки') }}
-    {{ Admin.makeTextFields(form, model, ['title', 'alias', 'alias']) }}
+    {{ Admin.makeTextFields(form, model, ['title', 'alias']) }}
 	<div class="row">
 		<div class="left">{{ form.labelEx(model,'published') }}</div>
 		<div class="right">

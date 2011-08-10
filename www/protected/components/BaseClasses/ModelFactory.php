@@ -184,6 +184,15 @@ class ModelFactory
 		);	
 	}
 
+    public static function getTypes()
+    {
+        return array(
+            'page'=>'страница',
+            'records'=>'записи',
+            'products'=>'товары'
+        );
+    }
+
 	public static function t($type, $toEng = false)
 	{
 		$arr = self::labels();

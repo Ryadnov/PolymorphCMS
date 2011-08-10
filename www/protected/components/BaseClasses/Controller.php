@@ -5,6 +5,27 @@
  */
 class Controller extends CController
 {
+    public function render($view,$data=null,$return=false)
+    {
+        if($this->beforeRender($view))
+        {
+            $output=$this->renderPartial($view,$data,true);
+            if(($layoutFile=$this->getLayoutFile($this->layout))!==false) {
+                $data['content'] = $output;
+                $output=$this->renderFile($layoutFile,$data,true);
+            }
+            
+            $this->afterRender($view,$output);
+
+            $output=$this->processOutput($output);
+
+            if($return)
+                return $output;
+            else
+                echo $output;
+        }
+    }
+
 	public $title;
 	/**
 	 * @var string the default layout for the controller view. Defaults to '//layouts/column1',

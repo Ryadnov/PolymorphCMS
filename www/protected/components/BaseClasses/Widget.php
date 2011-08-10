@@ -22,7 +22,7 @@ abstract class Widget extends CPortlet
 	public function init()
 	{
         parent::init();
-        $this->model = Y::controller()->model;
+//        $this->model = Y::controller()->model;
 	}
 
 	public function adminForm($widgetModel)

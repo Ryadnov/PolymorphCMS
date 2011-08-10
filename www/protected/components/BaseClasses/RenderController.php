@@ -16,7 +16,7 @@ class RenderController extends Controller
         //ввести в контроллер параметр, по которому будет определяться делать render или renderPartial
         //например для popup
 
-        
+//        Y::dump($data['block']->left);
         parent::render($view, $data, $return);
     }
 

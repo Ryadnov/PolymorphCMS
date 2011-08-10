@@ -15,7 +15,10 @@ abstract class Widget extends CPortlet
 	public $htmlOptions=array('class'=>'portlet');
 	public $titleCssClass='portlet-title';
 	public $contentCssClass='portlet-content';
-	
+
+    public $ajaxGet;
+    public $ajaxPost;
+    
 	public function init()
 	{
         parent::init();

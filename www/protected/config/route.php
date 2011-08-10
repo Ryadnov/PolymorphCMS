@@ -4,6 +4,7 @@ $admin = array(
 //	'admin/<m>/<c>' => '<m>/<c>/index',
 	'admin' => 'admin/manage/index',
     'admin/<c>/<a>' => 'admin/<c>/<a>',
+    'admin/login' => 'users/login',
 );
 
 $rbam = array(
@@ -50,7 +51,7 @@ $users = addModule('users', array(
 ));
 
 //echo '<pre>';
-//print_r(array_merge($admin, $user, $site));
+//print_r(array_merge($admin, $users, $site));
 
 return array(
 	'urlFormat'=>'path',

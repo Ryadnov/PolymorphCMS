@@ -10,6 +10,9 @@
 
 class UsersModule extends CWebModule
 {
+    public $categoryAlias = 'users';
+    public $category = null;
+    
 	/**
 	 * @var int
 	 * @desc items on page
@@ -111,6 +114,8 @@ class UsersModule extends CWebModule
 			'users.models.*',
 			'users.components.*',
 		));
+
+        $this->category = Y::category($this->categoryAlias);
 				
 		$urls = array(
 			'registrationUrl'	=> $this->registrationUrl,
@@ -133,7 +138,8 @@ class UsersModule extends CWebModule
 	}
 	
 	//simple add lang in url
-	private function createUrls($base_urls) {
+	private function createUrls($base_urls)
+    {
 		
 		foreach ($base_urls as $var=>$url) {
 			$this->{$var} = Users::url($url);

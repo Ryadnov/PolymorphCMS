@@ -1,10 +1,11 @@
 <?php
-class SiteController extends RenderController {
+class SiteController extends RenderController
+{
     public $layout = 'main';
 
     public function accessRules()
     {
-        return array(// если используется проверка прав, не забывайте разрешить доступ к
+        return array( // если используется проверка прав, не забывайте разрешить доступ к
             // действию, отвечающему за генерацию изображения
             array('allow', 'actions' => array('captcha'), 'users' => array('*'),),);
     }
@@ -16,7 +17,7 @@ class SiteController extends RenderController {
     {
         $sitemapConfig = array(array('baseModel' => 'Post', 'route' => 'posts/view', 'params' => array('id' => 'post_id')), array('baseModel' => 'Blog', 'route' => 'blogs/view', 'params' => array('id' => 'blog_id')),);
 
-        return array(// captcha action renders the CAPTCHA image displayed on the contact page
+        return array( // captcha action renders the CAPTCHA image displayed on the contact page
             'captcha' => array('class' => 'CaptchaAction', 'backColor' => 0xFFFFFF, 'minLength' => 4, 'maxLength' => 6, 'transparent' => true, 'testLimit' => 3,), 'upload' => array('class' => 'ext.xupload.EXUploadAction'), 'sitemap' => array('class' => 'ext.sitemap.ESitemapAction', 'importListMethod' => 'getBaseSitePageList', 'classConfig' => $sitemapConfig), 'sitemapxml' => array('class' => 'ext.sitemap.ESitemapXMLAction', 'classConfig' => $sitemapConfig, //'bypassLogs'=>true, // if using yii debug toolbar enable this line
                                                                                                                                                                                                                                                                                                                                                                                                 'importListMethod' => 'getBaseSitePageList',));
     }
@@ -86,12 +87,6 @@ class SiteController extends RenderController {
             }
 
             $this->model = $model;
-
-            $this->block = new BlockViewer($category);
-            $this->meta = new MetaViewer($category);
-            $this->model = $model;
-            $this->breadcrumbs = new BreadCrumb;
-            $this->category = $category;
 
             $this->render('index', array());
         }

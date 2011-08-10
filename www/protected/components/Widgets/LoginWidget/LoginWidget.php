@@ -12,16 +12,38 @@ class LoginWidget extends Widget
 	
 	public function renderContent()
 	{
-        $route = isset($_GET['users']) ? urldecode($_GET['users']) : '';
         if (Y::isGuest()) {
-            Yii::app()->runController('users/'.$route);
-        } else {
-            //cabinet
+            $model = new UserLogin;
+//            $this->performAjaxValidation($model);
+            // collect user input data
+            if (isset($_POST['UserLogin'])){
+                $model->attributes = $_POST['UserLogin'];
+                // validate user input and redirect to previous page if valid
+                if ($model->validate()){
+                    Yii::app()->runController('users/login/lastVisit');
+                }
+            }
+        }
+
+        if (!Y::isGuest()) {
             $model = $this->module->user();
-            $this->render('user-info',array(
+            $this->render('user-info', array(
                 'model'=>$model,
                 'profile'=>$model->profile,
             ));
+        } else {
+            $this->render('login-form', array('model' => $model));
+        }
+
+        $route = isset($_GET['login']) ? urldecode($_GET['login']) : '';
+
+        if (Y::isGuest()) {
+            $this->render('login-form');
+
+
+        } else {
+            //cabinet
+            
         }
 	}
 

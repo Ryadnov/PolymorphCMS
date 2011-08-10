@@ -2,6 +2,7 @@
 class Product extends BaseDataType implements IECartPosition
 {
     public $portfolioWorksIds;
+    
     /**
     * Returns the static model of the specified AR class.
     * @return Lookup the static model class
@@ -16,12 +17,12 @@ class Product extends BaseDataType implements IECartPosition
     */
     public function tableName()
     {
-       return 'portfolio';
+       return 'products';
     }
 
     public static function getPkAttr()
     {
-       return 'portfolio_id';
+       return 'product_id';
     }
 
     public function getId()
@@ -41,9 +42,6 @@ class Product extends BaseDataType implements IECartPosition
            array('title', 'length', 'max'=>255),
            array('title, index_text, sidebar_text, text, portfolioWorksIds, portfolioWorks, img, icon, icon_big, alias, month, year, result_url, result_title, second_title', 'safe', 'on'=>array('search','create','update')),
        ));
-       return array(
-
-       );
     }
 
     public function relations()

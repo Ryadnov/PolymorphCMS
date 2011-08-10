@@ -1,10 +1,24 @@
 <?php
 class RenderController extends Controller
 {
-	public $model;
-	public $category;
-	
-	public $options;
+    public function render($view, $data = array(), $return = array())
+    {
+        $category = Y::category();
+        
+        $params = array(
+            'block' => new BlockViewer($category),
+            'meta' => new MetaViewer($category),
+            'category' => $category
+        );
+        $data = CMap::mergeArray($data, $params);
+
+        //хранить только алиасы. в базовых классах вычислять саму категорию
+        //ввести в контроллер параметр, по которому будет определяться делать render или renderPartial
+        //например для popup
+
+        
+        parent::render($view, $data, $return);
+    }
 
 	public function renderItem(&$item, &$cat, &$templateAlias, $return = false, $noCache = false)
 	{

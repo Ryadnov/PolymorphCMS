@@ -15,7 +15,7 @@ return array(
 
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
  
-    'name'=>'p.ru',	// access it using Yii::app()->name
+    'name'=>'polymorphCMS.ru',	// access it using Yii::app()->name
     'defaultController'=>'site',   // default controller that will be executed when running the application
     'language'=>'ru',   	// user language (for Locale)
 	'sourceLanguage'=>'en',	//language for messages and views
@@ -25,7 +25,6 @@ return array(
 	// autoloading model and component classes
 	'import'=>array(
         'events.*',
-
 
 		'models.*',
 		'models.dataTypes.*',
@@ -48,7 +47,6 @@ return array(
         'modules.records.models.*',
         'modules.cms.components.*',
         'modules.cms.models.*',
-
 
         //ext
         'ext.yiiext.shoppingCart.*'

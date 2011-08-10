@@ -16,7 +16,19 @@ class Y extends CComponent
 	
 	private static $startSkipCount = 0;
 	private static $skipCount = 0;
-	
+
+    public static function category($alias = null)
+    {
+        if ($alias) {
+            return Category::model()->published()->findByAttributes(array('alias' => $alias));
+        } else {
+            if (Y::controller()->category)
+                return Y::controller()->category;
+            else
+                return Y::module()->category;
+        }
+    }
+    
 	/**
      * Возвращает относительный URL приложения
      * @return string
@@ -359,7 +371,7 @@ class Y extends CComponent
     public static function absUrl($route, $params = array()) 
     {
     	$params = array_merge($params);
-    	return Yii::app()->createAbsoluteUrl($url, $params);
+    	return Yii::app()->createAbsoluteUrl($route, $params);
     }
     
     /**
@@ -497,16 +509,6 @@ class Y extends CComponent
 		return Yii::app()->file->set($path, false);
 	}
 
-	public static function renderPartial($view,$data = null,$return = false)
-	{
-		return Y::controller()->renderPartial($view, $data, $return);
-	}
-
-	public static function category()
-	{
-		return Y::controller()->category;	
-	}
-	
 	public static function obStart()  
 	{
 		ob_start();

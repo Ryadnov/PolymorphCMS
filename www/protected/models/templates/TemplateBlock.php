@@ -94,7 +94,7 @@ class TemplateBlock extends ActiveRecord
             'blockModel' => $this,
             'widgetModel' => $widget,
             'block' => $this,
-            'model' => Y::controller()->model
+//            'model' => Y::controller()->model
 		));
 
 		return Y::controller()->widget($widget->class, $settings, true);

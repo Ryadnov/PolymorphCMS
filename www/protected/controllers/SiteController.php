@@ -41,12 +41,13 @@ class SiteController extends RenderController
         //Y::dump(Y::file('css')->contents);
         Y::clientScript()->registerCoreScript('jquery')->registerCssFile('/css/style.css');
 
-        //if no module then it is category
         $alias = 'index';
         $i = 0;
+        //check last category segment
         while (isset($_GET['cat' . ++$i]))
             $alias = $_GET['cat' . $i];
 
+        //find category by alias
         $category = Category::model()->published()->findByAttributes(array('alias' => $alias));
 
         if ($category == NULL)
@@ -54,8 +55,10 @@ class SiteController extends RenderController
 
         $this->category = $category;
 
+        //check model by category type
         $model = ModelFactory::getModel($category);
 
+        //if has alias or id of model, then find it
         if (isset($_GET['alias']) || isset($_GET['id'])){
             $value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['id'];
             $attr = isset($_GET['alias']) ? 'alias' : $model->pkAttr;
@@ -68,7 +71,8 @@ class SiteController extends RenderController
 
         $this->model = $model;
 
-        $this->render('index', array());
+        //see parent render function
+        $this->render('index');
     }
 
     /**

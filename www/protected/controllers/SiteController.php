@@ -41,16 +41,13 @@ class SiteController extends RenderController
         //Y::dump(Y::file('css')->contents);
         Y::clientScript()->registerCoreScript('jquery')->registerCssFile('/css/style.css');
 
-        $alias = 'index';
-        $prev_alias = false;    //if $alias is no category alias, may be it's model alias and $prev_alias it's category alias
         $i = 0;
-
         //check last category segment
-        while (isset($_GET['cat' . ++$i])) {
-            if ($i > 1)
-                $prev_alias = $alias;
-            $alias = $_GET['cat' . $i];
-        }
+        while (isset($_GET['cat' . ++$i]));
+
+        $alias = isset($_GET['cat' . $i]) ? $_GET['cat' . $i] : 'index';
+        //if $alias is no category alias, may be it's model alias and $prev_alias it's category alias
+        $prev_alias = isset($_GET['cat' . $i - 1]) ? $_GET['cat' . $i - 1] : false;
 
         //find category by alias
         $category = Category::model()->published()->findByAttributes(array('alias' => $alias));

@@ -76,7 +76,11 @@ class Record extends BaseDataType
 
 	public function scopes()
     {
-    	return CMap::mergeArray(parent::scopes(), array());
+        return CMap::mergeArray(parent::scopes(), array(
+            'published' => array(
+                'condition' => 'published='.self::PUBLISHED
+            )
+        ));
     }
 
 	/**

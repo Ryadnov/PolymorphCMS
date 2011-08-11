@@ -62,12 +62,13 @@
             buttons: {
                 "Да" : function() {
                     var $t = $('#blocks .make-own-btn'),
-                        url = $t.attr('href');
-var res = '';
-for(var a in $(this))
-    res += a+' = '+$(this)[a]+"</br>\n";
-alert($(this).attr('id'));
-return false;
+                        url = $t.attr('href'),
+                        res = '';
+                        
+                    for(var a in $(this))
+                        res += a+' = '+$(this)[a]+"</br>\n";
+                    alert($(this).attr('id'));
+                    return false;
                     //make own and reload tab
                     $.get(url, {}, function(data) {
                         if (data == 'ok')

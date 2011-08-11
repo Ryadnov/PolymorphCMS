@@ -225,31 +225,44 @@ class AdminBaseController extends Controller
     		$this->render('admin',$opts);
 	}
 	
-	public $tabs = array();
-	public $curTabName;
+	public static $tabs = array();
+	public static $curTabName;
 	
 	public function beginTab($tabName)
 	{
 		ob_start();
 		ob_implicit_flush(false);	
-		$this->curTabName = $tabName;
+		self::$curTabName = $tabName;
 	}
 
 	public function endTab() 
 	{
-		$this->tabs[$this->curTabName] = array('content' => ob_get_contents());
+		self::$tabs[self::$curTabName] = array('content' => ob_get_contents());
 		ob_end_clean();
 	}
 
-	public function getTabs($id = null)
+	public function getTabs($id = null, $return = false)
 	{
-        $this->widget('JuiTabs', array(
-			'tabs'=>$this->tabs,
-			'options'=>array(
-		    	'collapsible'=>false,
-			),
-			'htmlOptions'=>array('id'=>$id)
-		));
+        Y::controller()->widget(
+            'FormTabs', array(
+                'tabs'=>self::$tabs,
+                'options'=>array(
+                    'collapsible'=>false,
+                ),
+                'id' => $id,
+                'htmlOptions' => array('class'=>'widget_settings_tabs', 'style'=>'height:495px'),
+                'buttons' => array (
+                    $this->widget('JuiButton', array  (
+                        'id' =>'widget-form-save-button',
+                        'htmlOptions' => array ('class'=>'save-button'),
+                        'name'=>'submit',
+                        'caption'=>'Сохранить'
+                    ), true)
+                ),
+                'extHeaderHtml' => '<div class="submit-form-result"></div>'
+            ),
+            $return
+        );
 	}
 
 	public function actionMovePosition($pk, $to)

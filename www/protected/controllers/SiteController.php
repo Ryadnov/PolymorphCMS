@@ -1,5 +1,5 @@
 <?php
-class SiteController extends RenderController
+class SiteController extends FrontBaseController
 {
     public $layout = 'main';
 

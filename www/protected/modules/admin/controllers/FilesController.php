@@ -28,12 +28,17 @@ class FilesController extends AdminBaseController
 			}	
 		}
 		
-		echo CJSON::encode(array(
+		$output = $this->renderPartial('fileDetails', array(
 			'fileName' => $fileName,
 			'content' => $content,
 			'type' => $info['ext'] == 'css' ? 'css' : 'javascript',
 			'filePath' => './'.$dir.'/'.$fileName
-		));	
+		), true);
+        Y::clientScript()->render($output);
+        $this->beginTab('Содержимое файла');
+        echo $output;
+        $this->endTab();
+        $this->getTabs('cssFileForm');
 	}
 
 	public function actionCreate($dir, $fileName)

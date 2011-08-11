@@ -1,6 +1,12 @@
 <?php
-class RenderController extends Controller
+class FrontBaseController extends Controller
 {
+    public function init()
+    {
+        Y::clientScript()->registerCoreScript('jquery')->registerCssFile('/css/style.css');
+        parent::init();
+    }
+    
     public function render($view, $data = array(), $return = array())
     {
         $category = Y::category();

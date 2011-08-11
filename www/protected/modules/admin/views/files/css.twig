@@ -1,3 +1,11 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#cssFiles a').click(function() {
+        $('#widget-details').load($(this).attr('href'));
+        return false;
+    });
+});
+</script>
 <div id="css_tree">
 	<div class="cssTree" style="float:left; width:50%">
 		{{ this.widget('CTreeView', {'collapsed':true, 'data':cssFiles, 'id':'cssFiles'}, true) }}

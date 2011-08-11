@@ -7,8 +7,6 @@ class Controller extends CController
 {
     public function init()
     {
-        Y::clientScript()->registerCoreScript('jquery')->registerCssFile('/css/style.css');
-
         $this->baseUrl = Y::config('baseUrl');
         Yii::app()->language = isset($_GET['lang']) ? $_GET['lang'] : "ru";
 

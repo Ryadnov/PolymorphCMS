@@ -1,3 +1,0 @@
-<h1>Записи категории "{{ cat.title }}"</h1>
-{{ CHtml.link('Создать новую запись', Admin.url(model.adminControllerName.'/create', {'catId':cat.pk})) }}
-{{ this.renderPartial('admingrid',{'model':model,'cat':cat}) }}

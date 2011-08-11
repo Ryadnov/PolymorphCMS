@@ -1,7 +1,7 @@
 ﻿<div class="form">
 {% set form = Admin.beginForm(model, {'id':'page-form'}) %}
 	{{ Admin.submit(model) }}
-	{{ Admin.makeTinyTabs(form, model, ['text', 'sidebar_text']) }}
+	{{ Admin.makeTinyTabs(form, model, ['text', 'sidebar']) }}
 	{{ this.getTabs() }}
 {% set widget = this.endWidget() %}
 </div><!-- form -->

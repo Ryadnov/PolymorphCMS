@@ -3,6 +3,7 @@ $admin = array(
 //	'admin/<m>/<c>/<a>' => '<m>/<c>/<a>',
 //	'admin/<m>/<c>' => '<m>/<c>/index',
 	'admin' => 'admin/manage/index',
+    'admin/<m>/<c>/<a>' => 'admin/<m>/<c>/<a>',
     'admin/<c>/<a>' => 'admin/<c>/<a>',
     'admin/login' => 'users/login',
 );

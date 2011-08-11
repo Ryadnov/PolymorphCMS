@@ -1,7 +1,7 @@
 <?php
 
 // uncomment the following to define a path alias
-Yii::setPathOfAlias('modules',		'protected/modules');
+//Yii::setPathOfAlias('modules',		'protected/modules');
 Yii::setPathOfAlias('components',	'protected/components');
 Yii::setPathOfAlias('models',		'protected/models');
 Yii::setPathOfAlias('widgets',		'protected/components/Widgets');
@@ -39,14 +39,14 @@ return array(
 		'components.Other.*',
 
         //models and components
-		'modules.users.components.*',
-		'modules.users.models.*',
-		'modules.admin.components.*',
-        'modules.admin.models.*',
-        'modules.records.components.*',
-        'modules.records.models.*',
-        'modules.cms.components.*',
-        'modules.cms.models.*',
+//		'modules.users.components.*',
+//		'modules.users.models.*',
+//		'modules.admin.components.*',
+//        'modules.admin.models.*',
+//        'modules.admin.modules.records.components.*',
+//        'modules.admin.modules.records.models.*',
+//        'modules.cms.components.*',
+//        'modules.cms.models.*',
 
         //ext
         'ext.yiiext.shoppingCart.*'
@@ -71,7 +71,9 @@ return array(
 		),
         'admin',
 		'cms',
-        'records'
+        'records'=>array(
+		    'class'=>'application.modules.users.modules.records.RecordsModule'
+		),
     ),
 
 	// application components

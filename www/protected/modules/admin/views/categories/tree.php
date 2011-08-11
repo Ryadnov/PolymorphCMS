@@ -31,7 +31,7 @@
 	        ),
 	        array(
 	            'class'=>'CButtonColumn',
-	        	'template'=>'{templates-admin}{view}{update}{remove}',
+	        	'template'=>'{blocks}{view}{update}{remove}',
 	        	'htmlOptions' => array('style'=>'width:90px'),
 	            'buttons' => array(
 	        		/*'published' => array(
@@ -39,9 +39,9 @@
 						'url'   => 'Admin::url("templates/admin", array("catId"=>$data->pk))',
 	        			'imageUrl'   => '/images/eyes.png'
 					),*/
-	            	'templates-admin' => array(
-	        			'label' => 'Редактирование Шаблонов',
-						'url'   => 'Admin::url("templates/admin", array("catId"=>$data->pk))',
+	            	'blocks' => array(
+	        			'label' => 'Редактирование Визуальных Блоков',
+						'url'   => 'Admin::url("categories/viewSettings", array("pk"=>$data->pk))',
 	        			'imageUrl'   => '/images/template-edit.png'
 					),
 	            	'view' => array(

@@ -42,18 +42,27 @@ class SiteController extends RenderController
         Y::clientScript()->registerCoreScript('jquery')->registerCssFile('/css/style.css');
 
         $alias = 'index';
+        $prev_alias = false;    //if $alias is no category alias, may be it's model alias and $prev_alias it's category alias
         $i = 0;
+
         //check last category segment
-        while (isset($_GET['cat' . ++$i]))
+        while (isset($_GET['cat' . ++$i])) {
+            if ($i > 1)
+                $prev_alias = $alias;
             $alias = $_GET['cat' . $i];
+        }
 
         //find category by alias
         $category = Category::model()->published()->findByAttributes(array('alias' => $alias));
 
-        if ($category == NULL)
-            $this->redirect('/errors/not_found');
-
-        $this->category = $category;
+        if ($category == NULL) {
+            if ($prev_alias == false) {
+                $this->redirect('/errors/not_found');
+            } else {
+                $category = Category::model()->published()->findByAttributes(array('alias' => $prev_alias));
+                $_GET['alias'] = $alias;
+            }
+        }
 
         //check model by category type
         $model = ModelFactory::getModel($category);
@@ -69,6 +78,7 @@ class SiteController extends RenderController
                 $this->redirect('/errors/not_found');
         }
 
+        $this->category = $category;
         $this->model = $model;
 
         //see parent render function

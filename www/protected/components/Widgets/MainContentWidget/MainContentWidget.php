@@ -5,6 +5,7 @@ class MainContentWidget extends Widget
 
 	protected function renderContent()
 	{
+        
         if (isset($this->model->pk)) {    //full record
             $this->render('full', array('model'=>$this->model, 'category'=>$this->category));
         } else {                          //record-list

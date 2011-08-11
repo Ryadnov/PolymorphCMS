@@ -160,7 +160,7 @@ class ModelFactory
 
 	public static function getAfterAjaxUpdateFunction($type)
 	{
-		switch ($type) {
+        switch ($type) {
 			case 'page': 		return "function() {}";
 			case 'records': 	return "function() {}";
 			default: 			self::exception($cat);

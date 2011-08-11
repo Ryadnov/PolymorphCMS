@@ -12,7 +12,7 @@ class MainContentWidget extends Widget
                 foreach ($this->scopes as $scope=>$params)
                     $this->model->$scope($params);
             }
-            
+
             $criteria = $this->model->getDbCriteria();
             $this->getListView($criteria);
         }
@@ -21,7 +21,7 @@ class MainContentWidget extends Widget
     public function render($view, $data = array(), $return = false)
     {
         if (isset($this->blockModel) && isset($this->model)) {
-            return parent::render($this->blockModel->pk.'/'.$this->widgetModel->pk.'/'.$view, $data, $return);
+            return parent::render($this->widgetModel->pk.'/'.$view, $data, $return);
         } else {
             return parent::render($view, $data, $return);
         }
@@ -33,7 +33,7 @@ class MainContentWidget extends Widget
             'criteria' => $criteria,
             //'pagination' => $this->settings['pagination'],
         ));
-        
+
         //default params
         $params = array(
             'dataProvider'=>$dp,

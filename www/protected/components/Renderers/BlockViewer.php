@@ -38,6 +38,8 @@ class BlockViewer
         if (($block = $this->cat->getBlock($alias)) === null)
             return '{{ ' . $alias . ' }}';
 
-        return $block->renderBlock();
+        return $block->renderBlock($this->cat);
     }
+
+
 }

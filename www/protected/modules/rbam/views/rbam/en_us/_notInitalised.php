@@ -13,5 +13,5 @@
 ?>
 <h2>RBAM Not Initialized</h2>
 <p>The Role Base Access Manager module has not been initialized</p>
-<p>Please edit the RBAM module configuration to specify the source of intitialization data, then go to <?php echo Yii::app()->getRequest()->hostInfo.'/index.twig?r=rbam'; ?></p>
+<p>Please edit the RBAM module configuration to specify the source of intitialization data, then go to <?php echo Yii::app()->getRequest()->hostInfo.'/index.php?r=rbam'; ?></p>
 <p>If you are not sure what this message means, please contact your system administrator</p>

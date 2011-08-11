@@ -31,7 +31,7 @@ class Twig_Tests_IntegrationTest extends PHPUnit_Framework_TestCase
             $templates = array();
             preg_match_all('/--TEMPLATE(?:\((.*?)\))?--(.*?)(?=\-\-TEMPLATE|$)/s', $match[2], $matches, PREG_SET_ORDER);
             foreach ($matches as $match) {
-                $templates[($match[1] ? $match[1] : 'index.twig')] = $match[2];
+                $templates[($match[1] ? $match[1] : 'index.php')] = $match[2];
             }
 
             $tests[] = array(str_replace($fixturesDir.'/', '', $file), $test, $message, $templates);
@@ -51,7 +51,7 @@ class Twig_Tests_IntegrationTest extends PHPUnit_Framework_TestCase
         $twig->addExtension(new TestExtension());
 
         try {
-            $template = $twig->loadTemplate('index.twig');
+            $template = $twig->loadTemplate('index.php');
         } catch (Twig_Error_Syntax $e) {
             $e->setTemplateFile($file);
 

@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: index.twig 17 2010-12-21 19:09:15Z Chris $*/
+/* SVN FILE: $Id: index.php 17 2010-12-21 19:09:15Z Chris $*/
 /**
 * Auth Items overview view.
 *

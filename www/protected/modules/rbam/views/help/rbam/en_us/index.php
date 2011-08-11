@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: index.twig 9 2010-12-17 13:21:39Z Chris $*/
+/* SVN FILE: $Id: index.php 9 2010-12-17 13:21:39Z Chris $*/
 /**
 * RBAM home page help partial view.
 * en_us version

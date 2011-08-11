@@ -57,15 +57,16 @@ class SiteController extends RenderController
 
         if ($category == NULL) {
             //find category by $prev_alias
-            if ($prev_alias == false) {
+            if ($prev_alias == false)
                 $this->redirect('/errors/not_found');
-            }
+            
             $category = Category::model()->published()->findByAttributes(array('alias' => $prev_alias));
+
             if ($category == NULL)
                 $this->redirect('/errors/not_found');
+
             $_GET['alias'] = $alias;
         }
-
 
         //check model by category type
         $model = ModelFactory::getModel($category);

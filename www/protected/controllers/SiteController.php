@@ -43,17 +43,17 @@ class SiteController extends RenderController
 
         $i = 0;
         //check last category segment
-        while (isset($_GET['cat' . ++$i]));
+        while (isset($_GET['cat' . ++$i])) {}
 
         $alias = isset($_GET['cat' . $i]) ? $_GET['cat' . $i] : 'index';
-        //if $alias is no category alias, may be it's model alias and $prev_alias it's category alias
-        $prev_alias = isset($_GET['cat' . $i - 1]) ? $_GET['cat' . $i - 1] : false;
-
+        
         //find category by alias
         $category = Category::model()->published()->findByAttributes(array('alias' => $alias));
 
         if ($category == NULL) {
-            //find category by $prev_alias
+            //if $alias is no category alias, may be it's model alias and $prev_alias it's category alias
+            $prev_alias = isset($_GET['cat' . $i - 1]) ? $_GET['cat' . $i - 1] : false;
+
             if ($prev_alias == false)
                 $this->redirect('/errors/not_found');
             

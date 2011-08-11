@@ -1,5 +1,5 @@
 <?php
-class BlockViewer extends CComponent
+class BlockViewer
 {
     private $templateAlias;
     private $cat;

@@ -16,12 +16,6 @@ class MainContentWidget extends Widget
             $criteria = $this->model->getDbCriteria();
             $this->getListView($criteria);
         }
-        $this->block->onBlockEnd = array($this, 'go');
-    }
-
-    public function go($event)
-    {
-        $event->content .= 4;
     }
 
     public function render($view, $data = array(), $return = false)

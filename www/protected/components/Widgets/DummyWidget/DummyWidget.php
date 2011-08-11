@@ -8,10 +8,15 @@ class DummyWidget extends Widget
 		return array();
 	}
 	
-	public static function getDefaultTitle()
+	public function update()
 	{
 		return 'Простой текст';
 	}
+
+    public function remove()
+    {
+        
+    }
 	
 	public function renderContent()
 	{

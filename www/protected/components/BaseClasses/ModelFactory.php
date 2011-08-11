@@ -1,12 +1,12 @@
 <?php
 class ModelFactory
 {
-	
+
 	public static $allTypes = array(
 		'page',
 		'records'
 	);
-	
+
 	private static function getName($strOrObj)
 	{
 		if (is_string($strOrObj))
@@ -14,9 +14,9 @@ class ModelFactory
 		elseif (is_integer($strOrObj))
 			return self::$allTypes[$strOrObj];
 		else
-			return get_class($strOrObj);	
+			return get_class($strOrObj);
 	}
-	
+
 	public static function getModel($catOrType)
 	{
         $type = is_string($catOrType) ? $catOrType : $catOrType->type;
@@ -24,9 +24,9 @@ class ModelFactory
 			case 'page': 		return is_string($catOrType) ? Page::model() : $catOrType->page;
 			case 'records': 	return Record::model();
 			default: 			self::exception($typeOrObj);
-		}	
+		}
 	}
-	
+
 	public static function getType($typeOrObj)
 	{
 		$name = self::getName($typeOrObj);
@@ -36,30 +36,30 @@ class ModelFactory
 			default: 			self::exception($typeOrObj);
 		}
 	}
-	
+
 	public static function getTypeId($typeOrObj)
 	{
 		$type = self::getName($typeOrObj);
 		$typesIds = array_flip(self::allTypes());
 		return $typesIds[$type];
 	}
-	
+
 	public static function isAllowCopy($type)
 	{
 		switch ($type) {
 			case 'page': 		return false;
             case 'records':     return true;
-			
+
 			default: 			self::exception($cat);
 		}
-	}	
-	
+	}
+
 	public static function adminViewCategoryLink($cat)
 	{
-		return CHtml::link($cat->title, self::adminViewCategory($cat));	
+		return CHtml::link($cat->title, self::adminViewCategory($cat));
 	}
-	
-	public static function adminViewCategory($cat) 
+
+	public static function adminViewCategory($cat)
 	{
 		switch ($cat->type) {
 			case 'page':
@@ -71,7 +71,7 @@ class ModelFactory
 					if(!$page->save())
 						Y::flash('createPageError', 'Не получилось создать страницу. Повторите действие еще раз.');
 				}
-				
+
 				return Admin::url('pages/update', array('pk'=>$page->pk));
 			case 'records':
 				return Admin::url('records/admin', array('catId'=>$cat->pk));
@@ -84,7 +84,7 @@ class ModelFactory
 	{
 		return 'page|records';
 	}
-	
+
 	public static function cutRelations($fromCat, $toCat)
 	{
 		switch ($toCat->type) {
@@ -98,7 +98,7 @@ class ModelFactory
 				self::exception($cat);
 		}
 	}
-	
+
 	public static function copyRelations($fromCat, $toCat)
 	{
 		switch ($toCat->type) {
@@ -112,7 +112,7 @@ class ModelFactory
 				self::exception($cat);
 		}
 	}
-	
+
 	private static function destroyAllId($models)
 	{
 		$res = array();
@@ -123,7 +123,7 @@ class ModelFactory
 		}
 		return $res;
 	}
-	
+
 	public static function deleteRelations($cat)
 	{
 		switch ($cat->type) {
@@ -138,17 +138,17 @@ class ModelFactory
 				self::exception($cat);
 		}
 	}
-	
+
 	public static function getCategoryRelations()
 	{
-		return array(	
+		return array(
 			'records' => array(CActiveRecord::HAS_MANY, 'Record', 'category_id',
 	        	'order'=>'records.sort DESC'
 			),
 			'page' => array(CActiveRecord::HAS_ONE, 'Page', 'category_id')
-		);	
+		);
 	}
-	
+
 	public static function getCriteriaWith($type)
 	{
 		switch ($type) {
@@ -164,9 +164,9 @@ class ModelFactory
 			case 'page': 		return "function() {}";
 			case 'records': 	return "function() {}";
 			default: 			self::exception($cat);
-		}	
+		}
 	}
-	
+
 	public static function getBeforeAjaxUpdateFunction($type)
 	{
 		switch ($type) {
@@ -175,13 +175,13 @@ class ModelFactory
 			default: 			self::exception($cat);
 		}
 	}
-	
+
 	public static function labels()
 	{
 		return array(
 			'page'=>'страница',
 			'records'=>'записи'
-		);	
+		);
 	}
 
     public static function getTypes()
@@ -197,13 +197,13 @@ class ModelFactory
 	{
 		$arr = self::labels();
 		if ($toEng)
-			$arr = array_flip($arr); 
+			$arr = array_flip($arr);
 		return $arr[$type];
 	}
-	
+
 	public static function exception(&$cat)
 	{
-		$msg = is_object($cat) ? $cat->type : $cat; 
+		$msg = is_object($cat) ? $cat->type : $cat;
 		throw new CException("Неизвестный тип категории: $msg");
 	}
 
@@ -226,7 +226,7 @@ class ModelFactory
 			$res[] = "\/?".$en;
 			$res[] = "\/?".$ru;
 		}
-		
+
 		return $open."(".implode('|', $res).")".$params.$close;
 	}
 }

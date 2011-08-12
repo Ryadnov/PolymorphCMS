@@ -1,5 +1,5 @@
 <?php
-class CopyBehavior extends CActiveRecordBehavior
+class CopyBehavior extends CBehavior
 {
     public function copy()
     {

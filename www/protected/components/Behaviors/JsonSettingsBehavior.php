@@ -7,7 +7,7 @@
  * @version 0.2
  */
 
-class JsonSettingsBehavior extends CActiveRecordBehavior
+class JsonSettingsBehavior extends CBehavior
 {
 	private $_arr_settings   = null;
 	

@@ -1,5 +1,5 @@
 <?php
-class ListBehavior extends CActiveRecordBehavior
+class ListBehavior extends CBehavior
 {
 	public function all($category) 
 	{

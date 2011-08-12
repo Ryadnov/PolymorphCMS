@@ -15,9 +15,9 @@ $this->widget('ext.QTreeGridView.CQGridView', array(
         ),
         array(
 			'class'=>"DateColumn",
-			'name'=>'date',
+			'name'=>'created',
         	'uiDateFormat' => 'd.m.yy',
-			'value'=>'date("d.m.Y", strtotime($data->date))',
+			'value'=>'date("d.m.Y", strtotime($data->created))',
 			'model'=>$model
 		),
 		array(

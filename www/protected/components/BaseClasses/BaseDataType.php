@@ -125,7 +125,7 @@ abstract class BaseDataType extends ActiveRecord implements IDataType
 		$tree = $cat->descendants()->findAll();
 		$tree[] = $cat;
 		
-		$data = CHtml::listData($tree, $cat->idAttr, $cat->idAttr);
+		$data = CHtml::listData($tree, $cat->pkAttr, $cat->pkAttr);
 		$data = "(".implode(',', $data).")";
 		
 		$criteria->condition = 't.category_id IN '.$data;

@@ -41,6 +41,7 @@ class Record extends BaseDataType
             'subdata' => array(self::HAS_MANY, 'Subdata', Record::getPkAttr()),
 
             'gallery' => array(self::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()),
+            'category'=> array(self::BELONGS_TO, 'Category', 'category_id')
 		));
 	}
 
@@ -135,7 +136,7 @@ class Record extends BaseDataType
 	{
 		$this->portfolioWorksIds = array();
 		foreach ($this->portfolioWorks as $item) {
-			$this->portfolioWorksIds[] = $item->{PortfolioWork::getIdAttr()};
+			$this->portfolioWorksIds[] = $item->{PortfolioWork::getPkAttr()};
 		}
 		
 		parent::afterFind();

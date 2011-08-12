@@ -11,7 +11,7 @@ class DateColumn extends CDataColumn
 		$this->uiDateFormat = $this->uiDateFormat ? $this->uiDateFormat : "yy-mm-dd";
 		$this->attribute = $this->attribute ? $this->attribute : $this->name;
 
-		$this->filter = Y::controller('site')->widget('ext.jui.FJuiDatePicker', 
+		$this->filter = Y::controller()->widget('ext.jui.FJuiDatePicker',
 			array(
 				'model'=>$this->model, 
 				'attribute'=>$this->attribute,

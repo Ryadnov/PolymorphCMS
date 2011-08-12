@@ -4,27 +4,53 @@
     for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
     return obj;
   }
-  var phpKeywords =
-    keywords("abstract and array as break case catch cfunction class clone const continue declare " +
-             "default do else elseif enddeclare endfor endforeach endif endswitch endwhile extends " +
-             "final for foreach function global goto if implements interface instanceof namespace " +
-             "new or private protected public static switch throw try use var while xor");
+  function heredoc(delim) {
+    return function(stream, state) {
+      if (stream.match(delim)) state.tokenize = null;
+      else stream.skipToEnd();
+      return "string";
+    }
+  }
+  var phpConfig = {
+    name: "clike",
+    keywords: keywords("abstract and array as break case catch cfunction class clone const continue declare " +
+                       "default do else elseif enddeclare endfor endforeach endif endswitch endwhile extends " +
+                       "final for foreach function global goto if implements interface instanceof namespace " +
+                       "new or private protected public static switch throw try use var while xor return"),
+    blockKeywords: keywords("catch do else elseif for foreach if switch try while"),
+    atoms: keywords("true false null"),
+    multiLineStrings: true,
+    hooks: {
+      "$": function(stream, state) {
+        stream.eatWhile(/[\w\$_]/);
+        return "variable-2";
+      },
+      "<": function(stream, state) {
+        if (stream.match(/<</)) {
+          stream.eatWhile(/[\w\.]/);
+          state.tokenize = heredoc(stream.current().slice(3));
+          return state.tokenize(stream, state);
+        }
+        return false;
+      }
+    }
+  };
 
   CodeMirror.defineMode("php", function(config, parserConfig) {
     var htmlMode = CodeMirror.getMode(config, "text/html");
     var jsMode = CodeMirror.getMode(config, "text/javascript");
     var cssMode = CodeMirror.getMode(config, "text/css");
-    var phpMode = CodeMirror.getMode(config, {name: "clike", keywords: phpKeywords, multiLineStrings: true, $vars: true});
+    var phpMode = CodeMirror.getMode(config, phpConfig);
 
     function dispatch(stream, state) { // TODO open PHP inside text/css
       if (state.curMode == htmlMode) {
         var style = htmlMode.token(stream, state.curState);
-        if (style == "xml-processing" && /^<\?/.test(stream.current())) {
+        if (style == "meta" && /^<\?/.test(stream.current())) {
           state.curMode = phpMode;
           state.curState = state.php;
           state.curClose = /^\?>/;
         }
-        else if (style == "xml-tag" && stream.current() == ">" && state.curState.context) {
+        else if (style == "tag" && stream.current() == ">" && state.curState.context) {
           if (/^script$/i.test(state.curState.context.tagName)) {
             state.curMode = jsMode;
             state.curState = jsMode.startState(htmlMode.indent(state.curState, ""));
@@ -52,9 +78,9 @@
         var html = htmlMode.startState();
         return {html: html,
                 php: phpMode.startState(),
-                curMode: htmlMode,
-                curState: html,
-                curClose: null}
+                curMode:	parserConfig.startOpen ? phpMode : htmlMode,
+                curState:	parserConfig.startOpen ? phpMode.startState() : html,
+                curClose:	parserConfig.startOpen ? /^\?>/ : null}
       },
 
       copyState: function(state) {
@@ -78,6 +104,7 @@
       electricChars: "/{}:"
     }
   });
+  CodeMirror.defineMIME("application/x-httpd-php", "php");
+  CodeMirror.defineMIME("application/x-httpd-php-open", {name: "php", startOpen: true});
+  CodeMirror.defineMIME("text/x-php", phpConfig);
 })();
-
-CodeMirror.defineMIME("application/x-httpd-php", "php");

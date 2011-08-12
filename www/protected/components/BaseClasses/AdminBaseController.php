@@ -241,7 +241,7 @@ class AdminBaseController extends Controller
 		ob_end_clean();
 	}
 
-	public function getTabs($id = null, $return = true)
+	public function getTabs($id = null, $return = false)
 	{
         return Y::controller()->widget(
             'FormTabs', array(
@@ -263,6 +263,17 @@ class AdminBaseController extends Controller
             ),
             $return
         );
+	}
+
+    public function getTabsWithScripts($id = null, $return = false)
+	{
+        $output = $this->getTabs('cssFileForm', true);
+        Y::clientScript()->render($output);
+        
+        if ($return)
+            return $output;
+        else
+            echo $output;
 	}
 
 	public function actionMovePosition($pk, $to)

@@ -17,15 +17,17 @@ class FilesController extends AdminBaseController
 	
 	public function actionUpdate($dir, $fileName)
 	{
-		if (isset($_POST['file_content']))
-			FileSystem::write('./'.$dir.'/'.$fileName, $_POST['file_content'], 'w');
-			
+		if (isset($_POST['fileContent'])) {
+			FileSystem::write('./'.$dir.'/'.$fileName, $_POST['fileContent'], 'w');
+            Y::end();
+        }
+
 		$content = '';
 		$info = FileSystem::getInfo('./'.$dir.'/'.$fileName, array('name', 'ext'));
 		if (in_array($info['ext'], array('js', 'css'))) {
 			if (substr($dir, 0, 2) == 'js' || substr($dir, 0, 3) == 'css') {
 				$content = FileSystem::read('./'.$dir.'/'.$fileName);
-			}	
+			}
 		}
 		
 		$output = $this->renderPartial('fileDetails', array(
@@ -37,9 +39,9 @@ class FilesController extends AdminBaseController
         $this->beginTab('Содержимое файла');
         echo $output;
         $this->endTab();
-        $output = $this->getTabs('cssFileForm');
+        $output = $this->getTabs('cssFileForm', true);
         Y::clientScript()->render($output);
-        echo $output;
+        echo CHtml::tag('div',array(),$output);
 	}
 
 	public function actionCreate($dir, $fileName)

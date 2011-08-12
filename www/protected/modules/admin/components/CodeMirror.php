@@ -51,35 +51,35 @@ class CodeMirror extends CWidget
 			    else
 			      node.attachEvent("on" + type, wrapHandler);
 			  }
-		
+
 			  function forEach(arr, f) {
 			    for (var i = 0, e = arr.length; i < e; ++i) f(arr[i]);
 			  }
-			  function startComplete() {
+			  var startComplete = function () {
 			    // We want a single cursor position.
-			    if ('.$this->id.'-editor.somethingSelected()) return;
+			    if ('.$this->id.'_CM_editor.somethingSelected()) return;
 			    // Find the token at the cursor
-			    var cur = '.$this->id.'-editor.getCursor(false), token = '.$this->id.'-editor.getTokenAt(cur), tprop = token;
+			    var cur = '.$this->id.'_CM_editor.getCursor(false), token = '.$this->id.'_CM_editor.getTokenAt(cur), tprop = token;
 			    if (!/^[\w$_]*$/.test(token.string)) {
 			      token = tprop = {start: cur.ch, end: cur.ch, string: "", state: token.state,
 			                       className: token.string == "." ? "js-property" : null};
 			    }
 			    // If it is a property, find out what it is a property of.
 			    while (tprop.className == "js-property") {
-			      tprop = '.$this->id.'-editor.getTokenAt({line: cur.line, ch: tprop.start});
+			      tprop = '.$this->id.'_CM_editor.getTokenAt({line: cur.line, ch: tprop.start});
 			      if (tprop.string != ".") return;
-			      tprop = '.$this->id.'-editor.getTokenAt({line: cur.line, ch: tprop.start});
+			      tprop = '.$this->id.'_CM_editor.getTokenAt({line: cur.line, ch: tprop.start});
 			      if (!context) var context = [];
 			      context.push(tprop);
 			    }
 			    var completions = getCompletions(token, context);
 			    if (!completions.length) return;
 			    function insert(str) {
-			      '.$this->id.'-editor.replaceRange(str, {line: cur.line, ch: token.start}, {line: cur.line, ch: token.end});
+			      '.$this->id.'_CM_editor.replaceRange(str, {line: cur.line, ch: token.start}, {line: cur.line, ch: token.end});
 			    }
 			    // When there is only one completion, use it directly.
 			    if (completions.length == 2) {insert(completions[0]); return true;}
-		
+
 			    // Build the select widget
 			    var complete = document.createElement("div");
 			    complete.className = "completions";
@@ -91,14 +91,14 @@ class CodeMirror extends CWidget
 			    }
 			    sel.firstChild.selected = true;
 			    sel.size = Math.min(10, completions.length);
-			    var pos = '.$this->id.'-editor.cursorCoords();
+			    var pos = '.$this->id.'_CM_editor.cursorCoords();
 			    complete.style.left = pos.x + "px";
 			    complete.style.top = pos.yBot + "px";
 			    document.body.appendChild(complete);
 			    // Hack to hide the scrollbar.
 			    if (completions.length <= 10)
 			      complete.style.width = (sel.clientWidth - 2) + "px";
-		
+
 			    var done = false;
 			    function close() {
 			      if (done) return;
@@ -108,7 +108,7 @@ class CodeMirror extends CWidget
 			    function pick() {
 			      insert(sel.options[sel.selectedIndex].value);
 			      close();
-			      setTimeout(function(){'.$this->id.'-editor.focus();}, 50);
+			      setTimeout(function(){'.$this->id.'_CM_editor.focus();}, 50);
 			    }
 			    connect(sel, "blur", close);
 			    connect(sel, "keydown", function(event) {
@@ -116,17 +116,17 @@ class CodeMirror extends CWidget
 			      // Enter and space
 			      if (code == 13 || code == 32) {event.stop(); pick();}
 			      // Escape
-			      else if (code == 27) {event.stop(); close(); '.$this->id.'-editor.focus();}
-			      else if (code != 38 && code != 40) {close(); '.$this->id.'-editor.focus(); setTimeout(startComplete, 50);}
+			      else if (code == 27) {event.stop(); close(); '.$this->id.'_CM_editor.focus();}
+			      else if (code != 38 && code != 40) {close(); '.$this->id.'_CM_editor.focus(); setTimeout(startComplete, 50);}
 			    });
 			    connect(sel, "dblclick", pick);
-		
+
 			    sel.focus();
 			    // Opera sometimes ignores focusing a freshly created node
 			    if (window.opera) setTimeout(function(){if (!done) sel.focus();}, 100);
 			    return true;
 			  }
-		
+
 			  var stringProps = ("charAt charCodeAt indexOf lastIndexOf substring substr slice trim trimLeft trimRight " +
 			                     "toUpperCase toLowerCase split concat match replace search").split(" ");
 			  var arrayProps = ("length concat join splice push pop shift unshift slice reverse sort indexOf " +
@@ -134,7 +134,7 @@ class CodeMirror extends CWidget
 			  var funcProps = "prototype apply call bind".split(" ");
 			  var keywords = ("break case catch continue debugger default delete do else false finally for function " +
 			                  "if in instanceof new null return switch throw true try typeof var void while with").split(" ");
-		
+
 			  function getCompletions(token, context) {
 			    var found = [], start = token.string;
 			    function maybeAdd(str) {
@@ -146,7 +146,7 @@ class CodeMirror extends CWidget
 			      else if (obj instanceof Function) forEach(funcProps, maybeAdd);
 			      for (var name in obj) maybeAdd(name);
 			    }
-		
+
 			    if (context) {
 			      // If this is a property, see if it belongs to some object we can
 			      // find in the current environment.
@@ -170,7 +170,7 @@ class CodeMirror extends CWidget
 			    }
 			    return found;
 			  }
-			  
+
 			var myTextArea = document.getElementById("'.$this->id.'");
 			'.$this->id.'_CM_editor = CodeMirror.fromTextArea(myTextArea,{
 				mode: "'.$this->type.'",

@@ -116,7 +116,8 @@ testCM("lineInfo", function(cm) {
 }, {value: "111111\n222222\n333333"});
 
 testCM("coords", function(cm) {
-  cm.getWrapperElement().style.height = "100px";
+  var scroller = cm.getWrapperElement().getElementsByClassName("CodeMirror-scroll")[0];
+  scroller.style.height = "100px";
   var content = [];
   for (var i = 0; i < 200; ++i) content.push("------------------------------" + i);
   cm.setValue(content.join("\n"));
@@ -125,7 +126,7 @@ testCM("coords", function(cm) {
   is(top.x < bot.x);
   is(top.y < bot.y);
   is(top.y < top.yBot);
-  cm.getWrapperElement().scrollTop = 100;
+  scroller.scrollTop = 100;
   cm.refresh();
   var top2 = cm.charCoords({line: 0, ch: 0});
   is(top.y > top2.y);
@@ -157,7 +158,7 @@ testCM("undo", function(cm) {
   eq(cm.getValue(), "def");
   eq(cm.historySize().undo, 1);
   eq(cm.historySize().redo, 0);
-  cm.setValue("2\n\n\n2");
+  cm.setValue("1\n\n\n2");
   eq(cm.historySize().undo, 0);
   for (var i = 0; i < 20; ++i) {
     cm.replaceRange("a", {line: 0, ch: 0});

@@ -521,5 +521,72 @@ class Y extends CComponent
 		ob_end_clean();
 		return $res;
 	}
-	
+
+
+    public static $tabs = array();
+    public static $curTabName;
+
+    public function beginTab($tabName)
+    {
+        self::obStart();
+        self::$curTabName = $tabName;
+    }
+
+    public function endTab()
+    {
+        self::$tabs[self::$curTabName] = array('content' => self::obEnd());
+    }
+
+    public function tab($tabName, $tabContent)
+    {
+        self::$tabs[$tabName] = $tabContent;
+    }
+
+    public function getTabs($id = null, $return = false)
+    {
+        $tabs = self::controller()->widget(
+            'FormTabs', array(
+                'tabs'=>self::$tabs,
+                'options'=>array(
+                    'collapsible'=>false,
+                ),
+                'id' => $id,
+                'htmlOptions' => array('class'=>'widget_settings_tabs', 'style'=>'height:495px'),
+                //add buttons to widget header
+                'buttons' => array (
+                    self::controller()->widget('JuiButton', array  (
+                        'id' =>'widget-form-save-button',
+                        'htmlOptions' => array ('class'=>'save-button'),
+                        'name'=>'submit',
+                        'caption'=>'Сохранить'
+                    ), true)
+                ),
+                'extHeaderHtml' => '<div class="submit-form-result"></div>'
+            ),
+            true
+        );
+
+        //clear
+        self::$tabs = array();
+        self::$curTabName = '';
+
+        //return
+        if ($return)
+            return $tabs;
+        else
+            echo $tabs;
+    }
+
+    public function getTabsWithScripts($id = null, $return = false)
+    {
+        $output = self::getTabs('cssFileForm', true);
+        self::controller()->render($output);
+
+        if ($return)
+            return $output;
+        else
+            echo $output;
+    }
+
+
 }

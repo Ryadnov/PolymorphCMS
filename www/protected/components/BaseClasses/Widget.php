@@ -34,30 +34,8 @@ abstract class Widget extends CPortlet
 
     public function getTabs($id = null, $return = true)
     {
-        self::beginTab('Дополнительно');
-        echo $this->renderExternalFields();
-        self::endTab();
-        
-        return Y::controller()->widget(
-            'FormTabs', array(
-                'tabs'=>self::$tabs,
-                'options'=>array(
-                    'collapsible'=>false,
-                ),
-                'id' => $id,
-                'htmlOptions' => array('class'=>'widget_settings_tabs', 'style'=>'height:495px'),
-                'buttons' => array (
-                    $this->widget('JuiButton', array  (
-                        'id' =>'widget-form-save-button',
-                        'htmlOptions' => array ('class'=>'save-button'),
-                        'name'=>'submit',
-                        'caption'=>'Сохранить'
-                    ), true)
-                ),
-                'extHeaderHtml' => '<div class="submit-form-result"></div>'
-            ),
-            $return
-        );
+        Y::tab('Дополнительно', $this->renderExternalFields());
+        return Y::getTabs($id, $return);
     }
 
     private function renderExternalFields()
@@ -89,22 +67,6 @@ abstract class Widget extends CPortlet
         );
     }
 
-    public static $tabs = array();
-    public static $curTabName;
-
-    public static function beginTab($tabName)
-    {
-        ob_start();
-        ob_implicit_flush(false);
-        self::$curTabName = $tabName;
-    }
-
-    public static function endTab()
-    {
-        self::$tabs[self::$curTabName] = ob_get_contents();
-        ob_end_clean();
-    }
-    
     abstract public function remove();
     abstract public function update();
 }

@@ -128,13 +128,13 @@ class Admin
 	public static function makeTinyTabs($form, $model, $attributes)
 	{
 		foreach ((array)$attributes as $attr) {
-			Y::controller()->beginTab($model->getAttributeLabel($attr));
+			Y::beginTab($model->getAttributeLabel($attr));
 			Y::controller()->widget('ext.tiny_mce.TinyMCE', array(
 				'model' => $model,
 				'attribute' => $attr
 			));
 			echo $form->error($model,$attr);
-			Y::controller()->endTab();
+			Y::endTab();
 		}
 	}
 	
@@ -168,40 +168,5 @@ class Admin
 			</div>';	
 		}
 	}
-
-    public static $tabs = array();
-    public static $curTabName;
-
-    public static function beginTab($tabName)
-    {
-        ob_start();
-        ob_implicit_flush(false);
-        self::$curTabName = $tabName;
-    }
-
-    public static function endTab()
-    {
-        self::$tabs[self::$curTabName] = array('content' => ob_get_contents());
-        ob_end_clean();
-    }
-
-    public static function tab($tabName, $content)
-    {
-        self::$tabs[$tabName] = array('content' => $content);
-    }
-
-    public function getTabs($id = null, $return = true)
-    {
-        return Y::controller()->widget('JuiTabs', array(
-            'tabs'=>self::$tabs,
-            'cssFile'=>'jquery-ui.css',
-            'themeUrl'=>'/css/jui/base/',
-            'theme'=>'base',
-            'options'=>array(
-                'collapsible'=>false,
-            ),
-            'htmlOptions'=>array('id'=>$id)
-        ), $return);
-    }
 
 }

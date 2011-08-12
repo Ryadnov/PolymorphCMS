@@ -9,7 +9,7 @@
 ));
 	echo $form->errorSummary($model);?>
 	
-<?php $this->beginTab('Настройки')?>
+<?php Y::beginTab('Настройки')?>
 	<?php Admin::makeTextFields($form, $model, array('title', 'second_title', 'alias'))?>
 	<div class="row">
 		<div class="left"><?php echo $form->labelEx($model,'published')?></div>
@@ -20,11 +20,11 @@
 	</div>
 	<?php if ($model->isNewRecord) $model->date = date('d.m.Y')?>
 	<?php Admin::makeDateFields($form, $model, 'date', 'dd.mm.yy'); ?>
-<?php $this->endTab()?>
+<?php Y::endTab()?>
 
 <?php Admin::makeTinyTabs($form, $model, array('text', 'descr'))?>
 	
-<?php echo $this->getTabs()?>
+<?php echo Y::getTabs()?>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
 	</div>

@@ -25,7 +25,15 @@ class Page extends BaseDataType
 			array('created, sidebar_text', 'safe', 'on'=>array('search','create','update')),
 		);
 	}
-		
+
+    public function relations()
+	{
+		return array(
+			'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
+		);
+	}
+
+
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
@@ -40,11 +48,6 @@ class Page extends BaseDataType
 		);
 	}
 
-	public function relations(){
-		return array(
-			'category'=>array(self::HAS_ONE, 'Category', Category::getPkAttr())
-		);
-	}
 	public function search()
 	{
 		$criteria = $this->getDbCriteria();

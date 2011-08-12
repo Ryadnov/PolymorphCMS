@@ -138,8 +138,7 @@ class AdminBaseController extends Controller
 		$opts = CMap::mergeArray($otherParams, array(
 			'model' => $model
 		));
-		
-		if (!isset($opts['cat']) && isset($model->category)) 
+		if (!isset($opts['cat']) && isset($model->category))
 			$opts['cat'] = $model->category;
 	
 		$this->render('update', $opts);
@@ -224,64 +223,8 @@ class AdminBaseController extends Controller
 		}else 
     		$this->render('admin',$opts);
 	}
-	
-	public static $tabs = array();
-	public static $curTabName;
-	
-	public function beginTab($tabName)
-	{
-		ob_start();
-		ob_implicit_flush(false);	
-		self::$curTabName = $tabName;
-	}
 
-	public function endTab() 
-	{
-		self::$tabs[self::$curTabName] = array('content' => ob_get_contents());
-		ob_end_clean();
-	}
-
-    public function tab($tabName, $tabContent)
-    {
-        self::$tabs[$tabName] = $tabContent;
-    }
-
-	public function getTabs($id = null, $return = false)
-	{
-        return Y::controller()->widget(
-            'FormTabs', array(
-                'tabs'=>self::$tabs,
-                'options'=>array(
-                    'collapsible'=>false,
-                ),
-                'id' => $id,
-                'htmlOptions' => array('class'=>'widget_settings_tabs', 'style'=>'height:495px'),
-                'buttons' => array (
-                    $this->widget('JuiButton', array  (
-                        'id' =>'widget-form-save-button',
-                        'htmlOptions' => array ('class'=>'save-button'),
-                        'name'=>'submit',
-                        'caption'=>'Сохранить'
-                    ), true)
-                ),
-                'extHeaderHtml' => '<div class="submit-form-result"></div>'
-            ),
-            $return
-        );
-	}
-
-    public function getTabsWithScripts($id = null, $return = false)
-	{
-        $output = $this->getTabs('cssFileForm', true);
-        Y::clientScript()->render($output);
-        
-        if ($return)
-            return $output;
-        else
-            echo $output;
-	}
-
-	public function actionMovePosition($pk, $to)
+    public function actionMovePosition($pk, $to)
 	{
 		$pk = explode('_',$pk);
 		$to = explode('_', $to);

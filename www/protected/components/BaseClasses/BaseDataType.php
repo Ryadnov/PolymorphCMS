@@ -31,9 +31,16 @@ abstract class BaseDataType extends ActiveRecord implements IDataType
 			'EAdvancedArBehavior' => array(
 	            'class' => 'application.components.Behaviors.EAdvancedArBehavior'
 	      	)
-    
         );
 	}
+
+    public function relations()
+    {
+        return array(
+            'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
+        );
+    }
+
 
 	public function getUrl()
 	{

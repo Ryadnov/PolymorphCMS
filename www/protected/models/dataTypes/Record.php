@@ -41,7 +41,6 @@ class Record extends BaseDataType
             'subdata' => array(self::HAS_MANY, 'Subdata', Record::getPkAttr()),
 
             'gallery' => array(self::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()),
-            'category'=> array(self::BELONGS_TO, 'Category', 'category_id')
 		));
 	}
 

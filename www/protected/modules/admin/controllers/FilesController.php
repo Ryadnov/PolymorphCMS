@@ -37,9 +37,9 @@ class FilesController extends AdminBaseController
 			'filePath' => './'.$dir.'/'.$fileName
 		), true);
 
-        $this->tab('Содержимое файла', $output);
+        Y::tab('Содержимое файла', $output);
 
-        $output = $this->getTabs('cssFileForm', true);
+        $output = Y::getTabs('cssFileForm', true);
         Y::clientScript()->render($output);
         echo CHtml::tag('div', array(), $output);
 	}

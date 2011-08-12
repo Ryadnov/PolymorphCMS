@@ -354,3 +354,7 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 	height: 16px;
 	position: absolute;	
 }
+
+.save-button {float: right;}
+.submit-form-result {float: right;}
+

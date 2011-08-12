@@ -25,9 +25,6 @@ class Record extends BaseDataType
 			array('title', 'length', 'max'=>255),
 			array('title, index_text, sidebar_text, text, portfolioWorksIds, portfolioWorks, img, icon, icon_big, alias, month, year, result_url, result_title, second_title', 'safe', 'on'=>array('search','create','update')),
 		));
-		return array(
-			
-		);
 	}
 	
 	public function relations()

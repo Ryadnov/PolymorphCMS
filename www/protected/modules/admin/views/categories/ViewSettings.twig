@@ -14,9 +14,6 @@
 .add-block{color: #FFF !important; font-weight: bold; text-decoration: none !important;}
 .add-block:hover{color: #FFF !important; font-weight: bold; text-decoration: none !important;}
 
-.save-button {float: right;}
-.submit-form-result {float: right;}
-
 </style>
 <div id="design-wrapper">
     <div style="display:block; clear:both; background: #d6dde7; width:100%; height: 500px; overflow: hidden;">
@@ -121,22 +118,6 @@
             },
             hoverClass: "accept"
         });
-
-        //form submit
-        var ajaxSave = function () {
-            var form = $('#widget-details form');
-            if (form == undefined) return false;
-
-            form.ajaxSubmit({
-                 success: function() {
-                    form.find('.submit-form-result').fadeOut(0).text('Сохранено').fadeIn(500).delay(800).fadeOut(500);
-                 }
-            });
-            return false;
-        }
-
-        $('#widget-form-save-button').click(ajaxSave);
-        $('#widget-details').delegate('form', 'submit', ajaxSave);
 
     });
     </script>

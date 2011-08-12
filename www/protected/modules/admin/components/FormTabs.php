@@ -57,10 +57,21 @@ class FormTabs extends JuiTabs
 
         echo CHtml::closeTag($this->tagName)."\n";
 
-        $options=empty($this->options) ? '' : CJavaScript::encode($this->options);
-        echo "<script type='text/javascript'>
-                $('#{$id}').tabs($options);
-            </script>";
+        $options = empty($this->options) ? '' : CJavaScript::encode($this->options);
+        Y::clientScript()->registerScript($id.'-form-submit', "
+            $(document).ready(function(){
+                $('#{$id}').tabs({$options});
+
+                $('#{$id}').submit(function() {
+                    var form  = $(this);
+                    form.ajaxSubmit({
+                         success: function() {
+                            form.find('.submit-form-result').fadeOut(0).text('Сохранено').fadeIn(500).delay(800).fadeOut(500);
+                         }
+                    });
+                });
+            });
+        ");
 
         echo CHtml::endForm();
     }

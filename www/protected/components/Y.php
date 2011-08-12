@@ -554,7 +554,7 @@ class Y extends CComponent
                 'htmlOptions' => array('class'=>'widget_settings_tabs', 'style'=>'height:495px'),
                 //add buttons to widget header
                 'buttons' => array (
-                    self::controller()->widget('JuiButton', array  (
+                    self::controller()->widget('SaveButton', array  (
                         'id' =>'widget-form-save-button',
                         'htmlOptions' => array ('class'=>'save-button'),
                         'name'=>'submit',

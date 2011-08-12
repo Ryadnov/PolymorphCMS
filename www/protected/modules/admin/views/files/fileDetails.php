@@ -5,4 +5,3 @@ $this->widget('CodeMirror', array(
     'name'=>'fileContent',
     'id'=>'cssFile'
 )) ?>
-<?php echo CHtml::hiddenField('filePath', $filePath) ?>

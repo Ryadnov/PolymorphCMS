@@ -41,7 +41,7 @@ class FilesController extends AdminBaseController
 
         $output = $this->getTabs('cssFileForm', true);
         Y::clientScript()->render($output);
-        echo CHtml::tag('div',array(),$output);
+        echo CHtml::tag('div', array(), $output);
 	}
 
 	public function actionCreate($dir, $fileName)

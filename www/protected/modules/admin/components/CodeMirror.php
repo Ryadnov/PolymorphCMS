@@ -25,6 +25,7 @@ class CodeMirror extends CWidget
     	Y::clientScript()
     		->registerScriptFile('/js/CodeMirror/lib/codemirror.js')
 			->registerCssFile('/js/CodeMirror/lib/codemirror.css')
+            ->registerCssFile('/js/CodeMirror/theme/default.css')
 			->registerScriptFile('/js/CodeMirror/mode/javascript/javascript.js')
 			->registerCssFile('/js/CodeMirror/mode/javascript/javascript.css')
 			->registerScriptFile('/js/CodeMirror/mode/css/css.js')

@@ -12,7 +12,8 @@ class FormTabs extends JuiTabs
     
     public function run()
     {
-        $id=$this->getId();
+        echo CHtml::form();
+        $id = $this->getId();
         if (isset($this->htmlOptions['id']))
             $id = $this->htmlOptions['id'];
         else
@@ -60,5 +61,7 @@ class FormTabs extends JuiTabs
         echo "<script type='text/javascript'>
                 $('#{$id}').tabs($options);
             </script>";
+
+        echo CHtml::endForm();
     }
 }

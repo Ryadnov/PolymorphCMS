@@ -1,5 +1,5 @@
 <?php
-class ModuleController extends RenderController
+class ModuleController extends FrontBaseController
 {
     
 }

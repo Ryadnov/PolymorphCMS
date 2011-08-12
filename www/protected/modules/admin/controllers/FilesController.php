@@ -34,11 +34,12 @@ class FilesController extends AdminBaseController
 			'type' => $info['ext'] == 'css' ? 'css' : 'javascript',
 			'filePath' => './'.$dir.'/'.$fileName
 		), true);
-        Y::clientScript()->render($output);
         $this->beginTab('Содержимое файла');
         echo $output;
         $this->endTab();
-        $this->getTabs('cssFileForm');
+        $output = $this->getTabs('cssFileForm');
+        Y::clientScript()->render($output);
+        echo $output;
 	}
 
 	public function actionCreate($dir, $fileName)

@@ -241,9 +241,9 @@ class AdminBaseController extends Controller
 		ob_end_clean();
 	}
 
-	public function getTabs($id = null, $return = false)
+	public function getTabs($id = null, $return = true)
 	{
-        Y::controller()->widget(
+        return Y::controller()->widget(
             'FormTabs', array(
                 'tabs'=>self::$tabs,
                 'options'=>array(

@@ -3,4 +3,3 @@
     'content'=>$content,
     'id'=>'cssFile'
 )) ?>
-<?php echo CHtml::hiddenField('filePath', $filePath) ?>

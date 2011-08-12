@@ -22,19 +22,14 @@ abstract class Widget extends CPortlet
 	public function init()
 	{
         parent::init();
-//        $this->model = Y::controller()->model;
 	}
 
 	public function adminForm($widgetModel)
 	{
         parent::render('_adminForm', array('model'=>$widgetModel), true).  //you can override render method as in MainContentWidget
-            
-        $res = '';
-        $res .= CHtml::form();
+
         $id  = get_class($this).'_setttings_tabs';
-        $res .= $this->getTabs($id);
-        $res .= CHtml::endForm();
-        return $res;
+        return $this->getTabs($id);
 	}
 
     public function getTabs($id = null, $return = true)

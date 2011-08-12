@@ -36,9 +36,9 @@ class FilesController extends AdminBaseController
 			'type' => $info['ext'] == 'css' ? 'css' : 'javascript',
 			'filePath' => './'.$dir.'/'.$fileName
 		), true);
-        $this->beginTab('Содержимое файла');
-        echo $output;
-        $this->endTab();
+
+        $this->tab('Содержимое файла', $output);
+
         $output = $this->getTabs('cssFileForm', true);
         Y::clientScript()->render($output);
         echo CHtml::tag('div',array(),$output);

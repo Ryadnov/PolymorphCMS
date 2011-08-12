@@ -241,6 +241,11 @@ class AdminBaseController extends Controller
 		ob_end_clean();
 	}
 
+    public function tab($tabName, $tabContent)
+    {
+        self::$tabs[$tabName] = $tabContent;
+    }
+
 	public function getTabs($id = null, $return = false)
 	{
         return Y::controller()->widget(

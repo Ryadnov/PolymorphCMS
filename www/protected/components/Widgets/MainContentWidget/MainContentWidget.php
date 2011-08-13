@@ -3,7 +3,22 @@ class MainContentWidget extends Widget
 {
     public $scopes = array();
 
-	protected function renderContent()
+    public function init()
+    {
+        parent::init();
+    }
+
+    public static function register($category)
+    {
+        Y::events()->onRecordRelations = function($event) {
+            $event->content = CMap::mergeArray(
+                $event->content,
+                array('gallery' => array(Record::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()))
+            );
+        };
+    }
+
+    protected function renderContent()
 	{
         if (isset($this->model->pk)) {    //full record
             $this->render('full', array('model'=>$this->model, 'category'=>$this->category));

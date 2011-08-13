@@ -39,20 +39,19 @@ class SiteController extends FrontBaseController
     public function actionIndex()
     {
         //Y::dump(Y::file('css')->contents);
-        
 
         $i = 0;
         //check last category segment
         while (isset($_GET['cat' . ++$i])) {}
 
-        $alias = isset($_GET['cat' . $i]) ? $_GET['cat' . $i] : 'index';
-        
+        $alias = isset($_GET['cat' . --$i]) ? $_GET['cat' . $i] : 'index';
+
         //find category by alias
         $category = Category::model()->published()->findByAttributes(array('alias' => $alias));
 
         if ($category == NULL) {
             //if $alias is no category alias, may be it's model alias and $prev_alias it's category alias
-            $prev_alias = isset($_GET['cat' . $i - 1]) ? $_GET['cat' . $i - 1] : false;
+            $prev_alias = isset($_GET['cat' . --$i]) ? $_GET['cat' . $i] : false;
 
             if ($prev_alias == false)
                 $this->redirect('/errors/not_found');
@@ -64,6 +63,10 @@ class SiteController extends FrontBaseController
 
             $_GET['alias'] = $alias;
         }
+
+        //register plugins and widgets
+        Y::resources()->registerWidgets($category);
+        Y::resources()->registerPlugins($category);
 
         //check model by category type
         $model = ModelFactory::getModel($category);
@@ -81,7 +84,7 @@ class SiteController extends FrontBaseController
 
         $this->category = $category;
         $this->model = $model;
-
+Y::dump($this->model->relations());
         //see parent render function
         $this->render('index');
     }

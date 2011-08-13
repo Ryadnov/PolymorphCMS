@@ -588,5 +588,14 @@ class Y extends CComponent
             echo $output;
     }
 
+    public function events()
+    {
+        return Yii::app()->eventManager;
+    }
+
+    public function resources()
+    {
+        return Yii::app()->resourceManager;
+    }
 
 }

@@ -29,17 +29,27 @@ class Record extends BaseDataType
 	
 	public function relations()
 	{
-		return CMap::mergeArray(parent::relations(), array(
+
+        $relations = CMap::mergeArray(parent::relations(), array(
 			//!!!don't use this relations!!!
 			//use relations with functions
 			//need set type condition
 			'variants' => array(self::MANY_MANY, 'Variant', 'variant_relations(model_id, variant_id)'),
-			//'union' => array(self::BELONGS_TO, 'Union', UnionList::getPkAttr()),
+//			'union' => array(self::BELONGS_TO, 'Union', UnionList::getPkAttr()),
             'subdata' => array(self::HAS_MANY, 'Subdata', Record::getPkAttr()),
 
-            'gallery' => array(self::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()),
+//            'gallery' => array(self::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()),
 		));
+
+        $this->event('onRecordRelations', array('content'=>&$relations));
+
+		return $relations;
 	}
+
+    public function event($eventName, $params = array())
+    {
+        Yii::app()->eventManager->raiseEvent($eventName, new SimpleEvent($this, $params));
+    }
 
     public function variants($type)
     {
@@ -56,11 +66,11 @@ class Record extends BaseDataType
         return $this->type('subdata', $type)->subdata;
     }
 
-	function getGallery()
-	{
-		return $this->type('gallery', ModelFactory::getType($this->type_id))->image_gallery;
-	}
-	
+//	function getGallery()
+//	{
+//		return $this->type('gallery', ModelFactory::getType($this))->image_gallery;
+//	}
+
 	protected function type($tableAlias, $type)
 	{
 		$this->getDbCriteria()->mergeWith(array('condition'=>$tableAlias.'.type='.$type));

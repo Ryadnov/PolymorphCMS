@@ -1,5 +1,11 @@
 <?php
 return array(
+    'resourceManager'=>array(
+        'class'=>'application.components.BaseClasses.ResourceManager'
+    ),
+    'eventManager'=>array(
+        'class'=>'application.components.BaseClasses.GlobalEventManager'
+    ),
     'file'=>array(
         'class'=>'application.components.CFile.CFile',
     ),

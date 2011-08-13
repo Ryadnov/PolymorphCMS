@@ -1,5 +1,5 @@
 <?php
-class RenderEvent extends CModelEvent
+class SimpleEvent extends CModelEvent
 {
     public function getContent()
     {

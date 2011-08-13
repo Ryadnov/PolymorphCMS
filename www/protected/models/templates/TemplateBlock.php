@@ -59,7 +59,6 @@ class TemplateBlock extends ActiveRecord
     public function renderBlock($category)
     {
         $content = '';
-        $this->event('onBlockStart');
 
 		foreach ($this->widgets as $widget) {
             Yii::import('widgets.'.$widget->class.'.*');
@@ -67,24 +66,7 @@ class TemplateBlock extends ActiveRecord
             $content .= $widgetContent = $this->renderWidget($widget, $category);
 		}
 
-        $this->event('onBlockEnd', array('content'=>&$content));
-
         return $content;
-    }
-
-    public function event($eventName, $params = array())
-    {
-        $this->$eventName(new RenderEvent($this, $params));
-    }
-
-    public function onBlockEnd($event)
-    {
-         $this->raiseEvent('onBlockEnd', $event);
-    }
-
-    public function onBlockStart($event)
-    {
-         $this->raiseEvent('onBlockEnd', $event);
     }
 
 	private function renderWidget($widget, $category)

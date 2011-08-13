@@ -38,7 +38,8 @@ class SiteController extends FrontBaseController
      */
     public function actionIndex()
     {
-        //Y::dump(Y::file('css')->contents);
+        //register plugins and widgets
+        Y::resources()->registerPlugins();
 
         $i = 0;
         //check last category segment
@@ -64,12 +65,9 @@ class SiteController extends FrontBaseController
             $_GET['alias'] = $alias;
         }
 
-        //register plugins and widgets
-        Y::resources()->registerWidgets($category);
-        Y::resources()->registerPlugins($category);
-
         //check model by category type
-        $model = ModelFactory::getModel($category);
+        $modelName = $category->type;
+        $model = $modelName::model();
 
         //if has alias or id of model, then find it
         if (isset($_GET['alias']) || isset($_GET['id'])) {
@@ -84,7 +82,8 @@ class SiteController extends FrontBaseController
 
         $this->category = $category;
         $this->model = $model;
-Y::dump($this->model->relations());
+        
+
         //see parent render function
         $this->render('index');
     }

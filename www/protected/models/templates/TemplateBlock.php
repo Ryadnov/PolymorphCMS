@@ -61,7 +61,7 @@ class TemplateBlock extends ActiveRecord
         $content = '';
 
 		foreach ($this->widgets as $widget) {
-            Yii::import('widgets.'.$widget->class.'.*');
+//            Yii::import('widgets.'.$widget->class.'.*');
 
             $content .= $widgetContent = $this->renderWidget($widget, $category);
 		}
@@ -79,7 +79,7 @@ class TemplateBlock extends ActiveRecord
             'model' => isset(Y::controller()->model) ? Y::controller()->model : null
 		));
 
-		return Y::controller()->widget($widget->class, $settings, true);
+		return Y::controller()->widget($widget->class.'Widget', $settings, true);
 	}
 
 

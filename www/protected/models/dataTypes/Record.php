@@ -41,7 +41,7 @@ class Record extends BaseDataType
 //            'gallery' => array(self::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()),
 		));
 
-        Y::events()->onRecordRelations($relations);
+        Y::events()->onDataTypeRelations($relations);
 
 		return $relations;
 	}

@@ -10,7 +10,7 @@ class UWrelBelongsTo {
 	);
 	
 	/**
-	 * Widgets initialization
+	 * Plugins initialization
 	 * @return array
 	 */
 	public function init() {

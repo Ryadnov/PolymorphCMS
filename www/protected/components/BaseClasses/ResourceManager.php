@@ -21,7 +21,7 @@ class ResourceManager extends CComponent
     {
         foreach ($category->allBlocks as $block) {
             foreach ($block['block']->widgets as $widget) {
-                Yii::import('widgets.'.$widget->class.'.*');
+                Yii::import('widgets.'.$widget->class.'Widget.*');
                 $w = Yii::app()->getWidgetFactory()->createWidget(Y::controller(),$widget->class, $widget->settings);
                 $w->register($category);
                 $this->_w[] = $widget->pk;
@@ -29,9 +29,15 @@ class ResourceManager extends CComponent
         }
     }
 
-    public function registerPlugins($category)
+    public function registerPlugins()
     {
-                
+        foreach (PluginModel::model()->published()->findAll() as $plugin) {
+            Yii::import('plugins.'.$plugin->class.'.*');
+            $pluginName = $plugin->class.'Plugin';
+            $p = new $pluginName();
+            $p->register();
+            $this->_p[] = $plugin->pk;
+        }
     }
 
     

@@ -8,20 +8,22 @@
  */
 class GlobalEventManager extends CComponent
 {
-    
+
+    private $_e;
+
     public function init()
     {
-        
+
     }
 
-    public function onRecordRelations(&$relations)
+    public function onDataTypeRelations(&$relations)
     {
-        $this->raiseEvent('onRecordRelations', $this->simpleEvent($relations));
+        $this->raiseEvent('onDataTypeRelations', $this->simpleEvent($relations));
     }
 
     private function simpleEvent(&$content)
     {
-        return new SimpleEvent($this, array('content'=>&$content));
+        return new SimpleEvent($this, array('content' => &$content));
     }
 
 }

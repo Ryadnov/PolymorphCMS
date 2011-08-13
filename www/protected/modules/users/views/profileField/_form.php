@@ -137,7 +137,7 @@
 		echo CHtml::activeDropDownList($model,'widget',$widgetsList,array('id'=>'widgetlist'));
 		//echo CHtml::activeTextField($model,'widget',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo CHtml::error($model,'widget'); ?>
-		<p class="hint"><?php echo Users::t('Widgets name.'); ?></p>
+		<p class="hint"><?php echo Users::t('Plugins name.'); ?></p>
 		</div>
 	</div>
 
@@ -180,7 +180,7 @@
 <?php echo CHtml::endForm(); ?>
 
 </div><!-- form -->
-<div id="dialog-form" title="<?php echo Users::t('Widgets parametrs'); ?>">
+<div id="dialog-form" title="<?php echo Users::t('Plugins parametrs'); ?>">
 	<form>
 	<fieldset>
 		<label for="name">Name</label>

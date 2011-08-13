@@ -7,7 +7,7 @@ abstract class Widget extends CPortlet
     public $widgetModel;    //external param
     public $blockModel;          //external param
     public $block;          //external param
-    public $model;          //see Widgets.init()
+    public $model;          //see Plugins.init()
     
 	public $name;
     
@@ -26,7 +26,7 @@ abstract class Widget extends CPortlet
 
 	public function adminForm($widgetModel)
 	{
-        parent::render('_adminForm', array('model'=>$widgetModel), true).  //you can override render method as in MainContentWidget
+        parent::render('_adminForm', array('model'=>$widgetModel), true).  //you can override render method as in MainContent
 
         $id  = get_class($this).'_setttings_tabs';
         return $this->getTabs($id);

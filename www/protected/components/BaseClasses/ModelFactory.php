@@ -4,7 +4,7 @@ class ModelFactory
 
 	public static $allTypes = array(
 		'page',
-		'records'
+		'record'
 	);
 
 	private static function getName($strOrObj)
@@ -22,7 +22,7 @@ class ModelFactory
         $type = is_string($catOrType) ? $catOrType : $catOrType->type;
 		switch ($type) {
 			case 'page': 		return is_string($catOrType) ? Page::model() : $catOrType->page;
-			case 'records': 	return Record::model();
+			case 'record': 	return Record::model();
 			default: 			self::exception($typeOrObj);
 		}
 	}
@@ -32,7 +32,7 @@ class ModelFactory
 		$name = self::getName($typeOrObj);
 		switch ($name) {
 			case 'Page': 		return 'page';
-			case 'Record': 		return 'records';
+			case 'Record': 		return 'record';
 			default: 			self::exception($typeOrObj);
 		}
 	}
@@ -48,7 +48,7 @@ class ModelFactory
 	{
 		switch ($type) {
 			case 'page': 		return false;
-            case 'records':     return true;
+            case 'record':     return true;
 
 			default: 			self::exception($cat);
 		}
@@ -73,8 +73,8 @@ class ModelFactory
 				}
 
 				return Admin::url('pages/update', array('pk'=>$page->pk));
-			case 'records':
-				return Admin::url('records/admin', array('catId'=>$cat->pk));
+			case 'record':
+				return Admin::url('record/admin', array('catId'=>$cat->pk));
 			default:
 				self::exception($cat);
 		}
@@ -82,7 +82,7 @@ class ModelFactory
 
 	public static function getTemplatePatterns()
 	{
-		return 'page|records';
+		return 'page|record';
 	}
 
 	public static function cutRelations($fromCat, $toCat)
@@ -90,8 +90,8 @@ class ModelFactory
 		switch ($toCat->type) {
 			case 'page':
 				throw new CException("Нельзя копировать данные типа 'Страница'");
-			case 'records':
-				$toCat->records = $fromCat->records;
+			case 'record':
+				$toCat->record = $fromCat->record;
 				$toCat->save();
 				break;
 			default:
@@ -104,8 +104,8 @@ class ModelFactory
 		switch ($toCat->type) {
 			case 'page':
 				throw new CException("Нельзя копировать данные типа 'Страница'");
-			case 'records':
-				 $toCat->records = self::destroyAllId($fromCat->records);
+			case 'record':
+				 $toCat->record = self::destroyAllId($fromCat->record);
 				 $toCat->save();
 				break;
 			default:
@@ -131,8 +131,8 @@ class ModelFactory
 				if ($cat->page != null)
 					$cat->page->delete();
 				break;
-			case 'records':
-				 $cat->records = array();
+			case 'record':
+				 $cat->record = array();
 				 break;
 			default:
 				self::exception($cat);
@@ -142,8 +142,8 @@ class ModelFactory
 	public static function getCategoryRelations()
 	{
 		return array(
-			'records' => array(CActiveRecord::HAS_MANY, 'Record', 'category_id',
-	        	'order'=>'records.sort DESC'
+			'record' => array(CActiveRecord::HAS_MANY, 'Record', 'category_id',
+	        	'order'=>'record.sort DESC'
 			),
 			'page' => array(CActiveRecord::HAS_ONE, 'Page', 'category_id')
 		);
@@ -153,7 +153,7 @@ class ModelFactory
 	{
 		switch ($type) {
 			case 'page': 		return array();
-			case 'records':     return array();
+			case 'record':     return array();
 			default: 			self::exception($cat);
 		}
 	}
@@ -162,7 +162,7 @@ class ModelFactory
 	{
         switch ($type) {
 			case 'page': 		return "function() {}";
-			case 'records': 	return "function() {}";
+			case 'record': 	return "function() {}";
 			default: 			self::exception($cat);
 		}
 	}
@@ -171,7 +171,7 @@ class ModelFactory
 	{
 		switch ($type) {
 			case 'page': 		return "function() {}";
-			case 'records':     return "function() {}";
+			case 'record':     return "function() {}";
 			default: 			self::exception($cat);
 		}
 	}
@@ -180,7 +180,7 @@ class ModelFactory
 	{
 		return array(
 			'page'=>'страница',
-			'records'=>'записи'
+			'record'=>'записи'
 		);
 	}
 
@@ -188,7 +188,7 @@ class ModelFactory
     {
         return array(
             'page'=>'страница',
-            'records'=>'записи',
+            'record'=>'записи',
             'products'=>'товары'
         );
     }

@@ -4,9 +4,10 @@
 Yii::setPathOfAlias('modules',		'protected/modules');
 Yii::setPathOfAlias('components',	'protected/components');
 Yii::setPathOfAlias('models',		'protected/models');
-Yii::setPathOfAlias('widgets',		'protected/components/Widgets');
+Yii::setPathOfAlias('widgets',		'protected/components/Plugins');
 Yii::setPathOfAlias('behaviors',	'protected/components/Behaviors');
 Yii::setPathOfAlias('events',	'protected/components/Events');
+Yii::setPathOfAlias('plugins',	'protected/components/Plugins');
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.

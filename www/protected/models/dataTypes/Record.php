@@ -41,15 +41,10 @@ class Record extends BaseDataType
 //            'gallery' => array(self::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()),
 		));
 
-        $this->event('onRecordRelations', array('content'=>&$relations));
+        Y::events()->onRecordRelations($relations);
 
 		return $relations;
 	}
-
-    public function event($eventName, $params = array())
-    {
-        Yii::app()->eventManager->raiseEvent($eventName, new SimpleEvent($this, $params));
-    }
 
     public function variants($type)
     {

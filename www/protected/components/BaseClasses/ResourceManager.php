@@ -1,4 +1,7 @@
 <?php
+/**
+ * registration resources, such as widgets, plug-ins
+ */
 class ResourceManager extends CComponent
 {
     private $_w;
@@ -31,4 +34,5 @@ class ResourceManager extends CComponent
                 
     }
 
+    
 }

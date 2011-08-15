@@ -1,15 +1,14 @@
 <?php
 class SimpleEvent extends CModelEvent
 {
-    public function getContent()
+    public function __get($name)
     {
-        return $this->params['content'];
+        return $this->params[$name];
     }
 
-    public function setContent($val)
+    public function __set($name, $val)
     {
-        $this->params['content'] = $val;
+        $this->params[$name] = $val;
     }
-
 
 }

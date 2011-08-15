@@ -15,7 +15,7 @@ class ImageGallery extends BaseDataType
 	 */
 	public function tableName()
 	{
-		return 'portfolio_gallery';
+		return 'image_gallery';
 	}
 	
 	public static function getPkAttr()
@@ -34,7 +34,7 @@ class ImageGallery extends BaseDataType
 	public function relations()
 	{
 		return array(
-			'portfolio' => array(self::BELONGS_TO, 'Portfolio', Portfolio::getIdAttr()),
+			'record' => array(self::BELONGS_TO, 'Record', Record::getPkAttr()),
 		);
 	}
 	

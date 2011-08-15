@@ -2,15 +2,10 @@
 /**
  * registration resources, such as widgets, plug-ins
  */
-class ResourceManager extends CComponent
+class ResourceManager extends CApplicationComponent
 {
     private $_w;
     private $_p;
-
-    public function init()
-    {
-        
-    }
 
     /**
      * register all widgets belonging to blocks of this and parrents categories

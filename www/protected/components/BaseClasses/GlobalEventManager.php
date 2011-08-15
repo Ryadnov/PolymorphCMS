@@ -6,18 +6,12 @@
  * 1. setUp - Y::events()->event = function($event) {};
  * 2. call - Y::events()->event($params);
  */
-class GlobalEventManager //extends CComponent
+class GlobalEventManager extends CApplicationComponent
 {
     private $_e;
 
-    public function init()
-    {
-        
-    }
-
     public function __set($name,$value)
 	{
-        //sdf
         if(strncasecmp($name,'on',2)===0)
 		{
 			// duplicating getEventHandlers() here for performance
@@ -30,9 +24,16 @@ class GlobalEventManager //extends CComponent
 
     public function __call($name, $parameters)
 	{
-        return $this->raiseEvent($name, $this->event($parameters[0]));
+        $sender = $parameters[0];
+        $params = isset($parameters[1]) ? $parameters[1] : array();
+        return $this->raiseEvent($name, $this->event($sender, $params));
 	}
 
+    public function hasEvent($name)
+    {
+        return true;
+    }
+    
     public function raiseEvent($name,$event)
 	{
 		$name=strtolower($name);
@@ -72,14 +73,10 @@ class GlobalEventManager //extends CComponent
 				array('{class}'=>get_class($this), '{event}'=>$name)));
 	}
 
-    private function event(&$parameters)
+    private function event($sender, &$parameters)
     {
-        return new SimpleEvent($this, &$parameters);
+        return new SimpleEvent($sender, &$parameters);
     }
 
-    private function modelEvent(&$model)
-    {
-        return new ModelEvent($this, array('model' => &$model));
-    }
 
 }

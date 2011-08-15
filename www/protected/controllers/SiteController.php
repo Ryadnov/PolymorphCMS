@@ -64,7 +64,7 @@ class SiteController extends FrontBaseController
 
         //check model by category type
         $modelName = $category->type;
-        $model = $modelName::model();
+        $model = $modelName == 'Page' ? $category->page : $modelName::model();
 
         //if has alias or id of model, then find it
         if (isset($_GET['alias']) || isset($_GET['id'])) {
@@ -79,7 +79,6 @@ class SiteController extends FrontBaseController
 
         $this->category = $category;
         $this->model = $model;
-        
 
         //see parent render function
         $this->render('index');

@@ -3,8 +3,8 @@ class ModelFactory
 {
 
 	public static $allTypes = array(
-		'page',
-		'record'
+		'Page',
+		'Record'
 	);
 
 	private static function getName($strOrObj)
@@ -21,8 +21,8 @@ class ModelFactory
 	{
         $type = is_string($catOrType) ? $catOrType : $catOrType->type;
 		switch ($type) {
-			case 'page': 		return is_string($catOrType) ? Page::model() : $catOrType->page;
-			case 'record': 	return Record::model();
+			case 'Page': 		return is_string($catOrType) ? Page::model() : $catOrType->Page;
+			case 'Record': 	return Record::model();
 			default: 			self::exception($typeOrObj);
 		}
 	}
@@ -31,8 +31,8 @@ class ModelFactory
 	{
 		$name = self::getName($typeOrObj);
 		switch ($name) {
-			case 'Page': 		return 'page';
-			case 'Record': 		return 'record';
+			case 'Page': 		return 'Page';
+			case 'Record': 		return 'Record';
 			default: 			self::exception($typeOrObj);
 		}
 	}
@@ -47,8 +47,8 @@ class ModelFactory
 	public static function isAllowCopy($type)
 	{
 		switch ($type) {
-			case 'page': 		return false;
-            case 'record':     return true;
+			case 'Page': 		return false;
+            case 'Record':     return true;
 
 			default: 			self::exception($cat);
 		}
@@ -62,7 +62,7 @@ class ModelFactory
 	public static function adminViewCategory($cat)
 	{
 		switch ($cat->type) {
-			case 'page':
+			case 'Page':
 				$page = $cat->page;
  				if($page == null) {
 					$page = new Page;
@@ -72,9 +72,9 @@ class ModelFactory
 						Y::flash('createPageError', 'Не получилось создать страницу. Повторите действие еще раз.');
 				}
 
-				return Admin::url('pages/update', array('pk'=>$page->pk));
-			case 'record':
-				return Admin::url('record/admin', array('catId'=>$cat->pk));
+				return Admin::url('Pages/update', array('pk'=>$page->pk));
+			case 'Record':
+				return Admin::url('Record/admin', array('catId'=>$cat->pk));
 			default:
 				self::exception($cat);
 		}
@@ -82,15 +82,15 @@ class ModelFactory
 
 	public static function getTemplatePatterns()
 	{
-		return 'page|record';
+		return 'Page|Record';
 	}
 
 	public static function cutRelations($fromCat, $toCat)
 	{
 		switch ($toCat->type) {
-			case 'page':
+			case 'Page':
 				throw new CException("Нельзя копировать данные типа 'Страница'");
-			case 'record':
+			case 'Record':
 				$toCat->record = $fromCat->record;
 				$toCat->save();
 				break;
@@ -102,9 +102,9 @@ class ModelFactory
 	public static function copyRelations($fromCat, $toCat)
 	{
 		switch ($toCat->type) {
-			case 'page':
+			case 'Page':
 				throw new CException("Нельзя копировать данные типа 'Страница'");
-			case 'record':
+			case 'Record':
 				 $toCat->record = self::destroyAllId($fromCat->record);
 				 $toCat->save();
 				break;
@@ -127,11 +127,11 @@ class ModelFactory
 	public static function deleteRelations($cat)
 	{
 		switch ($cat->type) {
-			case 'page':
+			case 'Page':
 				if ($cat->page != null)
 					$cat->page->delete();
 				break;
-			case 'record':
+			case 'Record':
 				 $cat->record = array();
 				 break;
 			default:
@@ -142,18 +142,18 @@ class ModelFactory
 	public static function getCategoryRelations()
 	{
 		return array(
-			'record' => array(CActiveRecord::HAS_MANY, 'Record', 'category_id',
-	        	'order'=>'record.sort DESC'
+			'Record' => array(CActiveRecord::HAS_MANY, 'Record', 'category_id',
+	        	'order'=>'Record.sort DESC'
 			),
-			'page' => array(CActiveRecord::HAS_ONE, 'Page', 'category_id')
+			'Page' => array(CActiveRecord::HAS_ONE, 'Page', 'category_id')
 		);
 	}
 
 	public static function getCriteriaWith($type)
 	{
 		switch ($type) {
-			case 'page': 		return array();
-			case 'record':     return array();
+			case 'Page': 		return array();
+			case 'Record':     return array();
 			default: 			self::exception($cat);
 		}
 	}
@@ -161,8 +161,8 @@ class ModelFactory
 	public static function getAfterAjaxUpdateFunction($type)
 	{
         switch ($type) {
-			case 'page': 		return "function() {}";
-			case 'record': 	return "function() {}";
+			case 'Page': 		return "function() {}";
+			case 'Record': 	return "function() {}";
 			default: 			self::exception($cat);
 		}
 	}
@@ -170,8 +170,8 @@ class ModelFactory
 	public static function getBeforeAjaxUpdateFunction($type)
 	{
 		switch ($type) {
-			case 'page': 		return "function() {}";
-			case 'record':     return "function() {}";
+			case 'Page': 		return "function() {}";
+			case 'Record':     return "function() {}";
 			default: 			self::exception($cat);
 		}
 	}
@@ -179,16 +179,16 @@ class ModelFactory
 	public static function labels()
 	{
 		return array(
-			'page'=>'страница',
-			'record'=>'записи'
+			'Page'=>'страница',
+			'Record'=>'записи'
 		);
 	}
 
     public static function getTypes()
     {
         return array(
-            'page'=>'страница',
-            'record'=>'записи',
+            'Page'=>'страница',
+            'Record'=>'записи',
             'products'=>'товары'
         );
     }

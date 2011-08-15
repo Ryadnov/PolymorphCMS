@@ -17,6 +17,7 @@ class GlobalEventManager //extends CComponent
 
     public function __set($name,$value)
 	{
+        //sdf
         if(strncasecmp($name,'on',2)===0)
 		{
 			// duplicating getEventHandlers() here for performance

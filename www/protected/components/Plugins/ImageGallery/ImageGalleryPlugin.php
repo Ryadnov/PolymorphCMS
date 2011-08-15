@@ -6,8 +6,10 @@ class ImageGalleryPlugin extends Plugin
     {
         Yii::import('plugins.ImageGallery.models.*');
         Yii::import('plugins.ImageGallery.widgets.*');
+        Yii::import('plugins.ImageGallery.behaviors.*');
                 
         $this->addHandler('onDataTypeRelations', 'addRecordRelations');
+        $this->addHandler('onAddDataTypeBehaviors', 'addRecordRelations');
     }
 
     public function addRecordRelations($event)
@@ -16,6 +18,11 @@ class ImageGalleryPlugin extends Plugin
             $event->relations,
             array('gallery' => array(Record::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()))
         );
+    }
+
+    public function addRecordBehaviors($event)
+    {
+        $event->sander->attachBehavior('someBehavior', new SomeBehavior);
     }
 
 }

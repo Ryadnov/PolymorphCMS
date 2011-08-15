@@ -1,5 +1,5 @@
 <?php
-class RecordsController extends AdminBaseController
+class RecordController extends AdminBaseController
 {	
 	/**
 	 * @return array action filters

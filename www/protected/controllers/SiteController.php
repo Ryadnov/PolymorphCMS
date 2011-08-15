@@ -38,9 +38,6 @@ class SiteController extends FrontBaseController
      */
     public function actionIndex()
     {
-        //register plugins and widgets
-        Y::resources()->registerPlugins();
-
         $i = 0;
         //check last category segment
         while (isset($_GET['cat' . ++$i])) {}

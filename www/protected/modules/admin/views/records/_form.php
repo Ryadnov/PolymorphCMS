@@ -23,7 +23,7 @@
 <?php Y::endTab()?>
 
 <?php Admin::makeTinyTabs($form, $model, array('text', 'descr'))?>
-	
+<?php Y::events()->onAdminGetTabs($this) ?>
 <?php echo Y::getTabs()?>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>

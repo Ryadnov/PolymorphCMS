@@ -10,6 +10,8 @@ class Controller extends CController
         $this->baseUrl = Y::config('baseUrl');
         Yii::app()->language = isset($_GET['lang']) ? $_GET['lang'] : "ru";
 
+        Y::resources()->registerPlugins();
+        
         parent::init();
     }
     

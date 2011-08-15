@@ -16,7 +16,7 @@ class ResourceManager extends CApplicationComponent
     {
         foreach ($category->allBlocks as $block) {
             foreach ($block['block']->widgets as $widget) {
-                Yii::import('widgets.'.$widget->class.'Widget.*');
+                Yii::import('widgets.'.$widget->class.'.*');
                 $w = Yii::app()->getWidgetFactory()->createWidget(Y::controller(),$widget->class, $widget->settings);
                 $w->register($category);
                 $this->_w[] = $widget->pk;

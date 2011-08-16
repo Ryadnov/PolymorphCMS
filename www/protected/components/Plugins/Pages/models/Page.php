@@ -10,6 +10,11 @@ class Page extends BaseDataType
 		return parent::model($className);
 	}
 
+    public function tableName()
+	{
+        return 'pages';
+	}
+    
 	public static function getPkAttr()
 	{
 		return 'page_id';

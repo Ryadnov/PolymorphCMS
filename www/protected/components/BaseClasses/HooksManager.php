@@ -1,12 +1,10 @@
 <?php
 /**
- * registration events
- * all events in CMS must be incapsulated there
  * Use:
- * 1. setUp - Y::events()->event = function($event) {};
- * 2. call - Y::events()->event($params);
+ * 1. setUp - Y::hooks()->hook = function($event) {};
+ * 2. call - Y::hooks()->hook($params);
  */
-class GlobalEventManager extends CApplicationComponent
+class HooksManager extends CApplicationComponent
 {
     private $_e;
 

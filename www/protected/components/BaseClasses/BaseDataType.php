@@ -4,10 +4,6 @@ abstract class BaseDataType extends ActiveRecord implements IDataType
 	const PUBLISHED = 1;
 	const NOT_PUBLISHED = 0;
 	
-    public function tableName()
-	{
-        return 'type_'.ModelFactory::getType($this);
-	}
 	
 	public function rules() 
 	{

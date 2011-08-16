@@ -154,7 +154,7 @@ class Y extends CComponent
      * @param mixed $var переменная для вывода
      * @param boolean $toDie остановить ли дальнейшее выполнение приложения, по умолчанию - true
      */
-    public static function dump($var, $skipCount = 0, $toDie = true)
+    public static function dump($var, $skipCount = 0, $depth = 2)
     {
     	if (self::$startSkipCount == 0)
     		self::$startSkipCount = self::$skipCount = $skipCount;
@@ -165,11 +165,8 @@ class Y extends CComponent
     		self::$startSkipCount = 0;
     		
 	        echo '<pre>';
-	        CVarDumper::dump($var, 10, true);
+	        CVarDumper::dump($var, $depth, true);
 	        echo '</pre>';
-    	
-	        if ($toDie)
-	            self::end(); 
     	}
     }
     
@@ -452,10 +449,6 @@ class Y extends CComponent
 	public static function isAjaxRequest() {
 		return Yii::app()->request->isAjaxRequest;
 	}
-	
-	public static function parse() {
-		
-	}
 
 	public static function years()
 	{
@@ -588,9 +581,9 @@ class Y extends CComponent
             echo $output;
     }
 
-    public function events()
+    public function hooks()
     {
-        return Yii::app()->eventManager;
+        return Yii::app()->hooksManager;
     }
 
     public function resources()

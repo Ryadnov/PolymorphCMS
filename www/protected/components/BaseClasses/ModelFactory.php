@@ -20,7 +20,8 @@ class ModelFactory
     {
         $res = null;
         foreach (self::$_m as $model) {
-            if ($res = $model->handleCategoryType($category));
+            if ($res = $model->handleCategoryType($category))
+                return $res;
         }
         return $res;
     }

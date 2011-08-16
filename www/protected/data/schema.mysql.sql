@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 16 2011 г., 13:18
+-- Время создания: Авг 16 2011 г., 17:38
 -- Версия сервера: 5.1.40
 -- Версия PHP: 5.3.3
 
@@ -195,6 +195,78 @@ INSERT INTO `lookup` (`lookup_id`, `type`, `code`, `name`, `position`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `pages`
+--
+
+CREATE TABLE IF NOT EXISTS `pages` (
+  `page_id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) DEFAULT NULL,
+  `sidebar` text,
+  `text` text,
+  `created` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `image_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`page_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=57 ;
+
+--
+-- Дамп данных таблицы `pages`
+--
+
+INSERT INTO `pages` (`page_id`, `category_id`, `sidebar`, `text`, `created`, `image_name`) VALUES
+(5, 59, '', '<p class="bigger"><span style="font-size: 19px;">Уже 10 лет <a href="#">мы</a> создаем для <a href="#">наших клиентов</a></span> <span style="font-size: 21px;">качественные <a href="#">сайты</a>, <a href="#">flash-презентации</a></span>, <span style="font-size: 15px;">занимаемся разработкой <a href="#">мультимедиа презентаций</a></span>, <span style="font-size: 19px;"><a href="#">дизайном печатной продукции</a></span>.</p>', NULL, NULL),
+(2, 4, NULL, '<p>Полный комплекс услуг по проектированию, разработке и сопровождению программного обеспечения, включая консалтинг, разработку ТЗ, разработку интерфейса и проектирование баз данных, систем клиент/сервер, геоинформационных систем, систем документооборота, а также постпроектную техническую и информационную поддержку.</p>', NULL, NULL),
+(3, 5, NULL, '<p>Пока здесь ничего не написано</p>', NULL, NULL),
+(4, 6, NULL, '<p>Разработка качественных и высокоэффективных мультимедиа продуктов, таких как: элетронные визитки, презентации брэндов, электронные каталоги продуктов, а также мультимедийные учебники и энциклопедии, справочники и самоучители.</p>', NULL, NULL),
+(7, 77, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(8, 78, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(9, 79, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(10, 80, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(56, 84, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(14, 90, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(15, 91, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(16, 92, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(17, 93, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(18, 94, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(19, 98, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(20, 99, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(21, 100, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(22, 101, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(23, 106, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(24, 107, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(25, 108, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(26, 109, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(27, 110, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(28, 111, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(29, 112, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(30, 113, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(31, 114, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(32, 115, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(33, 116, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(34, 117, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(35, 118, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(36, 119, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(37, 120, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(38, 121, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(39, 122, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(40, 123, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(41, 124, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(42, 125, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(43, 127, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(44, 126, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(45, 128, '', '<p>Пока здесь ничего не написано</p>', NULL, NULL),
+(46, 129, NULL, '<p>Пока здесь ничего не написано</p>', '2011-08-02 21:03:14', NULL),
+(47, 130, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(48, 131, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(49, 132, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(50, 133, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(52, 138, '', '<p>{portlet:id=map}</p>', NULL, NULL),
+(53, 139, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(54, 2, NULL, 'Пока здесь ничего не написано', NULL, NULL),
+(55, 140, NULL, 'Пока здесь ничего не написано', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `plugins`
 --
 
@@ -205,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `plugins` (
   `class` varchar(50) DEFAULT NULL,
   `title` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`plugin_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Дамп данных таблицы `plugins`
@@ -215,7 +287,9 @@ INSERT INTO `plugins` (`plugin_id`, `json_settings`, `published`, `class`, `titl
 (1, '{}', 1, 'MainContent', 'Главный контент'),
 (2, '{"alias":"main"}', 1, 'Menu', 'Менюшка'),
 (10, '{}', 1, 'Dummy', 'Текст'),
-(11, '{}', 1, 'ImageGallery', 'Галлерея Изображений');
+(11, '{}', 1, 'ImageGallery', 'Галлерея Изображений'),
+(12, '{}', 1, 'Pages', 'Статические страницы'),
+(13, '{}', 1, 'Records', 'Записи');
 
 -- --------------------------------------------------------
 
@@ -296,7 +370,7 @@ INSERT INTO `profiles_fields` (`id`, `required`, `position`, `visible`, `varname
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `record`
+-- Структура таблицы `records`
 --
 
 CREATE TABLE IF NOT EXISTS `records` (
@@ -328,7 +402,7 @@ CREATE TABLE IF NOT EXISTS `records` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
--- Дамп данных таблицы `record`
+-- Дамп данных таблицы `records`
 --
 
 INSERT INTO `records` (`record_id`, `sort`, `alias`, `category_id`, `descr`, `month`, `year`, `published`, `index_text`, `second_title`, `title`, `sidebar_text`, `portfolio_work_type_id`, `city_id`, `activity`, `text`, `result_url`, `result_title`, `service`, `icon`, `icon_big`, `img`, `updaetd`, `created`) VALUES
@@ -385,78 +459,6 @@ INSERT INTO `template_widgets` (`template_widget_id`, `json_settings`, `publishe
 (1, '{}', 1, 'MainContent', 'Главный контент', 2),
 (2, '{"alias":"main"}', 1, 'Menu', 'Менюшка', 3),
 (10, '{}', 1, 'Dummy', 'Текст', 2);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `type_page`
---
-
-CREATE TABLE IF NOT EXISTS `type_page` (
-  `page_id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_id` int(11) DEFAULT NULL,
-  `sidebar` text,
-  `text` text,
-  `created` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `image_name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`page_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=57 ;
-
---
--- Дамп данных таблицы `type_page`
---
-
-INSERT INTO `type_page` (`page_id`, `category_id`, `sidebar`, `text`, `created`, `image_name`) VALUES
-(5, 59, '', '<p class="bigger"><span style="font-size: 19px;">Уже 10 лет <a href="#">мы</a> создаем для <a href="#">наших клиентов</a></span> <span style="font-size: 21px;">качественные <a href="#">сайты</a>, <a href="#">flash-презентации</a></span>, <span style="font-size: 15px;">занимаемся разработкой <a href="#">мультимедиа презентаций</a></span>, <span style="font-size: 19px;"><a href="#">дизайном печатной продукции</a></span>.</p>', NULL, NULL),
-(2, 4, NULL, '<p>Полный комплекс услуг по проектированию, разработке и сопровождению программного обеспечения, включая консалтинг, разработку ТЗ, разработку интерфейса и проектирование баз данных, систем клиент/сервер, геоинформационных систем, систем документооборота, а также постпроектную техническую и информационную поддержку.</p>', NULL, NULL),
-(3, 5, NULL, '<p>Пока здесь ничего не написано</p>', NULL, NULL),
-(4, 6, NULL, '<p>Разработка качественных и высокоэффективных мультимедиа продуктов, таких как: элетронные визитки, презентации брэндов, электронные каталоги продуктов, а также мультимедийные учебники и энциклопедии, справочники и самоучители.</p>', NULL, NULL),
-(7, 77, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(8, 78, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(9, 79, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(10, 80, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(56, 84, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(14, 90, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(15, 91, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(16, 92, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(17, 93, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(18, 94, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(19, 98, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(20, 99, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(21, 100, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(22, 101, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(23, 106, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(24, 107, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(25, 108, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(26, 109, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(27, 110, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(28, 111, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(29, 112, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(30, 113, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(31, 114, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(32, 115, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(33, 116, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(34, 117, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(35, 118, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(36, 119, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(37, 120, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(38, 121, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(39, 122, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(40, 123, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(41, 124, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(42, 125, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(43, 127, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(44, 126, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(45, 128, '', '<p>Пока здесь ничего не написано</p>', NULL, NULL),
-(46, 129, NULL, '<p>Пока здесь ничего не написано</p>', '2011-08-02 21:03:14', NULL),
-(47, 130, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(48, 131, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(49, 132, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(50, 133, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(52, 138, '', '<p>{portlet:id=map}</p>', NULL, NULL),
-(53, 139, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(54, 2, NULL, 'Пока здесь ничего не написано', NULL, NULL),
-(55, 140, NULL, 'Пока здесь ничего не написано', NULL, NULL);
 
 -- --------------------------------------------------------
 

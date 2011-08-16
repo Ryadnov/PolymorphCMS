@@ -3,8 +3,8 @@ return array(
     'resourceManager'=>array(
         'class'=>'application.components.BaseClasses.ResourceManager'
     ),
-    'eventManager'=>array(
-        'class'=>'application.components.BaseClasses.GlobalEventManager'
+    'hooksManager'=>array(
+        'class'=>'application.components.BaseClasses.HooksManager'
     ),
     'file'=>array(
         'class'=>'application.components.CFile.CFile',

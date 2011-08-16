@@ -19,7 +19,7 @@ class Plugin extends CComponent
 
     public function addHandler($eventName, $methodName)
     {
-        Y::events()->$eventName = array($this, $methodName);
+        Y::hooks()->$eventName = array($this, $methodName);
     }
 
 }

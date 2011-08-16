@@ -49,7 +49,8 @@ class PluginModel extends ActiveRecord
     {
         return array(
             'published'=>array(
-                'condition'=>'published='.self::PUBLISHED
+                'condition'=>'published='.self::PUBLISHED,
+                'order'=>'load_level ASC'
             )
         );
     }

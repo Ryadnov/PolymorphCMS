@@ -67,7 +67,6 @@ abstract class Widget extends CPortlet
         );
     }
 
-    abstract public function remove();
     abstract public function update();
 
     public static function register($category)

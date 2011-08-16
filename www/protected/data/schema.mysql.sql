@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 16 2011 г., 17:38
+-- Время создания: Авг 16 2011 г., 17:59
 -- Версия сервера: 5.1.40
 -- Версия PHP: 5.3.3
 
@@ -276,20 +276,21 @@ CREATE TABLE IF NOT EXISTS `plugins` (
   `published` tinyint(1) DEFAULT '0',
   `class` varchar(50) DEFAULT NULL,
   `title` varchar(50) DEFAULT NULL,
+  `load_level` int(11) DEFAULT NULL,
   PRIMARY KEY (`plugin_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Дамп данных таблицы `plugins`
 --
 
-INSERT INTO `plugins` (`plugin_id`, `json_settings`, `published`, `class`, `title`) VALUES
-(1, '{}', 1, 'MainContent', 'Главный контент'),
-(2, '{"alias":"main"}', 1, 'Menu', 'Менюшка'),
-(10, '{}', 1, 'Dummy', 'Текст'),
-(11, '{}', 1, 'ImageGallery', 'Галлерея Изображений'),
-(12, '{}', 1, 'Pages', 'Статические страницы'),
-(13, '{}', 1, 'Records', 'Записи');
+INSERT INTO `plugins` (`plugin_id`, `json_settings`, `published`, `class`, `title`, `load_level`) VALUES
+(4, '{}', 1, 'MainContent', 'Главный контент', 2),
+(6, '{"alias":"main"}', 1, 'Menu', 'Менюшка', 2),
+(3, '{}', 1, 'Dummy', 'Текст', 2),
+(5, '{}', 1, 'ImageGallery', 'Галлерея Изображений', 2),
+(1, '{}', 1, 'Pages', 'Статические страницы', 1),
+(2, '{}', 1, 'Records', 'Записи', 1);
 
 -- --------------------------------------------------------
 

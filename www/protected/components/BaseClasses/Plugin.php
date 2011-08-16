@@ -1,6 +1,7 @@
 <?php
 class Plugin extends CComponent
 {
+    
     public function register()
     {
         
@@ -20,5 +21,5 @@ class Plugin extends CComponent
     {
         Y::events()->$eventName = array($this, $methodName);
     }
-    
+
 }

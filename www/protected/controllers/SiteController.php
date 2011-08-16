@@ -62,20 +62,16 @@ class SiteController extends FrontBaseController
             $_GET['alias'] = $alias;
         }
 
-        //check model by category type
-        $modelName = $category->type;
-        $model = $modelName == 'Page' ? $category->page : $modelName::model();
-
-        //if has alias or id of model, then find it
-        if (isset($_GET['alias']) || isset($_GET['id'])) {
-            $value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['id'];
-            $attr = isset($_GET['alias']) ? 'alias' : $model->pkAttr;
-
-            $model = $model->published()->findByAttributes(array($attr => $value));
-    
-            if ($model == NULL)
-                $this->redirect('/errors/not_found');
-        }
+        /*
+        Using expample:
+        ModelFactory::registerDataType(Records::model());
+        */
+        Y::events()->cmsRegisterDataTypes($this);
+        
+        $model = ModelFactory::getModel($category);
+        
+        if ($model == NULL)
+            $this->redirect('/errors/not_found');
 
         $this->category = $category;
         $this->model = $model;

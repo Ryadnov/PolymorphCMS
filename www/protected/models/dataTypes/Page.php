@@ -76,5 +76,9 @@ class Page extends BaseDataType
 	{
 		return Admin::url($this->adminControllerName.'/update', array('pk'=>$this->pk));
 	}
-	
+
+    public function handleCategoryType($category)
+    {
+        return $category->type == 'Page' ? $category->page : null;
+    }
 }

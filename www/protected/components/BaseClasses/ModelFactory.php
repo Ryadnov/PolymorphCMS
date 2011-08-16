@@ -1,6 +1,35 @@
 <?php
 class ModelFactory
 {
+    private static $_m = array();
+
+    public static function registerDataType($model)
+    {
+        self::$_m[get_class($model)] = $model;
+    }
+
+    /**
+     * Chain of Responsability pattern
+     * it call handleCategoryType method on all registered models by chain
+     * while some model return not null
+     * @static
+     * @param $category
+     * @return bool
+     */
+    public static function getModel($category)
+    {
+        //check model by category type
+        $res = null;
+        foreach (self::$_m as $model) {
+            if ($res = $model->handleCategoryType($category));
+        }
+        return $res;
+    }
+
+
+
+
+    //some deprecated functions 
 
 	public static $allTypes = array(
 		'Page',
@@ -15,16 +44,6 @@ class ModelFactory
 			return self::$allTypes[$strOrObj];
 		else
 			return get_class($strOrObj);
-	}
-
-	public static function getModel($catOrType)
-	{
-        $type = is_string($catOrType) ? $catOrType : $catOrType->type;
-		switch ($type) {
-			case 'Page': 		return is_string($catOrType) ? Page::model() : $catOrType->Page;
-			case 'Record': 	return Record::model();
-			default: 			self::exception($typeOrObj);
-		}
 	}
 
 	public static function getType($typeOrObj)

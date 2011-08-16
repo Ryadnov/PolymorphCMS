@@ -1,6 +1,7 @@
 <?php
-class SimpleEvent extends CModelEvent
+class HooksEvent extends CModelEvent
 {
+    
     public function __get($name)
     {
         return $this->params[$name];

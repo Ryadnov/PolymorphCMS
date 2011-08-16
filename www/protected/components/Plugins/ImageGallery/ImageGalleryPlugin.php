@@ -29,10 +29,7 @@ class ImageGalleryPlugin extends Plugin
     public function addGalleryTab($event)
     {
         Y::beginTab('Галлерея');
-        Y::controller()->widget('AdminImageGalleryWidget', array(
-            'model'=>$event->model,
-            'form'=>$event->form
-        ));
+        $this->widget('AdminImageGalleryWidget', $event);
         Y::endTab();
     }
 }

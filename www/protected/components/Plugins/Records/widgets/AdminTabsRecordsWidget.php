@@ -1,5 +1,5 @@
 <?php
-class AdminTabsWidget extends Widget
+class AdminTabsRecordsWidget extends Widget
 {
     public $model;
     public $form;

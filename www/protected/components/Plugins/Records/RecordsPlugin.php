@@ -17,7 +17,7 @@ class RecordsPlugin extends Plugin
 
     public function addAdminTabs($event)
     {
-        Y::controller()->widget('AdminTabsRecordsWidget', array('model'=>$event->model, 'form'=>$event->form));
+        $this->widget('AdminTabsRecordsWidget', $event);
     }
     
 }

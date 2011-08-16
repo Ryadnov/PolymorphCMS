@@ -9,10 +9,10 @@ class MainContentPlugin extends Plugin
 
     }
 
-    public function getTabs()
+    public function getTabs($event)
     {
         Y::beginTab('Шаблон списка');
-        Y::controller()->widget('CodeMirror', array(
+        $this->widget('CodeMirror', $event, array(
             'id'=>'main-content-list-template',
             'content'=>'slfj',
             'name'=>'list-template'

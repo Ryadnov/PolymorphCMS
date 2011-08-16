@@ -73,7 +73,7 @@ class HooksManager extends CApplicationComponent
 
     private function event($sender, &$parameters)
     {
-        return new SimpleEvent($sender, &$parameters);
+        return new HooksEvent($sender, &$parameters);
     }
 
 

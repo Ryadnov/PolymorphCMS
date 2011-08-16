@@ -22,4 +22,11 @@ class Plugin extends CComponent
         Y::hooks()->$eventName = array($this, $methodName);
     }
 
+    public function widget($widgetName, $event, $additionParams = array())
+    {
+        $params = CMap::mergeArray($event->params, $additionParams);
+        Y::controller()->widget($widgetName, $params);
+    }
+
+
 }

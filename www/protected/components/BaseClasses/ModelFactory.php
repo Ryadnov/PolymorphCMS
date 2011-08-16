@@ -139,16 +139,6 @@ class ModelFactory
 		}
 	}
 
-	public static function getCategoryRelations()
-	{
-		return array(
-			'Record' => array(CActiveRecord::HAS_MANY, 'Record', 'category_id',
-	        	'order'=>'Record.sort DESC'
-			),
-			'Page' => array(CActiveRecord::HAS_ONE, 'Page', 'category_id')
-		);
-	}
-
 	public static function getCriteriaWith($type)
 	{
 		switch ($type) {

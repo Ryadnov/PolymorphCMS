@@ -12,7 +12,7 @@ class GlobalEventManager extends CApplicationComponent
 
     public function __set($name,$value)
 	{
-        if(strncasecmp($name,'on',2)===0)
+        if(strncasecmp($name,'cms',3)===0)
 		{
 			// duplicating getEventHandlers() here for performance
 			$name=strtolower($name);

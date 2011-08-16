@@ -29,9 +29,13 @@ class Category extends ActiveRecord
 	
 	public function relations()
 	{
-		return CMap::mergeArray(ModelFactory::getCategoryRelations(),array(
+		return array(
+            'records' => array(CActiveRecord::HAS_MANY, 'Record', 'category_id',
+	        	'order'=>'records.sort DESC'
+			),
+			'page' => array(CActiveRecord::HAS_ONE, 'page', 'category_id'),
 			'blocks'=>array(self::HAS_MANY, 'TemplateBlock', 'category_id'),
-		));
+		);
 	}
 	
 	public static function getPkAttr() 

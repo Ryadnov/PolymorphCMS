@@ -7,7 +7,7 @@ class AdminImageGalleryWidget extends Widget
     
     public function update()
     {
-
+        //some
     }
 
     public function remove()

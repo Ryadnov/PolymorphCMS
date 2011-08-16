@@ -10,6 +10,7 @@ class ImageGalleryPlugin extends Plugin
                 
         $this->addHandler('cmsDataTypeRelations', 'addRecordRelations');
         $this->addHandler('cmsAddDataTypeBehaviors', 'addRecordBehaviors');
+        $this->addHandler('cmsAdminGetTabs', 'addGalleryTab');
     }
 
     public function addRecordRelations($event)
@@ -25,4 +26,13 @@ class ImageGalleryPlugin extends Plugin
         $event->sander->attachBehavior('someBehavior', new SomeBehavior);
     }
 
+    public function addGalleryTab($event)
+    {
+        Y::beginTab('Галлерея');
+        Y::controller()->widget('AdminImageGalleryWidget', array(
+            'model'=>$event->model,
+            'form'=>$event->form
+        ));
+        Y::endTab();
+    }
 }

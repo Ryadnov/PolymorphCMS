@@ -18,12 +18,11 @@
 			<?php echo $form->radioButtonList($model,'published',Lookup::items('FPublished'));?>
 		</div>
 	</div>
-	<?php if ($model->isNewRecord) $model->date = date('d.m.Y')?>
-	<?php Admin::makeDateFields($form, $model, 'date', 'dd.mm.yy'); ?>
+	<?php Admin::makeDateFields($form, $model, 'created', 'dd.mm.yy'); ?>
 <?php Y::endTab()?>
 
 <?php Admin::makeTinyTabs($form, $model, array('text', 'descr'))?>
-<?php Y::events()->cmsAdminGetTabs($this) ?>
+<?php Y::events()->cmsAdminGetTabs($this, array('model'=>$model, 'form'=>$form)) ?>
 <?php echo Y::getTabs()?>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>

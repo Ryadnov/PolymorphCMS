@@ -120,7 +120,7 @@ class Record extends BaseDataType
 
 	public static function getAdminControllerName()
 	{
-		return 'portfolios';
+		return 'record';
 	}
 
 	/*
@@ -150,7 +150,11 @@ class Record extends BaseDataType
 		}	
 		return false;
 	}
-
+	public function getImgFolder()
+	{
+		return 	'record';
+	}
+/*
 	public function beforeDelete()
 	{
 		if (parent::beforeDelete()) {
@@ -161,11 +165,7 @@ class Record extends BaseDataType
 		}
 		return false;
 	}
-	
-	public function getImgFolder()
-	{
-		return 	'portfolio';
-	}
+
 
 	public function getCurIcon()
 	{
@@ -193,9 +193,10 @@ class Record extends BaseDataType
 			return	$this->result_title;
 	}
 
+//*/
 	public function getGalleryFolder()
 	{
 		return 'gallery';
 	}
-	
+
 }

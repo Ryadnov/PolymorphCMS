@@ -27,7 +27,7 @@ class Union extends VariantListBase
 	public function relations()
 	{
 		return array(
-			'records' => array(self::BELONGS_TO, 'Record', Record::getPkAttr()),
+			'record' => array(self::BELONGS_TO, 'Record', Record::getPkAttr()),
 		);
 	}
 	

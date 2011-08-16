@@ -44,8 +44,8 @@ return array(
 		'modules.users.models.*',
 		'modules.admin.components.*',
         'modules.admin.models.*',
-        'modules.records.components.*',
-        'modules.records.models.*',
+        'modules.record.components.*',
+        'modules.record.models.*',
         'modules.cms.components.*',
         'modules.cms.models.*',
 
@@ -72,8 +72,8 @@ return array(
 		),
         'admin',
 		'cms',
-        'records'=>array(
-		    'class'=>'modules.users.modules.records.RecordsModule'
+        'record'=>array(
+		    'class'=>'modules.users.modules.record.RecordsModule'
 		),
     ),
 

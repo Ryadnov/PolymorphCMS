@@ -94,7 +94,7 @@ abstract class BaseDataType extends ActiveRecord implements IDataType
 	{
 		$dir = "/images/".$this->getImgFolder()."/thumbs/";
 		if (!is_dir('.'.$dir)) 
-			mkdir('.'.$dir);
+			@mkdir('.'.$dir);
 		return $dir;	
 	}
 

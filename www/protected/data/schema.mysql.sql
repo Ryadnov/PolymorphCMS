@@ -296,7 +296,7 @@ INSERT INTO `profiles_fields` (`id`, `required`, `position`, `visible`, `varname
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `records`
+-- Структура таблицы `record`
 --
 
 CREATE TABLE IF NOT EXISTS `records` (
@@ -328,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `records` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
--- Дамп данных таблицы `records`
+-- Дамп данных таблицы `record`
 --
 
 INSERT INTO `records` (`record_id`, `sort`, `alias`, `category_id`, `descr`, `month`, `year`, `published`, `index_text`, `second_title`, `title`, `sidebar_text`, `portfolio_work_type_id`, `city_id`, `activity`, `text`, `result_url`, `result_title`, `service`, `icon`, `icon_big`, `img`, `updaetd`, `created`) VALUES

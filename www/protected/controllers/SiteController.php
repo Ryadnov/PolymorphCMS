@@ -73,8 +73,8 @@ class SiteController extends FrontBaseController
         if ($model == NULL)
             $this->redirect('/errors/not_found');
 
-        $this->category = $category;
         $this->model = $model;
+        $this->category = $category;
 
         //see parent render function
         $this->render('index');

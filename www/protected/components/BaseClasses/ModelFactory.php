@@ -18,7 +18,6 @@ class ModelFactory
      */
     public static function getModel($category)
     {
-        //check model by category type
         $res = null;
         foreach (self::$_m as $model) {
             if ($res = $model->handleCategoryType($category));
@@ -28,8 +27,8 @@ class ModelFactory
 
 
 
-
-    //some deprecated functions 
+    
+    //some deprecated functions
 
 	public static $allTypes = array(
 		'Page',

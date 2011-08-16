@@ -9,7 +9,7 @@ class ImageGalleryPlugin extends Plugin
         Yii::import('plugins.ImageGallery.behaviors.*');
                 
         $this->addHandler('cmsDataTypeRelations', 'addRecordRelations');
-        $this->addHandler('cmsAddDataTypeBehaviors', 'addRecordRelations');
+        $this->addHandler('cmsAddDataTypeBehaviors', 'addRecordBehaviors');
     }
 
     public function addRecordRelations($event)

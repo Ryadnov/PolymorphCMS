@@ -16,6 +16,4 @@ class ResourceManager extends CApplicationComponent
             $this->_p[] = $plugin->pk;
         }
     }
-
-    
 }

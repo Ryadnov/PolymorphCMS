@@ -51,9 +51,11 @@ class JuiTabs extends CJuiTabs
         echo CHtml::closeTag($this->tagName)."\n";
 
         $options=empty($this->options) ? '' : CJavaScript::encode($this->options);
-        echo "<script type='text/javascript'>
-                $('#{$id}').tabs($options);
-            </script>";
+        Y::clientScript()->registerScript($id.'-form-submit', "
+            $(document).ready(function(){
+                $('#{$id}').tabs({$options});
+            });
+        ");
     }
 
 

@@ -167,6 +167,8 @@ class Y extends CComponent
 	        echo '<pre>';
 	        CVarDumper::dump($var, $depth, true);
 	        echo '</pre>';
+
+            Y::end();
     	}
     }
     
@@ -538,7 +540,7 @@ class Y extends CComponent
     public function getTabs($id = null, $return = false)
     {
         $tabs = self::controller()->widget(
-            'FormTabs', array(
+            'ExtTabs', array(
                 'tabs'=>self::$tabs,
                 'options'=>array(
                     'collapsible'=>false,
@@ -546,14 +548,7 @@ class Y extends CComponent
                 'id' => $id,
                 'htmlOptions' => array('class'=>'widget_settings_tabs', 'style'=>'height:495px'),
                 //add buttons to widget header
-                'buttons' => array (
-                    self::controller()->widget('SaveButton', array  (
-                        'id' =>'widget-form-save-button',
-                        'htmlOptions' => array ('class'=>'save-button'),
-                        'name'=>'submit',
-                        'caption'=>'Сохранить'
-                    ), true)
-                ),
+                'buttons' => array (CHtml::ajaxSubmitButton('Сохранить','')),
                 'extHeaderHtml' => '<div class="submit-form-result"></div>'
             ),
             true

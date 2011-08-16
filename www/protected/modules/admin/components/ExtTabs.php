@@ -5,14 +5,13 @@
  * not registered script as parent class
  * but echo scripts in <script type='text/javascript'></script> tags
  */
-class FormTabs extends JuiTabs
+class ExtTabs extends JuiTabs
 {
     public $buttons;
     public $extHeaderHtml;
-    
+
     public function run()
     {
-        echo CHtml::form();
         $id = $this->getId();
         if (isset($this->htmlOptions['id']))
             $id = $this->htmlOptions['id'];
@@ -61,18 +60,7 @@ class FormTabs extends JuiTabs
         Y::clientScript()->registerScript($id.'-form-submit', "
             $(document).ready(function(){
                 $('#{$id}').tabs({$options});
-
-                $('#{$id}').submit(function() {
-                    var form  = $(this);
-                    form.ajaxSubmit({
-                         success: function() {
-                            form.find('.submit-form-result').fadeOut(0).text('Сохранено').fadeIn(500).delay(800).fadeOut(500);
-                         }
-                    });
-                });
             });
         ");
-
-        echo CHtml::endForm();
     }
 }

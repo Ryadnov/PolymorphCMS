@@ -3,17 +3,12 @@ class SaveButton extends JuiButton
 {
     public  function init()
     {
-        Y::clientScript()->registerScript('save-button-subit', "
+        Y::clientScript()->registerScript('save-button', "
             $(document).ready(function() {
                 //form submit
                 var ajaxSave = function () {
-
                     var form = $(this).closest('form');
-                    form.ajaxSubmit({
-                         success: function() {
-                            form.find('.submit-form-result').fadeOut(0).text('Сохранено').fadeIn(500).delay(800).fadeOut(500);
-                         }
-                    });
+                    $(form).submit();
                     return false;
                 }
 

@@ -121,6 +121,7 @@ class AdminBaseController extends Controller
 	
 	public function actionUpdate($pk, $otherParams = array()) 
 	{
+//        Y::dump($_GET);
 		$model=$this->loadModel($pk, 'update');
 		
 		$this->performAjaxValidation($model);

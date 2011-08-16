@@ -6,7 +6,7 @@ class AdminTabsRecordsWidget extends Widget
 
     public function update()
     {
-
+           
     }
 
     public function renderContent()

@@ -153,7 +153,7 @@ class Admin
         	
 			Y::controller()->widget('zii.widgets.jui.CJuiDatePicker', array(
 				'attribute'=>$attr,
-                'scriptFile'=>'/js/jquery-ui.min.js',
+//                'scriptFile'=>'/js/jquery-ui.min.js',
 				'model'=>$model,
 				'language'=>Yii::app()->language,
 				'options'=>array(

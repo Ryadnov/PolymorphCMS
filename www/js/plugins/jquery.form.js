@@ -1,6 +1,6 @@
 /*!
  * jQuery Form Plugin
- * version: 2.82 (15-JUN-2011)
+ * version: 2.84 (12-AUG-2011)
  * @requires jQuery v1.3.2 or later
  *
  * Examples and documentation at: http://malsup.com/jquery/form/
@@ -50,7 +50,7 @@ $.fn.ajaxSubmit = function(options) {
 		return this;
 	}
 	
-	var method, action, url, $form = this;;
+	var method, action, url, $form = this;
 
 	if (typeof options == 'function') {
 		options = { success: options };
@@ -91,7 +91,7 @@ $.fn.ajaxSubmit = function(options) {
 	if (options.data) {
 		options.extraData = options.data;
 		for (n in options.data) {
-			if(options.data[n] instanceof Array) {
+			if( $.isArray(options.data[n]) ) {
 				for (var k in options.data[n]) {
 					a.push( { name: n, value: options.data[n][k] } );
 				}
@@ -147,8 +147,8 @@ $.fn.ajaxSubmit = function(options) {
 		callbacks.push(options.success);
 	}
 
-	options.success = function(data, status, xhr) { // jQuery 2.4+ passes xhr as 3rd arg
-		var context = options.context || options;   // jQuery 2.4+ supports scope context
+	options.success = function(data, status, xhr) { // jQuery 1.4+ passes xhr as 3rd arg
+		var context = options.context || options;   // jQuery 1.4+ supports scope context 
 		for (var i=0, max=callbacks.length; i < max; i++) {
 			callbacks[i].apply(context, [data, status, xhr || $form, $form]);
 		}
@@ -188,12 +188,14 @@ $.fn.ajaxSubmit = function(options) {
 
 	// private function for handling file uploads (hat tip to YAHOO!)
 	function fileUpload(a) {
-		var form = $form[0], i, s, g, id, $io, io, xhr, sub, n, timedOut, timeoutHandle;
+		var form = $form[0], el, i, s, g, id, $io, io, xhr, sub, n, timedOut, timeoutHandle;
+        var useProp = !!$.fn.prop;
 
         if (a) {
         	// ensure that every serialized input is still enabled
           	for (i=0; i < a.length; i++) {
-            	$(form[a[i].name]).attr('disabled', false);
+                el = $(form[a[i].name]);
+                el[ useProp ? 'prop' : 'attr' ]('disabled', false);
           	}
         }
 
@@ -513,7 +515,7 @@ $.fn.ajaxSubmit = function(options) {
 			}, 100);
 		}
 
-		var toXml = $.parseXML || function(s, doc) { // use parseXML if available (jQuery 2.1+)
+		var toXml = $.parseXML || function(s, doc) { // use parseXML if available (jQuery 1.5+)
 			if (window.ActiveXObject) {
 				doc = new ActiveXObject('Microsoft.XMLDOM');
 				doc.async = 'false';
@@ -557,18 +559,18 @@ $.fn.ajaxSubmit = function(options) {
  *
  * The advantages of using this method instead of ajaxSubmit() are:
  *
- * 2: This method will include coordinates for <input type="image" /> elements (if the element
+ * 1: This method will include coordinates for <input type="image" /> elements (if the element
  *	is used to submit the form).
  * 2. This method will include the submit element's name/value data (for the element that was
  *	used to submit the form).
- * 2. This method binds the submit() method to the form for you.
+ * 3. This method binds the submit() method to the form for you.
  *
  * The options argument for ajaxForm works exactly as it does for ajaxSubmit.  ajaxForm merely
  * passes the options argument along after properly binding events for submit elements and
  * the form itself.
  */
 $.fn.ajaxForm = function(options) {
-	// in jQuery 2.2+ we can fix mistakes with the ready state
+	// in jQuery 1.3+ we can fix mistakes with the ready state
 	if (this.length === 0) {
 		var o = { s: this.selector, c: this.context };
 		if (!$.isReady && o.s) {
@@ -816,7 +818,7 @@ $.fieldValue = function(el, successful) {
 /**
  * Clears the form data.  Takes the following actions on the form's input fields:
  *  - input text fields will have their 'value' property set to the empty string
- *  - select elements will have their 'selectedIndex' property set to -2
+ *  - select elements will have their 'selectedIndex' property set to -1
  *  - checkbox and radio inputs will have their 'checked' property set to false
  *  - inputs of type submit, button, reset, and hidden will *not* be effected
  *  - button elements will *not* be effected

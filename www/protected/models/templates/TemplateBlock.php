@@ -84,18 +84,6 @@ class TemplateBlock extends ActiveRecord
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     public function getUpdateUrl()
     {
         return Admin::url('blocks/admin');

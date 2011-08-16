@@ -3,32 +3,6 @@ class SiteController extends FrontBaseController
 {
     public $layout = 'main';
 
-    public function accessRules()
-    {
-        return array( // если используется проверка прав, не забывайте разрешить доступ к
-            // действию, отвечающему за генерацию изображения
-            array('allow', 'actions' => array('captcha'), 'users' => array('*'),),);
-    }
-
-    /**
-     * Declares class-based actions.
-     */
-    public function actions()
-    {
-        $sitemapConfig = array(array('baseModel' => 'Post', 'route' => 'posts/view', 'params' => array('id' => 'post_id')), array('baseModel' => 'Blog', 'route' => 'blogs/view', 'params' => array('id' => 'blog_id')),);
-
-        return array( // captcha action renders the CAPTCHA image displayed on the contact page
-            'captcha' => array('class' => 'CaptchaAction', 'backColor' => 0xFFFFFF, 'minLength' => 4, 'maxLength' => 6, 'transparent' => true, 'testLimit' => 3,), 'upload' => array('class' => 'ext.xupload.EXUploadAction'), 'sitemap' => array('class' => 'ext.sitemap.ESitemapAction', 'importListMethod' => 'getBaseSitePageList', 'classConfig' => $sitemapConfig), 'sitemapxml' => array('class' => 'ext.sitemap.ESitemapXMLAction', 'classConfig' => $sitemapConfig, //'bypassLogs'=>true, // if using yii debug toolbar enable this line
-                                                                                                                                                                                                                                                                                                                                                                                                'importListMethod' => 'getBaseSitePageList',));
-    }
-
-    //special to ext.sitemap
-    public function getBaseSitePageList()
-    {
-        $list = array(array('loc' => $this->absoluteUrl('blogs'), 'frequency' => 'weekly', 'priority' => '2',),);
-        return $list;
-    }
-
     public $model;
     public $category;
 
@@ -94,6 +68,30 @@ class SiteController extends FrontBaseController
                 echo CHtml::tag('div', array(), CHtml::encode($error['message']));
             }
         }
+    }
+
+/*
+    public function accessRules()
+    {
+        return array( // если используется проверка прав, не забывайте разрешить доступ к
+            // действию, отвечающему за генерацию изображения
+            array('allow', 'actions' => array('captcha'), 'users' => array('*'),),);
+    }
+
+    public function actions()
+    {
+        $sitemapConfig = array(array('baseModel' => 'Post', 'route' => 'posts/view', 'params' => array('id' => 'post_id')), array('baseModel' => 'Blog', 'route' => 'blogs/view', 'params' => array('id' => 'blog_id')),);
+
+        return array( // captcha action renders the CAPTCHA image displayed on the contact page
+            'captcha' => array('class' => 'CaptchaAction', 'backColor' => 0xFFFFFF, 'minLength' => 4, 'maxLength' => 6, 'transparent' => true, 'testLimit' => 3,), 'upload' => array('class' => 'ext.xupload.EXUploadAction'), 'sitemap' => array('class' => 'ext.sitemap.ESitemapAction', 'importListMethod' => 'getBaseSitePageList', 'classConfig' => $sitemapConfig), 'sitemapxml' => array('class' => 'ext.sitemap.ESitemapXMLAction', 'classConfig' => $sitemapConfig, //'bypassLogs'=>true, // if using yii debug toolbar enable this line
+                                                                                                                                                                                                                                                                                                                                                                                                'importListMethod' => 'getBaseSitePageList',));
+    }
+
+    //special to ext.sitemap
+    public function getBaseSitePageList()
+    {
+        $list = array(array('loc' => $this->absoluteUrl('blogs'), 'frequency' => 'weekly', 'priority' => '2',),);
+        return $list;
     }
 
     public function actionRss()
@@ -168,5 +166,5 @@ class SiteController extends FrontBaseController
         }
         $feed->generateFeed();
     }
-
+//*/
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  * Smarty plugin
- * @package Smarty
+ * @packages Smarty
  * @subpackage PluginsFunction
  */
 

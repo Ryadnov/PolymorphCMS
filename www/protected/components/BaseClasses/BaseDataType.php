@@ -55,7 +55,7 @@ abstract class BaseDataType extends ActiveRecord implements IDataType
 		
 	public function getUpdateUrl()
 	{
-		return Y::url(Y::module()->getId().'/'.$this->adminControllerName.'/update', array('pk' => $this->pk));
+		return Y::url(Y::module()->getId().'/records/update', array('pk' => $this->pk, 'catPk'=>$this->category->pk));
 	}
 	
 	public function getDeleteUrl()

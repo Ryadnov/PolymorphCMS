@@ -3,7 +3,7 @@
 /**
  * Smarty Internal Plugin CompileBase
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

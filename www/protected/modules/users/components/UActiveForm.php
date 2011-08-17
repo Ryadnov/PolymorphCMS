@@ -114,7 +114,7 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @version $Id: CActiveForm.php 2104 2010-05-06 20:52:29Z qiang.xue $
- * @package system.web.widgets
+ * @packages system.web.widgets
  * @since 2.2.2
  */
 class UActiveForm extends CWidget

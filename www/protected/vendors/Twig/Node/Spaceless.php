@@ -14,7 +14,7 @@
  *
  * It removes spaces between HTML tags.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 class Twig_Node_Spaceless extends Twig_Node

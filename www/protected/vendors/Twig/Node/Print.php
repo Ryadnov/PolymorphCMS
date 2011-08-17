@@ -13,7 +13,7 @@
 /**
  * Represents a node that outputs an expression.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 class Twig_Node_Print extends Twig_Node implements Twig_NodeOutputInterface

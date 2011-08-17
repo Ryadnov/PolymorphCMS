@@ -1,5 +1,4 @@
 <?php
-
 // uncomment the following to define a path alias
 Yii::setPathOfAlias('modules',		'protected/modules');
 Yii::setPathOfAlias('components',	'protected/components');
@@ -8,6 +7,26 @@ Yii::setPathOfAlias('widgets',		'protected/components/Plugins');
 Yii::setPathOfAlias('behaviors',	'protected/components/Behaviors');
 Yii::setPathOfAlias('events',	'protected/components/Events');
 Yii::setPathOfAlias('plugins',	'protected/components/Plugins');
+Yii::setPathOfAlias('packages',	'protected/packages');
+
+Yii::app()->onBeginRequest = function($event) {
+
+    $modules = array();
+    
+    // if it module add moduleId to array
+    $route = Yii::app()->getRequest()->getPathInfo();
+    $module = substr($route,0,strpos($route,'/'));
+    if(Yii::app()->hasModule($module)) 
+        $modules[] = $module;
+
+    $modules = Configurator::addPackages($modules);
+
+    Configurator::addRoutesFromModules($modules);
+
+    return TRUE;
+};
+
+
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
@@ -44,8 +63,8 @@ return array(
 		'modules.users.models.*',
 		'modules.admin.components.*',
         'modules.admin.models.*',
-        'modules.record.components.*',
-        'modules.record.models.*',
+        'modules.records.components.*',
+        'modules.records.models.*',
         'modules.cms.components.*',
         'modules.cms.models.*',
 
@@ -72,9 +91,6 @@ return array(
 		),
         'admin',
 		'cms',
-        'record'=>array(
-		    'class'=>'modules.users.modules.record.RecordsModule'
-		),
     ),
 
 	// application components

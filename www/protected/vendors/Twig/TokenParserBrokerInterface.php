@@ -15,7 +15,7 @@
  *
  * Token parser brokers allows to implement custom logic in the process of resolving a token parser for a given tag name.
  *
- * @package twig
+ * @packages twig
  * @author  Arnaud Le Blanc <arnaud.lb@gmail.com>
  */
 interface Twig_TokenParserBrokerInterface

@@ -4,7 +4,7 @@
  *
  * Compiles the {debug} tag 
  * It opens a window the the Smarty Debugging Console
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews
  */

@@ -92,8 +92,8 @@ class ENestedSetBehavior extends CActiveRecordBehavior
 	}
 
 	/**
-	 * Gets record of node parent.
-	 * @return CActiveRecord the record found. Null if no record is found.
+	 * Gets records of node parent.
+	 * @return CActiveRecord the records found. Null if no records is found.
 	 */
 	public function getParent()
 	{
@@ -115,8 +115,8 @@ class ENestedSetBehavior extends CActiveRecordBehavior
 	}
 
 	/**
-	 * Gets record of previous sibling.
-	 * @return CActiveRecord the record found. Null if no record is found.
+	 * Gets records of previous sibling.
+	 * @return CActiveRecord the records found. Null if no records is found.
 	 */
 	public function getPrevSibling()
 	{
@@ -133,8 +133,8 @@ class ENestedSetBehavior extends CActiveRecordBehavior
 	}
 
 	/**
-	 * Gets record of next sibling.
-	 * @return CActiveRecord the record found. Null if no record is found.
+	 * Gets records of next sibling.
+	 * @return CActiveRecord the records found. Null if no records is found.
 	 */
 	public function getNextSibling()
 	{
@@ -379,7 +379,7 @@ class ENestedSetBehavior extends CActiveRecordBehavior
 		$owner=$this->getOwner();
 
 		if($owner->getIsNewRecord())
-			throw new CException(Yii::t('yiiext','The node should not be new record.'));
+			throw new CException(Yii::t('yiiext','The node should not be new records.'));
 
 		if($owner->equals($target))
 			throw new CException(Yii::t('yiiext','The target node should not be self.'));
@@ -406,7 +406,7 @@ class ENestedSetBehavior extends CActiveRecordBehavior
 		$owner=$this->getOwner();
 
 		if($owner->getIsNewRecord())
-			throw new CException(Yii::t('yiiext','The node should not be new record.'));
+			throw new CException(Yii::t('yiiext','The node should not be new records.'));
 
 		if($owner->equals($target))
 			throw new CException(Yii::t('yiiext','The target node should not be self.'));
@@ -433,7 +433,7 @@ class ENestedSetBehavior extends CActiveRecordBehavior
 		$owner=$this->getOwner();
 
 		if($owner->getIsNewRecord())
-			throw new CException(Yii::t('yiiext','The node should not be new record.'));
+			throw new CException(Yii::t('yiiext','The node should not be new records.'));
 
 		if($owner->equals($target))
 			throw new CException(Yii::t('yiiext','The target node should not be self.'));
@@ -457,7 +457,7 @@ class ENestedSetBehavior extends CActiveRecordBehavior
 		$owner=$this->getOwner();
 
 		if($owner->getIsNewRecord())
-			throw new CException(Yii::t('yiiext','The node should not be new record.'));
+			throw new CException(Yii::t('yiiext','The node should not be new records.'));
 
 		if($owner->equals($target))
 			throw new CException(Yii::t('yiiext','The target node should not be self.'));

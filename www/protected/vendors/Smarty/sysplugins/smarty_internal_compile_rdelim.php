@@ -4,7 +4,7 @@
  * Smarty Internal Plugin Compile Rdelim
  *
  * Compiles the {rdelim} tag 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews
  */

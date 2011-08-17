@@ -258,7 +258,7 @@ class ExtendedClientScript extends CClientScript
 	}
 
 	/**
-	 * Yii-ified version of CSS.php of the Minify package with fixed options
+	 * Yii-ified version of CSS.php of the Minify packages with fixed options
 	 *
 	 * @param <type> $css
 	 */

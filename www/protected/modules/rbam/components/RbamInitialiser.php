@@ -5,14 +5,14 @@
 * Initialises the RBAC system and/or RBAM.
 *
 * @copyright	Copyright &copy; 2010 PBM Web Development - All Rights Reserved
-* @package		RBAM
+* @packages		RBAM
 * @since			V1.0.0
 * @version		$Revision: 28 $
 * @license		BSD License (see documentation)
 */
 /**
 * RBAM Initialiser class
-* @package		RBAM
+* @packages		RBAM
 */
 class RbamInitialiser extends CComponent {
 	const STATUS_CONFIRM = 1;

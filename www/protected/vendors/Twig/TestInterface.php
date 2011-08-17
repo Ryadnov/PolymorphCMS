@@ -12,7 +12,7 @@
 /**
  * Represents a template test.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 interface Twig_TestInterface

@@ -120,7 +120,7 @@ class Record extends BaseDataType
 
 	public static function getAdminControllerName()
 	{
-		return 'record';
+		return 'records';
 	}
 
 	/*
@@ -152,7 +152,7 @@ class Record extends BaseDataType
 	}
 	public function getImgFolder()
 	{
-		return 	'record';
+		return 	'records';
 	}
 /*
 	public function beforeDelete()

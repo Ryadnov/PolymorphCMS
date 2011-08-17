@@ -39,7 +39,7 @@ class SiteController extends FrontBaseController
 
         /*
         Using expample:
-        ModelFactory::registerDataType(Records::model());
+        ModelFactory::registerDataType(records::model());
         */
         Y::hooks()->cmsRegisterDataTypes($this);
         

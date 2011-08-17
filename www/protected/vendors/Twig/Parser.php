@@ -13,7 +13,7 @@
 /**
  * Default parser implementation.
  *
- * @package twig
+ * @packages twig
  * @author  Fabien Potencier <fabien@symfony.com>
  */
 class Twig_Parser implements Twig_ParserInterface

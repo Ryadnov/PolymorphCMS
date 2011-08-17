@@ -73,7 +73,7 @@
             
             loading_box.appendTo('body');
             
-            for(i in opts.fields)                                         //record all field to send post
+            for(i in opts.fields)                                         //records all field to send post
                 obj[opts.fields[i]] = form.find('[name="'+opts.fields[i]+'"]').val();             
     
             for(i in opts.w_fields)

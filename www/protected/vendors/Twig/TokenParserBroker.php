@@ -13,7 +13,7 @@
 /**
  * Default implementation of a token parser broker.
  *
- * @package twig
+ * @packages twig
  * @author  Arnaud Le Blanc <arnaud.lb@gmail.com>
  */
 class Twig_TokenParserBroker implements Twig_TokenParserBrokerInterface

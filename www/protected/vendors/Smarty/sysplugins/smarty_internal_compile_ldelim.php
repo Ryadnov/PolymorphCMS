@@ -4,7 +4,7 @@
  * Smarty Internal Plugin Compile Ldelim
  *
  * Compiles the {ldelim} tag 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews
  */

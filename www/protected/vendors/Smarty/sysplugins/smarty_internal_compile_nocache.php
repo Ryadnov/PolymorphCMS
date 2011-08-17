@@ -4,7 +4,7 @@
  * Smarty Internal Plugin Compile Nocache
  *
  * Compiles the {nocache} {/nocache} tags 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews
  */

@@ -5,14 +5,14 @@
 * Provides additional features used by RBAM to the user model.
 *
 * @copyright	Copyright &copy; 2010 PBM Web Development - All Rights Reserved
-* @package		RBAM
+* @packages		RBAM
 * @since			V1.0.0
 * @version		$Revision: 21 $
 * @license		BSD License (see documentation)
 */
 /**
 * RBAM User Behavior class
-* @package		RBAM
+* @packages		RBAM
 */
 class RbamUserBehavior extends CModelBehavior {
 	const COMMA = '__##comma##__';

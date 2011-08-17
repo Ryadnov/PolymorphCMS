@@ -12,7 +12,7 @@
 /**
  * Interface implemented by extension classes.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 interface Twig_ExtensionInterface

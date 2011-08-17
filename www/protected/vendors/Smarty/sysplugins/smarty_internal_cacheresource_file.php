@@ -6,7 +6,7 @@
  * Implements the file system as resource for the HTML cache
  * Version ussing nocache inserts
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Cacher
  * @author Uwe Tews 
  */

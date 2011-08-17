@@ -12,7 +12,7 @@
 /**
  * Represents a template function.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 abstract class Twig_Function implements Twig_FunctionInterface

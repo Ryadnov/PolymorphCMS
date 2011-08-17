@@ -1,10 +1,10 @@
 <?php
 class Plugin extends CComponent
 {
-    
+
     public function register()
     {
-        
+
     }
 
     public function install()

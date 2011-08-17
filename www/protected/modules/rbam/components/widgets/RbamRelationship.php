@@ -5,14 +5,14 @@
 * Displays auth items with the specified relationship to the specified item.
 *
 * @copyright	Copyright &copy; 2010 PBM Web Development - All Rights Reserved
-* @package		RBAM
+* @packages		RBAM
 * @since			V1.0.0
 * @version		$Revision: 9 $
 * @license		BSD License (see documentation)
 */
 /**
 * RBAM Relationships widget class
-* @package		RBAM
+* @packages		RBAM
 */
 Yii::import('zii.widgets.CPortlet');
 

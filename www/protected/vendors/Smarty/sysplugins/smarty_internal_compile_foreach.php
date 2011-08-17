@@ -4,7 +4,7 @@
  * 
  * Compiles the {foreach} {foreachelse} {/foreach} tags
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

@@ -4,7 +4,7 @@
  * 
  * Compiles the {capture} tag
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

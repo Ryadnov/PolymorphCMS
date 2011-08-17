@@ -18,7 +18,7 @@
  * @see http://www.engr.mun.ca/~theo/Misc/exp_parsing.htm
  * @see http://en.wikipedia.org/wiki/Operator-precedence_parser
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 class Twig_ExpressionParser

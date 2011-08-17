@@ -13,7 +13,7 @@
 /**
  * Represents a Token.
  *
- * @package twig
+ * @packages twig
  * @author  Fabien Potencier <fabien@symfony.com>
  */
 class Twig_Token

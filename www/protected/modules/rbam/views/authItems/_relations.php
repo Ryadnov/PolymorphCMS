@@ -5,7 +5,7 @@
 * Used to render parents and children of an auth item when drilling up or down.
 * 
 * @copyright	Copyright &copy; 2010 PBM Web Development - All Rights Reserved
-* @package		RBAM
+* @packages		RBAM
 * @since			V1.0.0
 * @version		$Revision: 9 $
 * @license		BSD License (see documentation)

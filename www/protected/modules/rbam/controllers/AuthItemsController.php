@@ -5,14 +5,14 @@
 * Manages Auth Items.
 * 
 * @copyright	Copyright &copy; 2010 PBM Web Development - All Rights Reserved
-* @package		RBAM
+* @packages		RBAM
 * @since			V1.0.0
 * @version		$Revision: 9 $
 * @license		BSD License (see documentation)
 */
 /**
 * AuthItems Controller class
-* @package		RBAM
+* @packages		RBAM
 */
 class AuthItemsController extends RbamController {
 	/**

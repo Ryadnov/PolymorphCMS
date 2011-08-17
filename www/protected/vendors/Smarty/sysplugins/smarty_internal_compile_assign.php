@@ -5,7 +5,7 @@
  * 
  * Compiles the {assign} tag
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

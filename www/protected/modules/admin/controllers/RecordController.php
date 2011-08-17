@@ -36,15 +36,28 @@ class RecordController extends AdminBaseController
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer the ID of the model to be loaded
 	 */
-	public function loadModel($id = null, $scenario = '')
+    public function actionUpdate($catPk, $pk, $otherParams = array())
 	{
-		return parent::loadModel('Record', $id, $scenario, true);
-	}
-	/*
-	public function actionUpdate($pk)
-	{
-		$model = $this->loadModel($pk);
-        
-	}*/
+		$model = $this->loadModel($catPk, $pk, 'update');
 
+		$this->performAjaxValidation($model);
+
+		if (isset($_POST[get_class($model)])) {
+			$model->attributes = $_POST[get_class($model)];
+
+			if (method_exists($this, 'saveRelations'))
+				$this->saveRelations($model);
+
+			if ($model->save())
+				$this->redirect($model->adminUrl);
+		}
+
+		$opts = CMap::mergeArray($otherParams, array(
+			'model' => $model
+		));
+		if (!isset($opts['cat']) && isset($model->category))
+			$opts['cat'] = $model->category;
+
+		$this->render('update', $opts);
+	}
 }

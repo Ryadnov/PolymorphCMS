@@ -13,7 +13,7 @@
 /**
  * Default base class for compiled templates.
  *
- * @package twig
+ * @packages twig
  * @author  Fabien Potencier <fabien@symfony.com>
  */
 abstract class Twig_Template implements Twig_TemplateInterface

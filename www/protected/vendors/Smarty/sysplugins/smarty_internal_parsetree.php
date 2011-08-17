@@ -4,7 +4,7 @@
  * 
  * These are classes to build parsetrees in the template parser
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Thue Kristensen 
  * @author Uwe Tews 

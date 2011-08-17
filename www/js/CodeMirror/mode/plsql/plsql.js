@@ -144,9 +144,9 @@ CodeMirror.defineMode("plsql", function(config, parserConfig) {
         "master maxextents maxtrans member minextents minus mislabel mode modify multiset " +
         "new next no noaudit nocompress nologging noparallel not nowait number_base " +
         "object of off offline on online only open option or order out " +
-        "package parallel partition pctfree pctincrease pctused pls_integer positive positiven pragma primary prior " +
+        "packages parallel partition pctfree pctincrease pctused pls_integer positive positiven pragma primary prior " +
         "private privileges procedure public " +
-        "raise range raw read rebuild record ref references refresh release rename replace resource restrict return " +
+        "raise range raw read rebuild records ref references refresh release rename replace resource restrict return " +
         "returning reverse revoke rollback row rowid rowlabel rownum rows run " +
         "savepoint schema segment select separate session set share snapshot some space split sql start statement " +
         "storage subtype successful synonym " +

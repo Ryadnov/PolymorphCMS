@@ -4,7 +4,7 @@
  * 
  * Compiles code for registered objects as block function
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

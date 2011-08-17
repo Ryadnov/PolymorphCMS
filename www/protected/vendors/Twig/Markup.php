@@ -12,7 +12,7 @@
 /**
  * Marks a content as safe.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 class Twig_Markup

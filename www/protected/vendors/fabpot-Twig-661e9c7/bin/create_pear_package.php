@@ -30,9 +30,9 @@ foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), Re
     }
 }
 
-$template = file_get_contents(dirname(__FILE__).'/../package.xml.tpl');
+$template = file_get_contents(dirname(__FILE__).'/../packages.xml.tpl');
 $content = preg_replace_callback('/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/', 'replace_parameters', $template);
-file_put_contents(dirname(__FILE__).'/../package.xml', $content);
+file_put_contents(dirname(__FILE__).'/../packages.xml', $content);
 
 function replace_parameters($matches)
 {

@@ -4,7 +4,7 @@
  * 
  * Compiles the special $smarty variables
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

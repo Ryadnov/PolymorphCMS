@@ -5,7 +5,7 @@
  * 
  * Implements the registered resource for Smarty template
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage TemplateResources
  * @author Uwe Tews 
  */

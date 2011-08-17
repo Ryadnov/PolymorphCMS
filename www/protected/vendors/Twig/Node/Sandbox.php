@@ -12,7 +12,7 @@
 /**
  * Represents a sandbox node.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 class Twig_Node_Sandbox extends Twig_Node

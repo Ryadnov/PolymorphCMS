@@ -5,14 +5,14 @@
 * Provides the form and model for auth assignments
 *
 * @copyright	Copyright &copy; 2010 PBM Web Development - All Rights Reserved
-* @package		RBAM
+* @packages		RBAM
 * @since			V1.0.0
 * @version		$Revision: 17 $
 * @license		BSD License (see documentation)
 */
 /**
 * AuthItem Model class
-* @package		RBAM
+* @packages		RBAM
 */
 class AuthItem extends RBAMBaseModel {
 	/**

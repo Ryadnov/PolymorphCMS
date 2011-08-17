@@ -27,7 +27,7 @@
  * @copyright 2008 New Digital Group, Inc.
  * @author Monte Ohrt <monte at ohrt dot com> 
  * @author Uwe Tews 
- * @package Smarty
+ * @packages Smarty
  * @subpackage PluginsInternal
  * @version 2-SVN$Rev: 3286 $
  */

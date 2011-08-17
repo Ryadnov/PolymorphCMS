@@ -34,7 +34,7 @@ class ImageGallery extends BaseDataType
 	public function relations()
 	{
 		return array(
-			'record' => array(self::BELONGS_TO, 'Record', Record::getPkAttr()),
+			'records' => array(self::BELONGS_TO, 'Record', Record::getPkAttr()),
 		);
 	}
 	
@@ -86,7 +86,7 @@ class ImageGallery extends BaseDataType
 	
 	public function getAdminUrl()
 	{
-		return Admin::url('/record/update', array('pk'=>$this->record->pk));
+		return Admin::url('/records/update', array('pk'=>$this->record->pk));
 	}
 	
 	public static function getImgFolder()

@@ -3,7 +3,7 @@
 /**
  * Smarty read include path plugin
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage PluginsInternal
  * @author Monte Ohrt 
  */

@@ -5,7 +5,7 @@
  * 
  * This file contains the Smarty template engine
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Templates
  * @author Uwe Tews 
  */

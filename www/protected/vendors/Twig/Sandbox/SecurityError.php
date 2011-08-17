@@ -12,7 +12,7 @@
 /**
  * Exception thrown when a security error occurs at runtime.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 class Twig_Sandbox_SecurityError extends Twig_Error

@@ -5,7 +5,7 @@
  * 
  * Compiles the {insert} tag into the cache file
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

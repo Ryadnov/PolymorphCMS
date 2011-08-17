@@ -5,14 +5,14 @@
 * Provides management of RBAC authorisation data.
 *
 * @copyright	Copyright &copy; 2010 PBM Web Development - All Rights Reserved
-* @package		RBAM
+* @packages		RBAM
 * @since			V1.0.0
 * @version		$Revision: 28 $
 * @license		BSD License (see documentation)
 */
 /**
 * Role Based Access Manager Module class
-* @package		RBAM
+* @packages		RBAM
 */
 class RbamModule extends CWebModule {
 	/**
@@ -142,9 +142,9 @@ class RbamModule extends CWebModule {
 	public $juiHide = 'puff';
 	/**
 	* @property string The root URL that contains all JUI JavaScript files.
-	* If NULL (default) the JUI package included with Yii is published and used
+	* If NULL (default) the JUI packages included with Yii is published and used
 	* to infer the root script URL. You should set this property if you intend to
-	* use a JUI package whose version is different from the one included in Yii.
+	* use a JUI packages whose version is different from the one included in Yii.
 	* There must be a file whose name is specified by {@link juiScriptFile} under
 	* this URL.
 	* Do not append any slash character to the URL.
@@ -152,9 +152,9 @@ class RbamModule extends CWebModule {
 	public $juiScriptUrl;
 	/**
 	* @property string The root URL that contains all JUI theme folders.
-	* If NULL (default) the JUI package included with Yii is published and used to
+	* If NULL (default) the JUI packages included with Yii is published and used to
 	* infer the root theme URL. You should set this property if you intend to use
-	* a theme that is not found in the JUI package included in Yii.
+	* a theme that is not found in the JUI packages included in Yii.
 	* There must be a directory (case-sensitive) whose name is specified by
 	* {@link juiTheme} under this URL.
 	* Do not append any slash character to the URL.
@@ -326,9 +326,9 @@ class RbamModule extends CWebModule {
 			$this->_cs = Yii::app()->getClientScript();
 
 		/**
-		* Determine the JUI package installation path.
+		* Determine the JUI packages installation path.
 		* This method will identify the JavaScript root URL and theme root URL.
-		* If they are not explicitly specified, it will publish the included JUI package
+		* If they are not explicitly specified, it will publish the included JUI packages
 		* and use that to resolve the needed paths.
 		*/
 	 		if($this->juiScriptFile===null || $this->juiThemeUrl===null) {

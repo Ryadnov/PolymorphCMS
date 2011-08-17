@@ -4,7 +4,7 @@
  * 
  * Compiles code for modifier execution
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

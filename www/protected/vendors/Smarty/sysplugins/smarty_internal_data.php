@@ -5,7 +5,7 @@
  * 
  * This file contains the basic classes and methodes for template and variable creation
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Templates
  * @author Uwe Tews 
  */

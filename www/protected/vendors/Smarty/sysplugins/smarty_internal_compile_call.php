@@ -5,7 +5,7 @@
  * 
  * Compiles the calls of user defined tags defined by {function}
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

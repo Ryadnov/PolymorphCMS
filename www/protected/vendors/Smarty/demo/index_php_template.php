@@ -2,7 +2,7 @@
 /**
 * Test script for PHP template
 * @author Monte Ohrt <monte at ohrt dot com> 
-* @package SmartyTestScripts
+* @packages SmartyTestScripts
 */
 require('../libs/Smarty.class.php');
 

@@ -14,7 +14,7 @@
  * @author Dimitrios Meggidis <tydeas.dr@gmail.com>
  *
  * @version 2.2
- * @package application.extensions
+ * @packages application.extensions
 
  * @license http://www.yiiframework.com/license/
  */

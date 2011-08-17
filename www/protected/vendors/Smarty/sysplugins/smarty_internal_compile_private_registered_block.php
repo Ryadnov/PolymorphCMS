@@ -4,7 +4,7 @@
  * 
  * Compiles code for the execution of a registered block function
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

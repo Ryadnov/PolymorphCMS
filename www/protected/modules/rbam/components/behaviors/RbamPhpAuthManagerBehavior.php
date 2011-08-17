@@ -5,14 +5,14 @@
 * Provides additional features used by RBAM to CPhpAuthmanager.
 * 
 * @copyright	Copyright &copy; 2010 PBM Web Development - All Rights Reserved
-* @package		RBAM
+* @packages		RBAM
 * @since			V1.0.0
 * @version		$Revision: 15 $
 * @license		BSD License (see documentation)
 */
 /**
 * RBAM PhpAuthManager Behavior class
-* @package		RBAM
+* @packages		RBAM
 */
 class RbamPhpAuthManagerBehavior extends RbamAuthManagerBehavior {	
 	/**

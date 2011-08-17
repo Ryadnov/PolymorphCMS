@@ -2,7 +2,7 @@
 /**
  * Smarty plugin
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Security
  * @author Uwe Tews 
  */ 

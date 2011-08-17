@@ -5,7 +5,7 @@
  * 
  * External Smarty methods register/unregister
  * 
- * @package Smarty
+ * @packages Smarty
  * @author Uwe Tews 
  */
 

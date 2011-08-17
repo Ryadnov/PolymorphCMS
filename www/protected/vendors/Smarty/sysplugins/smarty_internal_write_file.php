@@ -3,7 +3,7 @@
 /**
  * Smarty write file plugin
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage PluginsInternal
  * @author Monte Ohrt 
  */

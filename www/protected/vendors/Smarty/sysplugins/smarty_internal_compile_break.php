@@ -5,7 +5,7 @@
  * 
  * Compiles the {break} tag
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

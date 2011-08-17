@@ -27,7 +27,7 @@
  * @copyright 2008 New Digital Group, Inc.
  * @author Monte Ohrt <monte at ohrt dot com> 
  * @author Uwe Tews 
- * @package Smarty
+ * @packages Smarty
  * @version 2.0.7
  */
 

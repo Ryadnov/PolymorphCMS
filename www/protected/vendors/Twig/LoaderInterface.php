@@ -12,7 +12,7 @@
 /**
  * Interface all loaders must implement.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 interface Twig_LoaderInterface

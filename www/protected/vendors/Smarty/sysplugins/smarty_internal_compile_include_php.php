@@ -5,7 +5,7 @@
  * 
  * Compiles the {include_php} tag
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

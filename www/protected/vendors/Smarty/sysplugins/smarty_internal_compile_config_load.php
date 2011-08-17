@@ -5,7 +5,7 @@
  * 
  * Compiles the {config load} tag
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

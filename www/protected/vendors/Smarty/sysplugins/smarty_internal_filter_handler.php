@@ -5,7 +5,7 @@
  * 
  * Smarty filter handler class
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage PluginsInternal
  * @author Uwe Tews 
  */

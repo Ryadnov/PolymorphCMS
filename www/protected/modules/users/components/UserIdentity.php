@@ -47,7 +47,7 @@ class UserIdentity extends CUserIdentity
 	}
     
     /**
-    * @return integer the ID of the user record
+    * @return integer the ID of the user records
     */
 	public function getId()
 	{

@@ -13,7 +13,7 @@
 /**
  * Represents a template function.
  *
- * @package    twig
+ * @packages    twig
  * @author     Arnaud Le Blanc <arnaud.lb@gmail.com>
  */
 interface Twig_FunctionInterface

@@ -5,7 +5,7 @@
  * 
  * Implements the file system as resource for Smarty which does extend a chain of template files templates
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage TemplateResources
  * @author Uwe Tews 
  */

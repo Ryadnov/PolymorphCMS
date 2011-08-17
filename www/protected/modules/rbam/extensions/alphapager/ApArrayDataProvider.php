@@ -9,7 +9,7 @@
  * @author Jascha Koch
  * @license MIT License - http://www.opensource.org/licenses/mit-license.html
  * @version 2.2
- * @package alphapager
+ * @packages alphapager
  * @since 2.2
  */
 

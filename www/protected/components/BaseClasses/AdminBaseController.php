@@ -12,7 +12,6 @@ class AdminBaseController extends Controller
 
         Y::clientScript()
             ->registerCoreScript('jquery.ui')
-            ->registerScriptFile('/js/plugins/jquery.form.js')
 //            ->registerScriptFile('/js/plugins/cms/deleteLi.js')
 //            ->registerScriptFile('/js/plugins/cms/openLi.js')
 //            ->registerScriptFile('/js/plugins/chosen/chosen.js')
@@ -31,7 +30,6 @@ class AdminBaseController extends Controller
                 'jquery.treeview.edit.js' => false,
                 'jquery.treeview.async.js' => false,
 
-                'jquery.form.js'=>false,
                 'asc.js'=>false
             );
         }
@@ -121,7 +119,6 @@ class AdminBaseController extends Controller
 	
 	public function actionUpdate($pk, $otherParams = array()) 
 	{
-//        Y::dump($_GET);
 		$model=$this->loadModel($pk, 'update');
 		
 		$this->performAjaxValidation($model);
@@ -261,16 +258,16 @@ class AdminBaseController extends Controller
 		$this->redirect($model->adminUrl);
 	}
 
-	public function loadModel($modelName, $pk = null, $scenario = '', $usePublished = false)
+	public function loadModel($catPk, $pk = null, $scenario = '')
 	{
+        $cat = Category::model()->findByPk($catPk);
+        $modelName = $cat->type;
+        
 		$model = new $modelName($scenario);
 		if($pk === null)
 			return $model;
 
 		$condition = $model->pkAttr.'='.$pk;
-
-		if ($usePublished && Y::isGuest())
-			$condition.=' AND status='.Y::PUBLISHED;
 
         $model = $model->find($condition);
         if($model===null)
@@ -279,8 +276,4 @@ class AdminBaseController extends Controller
         return $model;
 	}
 
-    public function renderAjax($view, $data=null, $return=false)
-    {
-        $output = parent::renderPartial($view, $data, $return, true);
-    }
 }

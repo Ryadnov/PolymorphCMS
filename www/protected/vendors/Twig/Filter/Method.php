@@ -12,7 +12,7 @@
 /**
  * Represents a method template filter.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 class Twig_Filter_Method extends Twig_Filter

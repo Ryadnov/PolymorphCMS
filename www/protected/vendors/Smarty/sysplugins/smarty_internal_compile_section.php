@@ -4,7 +4,7 @@
  * 
  * Compiles the {section} {sectionelse} {/section} tags
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

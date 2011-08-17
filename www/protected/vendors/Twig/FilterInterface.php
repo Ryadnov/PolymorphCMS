@@ -12,7 +12,7 @@
 /**
  * Represents a template filter.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 interface Twig_FilterInterface

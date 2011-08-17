@@ -23,7 +23,7 @@
 *
 * </pre>
 *
-* @package system.web
+* @packages system.web
 * @author Dragos Protung (dragos@protung.ro)
 * @since 2.2
 */

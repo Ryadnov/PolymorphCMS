@@ -5,7 +5,7 @@
 *
 * Class to collect data for the Smarty Debugging Consol
 *
-* @package Smarty
+* @packages Smarty
 * @subpackage Debug
 * @author Uwe Tews
 */

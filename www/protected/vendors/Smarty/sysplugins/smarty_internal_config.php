@@ -5,7 +5,7 @@
  * Main class for config variables
  * 
  * @ignore 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Config
  * @author Uwe Tews 
  */

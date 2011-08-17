@@ -13,7 +13,7 @@
 /**
  * Represents a block call node.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 class Twig_Node_BlockReference extends Twig_Node implements Twig_NodeOutputInterface

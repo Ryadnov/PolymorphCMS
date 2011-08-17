@@ -4,7 +4,7 @@
  * 
  * Compiles any tag which will output an expression or variable
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

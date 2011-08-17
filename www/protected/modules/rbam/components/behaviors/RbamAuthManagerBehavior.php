@@ -5,14 +5,14 @@
 * Provides additional features used by RBAM to CAuthmanager.
 * 
 * @copyright	Copyright &copy; 2010 PBM Web Development - All Rights Reserved
-* @package		RBAM
+* @packages		RBAM
 * @since			V1.0.0
 * @version		$Revision: 15 $
 * @license		BSD License (see documentation)
 */
 /**
 * RBAM AuthManager Behavior class
-* @package		RBAM
+* @packages		RBAM
 */
 class RbamAuthManagerBehavior extends CBehavior {
 	/**

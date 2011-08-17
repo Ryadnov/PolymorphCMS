@@ -5,7 +5,7 @@
  * 
  * External Smarty filter methods
  * 
- * @package Smarty
+ * @packages Smarty
  * @author Uwe Tews 
  */
 

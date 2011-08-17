@@ -5,14 +5,14 @@
 * Manages Auth Assignments.
 *
 * @copyright	Copyright &copy; 2010 PBM Web Development - All Rights Reserved
-* @package		RBAM
+* @packages		RBAM
 * @since			V1.0.0
 * @version		$Revision: 19 $
 * @license		BSD License (see documentation)
 */
 /**
 * AuthAssignments Controller class
-* @package		RBAM
+* @packages		RBAM
 */
 class AuthAssignmentsController extends RbamController {
 	private $_user;

@@ -4,7 +4,7 @@
  * 
  * Compiles the {for} {forelse} {/for} tags
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

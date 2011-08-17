@@ -12,7 +12,7 @@
 /**
  * Interfaces that all security policy classes must implements.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 interface Twig_Sandbox_SecurityPolicyInterface

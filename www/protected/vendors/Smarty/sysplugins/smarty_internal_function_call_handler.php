@@ -2,7 +2,7 @@
 /**
  * Smarty Internal Plugin Function Call Handler
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage PluginsInternal
  * @author Uwe Tews 
  */

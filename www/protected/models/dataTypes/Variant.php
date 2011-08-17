@@ -34,7 +34,7 @@ class Variant extends VariantListBase
 	public function relations()
 	{
 		return array(
-			'record' => array(self::MANY_MANY, 'Record', 'variant_relations(model_id, variant_id)'),
+			'records' => array(self::MANY_MANY, 'Record', 'variant_relations(model_id, variant_id)'),
 		);
 	}
 	

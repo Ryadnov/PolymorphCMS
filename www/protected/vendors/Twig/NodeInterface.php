@@ -12,7 +12,7 @@
 /**
  * Represents a node in the AST.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 interface Twig_NodeInterface

@@ -4,7 +4,7 @@
  * 
  * This file contains the basic classes and methodes for compiling Smarty templates with lexer/parser
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

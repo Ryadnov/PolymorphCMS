@@ -10,10 +10,10 @@ class MainContentWidget extends Widget
 
     protected function renderContent()
 	{
-        if (isset($this->model->pk)) {    //full record
+        if (isset($this->model->pk)) {    //full records
             $viewName = $this->category->type == 'Page' ? 'fullPage' : 'full';
             $this->render($viewName, array('model'=>$this->model, 'category'=>$this->category));
-        } else {                          //record-list
+        } else {                          //records-list
             if (!empty($this->scopes)) {
                 foreach ($this->scopes as $scope=>$params)
                     $this->model->$scope($params);

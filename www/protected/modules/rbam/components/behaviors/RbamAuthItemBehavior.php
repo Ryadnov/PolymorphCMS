@@ -5,14 +5,14 @@
 * Provides additional features used by RBAM to CAuthItem.
 * 
 * @copyright	Copyright &copy; 2010 PBM Web Development - All Rights Reserved
-* @package		RBAM
+* @packages		RBAM
 * @since			V1.0.0
 * @version		$Revision: 15 $
 * @license		BSD License (see documentation)
 */
 /**
 * RBAM AuthItem Behavior class
-* @package		RBAM
+* @packages		RBAM
 */
 class RbamAuthItemBehavior extends CBehavior {
 	/**

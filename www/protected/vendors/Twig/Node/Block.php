@@ -13,7 +13,7 @@
 /**
  * Represents a block node.
  *
- * @package    twig
+ * @packages    twig
  * @author     Fabien Potencier <fabien@symfony.com>
  */
 class Twig_Node_Block extends Twig_Node

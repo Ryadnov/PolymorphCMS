@@ -195,7 +195,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     name: "clike",
     keywords: words("abstract assert boolean break byte case catch char class const continue default " + 
                     "do double else enum extends final finally float for goto if implements import " +
-                    "instanceof int interface long native new package private protected public " +
+                    "instanceof int interface long native new packages private protected public " +
                     "return short static strictfp super switch synchronized this throw throws transient " +
                     "try void volatile while"),
     blockKeywords: words("catch class do else finally for if switch try while"),
@@ -233,7 +233,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     name: "clike",
     keywords: words("abstract as assert boolean break byte case catch char class const continue def default " +
                     "do double else enum extends final finally float for goto if implements import " +
-                    "in instanceof int interface long native new package property private protected public " +
+                    "in instanceof int interface long native new packages property private protected public " +
                     "return short static strictfp super switch synchronized this throw throws transient " +
                     "try void volatile while"),
     atoms: words("true false null"),

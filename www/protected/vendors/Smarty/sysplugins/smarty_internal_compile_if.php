@@ -4,7 +4,7 @@
  * 
  * Compiles the {if} {else} {elseif} {/if} tags
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage Compiler
  * @author Uwe Tews 
  */

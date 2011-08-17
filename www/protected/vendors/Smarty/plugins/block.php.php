@@ -2,7 +2,7 @@
 /**
  * Smarty plugin to execute PHP code
  * 
- * @package Smarty
+ * @packages Smarty
  * @subpackage PluginsBlock
  * @author Uwe Tews 
  */

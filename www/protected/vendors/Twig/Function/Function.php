@@ -13,7 +13,7 @@
 /**
  * Represents a function template function.
  *
- * @package    twig
+ * @packages    twig
  * @author     Arnaud Le Blanc <arnaud.lb@gmail.com>
  */
 class Twig_Function_Function extends Twig_Function

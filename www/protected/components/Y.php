@@ -168,6 +168,7 @@ class Y extends CComponent
 	        CVarDumper::dump($var, $depth, true);
 	        echo '</pre>';
 
+//            Y::end(debug_backtrace());
             Y::end();
     	}
     }

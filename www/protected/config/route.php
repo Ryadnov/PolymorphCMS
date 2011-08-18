@@ -14,25 +14,6 @@ $rbam = array(
 	'admin/rbam' => 'rbam/rbam',
 );
 
-$site = array(
-	//site urls
-	'rss/<blog_id:\d+>'=>'site/rss',
-	'atom/<blog_id:\d+>'=>'site/atom',
-	'sitemap.xml'=>'site/sitemapxml',
-	
-	'ajax/<a>'=>'ajax/<a>',
-	
-	'<cat1>/<cat2>/<id:\d+>' => 'site',
-	'<cat1>/<id:\d+>' => 'site',
-
-	'<cat1>/<cat2>/<type:(w+)>-<alias:\w+>' => 'site',
-	'<cat1>/<type:(w+)>-<alias:\w+>' => 'site',
-
-	'<cat1>/<cat2>' => 'site',
-	'<cat1>' => 'site',
-	''=>'site',
-);
-
 $users = addModule('users', array(
 	//user module links
 	'login'=>'login',
@@ -52,11 +33,11 @@ $users = addModule('users', array(
 ));
 
 //echo '<pre>';
-//print_r(array_merge($admin, $users, $site));
+//print_r(array_merge($admin, $users));
 
 return array(
 	'urlFormat'=>'path',
-	'rules'=>array_merge($admin, $users, $site),
+	'rules'=>array_merge($admin, $users),
 	'showScriptName' => false, 
 );
 

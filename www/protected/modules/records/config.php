@@ -1,4 +1,4 @@
 <?php
-return array(
+return array('records'=>array(
     'class'=>'packages.records.RecordsModule'
-);
+));

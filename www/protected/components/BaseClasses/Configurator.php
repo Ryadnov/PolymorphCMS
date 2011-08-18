@@ -54,18 +54,22 @@ class Configurator extends CApplicationComponent
     }
 
 
-    public function addPackages(&$modules)
+    public function addPackages($modules)
     {
         //load plugins
         Yii::import('components.*');
         Yii::import('components.helpers.*');
 
-        $configs = array(
-            'records'=>require(Yii::getPathOfAlias('packages.records.config').'.php')
+        $ids = array(
+            'records',
+            'imageGallery'
         );
-        Yii::app()->setModules($configs);
+        foreach ($ids as $id) {
+            $config = require(Yii::getPathOfAlias("packages.$id.config").'.php');
+            Yii::app()->setModules($config );
+            $modules[] = $id;
 
-        $modules[] = 'records';
+        }
 
         return $modules;
     }

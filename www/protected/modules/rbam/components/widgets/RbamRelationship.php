@@ -14,7 +14,7 @@
 * RBAM Relationships widget class
 * @packages		RBAM
 */
-Yii::import('zii.widgets.CPortlet');
+Yii::import('zii.components.CPortlet');
 
 class RbamRelationship extends CPortlet {
 	/**
@@ -92,7 +92,7 @@ class RbamRelationship extends CPortlet {
 			);
 		}
 
-		$owner->widget('system.web.widgets.CTabView', array('tabs'=>$tabs));
+		$owner->widget('system.web.components.CTabView', array('tabs'=>$tabs));
 	}
 
 	/**

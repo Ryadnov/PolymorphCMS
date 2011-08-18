@@ -3,7 +3,7 @@
 Yii::setPathOfAlias('modules',		'protected/modules');
 Yii::setPathOfAlias('components',	'protected/components');
 Yii::setPathOfAlias('models',		'protected/models');
-Yii::setPathOfAlias('widgets',		'protected/components/Plugins');
+Yii::setPathOfAlias('components',		'protected/components/Plugins');
 Yii::setPathOfAlias('behaviors',	'protected/components/Behaviors');
 Yii::setPathOfAlias('events',	'protected/components/Events');
 Yii::setPathOfAlias('plugins',	'protected/components/Plugins');

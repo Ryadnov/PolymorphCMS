@@ -1,5 +1,5 @@
 <?php
-Yii::import('zii.widgets.jui.CJuiTabs');
+Yii::import('zii.components.jui.CJuiTabs');
 /*
  * class for ajax echo tabs
  * not registered script as parent class

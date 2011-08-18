@@ -9,7 +9,7 @@
 * @version		$Revision: 9 $
 * @license		BSD License (see documentation)
 */
-$this->widget('zii.widgets.CMenu', array(
+$this->widget('zii.components.CMenu', array(
 	'id'=>'rbam-menu',
 	'firstItemCssClass'=>'first',
 	'items'=>$this->getModule()->getMenuItems()

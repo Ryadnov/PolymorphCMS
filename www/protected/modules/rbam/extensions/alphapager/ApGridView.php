@@ -12,7 +12,7 @@
  * @since 2.2
  */
 
-Yii::import('zii.widgets.grid.CGridView');
+Yii::import('zii.components.grid.CGridView');
 $dir = dirname(__FILE__);
 // generate alias name
 $alias = md5($dir);

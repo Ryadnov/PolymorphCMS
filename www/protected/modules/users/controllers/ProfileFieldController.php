@@ -79,7 +79,7 @@ class ProfileFieldController extends AdminBaseController
 				}
 			}
 		}
-		//echo '<pre>'; print_r($widgets[2]); die();
+		//echo '<pre>'; print_r($components[2]); die();
 		$js = "
 
 	var name = $('#name'),
@@ -88,7 +88,7 @@ class ProfileFieldController extends AdminBaseController
 	tips = $('.validateTips');
 	
 	var listWidgets = jQuery.parseJSON('".str_replace("'","\'",CJavaScript::jsonEncode($widgets[0]))."');
-	var widgets = jQuery.parseJSON('".str_replace("'","\'",CJavaScript::jsonEncode($widgets[1]))."');
+	var components = jQuery.parseJSON('".str_replace("'","\'",CJavaScript::jsonEncode($widgets[1]))."');
 	var wgByType = jQuery.parseJSON('".str_replace("'","\'",CJavaScript::jsonEncode($wgByTypes))."');
 	
 	var fieldType = {
@@ -171,7 +171,7 @@ class ProfileFieldController extends AdminBaseController
 		$('div.widget select').append('<option value=\"\">".Users::t('No')."</option>');
 		if (wgByType[type]) {
 			for (var k in wgByType[type]) {
-				$('div.widget select').append('<option value=\"'+wgByType[type][k]+'\">'+widgets[wgByType[type][k]]['label']+'</option>');
+				$('div.widget select').append('<option value=\"'+wgByType[type][k]+'\">'+components[wgByType[type][k]]['label']+'</option>');
 			}
 		}
 	}
@@ -238,7 +238,7 @@ class ProfileFieldController extends AdminBaseController
 
 
 	$('#widgetparams').focus(function() {
-		var widget = widgets[$('#widgetlist').val()];
+		var widget = components[$('#widgetlist').val()];
 		var html = '';
 		var wparam = ($('div.widgetparams input').val())?$.JSON.decode($('div.widgetparams input').val()):{};
 		var fparam = ($('div.other_validator input').val())?$.JSON.decode($('div.other_validator input').val()):{};

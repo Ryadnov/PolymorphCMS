@@ -11,7 +11,7 @@
 		<?if ($field->widgetEdit($profile)) {
 			echo $field->widgetEdit($profile);
 		} elseif ($field->field_type=="DATE") {
-			$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+			$this->widget('zii.components.jui.CJuiDatePicker', array(
 			    'attribute'=>$field->varname,
 			    'model'=>$profile,
 				'language'=>Yii::app()->language,

@@ -11,7 +11,7 @@
 */
 echo '<div class="throbber"></div>';
 $module = $this->getModule();
-$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+$this->beginWidget('zii.components.jui.CJuiDialog', array(
 	'id'=>'rbam-dialog',
 	'options'=>array(
 		'dialogClass'=>'rbam-dialog',
@@ -47,4 +47,4 @@ echo CHtml::beginForm('','post',array('id'=>'dialog-form','style'=>'display:none
 echo CHtml::hiddenField('initialise','',array('id'=>'initialise'));
 echo CHtml::endForm();
 
-$this->endWidget('zii.widgets.jui.CJuDialog');
+$this->endWidget('zii.components.jui.CJuDialog');

@@ -11,7 +11,7 @@ class Menu extends CMenu
 	public function get($alias)
 	{
 		if (($menuRoot = Category::model()->menuRoot($alias)) == null) {
-			$this->error("Параметр tag для menu не верен. Шаблон $this->tmplAlias");
+			$this->error("Параметр tag для   menu не верен. Шаблон $this->tmplAlias");
 			$res = $this->command;
 		}
 		

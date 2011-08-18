@@ -22,14 +22,14 @@ if ($this->action->id==='manage'):
 	echo '<div id="right-column">';
 	echo CHtml::tag('h3', array(), Yii::t('RbamModule.rbam','Manage Relationships'));
 	foreach(array('parents','children','unrelated') as $relationship):
-		$this->widget('rbam.components.widgets.RbamRelationship', compact('item', 'relationship'));
+		$this->widget('rbam.components.components.RbamRelationship', compact('item', 'relationship'));
 	endforeach;
 	Yii::app()->getClientScript()->registerScript('relationships', "jQuery().rbam.relationships('{$item->name}',".CJavaScript::encode($this->config()).');');
 	echo '</div>';
 	$this->renderPartial('_assignments', compact('item', 'assignmentForm'));
 endif;
 
-$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+$this->beginWidget('zii.components.jui.CJuiDialog', array(
 	'id'=>'rbam-dialog-done',
 	'options'=>array(
 		'dialogClass'=>'rbam-dialog',
@@ -58,7 +58,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 	)
 ));
 echo '<p><span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 20px -24px;"></span>{content}</p>';
-$this->endWidget('zii.widgets.jui.CJuiDialog');
+$this->endWidget('zii.components.jui.CJuiDialog');
 
 $cs->registerScript('submitForm', 'var jForm = jQuery("#yw0");
 	jQuery("input[type=\"submit\"]", jForm).click(function() {	

@@ -5,7 +5,7 @@ class ImageGalleryPlugin extends Plugin
     public function register()
     {
         Yii::import('plugins.ImageGallery.models.*');
-        Yii::import('plugins.ImageGallery.widgets.*');
+        Yii::import('plugins.ImageGallery.components.*');
         Yii::import('plugins.ImageGallery.behaviors.*');
                 
         $this->addHandler('cmsDataTypeRelations', 'addRecordRelations');

@@ -1,6 +1,6 @@
 <?php
 /**
- * registration resources, such as widgets, plug-ins
+ * registration resources, such as components, plug-ins
  */
 class ResourceManager extends CApplicationComponent
 {

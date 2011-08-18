@@ -18,9 +18,9 @@ foreach($authItems as $type=>$dataProvider):
 	);
 endforeach;
 
-$this->widget('system.web.widgets.CTabView', array('tabs'=>$tabs, 'activeTab'=>($active?$this->type($active):null)));
+$this->widget('system.web.components.CTabView', array('tabs'=>$tabs, 'activeTab'=>($active?$this->type($active):null)));
 
-$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+$this->beginWidget('zii.components.jui.CJuiDialog', array(
 	'id'=>'rbam-dialog-confirm',
 	'options'=>array(
 		'dialogClass'=>'rbam-dialog',
@@ -46,9 +46,9 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 	)
 ));
 echo '<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px -24px;"></span>'.Yii::t('RbamModule.rbam','Delete "{item}" ?').'</p><p>'.Yii::t('RbamModule.rbam','The item will be permanently deleted and cannot be recovered.').'</p><p>'.Yii::t('RbamModule.rbam','Click "Delete" to continue.').'</p>';
-$this->endWidget('zii.widgets.jui.CJuiDialog');
+$this->endWidget('zii.components.jui.CJuiDialog');
 
-$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+$this->beginWidget('zii.components.jui.CJuiDialog', array(
 	'id'=>'rbam-dialog-done',
 	'options'=>array(
 		'dialogClass'=>'rbam-dialog',
@@ -70,7 +70,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 	)
 ));
 echo '<p><span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 20px -24px;"></span>{content}</p>';
-$this->endWidget('zii.widgets.jui.CJuiDialog');
+$this->endWidget('zii.components.jui.CJuiDialog');
 
 Yii::app()->getClientScript()->registerScript(
 	'revoke','jQuery("a.delete").live("click",function() {

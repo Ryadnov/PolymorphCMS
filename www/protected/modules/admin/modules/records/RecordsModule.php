@@ -11,7 +11,7 @@ class RecordsModule extends CWebModule
 		$this->setImport(array(
 			'records.models.*',
 			'records.components.*',
-            'records.components.widgets.*',
+            'records.components.components.*',
 		));
 	}
 

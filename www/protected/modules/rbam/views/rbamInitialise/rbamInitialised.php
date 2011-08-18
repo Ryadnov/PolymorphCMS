@@ -10,7 +10,7 @@
 * @license		BSD License (see documentation)
 */
 $module = $this->getModule();
-$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+$this->beginWidget('zii.components.jui.CJuiDialog', array(
 	'id'=>'rbam-dialog',
 	'options'=>array(
 		'dialogClass'=>'rbam-dialog',
@@ -35,4 +35,4 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 echo '<p>'.Yii::t('RbamModule.initialisation','No changes have been made to existing RBAC Authorisation Data.').'</p>';
 echo '<p>'.Yii::t('RbamModule.initialisation','RBAM roles have been added if not already present.').'</p>';
 $this->renderPartial('_generate');
-$this->endWidget('zii.widgets.jui.CJuiDialog');
+$this->endWidget('zii.components.jui.CJuiDialog');

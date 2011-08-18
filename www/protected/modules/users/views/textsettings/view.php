@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 	$model->language,
 );
 
-$this->widget('zii.widgets.CDetailView', array(
+$this->widget('zii.components.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'language',

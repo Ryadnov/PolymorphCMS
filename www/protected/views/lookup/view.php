@@ -15,7 +15,7 @@ $this->menu=array(
 
 <h1>View Lookup #<?php echo $model->lookup_id; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php $this->widget('zii.components.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'lookup_id',

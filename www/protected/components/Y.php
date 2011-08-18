@@ -540,6 +540,15 @@ class Y extends CComponent
 
     public function getTabs($id = null, $return = false)
     {
+        $submitButton = CHtml::ajaxSubmitButton(
+            'Сохранить',
+            '',
+            array(
+                'success'=>'js:function(){$("#submit-form-result").fadeIn(400).delay(2000).fadeOut(400)}'
+            ),
+            array('class'=>'submit-button')
+        );
+        
         $tabs = self::controller()->widget(
             'ExtTabs', array(
                 'tabs'=>self::$tabs,
@@ -549,8 +558,8 @@ class Y extends CComponent
                 'id' => $id,
                 'htmlOptions' => array('class'=>'widget_settings_tabs', 'style'=>'height:495px'),
                 //add buttons to widget header
-                'buttons' => array (CHtml::ajaxSubmitButton('Сохранить','')),
-                'extHeaderHtml' => '<div class="submit-form-result"></div>'
+                'buttons' => array ($submitButton),
+                'extHeaderHtml' => '<div id="submit-form-result">Сохранено</div>'
             ),
             true
         );
@@ -568,7 +577,7 @@ class Y extends CComponent
 
     public function getTabsWithScripts($id = null, $return = false)
     {
-        $output = self::getTabs('cssFileForm', true);
+        $output = self::getTabs($id, true);
         self::controller()->render($output);
 
         if ($return)

@@ -25,7 +25,7 @@ class Configurator extends CApplicationComponent
 
             //add routes from module
             $module = Yii::app()->getModule($moduleId);
-            
+
             if(isset($module->urlRules))
                 Yii::app()->urlManager->addRules($module->urlRules);
 

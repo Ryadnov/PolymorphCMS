@@ -40,21 +40,22 @@ class RecordController extends AdminBaseController
 	{
 		$model = $this->loadModel($catPk, $pk, 'update');
 
-		$this->performAjaxValidation($model);
+        if (Y::isAjaxRequest()) {
+            //ajax validation
+            $this->performAjaxValidation($model);
 
-		if (isset($_POST[get_class($model)])) {
-			$model->attributes = $_POST[get_class($model)];
+            if (isset($_POST[get_class($model)])) {
+                $model->attributes = $_POST[get_class($model)];
 
-			if (method_exists($this, 'saveRelations'))
-				$this->saveRelations($model);
-
-			if ($model->save()) {
-                Y::hook()->cmsRecordUpdate($this, array('model'=>$model));
-                Y::end();
+                if ($model->save())
+                    Y::hooks()->cmsDataTypeUpdateSuccess($this, array('model'=>$model));
+                else
+                    Y::hooks()->cmsDataTypeUpdateError($this, array('model'=>$model));
             }
-		}
+            Y::end();
+        }
 
-		$opts = CMap::mergeArray($otherParams, array(
+        $opts = CMap::mergeArray($otherParams, array(
 			'model' => $model
 		));
 		if (!isset($opts['cat']) && isset($model->category))

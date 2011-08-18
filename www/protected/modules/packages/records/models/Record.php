@@ -34,9 +34,9 @@ class Record extends BaseDataType
 			//!!!don't use this relations!!!
 			//use relations with functions
 			//need set type condition
-			'variants' => array(self::MANY_MANY, 'Variant', 'variant_relations(model_id, variant_id)'),
+//			'variants' => array(self::MANY_MANY, 'Variant', 'variant_relations(model_id, variant_id)'),
 //			'union' => array(self::BELONGS_TO, 'Union', UnionList::getPkAttr()),
-            'subdata' => array(self::HAS_MANY, 'Subdata', Record::getPkAttr()),
+//            'subdata' => array(self::HAS_MANY, 'Subdata', Record::getPkAttr()),
 
 //            'gallery' => array(self::HAS_MANY, 'ImageGallery', ImageGallery::getPkAttr()),
 		));

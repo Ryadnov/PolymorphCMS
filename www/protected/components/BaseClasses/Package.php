@@ -15,11 +15,13 @@ class Package extends CWebModule
     public function addHandler($eventName, $handler)
     {
         if (is_array($handler)) {
-            $handler[0] = Yii::app()->createController(ucfirst($handler[0]).'Controller', $this);
+            $ca = Yii::app()->createController(ucfirst($handler[0]), $this);
+            $handler[0] = $ca[0];
             $handler[1] = 'handler'.ucfirst($handler[1]);
         } else {
             $handler = array($this, $handler);
         }
+
         Y::hooks()->$eventName = $handler;
     }
 

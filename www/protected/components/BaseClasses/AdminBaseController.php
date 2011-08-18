@@ -144,11 +144,11 @@ class AdminBaseController extends Controller
 	public function actionCreate($catPk = null)
 	{
 		$isCategoryModel = true;
-		if ($catId === null)
+		if ($catPk === null)
 			$isCategoryModel = false;
 		
 		if ($isCategoryModel)	
-			$cat = Category::model()->findByPk($catId);
+			$cat = Category::model()->findByPk($catPk);
 		$model=$this->loadModel($catPk, null, 'create');
 		
 		$this->performAjaxValidation($model);
@@ -197,7 +197,7 @@ class AdminBaseController extends Controller
 	{
 		$isCategoryModel = !($catPk === null);
 		
-		if ($isCategoryModel)	
+		if ($isCategoryModel)
 			$cat = Category::model()->findByPk($catPk);
 		
 		$model = $this->loadModel($catPk, null, 'search');
@@ -217,8 +217,9 @@ class AdminBaseController extends Controller
     	
 		if (isset($_GET['ajax'])) {
 			$this->renderPartial('admingrid',$opts);
-		}else 
+		} else {
     		$this->render('admin',$opts);
+        }
 	}
 
     public function actionMovePosition($pk, $to)

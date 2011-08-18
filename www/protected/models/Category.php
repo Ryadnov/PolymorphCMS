@@ -167,14 +167,14 @@ class Category extends ActiveRecord
 	}
 		
 	public function getUrl() 
-	{ 
-		$urlParmas = $this->is_empty ? $this->children[0]->urlParams : $this->urlParams;
+	{
+        $urlParmas = $this->is_empty ? $this->children[0]->urlParams : $this->urlParams;
 		return Y::url('site', $urlParmas);
 	}
 	
 	public function getLink()
-	{ 
-		return CHtml::link($this->title, $this->url);
+	{
+        return CHtml::link($this->title, $this->url);
 	}
 	
 	public function makeMenu($curCat)

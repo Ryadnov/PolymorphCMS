@@ -87,9 +87,11 @@ class AdminBaseController extends Controller
 		$res = array();
         
 		foreach ($children as $child) {
-			$tmp = array();
-			$tmp['text'] = ModelFactory::adminViewCategoryLink($child);
-			$tmp['active'] = true;
+			$tmp = array(
+                'text'=>ModelFactory::adminViewCategoryLink($child),
+                $tmp['active'] = true
+            );
+            
 			if($type)
 				$tmp['visible'] = $child->type == $type ? true : false ;
 			if(!$child->isLeaf())
@@ -116,7 +118,7 @@ class AdminBaseController extends Controller
 		return $res;
 	}
 	
-	public function actionUpdate($catPk, $pk, $otherParams = array())
+	public function actionUpdate($catPk, $pk =  null, $otherParams = array())
 	{
 		$model=$this->loadModel($catPk, $pk, 'update');
 		
@@ -262,7 +264,10 @@ class AdminBaseController extends Controller
 	{
         $cat = Category::model()->findByPk($catPk);
         $modelName = $cat->type;
-        
+
+        if ($cat->type == "Page")
+            return $cat->page;
+
 		$model = new $modelName($scenario);
 		if($pk === null)
 			return $model;

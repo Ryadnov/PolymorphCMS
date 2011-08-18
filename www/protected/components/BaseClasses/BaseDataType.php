@@ -43,7 +43,7 @@ abstract class BaseDataType extends ActiveRecord implements IDataType
 		$params = array();
 		if ($this->alias) {
 			$params['alias'] = $this->alias;
-			$params['type'] = ModelFactory::getType($this);
+			$params['type'] = get_class($this);
 		} else {
 			$params['id'] = $this->pk;
 		}

@@ -30,39 +30,6 @@ class ModelFactory
 
     
     //some deprecated functions
-
-	public static $allTypes = array(
-		'Page',
-		'Record'
-	);
-
-	private static function getName($strOrObj)
-	{
-		if (is_string($strOrObj))
-			return $strOrObj;
-		elseif (is_integer($strOrObj))
-			return self::$allTypes[$strOrObj];
-		else
-			return get_class($strOrObj);
-	}
-
-	public static function getType($typeOrObj)
-	{
-		$name = self::getName($typeOrObj);
-		switch ($name) {
-			case 'Page': 		return 'Page';
-			case 'Record': 		return 'Record';
-			default: 			self::exception($typeOrObj);
-		}
-	}
-
-	public static function getTypeId($typeOrObj)
-	{
-		$type = self::getName($typeOrObj);
-		$typesIds = array_flip(self::allTypes());
-		return $typesIds[$type];
-	}
-
 	public static function isAllowCopy($type)
 	{
 		switch ($type) {
@@ -75,33 +42,10 @@ class ModelFactory
 
 	public static function adminViewCategoryLink($cat)
 	{
-		return CHtml::link($cat->title, self::adminViewCategory($cat));
-	}
-
-	public static function adminViewCategory($cat)
-	{
-		switch ($cat->type) {
-			case 'Page':
-				$page = $cat->page;
- 				if($page == null) {
-					$page = new Page;
-					$page->text = 'Пока здесь ничего не написано';
-					$page->category_id = $cat->pk;
-					if(!$page->save())
-						Y::flash('createPageError', 'Не получилось создать страницу. Повторите действие еще раз.');
-				}
-
-				return Admin::url('Pages/update', array('pk'=>$page->pk));
-			case 'Record':
-				return Admin::url('Record/admin', array('catPk'=>$cat->pk));
-			default:
-				self::exception($cat);
-		}
-	}
-
-	public static function getTemplatePatterns()
-	{
-		return 'Page|Record';
+        if ($cat->type == "Page")
+            return Admin::link($cat->title, 'pages/update', array('catPk'=>$cat->pk));
+        else
+            return Admin::link($cat->title, 'dataTypes/admin', array('catPk'=>$cat->pk));
 	}
 
 	public static function cutRelations($fromCat, $toCat)
@@ -141,48 +85,6 @@ class ModelFactory
 		 	$res[$i] = $new;
 		}
 		return $res;
-	}
-
-	public static function deleteRelations($cat)
-	{
-		switch ($cat->type) {
-			case 'Page':
-				if ($cat->page != null)
-					$cat->page->delete();
-				break;
-			case 'Record':
-				 $cat->record = array();
-				 break;
-			default:
-				self::exception($cat);
-		}
-	}
-
-	public static function getCriteriaWith($type)
-	{
-		switch ($type) {
-			case 'Page': 		return array();
-			case 'Record':     return array();
-			default: 			self::exception($cat);
-		}
-	}
-
-	public static function getAfterAjaxUpdateFunction($type)
-	{
-        switch ($type) {
-			case 'Page': 		return "function() {}";
-			case 'Record': 	return "function() {}";
-			default: 			self::exception($cat);
-		}
-	}
-
-	public static function getBeforeAjaxUpdateFunction($type)
-	{
-		switch ($type) {
-			case 'Page': 		return "function() {}";
-			case 'Record':     return "function() {}";
-			default: 			self::exception($cat);
-		}
 	}
 
 	public static function labels()

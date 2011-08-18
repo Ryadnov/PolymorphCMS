@@ -93,7 +93,7 @@ class ModelFactory
 
 				return Admin::url('Pages/update', array('pk'=>$page->pk));
 			case 'Record':
-				return Admin::url('Record/admin', array('catId'=>$cat->pk));
+				return Admin::url('Record/admin', array('catPk'=>$cat->pk));
 			default:
 				self::exception($cat);
 		}

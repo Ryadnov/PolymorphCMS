@@ -12,9 +12,15 @@ class Package extends CWebModule
 
     }
 
-    public function addHandler($eventName, $methodName)
+    public function addHandler($eventName, $handler)
     {
-        Y::hooks()->$eventName = array($this, $methodName);
+        if (is_array($handler)) {
+            $handler[0] = Y::module('records')->createController(ucfirst($handler[0]).'Controller');
+            $handler[1] = 'handler'.ucfirst($handler[1]);
+        } else {
+            $handler = array($this, $handler);
+        }
+        Y::hooks()->$eventName = $handler;
     }
 
     public function widget($widgetName, $event, $additionParams = array())

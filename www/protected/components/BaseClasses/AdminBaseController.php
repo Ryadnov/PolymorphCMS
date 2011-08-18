@@ -117,9 +117,9 @@ class AdminBaseController extends Controller
 		return $res;
 	}
 	
-	public function actionUpdate($pk, $otherParams = array()) 
+	public function actionUpdate($catPk, $pk, $otherParams = array())
 	{
-		$model=$this->loadModel($pk, 'update');
+		$model=$this->loadModel($catPk, $pk, 'update');
 		
 		$this->performAjaxValidation($model);
 
@@ -142,7 +142,7 @@ class AdminBaseController extends Controller
 		$this->render('update', $opts);
 	}
 
-	public function actionCreate($catId = null)
+	public function actionCreate($catPk = null)
 	{
 		$isCategoryModel = true;
 		if ($catId === null)
@@ -150,7 +150,7 @@ class AdminBaseController extends Controller
 		
 		if ($isCategoryModel)	
 			$cat = Category::model()->findByPk($catId);
-		$model=$this->loadModel(null, 'create');
+		$model=$this->loadModel($catPk, null, 'create');
 		
 		$this->performAjaxValidation($model);
 
@@ -174,10 +174,10 @@ class AdminBaseController extends Controller
 		$this->render('create',$opts);
 	}
 
-	public function actionDelete($pk)
+	public function actionDelete($catPk, $pk)
 	{
 		// we only allow deletion via POST request
-		$model = $this->loadModel($pk);
+		$model = $this->loadModel($catPk, $pk);
 
 		//save admin url for redirect
 		if (isset($model->adminUrl))
@@ -194,14 +194,14 @@ class AdminBaseController extends Controller
 		}
 	}
 	
-	public function actionAdmin($catId = null, $opts = array())
+	public function actionAdmin($catPk = null, $opts = array())
 	{
-		$isCategoryModel = !($catId === null);
+		$isCategoryModel = !($catPk === null);
 		
 		if ($isCategoryModel)	
-			$cat = Category::model()->findByPk($catId);
+			$cat = Category::model()->findByPk($catPk);
 		
-		$model = $this->loadModel(null, 'search');
+		$model = $this->loadModel($catPk, null, 'search');
 		
 		$this->ajaxSetNextValue('published', $model, 'published', array(BaseDataType::PUBLISHED, BaseDataType::NOT_PUBLISHED));
 		$model->unsetAttributes();  // clear any default values

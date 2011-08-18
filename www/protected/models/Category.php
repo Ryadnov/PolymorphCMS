@@ -209,6 +209,7 @@ class Category extends ActiveRecord
 			$content .= CHtml::tag('li', array(), $child->link);
 			$content .= $child->makeTreeHtml();
 		}
+
 		return CHtml::tag('ul', array(), $content);
 	}
 	
@@ -312,7 +313,7 @@ class Category extends ActiveRecord
 	
 	public function getAdminViewUrl()
 	{
-		return Admin::url('categories/view', array('catId'=>$this->pk));	
+		return Admin::url('categories/view', array('catPk'=>$this->pk));
 	}
 	
 	public function getAdminViewLink()

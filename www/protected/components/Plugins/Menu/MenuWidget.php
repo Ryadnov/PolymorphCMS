@@ -1,5 +1,5 @@
 <?php
-Yii::import('zii.components.CMenu');
+Yii::import('zii.widgets.CMenu');
 class MenuWidget extends Widget
 {
     public $alias;
@@ -19,6 +19,7 @@ class MenuWidget extends Widget
             $params = array(
                 'items' => $menuRoot->makeMenu($this->category)
             );
+
             Y::controller()->widget('CMenu', $params);
         }
     }

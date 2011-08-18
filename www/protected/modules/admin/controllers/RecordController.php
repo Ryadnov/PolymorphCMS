@@ -48,8 +48,10 @@ class RecordController extends AdminBaseController
 			if (method_exists($this, 'saveRelations'))
 				$this->saveRelations($model);
 
-			if ($model->save())
-				$this->redirect($model->adminUrl);
+			if ($model->save()) {
+                Y::hook()->cmsRecordUpdate($this, array('model'=>$model));
+                Y::end();
+            }
 		}
 
 		$opts = CMap::mergeArray($otherParams, array(

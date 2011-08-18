@@ -9,6 +9,6 @@ class TmpController extends Controller
 
     public function handlerGetAdminTabs($event)
     {
-        $this->render('_adminTabs', array('model'=>$event->model, 'form'=>$event->form));
+        $this->render('_adminTabs', array('model'=>$event->model, 'form'=>$event->form), true);
     }
 }

@@ -35,7 +35,7 @@ class Configurator extends CApplicationComponent
 //            'atom/<blog_id:\d+>'=>'site/atom',
 //            'sitemap.xml'=>'site/sitemapxml',
 
-            'ajax/<a>'=>'ajax/<a>',
+//            'ajax/<a>'=>'ajax/<a>',
 
             '<cat1>/<cat2>/<id:\d+>' => 'site',
             '<cat1>/<id:\d+>' => 'site',

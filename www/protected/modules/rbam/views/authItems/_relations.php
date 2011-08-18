@@ -11,7 +11,7 @@
 * @license		BSD License (see documentation)
 */
 $module = $this->getModule();
-$this->widget('zii.widgets.grid.CGridView', array(
+$this->widget('zii.components.grid.CGridView', array(
 	'dataProvider'=>$dataProvider,
 	'template'=>"{items}",
 	'columns'=>array(

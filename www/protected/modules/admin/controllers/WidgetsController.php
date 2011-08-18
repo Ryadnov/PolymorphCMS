@@ -22,10 +22,10 @@ class WidgetsController extends AdminBaseController
         $this->performAjaxValidation($widget);
 
         if ($widget->save()) {
-            $content = Admin::link('', 'widgets/see', array('pk'=>$widget->pk), array('class'=>'widget-preview'));
-            $content.= Admin::link('', 'widgets/settings', array('pk'=>$widget->pk), array('class'=>'widget-settings'));
+            $content = Admin::link('', 'components/see', array('pk'=>$widget->pk), array('class'=>'widget-preview'));
+            $content.= Admin::link('', 'components/settings', array('pk'=>$widget->pk), array('class'=>'widget-settings'));
             $content.= CHtml::tag('div', array(), $widget->alias);
-            $content.= Admin::link('x', 'widgets/delete', array('pk'=>$widget->pk), array('class'=>'widget-delete'));
+            $content.= Admin::link('x', 'components/delete', array('pk'=>$widget->pk), array('class'=>'widget-delete'));
             echo CHtml::tag('li', array('class'=>'widget btn-blue'), $content);
         }
     }
@@ -39,7 +39,7 @@ class WidgetsController extends AdminBaseController
             $model->settings = $_POST;
         } else {
             $model = $this->loadModel($pk);
-            Yii::import('widgets.'.$model->class.'.*');
+            Yii::import('components.'.$model->class.'.*');
             $widget = new $model->class;
             $widget->setWidgetModel($model);
 

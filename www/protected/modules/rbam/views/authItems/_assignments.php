@@ -14,7 +14,7 @@ $module = $this->getModule();
 $hasAuthAssignmentsManagerRole = Yii::app()->getUser()->checkAccess($this->getmodule()->authAssignmentsManagerRole);;
 echo '<div id="item-assignments">';
 echo CHtml::tag('h2', array(), Yii::t('RbamModule.rbam','Assignments'));
-$this->widget('zii.widgets.grid.CGridView', array(
+$this->widget('zii.components.grid.CGridView', array(
 	'id'=>'assignments',
 	'dataProvider'=>new CArrayDataProvider(
 		array_values($this->authManager->getItemEAuthAssignments($item->name)),
@@ -160,7 +160,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 echo '</div>';
 
 if ($hasAuthAssignmentsManagerRole):
-	$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+	$this->beginWidget('zii.components.jui.CJuiDialog', array(
 		'id'=>'rbam-dialog-confirm',
 		'options'=>array(
 			'dialogClass'=>'rbam-dialog',
@@ -189,9 +189,9 @@ if ($hasAuthAssignmentsManagerRole):
 		)
 	));
 	echo '<p><span class="ui-icon ui-icon-help" style="float:left; margin:0 7px 20px -24px;"></span>'.Yii::t('RbamModule.rbam','Revoke "{user}::{role}" assignment?').'</p><p>'.Yii::t('RbamModule.rbam','Revoking the assignment does not delete the role or the user, and the user can be reassigned the role at any time.').'</p><p>'.Yii::t('RbamModule.rbam','Click "Revoke" to continue.').'</p>';
-	$this->endWidget('zii.widgets.jui.CJuiDialog');
+	$this->endWidget('zii.components.jui.CJuiDialog');
 
-	$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+	$this->beginWidget('zii.components.jui.CJuiDialog', array(
 		'id'=>'rbam-dialog-form',
 		'options'=>array(
 			'dialogClass'=>'rbam-dialog',
@@ -232,5 +232,5 @@ if ($hasAuthAssignmentsManagerRole):
 		)
 	));
 	echo $assignmentForm;
-	$this->endWidget('zii.widgets.jui.CJuiDialog');
+	$this->endWidget('zii.components.jui.CJuiDialog');
 endif;

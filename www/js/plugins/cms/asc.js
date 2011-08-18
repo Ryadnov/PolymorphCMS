@@ -4,7 +4,7 @@
 
         var defaults = {
             version : '1.0',
-            linkClass : 'add-widgets',
+            linkClass : 'add-components',
             dialog : null,
             doCloseDialog : true,
             insertResponse : true,

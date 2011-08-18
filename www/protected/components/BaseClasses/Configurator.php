@@ -5,21 +5,20 @@ class Configurator extends CApplicationComponent
     public function init()
     {
         $modules = array();
-/*
+
         // if it module add moduleId to array
         $route = Yii::app()->getRequest()->getPathInfo();
         $module = substr($route,0,strpos($route,'/'));
         if(Yii::app()->hasModule($module))
             $modules[] = $module;
-//*/
-        
+
         //register packages
         $modules = $this->addPackages($modules);
 
         $this->addRoutesFromModules($modules);
 
     }
-    
+
     public function addRoutesFromModules($modules)
     {
         foreach ($modules as $moduleId) {
@@ -31,11 +30,11 @@ class Configurator extends CApplicationComponent
 
         $site = array(
             //site urls
-//            'rss/<blog_id:\d+>'=>'site/rss',
-//            'atom/<blog_id:\d+>'=>'site/atom',
-//            'sitemap.xml'=>'site/sitemapxml',
+            'rss/<blog_id:\d+>'=>'site/rss',
+            'atom/<blog_id:\d+>'=>'site/atom',
+            'sitemap.xml'=>'site/sitemapxml',
 
-//            'ajax/<a>'=>'ajax/<a>',
+            'ajax/<a>'=>'ajax/<a>',
 
             '<cat1>/<cat2>/<id:\d+>' => 'site',
             '<cat1>/<id:\d+>' => 'site',

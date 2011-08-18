@@ -16,7 +16,7 @@ Yii::app()->onBeginRequest = function($event) {
         'class'=>'Configurator'
     );
     Yii::createComponent($config)->init();
-    
+
     return TRUE;
 };
 

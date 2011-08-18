@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	<li><?php echo CHtml::link(Users::t('Manage Profile Field'),Users::url('profileField/admin')); ?></li>
 </ul><!-- actions --><?php 
 } ?>
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php $this->widget('zii.components.grid.CGridView', array(
 	'dataProvider'=>$dataProvider,
 	'columns'=>array(
 		array(

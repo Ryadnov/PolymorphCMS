@@ -15,7 +15,7 @@ $this->menu=array(
 
 <h1>View Email #<?php echo $model->email_name; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php $this->widget('zii.components.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'email_name',

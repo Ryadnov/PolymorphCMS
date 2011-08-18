@@ -772,7 +772,7 @@ var CodeMirror = (function() {
       if (maxWidth == null) maxWidth = stringWidth(maxLine);
       if (maxWidth > scroller.clientWidth) {
         lineSpace.style.width = maxWidth + "px";
-        // Needed to prevent odd wrapping/hiding of widgets placed in here.
+        // Needed to prevent odd wrapping/hiding of components placed in here.
         code.style.width = "";
         code.style.width = scroller.scrollWidth + "px";
       } else {

@@ -38,7 +38,7 @@ echo $this->renderPartial('_menu', array(
 			'value' => User::itemAlias("UserStatus",$model->status),
 		)
 	);
-	$this->widget('zii.widgets.CDetailView', array(
+	$this->widget('zii.components.CDetailView', array(
 		'data'=>$model,
 		'attributes'=>$attributes
 	
@@ -61,7 +61,7 @@ echo $this->renderPartial('_menu', array(
 	
 	echo 'Профиль';
 	
-	$this->widget('zii.widgets.CDetailView', array(
+	$this->widget('zii.components.CDetailView', array(
 		'data'=>$model->profile,
 		'attributes'=>$prof_attrs,
 	));

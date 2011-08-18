@@ -1,5 +1,5 @@
 <?php
-Yii::import('zii.widgets.CMenu');
+Yii::import('zii.components.CMenu');
 class MenuWidget extends Widget
 {
     public $alias;

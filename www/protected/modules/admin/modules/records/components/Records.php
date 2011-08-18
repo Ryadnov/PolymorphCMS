@@ -148,7 +148,7 @@ class Records
 			$name = get_class($model).'['.$attr.']';
         	$time = date($phpDateFormat,strtotime($model->{$attr}));
         	
-			Y::controller()->widget('zii.widgets.jui.CJuiDatePicker', array(
+			Y::controller()->widget('zii.components.jui.CJuiDatePicker', array(
 				'attribute'=>$attr,
 				'model'=>$model,
 				'language'=>Yii::app()->language,
@@ -223,7 +223,7 @@ class Records
 
     public function getPanels($id = null, $return = false)
     {
-        return Y::controller()->widget('zii.widgets.jui.CJuiAccordion', array(
+        return Y::controller()->widget('zii.components.jui.CJuiAccordion', array(
             'panels'=>self::$panels,
             'cssFile'=>'jquery-ui.css',
             'themeUrl'=>'/css/jui',

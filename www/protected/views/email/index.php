@@ -11,7 +11,7 @@ $this->menu=array(
 
 <h1>Emails</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
+<?php $this->widget('zii.components.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); ?>

@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 
 );
 
-$this->widget('zii.widgets.grid.CGridView', array(
+$this->widget('zii.components.grid.CGridView', array(
 	'id'=>'yum-text-settings-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,

@@ -12,7 +12,7 @@
  * @since 2.2
  */
 
-Yii::import('zii.widgets.CListView');
+Yii::import('zii.components.CListView');
 $dir = dirname(__FILE__);
 // generate alias name
 $alias = md5($dir);

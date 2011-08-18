@@ -1,7 +1,7 @@
 <?php
-Yii::import('zii.widgets.CListView');
+Yii::import('zii.components.CListView');
 /*
- * $this->widget('zii.widgets.CListView', array(
+ * $this->widget('zii.components.CListView', array(
  *     'dataProvider'=>$dataProvider,
  *     'itemView'=>'_post',   // refers to the partial view named '_post'
  *     'category'=>$category

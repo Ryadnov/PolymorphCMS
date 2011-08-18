@@ -61,7 +61,7 @@ class TemplateBlock extends ActiveRecord
         $content = '';
 
 		foreach ($this->widgets as $widget) {
-//            Yii::import('widgets.'.$widget->class.'.*');
+//            Yii::import('components.'.$widget->class.'.*');
 
             $content .= $widgetContent = $this->renderWidget($widget, $category);
 		}

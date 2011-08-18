@@ -52,7 +52,7 @@ class TemplateWidget extends ActiveRecord
 	
     public static function getExistsWidgets()
     {
-    	$path = Yii::getPathOfAlias('widgets');
+    	$path = Yii::getPathOfAlias('components');
     	$map = FileSystem::directoryMap($path, 1);
     	
     	$res = array();
@@ -62,7 +62,7 @@ class TemplateWidget extends ActiveRecord
     			$config = json_decode($config);
 
     			$class = $config->class;
-    			Yii::import("widgets.{$folder['text']}.*");
+    			Yii::import("components.{$folder['text']}.*");
 
                 $widget = new TemplateWidget;
                 $widget->class = $class;
@@ -103,6 +103,6 @@ class TemplateWidget extends ActiveRecord
 
     public function getDetailsLink($htmlOptions = array())
     {
-        return Admin::link($this->title, 'widgets/details', array('pk'=>$this->pk), $htmlOptions);
+        return Admin::link($this->title, 'components/details', array('pk'=>$this->pk), $htmlOptions);
     }
 }

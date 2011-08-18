@@ -11,7 +11,7 @@
 * @license		BSD License (see documentation)
 */
 $module = $this->getModule();
-$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
+$this->beginWidget('zii.components.jui.CJuiDialog', array(
 	'id'=>'rbam-dialog-help',
 	'options'=>array(
 		'dialogClass'=>'rbam-dialog',
@@ -25,7 +25,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 	)
 ));
 $this->renderPartial("/help/{$this->id}/{$this->action->id}");
-$this->endWidget('zii.widgets.jui.CJuiDialog');
+$this->endWidget('zii.components.jui.CJuiDialog');
 echo CHtml::link('Help', '#', array('class'=>'help', 'title'=>Yii::t('RbamModule.help','Show help for this page')));
 Yii::app()->getClientScript()->registerScript(
 	'rbamHelp','jQuery("a.help").live("click",function(){

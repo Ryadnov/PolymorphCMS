@@ -1,20 +1,22 @@
 <?php
-class Configurator extends CComponent
+class Configurator extends CApplicationComponent
 {
 
     public function init()
     {
         $modules = array();
-
+/*
         // if it module add moduleId to array
         $route = Yii::app()->getRequest()->getPathInfo();
         $module = substr($route,0,strpos($route,'/'));
         if(Yii::app()->hasModule($module))
             $modules[] = $module;
+//*/
+        
+        //register packages
+        $modules = $this->addPackages($modules);
 
-        $modules = Configurator::addPackages($modules);
-
-        Configurator::addRoutesFromModules($modules);
+        $this->addRoutesFromModules($modules);
 
     }
     
@@ -24,8 +26,29 @@ class Configurator extends CComponent
             //add routes from module
             $module = Yii::app()->getModule($moduleId);
             if(isset($module->urlRules))
-            Yii::app()->getUrlManager()->addRules($module->urlRules);
+            Yii::app()->urlManager->addRules($module->urlRules);
         }
+
+        $site = array(
+            //site urls
+            'rss/<blog_id:\d+>'=>'site/rss',
+            'atom/<blog_id:\d+>'=>'site/atom',
+            'sitemap.xml'=>'site/sitemapxml',
+
+            'ajax/<a>'=>'ajax/<a>',
+
+            '<cat1>/<cat2>/<id:\d+>' => 'site',
+            '<cat1>/<id:\d+>' => 'site',
+
+            '<cat1>/<cat2>/<type:(w+)>-<alias:\w+>' => 'site',
+            '<cat1>/<type:(w+)>-<alias:\w+>' => 'site',
+
+            '<cat1>/<cat2>' => 'site',
+            '<cat1>' => 'site',
+            ''=>'site',
+        );
+
+        Yii::app()->urlManager->addRules($site);
     }
 
 
@@ -35,11 +58,11 @@ class Configurator extends CComponent
         Yii::import('components.*');
         Yii::import('components.helpers.*');
 
-        $config = require(Yii::getPathOfAlias('packages.records.config').'.php');
-        $class = $config['class'];
-        unset($config['class'], $config['enabled']);
+        $configs = array(
+            'records'=>require(Yii::getPathOfAlias('modules.records.config').'.php')
+        );
+        Yii::app()->setModules($configs);
 
-        $m = Yii::createComponent($class, 'records', null, $config);
         $modules[] = 'records';
 
         return $modules;

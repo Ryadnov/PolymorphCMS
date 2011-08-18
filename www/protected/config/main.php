@@ -11,7 +11,12 @@ Yii::setPathOfAlias('packages',	'protected/packages');
 
 Yii::app()->onBeginRequest = function($event) {
 
-
+    Yii::import('components.BaseClasses.*');
+    $config = array(
+        'class'=>'Configurator'
+    );
+    Yii::createComponent($config)->init();
+    
     return TRUE;
 };
 

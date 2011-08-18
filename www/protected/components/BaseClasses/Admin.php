@@ -151,7 +151,7 @@ class Admin
             }
             $time = date($phpDateFormat,strtotime($model->{$attr}));
         	
-			Y::controller()->widget('zii.components.jui.CJuiDatePicker', array(
+			Y::controller()->widget('zii.widgets.jui.CJuiDatePicker', array(
 				'attribute'=>$attr,
 //                'scriptFile'=>'/js/jquery-ui.min.js',
 				'model'=>$model,

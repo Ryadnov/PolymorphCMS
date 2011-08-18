@@ -2,7 +2,23 @@
 class Configurator extends CComponent
 {
 
-    public static function addRoutesFromModules($modules)
+    public function init()
+    {
+        $modules = array();
+
+        // if it module add moduleId to array
+        $route = Yii::app()->getRequest()->getPathInfo();
+        $module = substr($route,0,strpos($route,'/'));
+        if(Yii::app()->hasModule($module))
+            $modules[] = $module;
+
+        $modules = Configurator::addPackages($modules);
+
+        Configurator::addRoutesFromModules($modules);
+
+    }
+    
+    public function addRoutesFromModules($modules)
     {
         foreach ($modules as $moduleId) {
             //add routes from module
@@ -13,7 +29,7 @@ class Configurator extends CComponent
     }
 
 
-    public static function addPackages($modules)
+    public function addPackages($modules)
     {
         //load plugins
         Yii::import('components.*');

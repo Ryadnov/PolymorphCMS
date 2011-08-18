@@ -11,17 +11,6 @@ Yii::setPathOfAlias('packages',	'protected/packages');
 
 Yii::app()->onBeginRequest = function($event) {
 
-    $modules = array();
-    
-    // if it module add moduleId to array
-    $route = Yii::app()->getRequest()->getPathInfo();
-    $module = substr($route,0,strpos($route,'/'));
-    if(Yii::app()->hasModule($module)) 
-        $modules[] = $module;
-
-    $modules = Configurator::addPackages($modules);
-
-    Configurator::addRoutesFromModules($modules);
 
     return TRUE;
 };

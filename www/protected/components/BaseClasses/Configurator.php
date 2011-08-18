@@ -61,7 +61,7 @@ class Configurator extends CApplicationComponent
         Yii::import('components.helpers.*');
 
         $configs = array(
-            'records'=>require(Yii::getPathOfAlias('modules.records.config').'.php')
+            'records'=>require(Yii::getPathOfAlias('packages.records.config').'.php')
         );
         Yii::app()->setModules($configs);
 

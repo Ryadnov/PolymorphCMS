@@ -7,7 +7,7 @@ Yii::setPathOfAlias('widgets',		'protected/components/Plugins');
 Yii::setPathOfAlias('behaviors',	'protected/components/Behaviors');
 Yii::setPathOfAlias('events',	'protected/components/Events');
 Yii::setPathOfAlias('plugins',	'protected/components/Plugins');
-Yii::setPathOfAlias('packages',	'protected/packages');
+Yii::setPathOfAlias('packages',	'protected/modules/packages');
 
 Yii::app()->onBeginRequest = function($event) {
 

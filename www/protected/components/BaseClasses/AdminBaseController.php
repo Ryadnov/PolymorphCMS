@@ -20,6 +20,7 @@ class AdminBaseController extends Controller
 
         if (Yii::app()->request->isAjaxRequest) {
             Y::clientScript()->scriptMap = array(
+                'jquery.js' => false,
                 'jquery-ui.min.js' => false,
                 'jquery-ui.css' => false,
 

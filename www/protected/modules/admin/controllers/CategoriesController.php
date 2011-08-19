@@ -91,7 +91,8 @@ class CategoriesController extends AdminBaseController
 	
 	public function loadModel($id = null, $scenario = '')
 	{
-		return parent::loadModel('Category', $id, $scenario, false);
+		$cat = new Category($scenario);
+        return $cat::model()->findByPk($id);
 	}
 
 	public function actionGetRelevantCategories()

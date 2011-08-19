@@ -62,7 +62,7 @@
 	));
 	
 	
-$this->beginWidget('zii.components.jui.CJuiDialog', array(
+$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 	'id'=>'delete-category',
 	'htmlOptions'=>array(
 		'title'=>'Удаление категории',
@@ -94,9 +94,9 @@ EOD;
 	echo CHtml::link('Удалить', '#', array( 'onclick'=>$js_delete));	
 	echo CHtml::link('Отмена', '#', array( 'onclick'=>'$("#delete-category").dialog("close"); return false;'));
   
-$this->endWidget('zii.components.jui.CJuiDialog');
+$this->endWidget();
 
-$this->beginWidget('zii.components.jui.CJuiDialog', array(
+$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 	'id'=>'choise-category',
 	'htmlOptions'=>array(
 		'title'=>'Выбирете категорию для перемещения',
@@ -111,6 +111,6 @@ $this->beginWidget('zii.components.jui.CJuiDialog', array(
 <div id='relevant-cats'></div>
 <?php 
 	echo CHtml::submitButton('Отмена', array('onclick'=>'$("#choise-category").dialog("close"); return false;'));
-$this->endWidget('zii.components.jui.CJuiDialog');
+$this->endWidget();
 ?>
 

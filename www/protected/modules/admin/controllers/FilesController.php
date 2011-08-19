@@ -3,16 +3,16 @@ class FilesController extends AdminBaseController
 {
 	public function actionCssManage()
 	{	
-		$this->renderAjax('css', array(
+		$this->renderPartial('css', array(
 			'cssFiles' => File::getCssTree(),
-		));
+		), false, true);
 	}
 
     public function actionJsManage()
     {
-		$this->renderAjax('js', array(
+		$this->renderPartial('js', array(
 			'jsFiles' => File::getJsTree()
-		));
+		), false, true);
     }
 	
 	public function actionUpdate($dir, $fileName)

@@ -106,7 +106,7 @@ class BlocksController extends AdminBaseController
             );
         }
         
-        $this->renderAjax('all', array('blocks'=> $res, 'cat'=> $cat));
+        $this->renderPartial('all', array('blocks'=> $res, 'cat'=> $cat), false, true);
     }
 
     public function actionMakeOwn($catPk, $blockPk)

@@ -10,8 +10,6 @@ class ResourceManager extends CApplicationComponent
 
     public function init()
     {
-        //deprecated
-        $this->registerPlugins();
 
         $modules = array();
 /*
@@ -26,6 +24,9 @@ class ResourceManager extends CApplicationComponent
 
         $this->addRoutesFromModules($modules);
 
+        //deprecated
+        $this->registerPlugins();
+
         $this->registerWidgets();
     }
 
@@ -38,7 +39,6 @@ class ResourceManager extends CApplicationComponent
 
             if(isset($module->urlRules))
                 Yii::app()->urlManager->addRules($module->urlRules);
-
         }
 
         $site = array(
@@ -104,4 +104,5 @@ class ResourceManager extends CApplicationComponent
     {
         return $this->_w;
     }
+
 }

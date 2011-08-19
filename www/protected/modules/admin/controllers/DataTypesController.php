@@ -30,12 +30,7 @@ class DataTypesController extends AdminBaseController
 	        ),
 	    );
 	}
-	 
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
+	
     public function actionUpdate($catPk, $pk = null, $otherParams = array())
 	{
 		$model = $this->loadModel($catPk, $pk, 'update');

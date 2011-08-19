@@ -1,5 +1,5 @@
 <?php
-Yii::import('zii.components.CListView');
+Yii::import('zii.widgets.CListView');
 /*
  * $this->widget('zii.components.CListView', array(
  *     'dataProvider'=>$dataProvider,

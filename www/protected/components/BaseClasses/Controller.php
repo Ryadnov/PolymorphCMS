@@ -87,7 +87,7 @@ class Controller extends CController
             //cycle shift
             while ($model->$field != ($values[] = array_shift($values))) {}
 
-            //set next vaalue
+            //set next value
             $model->$field = array_shift($values);
 
             if ($model->save())

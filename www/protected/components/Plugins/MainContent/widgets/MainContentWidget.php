@@ -49,8 +49,8 @@ class MainContentWidget extends Widget
             ),
             'ajaxUpdate'=>true,
             'template'=>$this->render('listTemplate', array(), true),
-            'afterAjaxUpdate' => ModelFactory::getAfterAjaxUpdateFunction($this->category->type),
-            'beforeAjaxUpdate' => ModelFactory::getBeforeAjaxUpdateFunction($this->category->type),
+            'afterAjaxUpdate' => 'js:funciton() {}',
+            'beforeAjaxUpdate' => 'js:funciton() {}',
             'category' => $this->category,
             'contextWidget' => $this
         );

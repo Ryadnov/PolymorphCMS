@@ -1,4 +1,19 @@
-<?php 
+<?php
+$buttons = array(
+    'class'=>'CButtonColumn',
+    'buttons' => array(
+    'view' => array(
+        'url'   => '$data->url',
+    ),
+    'update' => array(
+        'url' => 'Admin::url("dataTypes/update", array("catPk"=>$data->category->pk, "pk"=>$data->pk))',
+    ),
+    'delete' => array(
+        'url' => 'Admin::url("dataTypes/delete", array("catPk"=>$data->category->pk, "pk"=>$data->pk))',
+    )
+));
+
+array_push($columns, $buttons);
 
 $this->widget('ext.QTreeGridView.CQGridView', array(
 	'id'=>'posts-grid',
@@ -7,43 +22,7 @@ $this->widget('ext.QTreeGridView.CQGridView', array(
 	'ajaxVar'=> 'ajax',	
     'ajaxUpdate'=> 'ajax',
 	'cssFile'=>'/css/grid/styles.css',
-
-    'columns'=>array(
-		array(
-            'name'=>'second_title',
-            'type'=>'raw',
-            'value'=>'preg_replace("/(".ModelFactory::contentTags().")/msS", "", $data->second_title)'
-        ),
-        array(
-			'class'=>"DateColumn",
-			'name'=>'created',
-        	'uiDateFormat' => 'd.m.yy',
-			'value'=>'date("d.m.Y", strtotime($data->created))',
-			'model'=>$model
-		),
-		array(
-        	'class'=>'AjaxDataColumn',
-            'headerText'=>'Опубл.',
-			'type'=>'raw',
-			'htmlOptions' => array(
-				'class'=>'publish-column'
-			),
-			'value'=>'"<div class=\"".($data->published ? "yes" : "")."\" id=\"published-button-".$data->pk."\" ></div>"'
-        ),
-		array(
-            'class'=>'CButtonColumn',
-        	'buttons' => array(
-				'view' => array(
-					'url'   => '$data->url',
-				),
-				'update' => array(
-					'url' => '$data->updateUrl',
-				),
-				'delete' => array(
-					'url' => '$data->deleteUrl',
-				),
-			)
-        ),
-	),
-)); ?>
+    'columns'=>$columns,
+    /*
+*/)); ?>
 

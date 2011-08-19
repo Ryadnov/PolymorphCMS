@@ -23,8 +23,11 @@ class HooksManager extends CApplicationComponent
     public function __call($name, $parameters)
 	{
         $sender = $parameters[0];
-        $params = isset($parameters[1]) ? $parameters[1] : array();
-        return $this->raiseEvent($name, $this->event($sender, $params));
+        $hasParams = isset($parameters[1]);
+        $params = $hasParams ? $parameters[1] : array();
+        $event = $this->event($sender, $params);
+        $this->raiseEvent($name, $event);
+        return $event->params;
 	}
 
     public function hasEvent($name)

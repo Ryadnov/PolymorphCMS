@@ -64,27 +64,25 @@ class DataTypesController extends AdminBaseController
 		$this->render('update', $opts);
 	}
 
-    public function actionAdmin($catPk = null, $opts = array())
+    public function actionAdmin($catPk, $opts = array())
 	{
-		$isCategoryModel = !($catPk === null);
-
-		if ($isCategoryModel)
-			$cat = Category::model()->findByPk($catPk);
+        $cat = Category::model()->findByPk($catPk);
 
 		$model = $this->loadModel($catPk, null, 'search');
 
-		$this->ajaxSetNextValue('published', $model, 'published', array(BaseDataType::PUBLISHED, BaseDataType::NOT_PUBLISHED));
+        $this->ajaxSetNextValue('published', $model, 'published', array(BaseDataType::PUBLISHED, BaseDataType::NOT_PUBLISHED));
 		$model->unsetAttributes();  // clear any default values
 
-		if ($isCategoryModel)
-			$model = $model->current($cat);
+        $model = $model->current($cat);
 
 		if (isset($_GET[get_class($model)]))
 			$model->attributes=$_GET[get_class($model)];
 
 		$opts['model'] = $model;
-    	if ($isCategoryModel)
-			$opts['cat'] = $cat;
+        $opts['cat'] = $cat;
+
+        $opts['columns'] = array();
+        $opts = Y::hooks()->cmsAdminGetGridColumns($this, &$opts);
 
 		if (isset($_GET['ajax'])) {
 			$this->renderPartial('admingrid',$opts);

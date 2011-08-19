@@ -16,7 +16,6 @@ class Configurator extends CApplicationComponent
         $modules = $this->addPackages($modules);
 
         $this->addRoutesFromModules($modules);
-
     }
 
     public function addRoutesFromModules($modules)

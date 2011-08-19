@@ -14,12 +14,27 @@ Yii::app()->onBeginRequest = function($event) {
     Yii::import('components.BaseClasses.*');
     Yii::import('components.*');
 
+    //Yii::createComponent need. If don't make it, then setComponent() not call init() 
     $configs = array(
         'hooksManager'=>Yii::createComponent(array(
             'class'=>'HooksManager'
         )),
         'resourceManager'=>Yii::createComponent(array(
-            'class'=>'ResourceManager'
+            'class'=>'ResourceManager',
+            'mainRoutes'=> array(
+                //site urls
+    //            'rss/<blog_id:\d+>'=>'site/rss',
+    //            'atom/<blog_id:\d+>'=>'site/atom',
+    //            'sitemap.xml'=>'site/sitemapxml',
+
+                '<cat1>/<cat2>/<pk:\d+>' => 'site',
+                '<cat1>/<pk:\d+>' => 'site',
+
+                '<cat1>/<cat2>/<alias:\w+>' => 'site',
+                '<cat1>/<cat2>' => 'site',
+                '<cat1>' => 'site',
+                ''=>'site',
+            )
         )),
     );
 

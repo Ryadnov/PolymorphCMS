@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 16 2011 г., 17:59
+-- Время создания: Авг 19 2011 г., 20:13
 -- Версия сервера: 5.1.40
 -- Версия PHP: 5.3.3
 
@@ -213,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
 --
 
 INSERT INTO `pages` (`page_id`, `category_id`, `sidebar`, `text`, `created`, `image_name`) VALUES
-(5, 59, '', '<p class="bigger"><span style="font-size: 19px;">Уже 10 лет <a href="#">мы</a> создаем для <a href="#">наших клиентов</a></span> <span style="font-size: 21px;">качественные <a href="#">сайты</a>, <a href="#">flash-презентации</a></span>, <span style="font-size: 15px;">занимаемся разработкой <a href="#">мультимедиа презентаций</a></span>, <span style="font-size: 19px;"><a href="#">дизайном печатной продукции</a></span>.</p>', NULL, NULL),
+(5, 59, NULL, '<p class="bigger"><span style="font-size: 19px;">Уже 10 лет <a href="#">мы</a> создаем для <a href="#">наших клиентов</a></span> <span style="font-size: 21px;">качественные <a href="#">сайты</a>, <a href="#">flash-презентации</a></span>, <span style="font-size: 15px;">занимаемся разработкой <a href="#">мультимедиа презентаций</a></span>, <span style="font-size: 19px;"><a href="#">дизайном печатной продукции</a></span>.</p>', NULL, NULL),
 (2, 4, NULL, '<p>Полный комплекс услуг по проектированию, разработке и сопровождению программного обеспечения, включая консалтинг, разработку ТЗ, разработку интерфейса и проектирование баз данных, систем клиент/сервер, геоинформационных систем, систем документооборота, а также постпроектную техническую и информационную поддержку.</p>', NULL, NULL),
 (3, 5, NULL, '<p>Пока здесь ничего не написано</p>', NULL, NULL),
 (4, 6, NULL, '<p>Разработка качественных и высокоэффективных мультимедиа продуктов, таких как: элетронные визитки, презентации брэндов, электронные каталоги продуктов, а также мультимедийные учебники и энциклопедии, справочники и самоучители.</p>', NULL, NULL),
@@ -288,9 +288,7 @@ INSERT INTO `plugins` (`plugin_id`, `json_settings`, `published`, `class`, `titl
 (4, '{}', 1, 'MainContent', 'Главный контент', 2),
 (6, '{"alias":"main"}', 1, 'Menu', 'Менюшка', 2),
 (3, '{}', 1, 'Dummy', 'Текст', 2),
-(5, '{}', 1, 'ImageGallery', 'Галлерея Изображений', 2),
-(1, '{}', 1, 'Pages', 'Статические страницы', 1),
-(2, '{}', 1, 'Records', 'Записи', 1);
+(1, '{}', 1, 'Pages', 'Статические страницы', 1);
 
 -- --------------------------------------------------------
 
@@ -414,6 +412,28 @@ INSERT INTO `records` (`record_id`, `sort`, `alias`, `category_id`, `descr`, `mo
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `templates_blocks_widgets_relations`
+--
+
+CREATE TABLE IF NOT EXISTS `templates_blocks_widgets_relations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `block_id` int(11) DEFAULT NULL,
+  `widget_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Дамп данных таблицы `templates_blocks_widgets_relations`
+--
+
+INSERT INTO `templates_blocks_widgets_relations` (`id`, `block_id`, `widget_id`) VALUES
+(1, 2, 1),
+(2, 3, 2),
+(3, 2, 10);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `template_blocks`
 --
 
@@ -443,23 +463,22 @@ INSERT INTO `template_blocks` (`block_id`, `alias`, `json_settings`, `published`
 --
 
 CREATE TABLE IF NOT EXISTS `template_widgets` (
-  `template_widget_id` int(11) NOT NULL AUTO_INCREMENT,
+  `widget_id` int(11) NOT NULL AUTO_INCREMENT,
   `json_settings` text,
   `published` tinyint(1) DEFAULT '0',
   `class` varchar(50) DEFAULT NULL,
   `title` varchar(50) DEFAULT NULL,
-  `block_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`template_widget_id`)
+  PRIMARY KEY (`widget_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `template_widgets`
 --
 
-INSERT INTO `template_widgets` (`template_widget_id`, `json_settings`, `published`, `class`, `title`, `block_id`) VALUES
-(1, '{}', 1, 'MainContent', 'Главный контент', 2),
-(2, '{"alias":"main"}', 1, 'Menu', 'Менюшка', 3),
-(10, '{}', 1, 'Dummy', 'Текст', 2);
+INSERT INTO `template_widgets` (`widget_id`, `json_settings`, `published`, `class`, `title`) VALUES
+(1, '{}', 1, 'MainContent', 'Главный контент'),
+(2, '{"alias":"main"}', 1, 'Menu', 'Менюшка'),
+(10, '{}', 1, 'Dummy', 'Текст');
 
 -- --------------------------------------------------------
 
@@ -491,4 +510,4 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `role`, `username`, `password`, `createtime`, `email`, `activated`, `banned`, `banned_reason`, `blog_id`, `lastvisit`, `superuser`, `status`, `activkey`) VALUES
 (12, 'webmaster', 'nizsheanez', '827ccb0eea8a706c4c34a16891f84e7b', 1305201336, 'www.pismeco@gmail.com', 0, 0, '', 0, 1305277117, 0, 1, '759e2e75999f483fa135f94cd59942ff'),
-(56, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1307533423, 'admin@admin.ru', 0, 0, '', 0, 1313433188, 0, 1, '12655e2b7cddcb300d16c530caf24a23');
+(56, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1307533423, 'admin@admin.ru', 0, 0, '', 0, 1313683507, 0, 1, '12655e2b7cddcb300d16c530caf24a23');

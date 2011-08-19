@@ -35,7 +35,7 @@ class TemplateBlock extends ActiveRecord
 	{
 		return array(
 			'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
-			'widgets'=>array(self::HAS_MANY, 'TemplateWidget', 'block_id'),
+			'widgets'=>array(self::MANY_MANY, 'TemplateWidget', 'templates_blocks_widgets_relations('.self::getPkAttr().', '.TemplateWidget::getPkAttr().')'),
 		);
 	}
 

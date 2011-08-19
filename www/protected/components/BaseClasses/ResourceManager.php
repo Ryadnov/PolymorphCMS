@@ -7,11 +7,13 @@ class ResourceManager extends CApplicationComponent
     private $_p;
     private $_w;
 
+    public $mainRoutes;
 
     public function init()
     {
 
         $modules = array();
+
 /*
         // if it module add moduleId to array
         $route = Yii::app()->getRequest()->getPathInfo();
@@ -19,6 +21,7 @@ class ResourceManager extends CApplicationComponent
         if(Yii::app()->hasModule($module))
             $modules[] = $module;
 //*/
+        
         //register packages
         $modules = $this->addPackages($modules);
 
@@ -41,28 +44,9 @@ class ResourceManager extends CApplicationComponent
                 Yii::app()->urlManager->addRules($module->urlRules);
         }
 
-        $site = array(
-            //site urls
-//            'rss/<blog_id:\d+>'=>'site/rss',
-//            'atom/<blog_id:\d+>'=>'site/atom',
-//            'sitemap.xml'=>'site/sitemapxml',
-
-//            'ajax/<a>'=>'ajax/<a>',
-
-            '<cat1>/<cat2>/<id:\d+>' => 'site',
-            '<cat1>/<id:\d+>' => 'site',
-
-            '<cat1>/<cat2>/<type:(w+)>-<alias:\w+>' => 'site',
-            '<cat1>/<type:(w+)>-<alias:\w+>' => 'site',
-
-            '<cat1>/<cat2>' => 'site',
-            '<cat1>' => 'site',
-            ''=>'site',
-        );
-
-        Yii::app()->urlManager->addRules($site);
+        //in the end, add main rules
+        Yii::app()->urlManager->addRules($this->mainRoutes);
     }
-
 
     public function addPackages($modules)
     {
@@ -74,11 +58,13 @@ class ResourceManager extends CApplicationComponent
             'records',
             'imageGallery'
         );
+        
         foreach ($ids as $id) {
-            $config = require(Yii::getPathOfAlias("packages.$id.config").'.php');
-            Yii::app()->setModules($config );
-            $modules[] = $id;
-
+            if (is_file(Yii::getPathOfAlias("packages.$id.config").'.php')) {
+                $config = require(Yii::getPathOfAlias("packages.$id.config").'.php');
+                Yii::app()->setModules($config);
+                $modules[] = $id;
+            }
         }
 
         return $modules;

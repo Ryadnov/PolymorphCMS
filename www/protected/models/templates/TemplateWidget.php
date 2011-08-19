@@ -28,8 +28,8 @@ class TemplateWidget extends ActiveRecord
 	
 	public function relations()
 	{
-		return array(
-			'block' => array(self::BELONGS_TO, 'TemplateBlock', 'block_id'),
+        return array(
+			'block' => array(self::MANY_MANY, 'TemplateBlock', 'templates_blocks_widgets_relations('.self::getPkAttr().', '.TemplateBlock::getPkAttr().')'),
 		);
 	}
 
@@ -47,7 +47,7 @@ class TemplateWidget extends ActiveRecord
 	
     public static function getPkAttr()
 	{
-		return 'template_widget_id';
+		return 'widget_id';
 	}
 	
     public static function getExistsWidgets()

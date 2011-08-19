@@ -153,8 +153,8 @@ abstract class BaseDataType extends ActiveRecord implements IDataType
         }
         
         //if has alias or id of model, then find it
-        if (isset($_GET['alias']) || isset($_GET['id'])) {
-            $value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['id'];
+        if (isset($_GET['alias']) || isset($_GET['pk'])) {
+            $value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['pk'];
             $attr = isset($_GET['alias']) ? 'alias' : $model->pkAttr;
 
             $model = $model->published()->findByAttributes(array($attr => $value));

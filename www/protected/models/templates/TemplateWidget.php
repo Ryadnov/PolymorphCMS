@@ -82,6 +82,6 @@ class TemplateWidget extends ActiveRecord
 
     public function getDetailsLink($htmlOptions = array())
     {
-        return Admin::link($this->title, 'components/details', array('pk'=>$this->pk), $htmlOptions);
+        return Admin::link($this->title, 'widgets/details', array('pk'=>$this->pk), $htmlOptions);
     }
 }

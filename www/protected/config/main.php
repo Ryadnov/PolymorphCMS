@@ -12,7 +12,6 @@ Yii::setPathOfAlias('packages',	'protected/modules');
 Yii::app()->onBeginRequest = function($event) {
 
     Yii::import('components.BaseClasses.*');
-    Yii::import('components.Events.*');
 
     $config = array(
         'hooksManager'=>array(
@@ -22,6 +21,7 @@ Yii::app()->onBeginRequest = function($event) {
             'class'=>'ResourceManager'
         ),
     );
+
     Yii::app()->setComponents($config);
 
     return TRUE;

@@ -11,7 +11,8 @@ class WidgetsController extends AdminBaseController
 {
     public function loadModel($pk = null, $scenario = '')
     {
-        return parent::loadModel('TemplateWidget', $pk, $scenario, false);
+        $m = new TemplateWidget($scenario);
+        return $m->findByPk($pk);
     }
 
     public function actionCreate($blockPk, $alias)
@@ -39,8 +40,8 @@ class WidgetsController extends AdminBaseController
             $model->settings = $_POST;
         } else {
             $model = $this->loadModel($pk);
-            Yii::import('components.'.$model->class.'.*');
-            $widget = new $model->class;
+            $widgetName = $model->class.'Widget';
+            $widget = new $widgetName;
             $widget->setWidgetModel($model);
 
             $output = $widget->adminForm($model);

@@ -8,7 +8,8 @@ class BlocksController extends AdminBaseController
 	 */
 	public function loadModel($pk = null, $scenario = '')
 	{
-		return parent::loadModel('TemplateBlock', $pk, $scenario, false);
+        $m = new TemplateBlock($scenario);
+		return $m->findByPk($pk);
 	}
 	
 	public function actionAdd()
@@ -42,10 +43,10 @@ class BlocksController extends AdminBaseController
 		
 		$res = '';
 		foreach($block->widgets as $widget)
-            $res .= $this->renderPartial('/components/item', array('model'=>$widget), true);
+            $res .= $this->renderPartial('/widgets/item', array('model'=>$widget), true);
 		
         echo CHtml::tag('ul', array(), $res);
-        echo Admin::link('Добавить виджеты', 'blocks/addWidgets', array('blockPk'=>$block->pk), array('class'=>'add-components'));
+        echo Admin::link('Добавить виджеты', 'blocks/addWidgets', array('blockPk'=>$block->pk), array('class'=>'add-widegts'));
 	}
 
     public function actionAddWidgets($blockPk)
@@ -53,7 +54,6 @@ class BlocksController extends AdminBaseController
         if (isset($_POST['newWidgets'])) {
             $widgets = array();
             foreach ($_POST['newWidgets'] as $class) {
-                Yii::import('components.'.$class.'.*');
 
                 $widget = new TemplateWidget();
                 $widget->settings = $class::getDefaultSettings();

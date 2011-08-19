@@ -62,7 +62,7 @@ abstract class Widget extends CPortlet
  	{
         return array(
           	'JsonSettingsBehavior'=> array(
-	            'class' => 'application.components.Behaviors.JsonSettingsBehavior'
+	            'class' => 'behaviors.JsonSettingsBehavior'
 	      	),
         );
     }

@@ -1,11 +1,5 @@
 <?php
 return array(
-    'resourceManager'=>array(
-        'class'=>'application.components.BaseClasses.ResourceManager'
-    ),
-    'hooksManager'=>array(
-        'class'=>'application.components.BaseClasses.HooksManager'
-    ),
     'file'=>array(
         'class'=>'application.components.CFile.CFile',
     ),

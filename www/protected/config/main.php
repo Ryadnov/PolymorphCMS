@@ -12,10 +12,17 @@ Yii::setPathOfAlias('packages',	'protected/modules');
 Yii::app()->onBeginRequest = function($event) {
 
     Yii::import('components.BaseClasses.*');
+    Yii::import('components.Events.*');
+
     $config = array(
-        'class'=>'Configurator'
+        'hooksManager'=>array(
+            'class'=>'HooksManager'
+        ),
+        'resourceManager'=>array(
+            'class'=>'ResourceManager'
+        ),
     );
-    Yii::createComponent($config)->init();
+    Yii::app()->setComponents($config);
 
     return TRUE;
 };

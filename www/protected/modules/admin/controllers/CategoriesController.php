@@ -60,14 +60,6 @@ class CategoriesController extends AdminBaseController
             'makeRoot'=>'ext.QTreeGridView.actions.MakeRoot',
     	));
 	}
-	
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($catId)
-	{
-	}
 
 	public function actionIndex()
 	{

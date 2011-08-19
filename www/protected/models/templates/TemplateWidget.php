@@ -52,28 +52,7 @@ class TemplateWidget extends ActiveRecord
 	
     public static function getExistsWidgets()
     {
-    	$path = Yii::getPathOfAlias('components');
-    	$map = FileSystem::directoryMap($path, 1);
-    	
-    	$res = array();
-
-    	foreach ($map as $folder) {
-            if ($config = FileSystem::read($path.'/'.$folder['text'].'/config.json')) {
-    			$config = json_decode($config);
-
-    			$class = $config->class;
-    			Yii::import("components.{$folder['text']}.*");
-
-                $widget = new TemplateWidget;
-                $widget->class = $class;
-                $widget->title = $class::getDefaultTitle();
-    
-    			array_push($res, $widget);
-
-    		}
-        }
-
-    	return $res;
+        return Y::resources()->existsWidgets;
 	}
     
 	public function getUpdateUrl()

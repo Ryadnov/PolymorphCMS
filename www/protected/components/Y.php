@@ -545,7 +545,7 @@ class Y extends CComponent
             'Сохранить',
             '',
             array(
-                'beforeSend' => 'js:function() {}',
+                'beforeSend' => 'js:function() {alert(2);}',
                 'success'=>'js:function(){$("#submit-form-result").fadeIn(400).delay(2000).fadeOut(400)}'
             ),
             array('class'=>'submit-button', 'id'=>$id.'_submit_button')

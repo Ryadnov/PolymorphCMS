@@ -52,29 +52,21 @@ class BlocksController extends AdminBaseController
     public function actionAddWidgets($blockPk)
     {
         if (isset($_POST['newWidgets'])) {
+            Y::dump($_POST);
             $widgets = array();
-            foreach ($_POST['newWidgets'] as $class) {
-
-                $widget = new TemplateWidget();
-                $widget->settings = $class::getDefaultSettings();
-                $widget->class = $class;
-                $widget->published = TemplateWidget::NOT_PUBLISHED;
-                $widget->title = $class::getDefaultTitle();
-                $widget->block_id = $blockPk;
-                $widget->save();
-
-                $widgets[] = $widget;
+            foreach ($_POST['newWidgets'] as $pk) {
+                $widgets[] = TemplateWidget::model()->findByPk($pk);
             }
-
+            $block = TemplateBlock::model()->findByPk($blockPk);
+            $block->widgets = CMap::mergeArray($block->widgets, $widgets);
+            
             $this->renderPartial('item', array('models'=>$widgets));
         } else {
-            $widgets = TemplateWidget::getExistsWidgets();
-            $list = CHtml::listData($widgets, 'class', 'title');
+            //make list og widgets
+            $widgets = TemplateWidget::model()->notInBlock($blockPk)->findAll();
+            $list = CHtml::listData($widgets, 'pk', 'title');
 
-            echo CHtml::beginForm();
-                echo CHtml::checkBoxList('newWidgets', '', $list);
-                echo '</br>'.CHtml::submitButton('Готово');
-            echo CHtml::endForm();
+            $this->renderPartial("/widgets/widgetChangeForm", array('widgets'=>$list), false, true);
         }
     }
 

@@ -16,6 +16,7 @@ class MainContentModule extends Package
         ));
 
         $this->addHandler('cmsAdminWidgetDetailsGetTabs', 'getTabs');
+        $this->addHandler('cmsRegisterWidgets', 'registerWidgets');
     }
 
     public function getTabs($event)
@@ -42,6 +43,14 @@ class MainContentModule extends Package
             'name'=>'full'
         ));
         Y::endTab();
+    }
+
+    public function registerWidgets($event)
+    {
+        $event->widgets = CMap::mergeArray($event->widgets, array('MainContentWidget' => array(
+            'title'=>'Главный контент',
+            'class'=>'MainContentWidget'
+        )));
     }
 
 }

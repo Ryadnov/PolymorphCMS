@@ -4,15 +4,15 @@
  *
  * @author Jeanluca
  * @link http://www.yiiframework.com/extension/eadvancedarbehavior/
- * @version 0.2
+ * @version 0.1
  */
 
 class EAdvancedArbehavior extends CActiveRecordBehavior
 {
-	public $useOnUpdate			= TRUE ;	// set empty fields to NULL when updating (NOTE: on insert nullable empty attributes are set to NULL by default) 
+	public $useOnUpdate	    = TRUE ;	// set empty fields to NULL when updating (NOTE: on insert nullable empty attributes are set to NULL by default) 
 	public $useNullOnTimestamp  = FALSE ; 	// if TRUE it will set timestamp values with a default value of $timestampDefault to NULL
-	public $onUpdateColumn   	= NULL ;	// define the column-name holding the modification time
-	public $timestampDefault 	= '0000-00-00 00:00:00' ; // default timestamp value
+	public $onUpdateColumn      = NULL ;	// define the column-name holding the modification time
+	public $timestampDefault    = '0000-00-00 00:00:00' ; // default timestamp value
 
 	private $relations = null ;
 	
@@ -23,59 +23,60 @@ class EAdvancedArbehavior extends CActiveRecordBehavior
 		return TRUE;
 	}
 	
-	public function beforeValidate() { 
-		$this->fixBELONGS_TO();
+	public function beforeSave() {
+		$this->ensureNULL() ;
+		$this->fixBELONGS_TO() ;
 		return TRUE ;
 	}
 
 	public function fixBELONGS_TO() {
 		$owner = $this->owner ;
-		foreach($owner->relations() as $key => $relation) {
+		foreach($owner->relations() as $key => $relation)
+                {
                         /* $key         -> relation name
-			 * $relation[2] -> related table
+			 * $relation[1] -> related table
                          * $relation[2] -> foreignkey field
                          */
 			if($relation['0'] == CActiveRecord::BELONGS_TO) // ['0'] equals relationType
-			{
-            	Yii::trace('set BELONGS_TO foreign-key field for '.get_class($owner),'system.db.ar.CActiveRecord');
+                        {
+                                Yii::trace('set BELONGS_TO foreign-key field for '.get_class($owner),'system.db.ar.CActiveRecord');
 				if ( !isset($this->relations) || in_array($key, $this->relations) ) {
-                	if ( isset($owner->{$key}) ) {
-                		$owner->$relation[2] = $owner->{$key}->primaryKey;
-					}
+                                	if ( isset($owner->{$key}) ) {
+                                        	$owner->$relation[2] = $owner->{$key}->primaryKey ;
+                                	}
 				}
-			}
+                        }
 		}
 
 	}
 	public function fixRelations() {
 		$owner = $this->owner ; 
 		
-		foreach($owner->relations() as $key => $relation) {
+		foreach($owner->relations() as $key => $relation)
+                {
                         /* $key         -> relation name
-			 * $relation[2] -> related table
+			 * $relation[1] -> related table
                          * $relation[2] -> foreignkey field
                          */
 			if ( !isset($this->relations) || in_array($key, $this->relations) ) {
 				if($relation['0'] == CActiveRecord::HAS_ONE) // ['0'] equals relationType
-                {
-                	// update the related table which contains the foreignkey (BELONGS_TO)
-					Yii::trace('set HAS_ONE foreign-key field for '.get_class($owner),'system.db.ar.CActiveRecord');
+                        	{
+					// update the related table which contains the foreignkey (BELONGS_TO)
+                                	Yii::trace('set HAS_ONE foreign-key field for '.get_class($owner),'system.db.ar.CActiveRecord');
 					$related = $owner->{$key} ;
-					
 					if ( isset($related) && ( empty($related->{$relation[2]}) || $related->{$relation[2]} !=  $owner->primaryKey) ) {
 						$related->{$relation[2]} = $owner->primaryKey ;
-						
-						$related->save() ;		
+						$related->save(false) ;		
 					}
 				}
 				else if ( $relation['0'] == CActiveRecord::HAS_MANY ) {
-					Yii::trace('set HAS_MANY foreign-key field for '.get_class($owner),'system.db.ar.CActiveRecord');
+                                	Yii::trace('set HAS_MANY foreign-key field for '.get_class($owner),'system.db.ar.CActiveRecord');
 					$related = $owner->{$key} ; 
 					if ( isset($related) ) {
 						foreach ( $related as $obj ) {
 							if ( empty($obj->{$relation[2]}) || $obj->{$relation[2]} !=  $owner->primaryKey ) {
 								$obj->{$relation[2]} = $owner->primaryKey ;
-								$obj->save(false);
+								$obj->save(false) ;
 							}
 						}
 					}
@@ -84,20 +85,20 @@ class EAdvancedArbehavior extends CActiveRecordBehavior
 		}
 	}
 	
-	public function beforeSave($event)
+	public function ensureNULL()
 	{
 		$owner=$this->getOwner();
-		
-		if ($owner->getIsNewRecord() || $this->useOnUpdate)
+
+		if($owner->getIsNewRecord() || $this->useOnUpdate)
 		{
 			$mysqlOnly = $this->useNullOnTimestamp && $owner->dbConnection->driverName == 'mysql' ;
 			
 			foreach($owner->getTableSchema()->columns as $column)
 			{
 				$value = trim($owner->getAttribute($column->name)) ;
-				if (($column->allowNull && $value==='')	// set nullable empty fields to NULL
+				if( ( $column->allowNull && $value==='')	// set nullable empty fields to NULL
 					  || 
-					($mysqlOnly == 1 && ( $owner->isNewRecord && $value == $this->timestampDefault && $column->name != $this->onUpdateColumn	  // set insert-time field to NULL
+					( $mysqlOnly == 1 && ( $owner->isNewRecord && $value == $this->timestampDefault && $column->name != $this->onUpdateColumn	  // set insert-time field to NULL
 										  ||
 						 				  !$owner->isNewRecord && $column->name == $this->onUpdateColumn	// set update-time field to NULL
 						 				)

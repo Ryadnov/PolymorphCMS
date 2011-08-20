@@ -44,17 +44,41 @@ class TemplateWidget extends ActiveRecord
 	      	)
         );
     }
+
+    public function notIn($ids)
+    {
+        if ($arr = implode(",", $ids)) {
+            $this->getDbCriteria()->mergeWith(array(
+                'condition'=>$this->pkAttr.' NOT IN ('.$arr.')'
+            ));
+        }
+        return $this;
+    }
+
+    public function in($ids)
+    {
+        if ($arr = implode(",", $ids)) {
+            $this->getDbCriteria()->mergeWith(array(
+                'condition'=>$this->pkAttr.' IN ('.$arr.')'
+            ));
+        }
+        return $this;
+    }
+
+    public function notInBlock($blockPk)
+    {
+        //don't show widgets that already in block
+        $existWidgets = TemplateBlock::model()->findByPk($blockPk)->widgets;
+        $ids = CHtml::listData($existWidgets, 'pk', 'pk');
+
+        return $this->notIn($ids);
+    }
 	
     public static function getPkAttr()
 	{
 		return 'widget_id';
 	}
 	
-    public static function getExistsWidgets()
-    {
-        return Y::resources()->existsWidgets;
-	}
-    
 	public function getUpdateUrl()
 	{
 		return Admin::url('templateWidgets/update', array('pk' => $this->pk));

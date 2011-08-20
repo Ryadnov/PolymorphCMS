@@ -19,6 +19,7 @@ class ImageGalleryModule extends Package
         $this->addHandler('cmsDataTypeRelations', 'addRecordRelations');
         $this->addHandler('cmsAddDataTypeBehaviors', 'addRecordBehaviors');
         $this->addHandler('cmsAdminGetTabs', array('imageGallery', 'addGalleryTab'));
+        $this->addHandler('cmsRegisterWidgets', 'registerWidgets');
 	}
 
     public function addRecordRelations($event)
@@ -34,5 +35,11 @@ class ImageGalleryModule extends Package
         $event->sander->attachBehavior('someBehavior', new SomeBehavior);
     }
 
-
+    public function registerWidgets($event)
+    {
+        $event->widgets = CMap::mergeArray($event->widgets, array('ImageGalleryWidget' => array(
+            'title'=>'Галлерея изображений',
+            'class'=>'ImageGalleryWidget'
+        )));
+    }
 }

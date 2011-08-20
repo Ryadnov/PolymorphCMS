@@ -40,7 +40,7 @@
                 data.open = opts.isStatic ? null : function () {
                     var $w = $(this);
                     $.get(url, {}, function(data) {
-                        $w.html(data).find('form').ajaxForm({
+                        $w.html(data);/*.find('form').ajaxForm({
                             //target:        '#output1',   // target element(s) to be updated with server response
                             beforeSubmit:  opts.beforeSubmit,  // pre-submit callback
                             success:       function(responseText, statusText, xhr, $form)  {
@@ -51,7 +51,7 @@
                                 //external event
                                 opts.success(responseText, statusText, xhr, $form);
                             }
-                        });
+                        });*/
                     });
                 };
 

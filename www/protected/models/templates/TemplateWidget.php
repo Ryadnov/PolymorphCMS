@@ -29,7 +29,7 @@ class TemplateWidget extends ActiveRecord
 	public function relations()
 	{
         return array(
-			'block' => array(self::MANY_MANY, 'TemplateBlock', 'templates_blocks_widgets_relations('.self::getPkAttr().', '.TemplateBlock::getPkAttr().')'),
+			'blocks' => array(self::MANY_MANY, 'TemplateBlock', 'templates_blocks_widgets_relations('.self::getPkAttr().', '.TemplateBlock::getPkAttr().')'),
 		);
 	}
 

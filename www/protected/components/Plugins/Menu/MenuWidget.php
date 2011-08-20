@@ -34,4 +34,6 @@ class MenuWidget extends Widget
 
     }
 
+    public function adminForm(){}
+
 }

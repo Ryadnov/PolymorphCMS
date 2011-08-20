@@ -54,11 +54,11 @@ class ResourceManager extends CApplicationComponent
         Yii::import('components.*');
         Yii::import('components.helpers.*');
 
-        $ids = array(
-            'records',
-            'imageGallery'
-        );
-        
+        $packagesFolder = FileSystem::directoryMap(Yii::getPathOfAlias('packages'),1);
+        $ids = array();
+        foreach ($packagesFolder as $item)
+            $ids[] = $item['text'];
+
         foreach ($ids as $id) {
             if (is_file(Yii::getPathOfAlias("packages.$id.config").'.php')) {
                 $config = require(Yii::getPathOfAlias("packages.$id.config").'.php');

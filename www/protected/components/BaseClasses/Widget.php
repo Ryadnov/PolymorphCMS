@@ -24,9 +24,11 @@ abstract class Widget extends CPortlet
         parent::init();
 	}
 
-	public function adminForm($widgetModel)
+    abstract public function adminForm();
+    
+	public function adminTabs()
 	{
-        parent::render('_adminForm', array('model'=>$widgetModel), true).  //you can override render method as in MainContent
+        $this->adminForm();
 
         $id  = get_class($this).'_setttings_tabs';
         return $this->getTabs($id);
@@ -54,8 +56,6 @@ abstract class Widget extends CPortlet
     public function setWidgetModel($widgetModel)
     {
         $this->widgetModel = $widgetModel;
-        $this->block = $widgetModel->block;
-        $this->category = $widgetModel->block->category;
     }
 
     public function behaviors()

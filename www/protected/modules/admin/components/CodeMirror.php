@@ -186,6 +186,7 @@ class CodeMirror extends CWidget
 			      }
 			    }
 			});
+
 		});');
         	
 		if ($this->content !== null)

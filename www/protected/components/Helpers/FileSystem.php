@@ -71,10 +71,12 @@ class FileSystem
  * @param	string	file data
  * @return	bool
  */
-	public static function write($path, $data, $mode = 'x')
+	public static function write($path, $data, $mode = false)
 	{
-		if ( ! $fp = @fopen($path, $mode)) {
-			return FALSE;
+        $mode = !$mode && is_file($path) ? 'w' : 'x';
+        
+		if ( ! $fp = fopen($path, $mode)) {
+            return FALSE;
 		}
 
 		flock($fp, LOCK_EX);

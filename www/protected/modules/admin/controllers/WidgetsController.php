@@ -15,6 +15,14 @@ class WidgetsController extends AdminBaseController
         return $m->findByPk($pk);
     }
 
+    public function loadWidget ($model)
+    {
+        $widgetName = $model->class.'Widget';
+        $widget = new $widgetName;
+        $widget->setWidgetModel($model);
+        return $widget;
+    }
+
     public function actionCreate($blockPk, $alias)
     {
         $widget = TemplateWidget::model();
@@ -38,15 +46,19 @@ class WidgetsController extends AdminBaseController
             $model->attributes = $_POST['Extra'];
             unset($_POST['Extra']);
             $model->settings = $_POST;
+
+            $widget = $this->loadWidget($model);
+            $widget->update();
         } else {
             $model = $this->loadModel($pk);
-            $widgetName = $model->class.'Widget';
-            $widget = new $widgetName;
-            $widget->setWidgetModel($model);
-
-            $output = $widget->adminForm($model);
+            $widget = $this->loadWidget($model);
+            
+            $output = $widget->adminTabs($model);
             Y::clientScript()->render($output);
+
+            echo CHtml::form();
             echo $output;
+            echo CHtml::endForm();
         }
     }
 

@@ -540,13 +540,15 @@ class Y extends CComponent
 
     public function getTabs($id = null, $return = false)
     {
+        
         $submitButton = CHtml::ajaxSubmitButton(
             'Сохранить',
             '',
             array(
+                'beforeSend' => 'js:function() {}',
                 'success'=>'js:function(){$("#submit-form-result").fadeIn(400).delay(2000).fadeOut(400)}'
             ),
-            array('class'=>'submit-button')
+            array('class'=>'submit-button', 'id'=>$id.'_submit_button')
         );
         
         $tabs = self::controller()->widget(

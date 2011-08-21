@@ -1,12 +1,10 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: Alex
- * Date: 03.07.11
- * Time: 16:19
- * To change this template use File | Settings | File Templates.
+ * WidgetsController class file.
+ *
+ * @author Alexey Sharov
+ * @version 0.2
  */
- 
 class WidgetsController extends AdminBaseController
 {
     public function loadModel($pk = null, $scenario = '')
@@ -49,15 +47,11 @@ class WidgetsController extends AdminBaseController
             }
 
             //some output
-            /*
             $content = Admin::link('', 'widgets/see', array('pk'=>$widget->pk), array('class'=>'widget-preview'));
             $content.= Admin::link('', 'widgets/settings', array('pk'=>$widget->pk), array('class'=>'widget-settings'));
             $content.= CHtml::tag('div', array(), $widget->alias);
             $content.= Admin::link('x', 'widgets/delete', array('pk'=>$widget->pk), array('class'=>'widget-delete'));
-            echo CHtml::tag('li', array('class'=>'widget btn-blue'), $content);
-        
-             */
-            //$this->renderPartial('item', array('models'=>$widgets));
+            echo CHtml::tag('li', array('class'=>'widget'), $content);
         } else {
             //make list of widgets
             $widgets = Y::resources()->registeredWidgets;
@@ -98,6 +92,6 @@ class WidgetsController extends AdminBaseController
     public function actionGallery()
     {
         $createdWidgets = TemplateWidget::model()->findAll();
-        $this->render('gallery', array('createdWidgets'=>$createdWidgets, 'registeredWidgets'=>$registeredWidgets));
+        $this->render('gallery', array('createdWidgets'=>$createdWidgets));
     }
 }

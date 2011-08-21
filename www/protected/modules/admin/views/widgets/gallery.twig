@@ -14,21 +14,3 @@
         {{ Admin.t('No created widgets') }}
     {% endfor %}
 </ul>
-
-{{ Admin.t('Registered widgets') }}
-<ul id="registered-widgets">
-    {% for widget in registeredWidgets %}
-        <li class='registered-widget' id="registered-widgets_{{ widget.pk }}">
-            <div>
-                {% if widget.settings.title is defined %}
-                    {{ widget.settings.title }}
-                {% else %}
-                    {{ widget.title }}
-                {% endif %}
-            </div>
-        </li>
-    {% else %}
-        {{ Admin.t('No registered widgets') }}
-    {% endfor %}
-</ul>
-

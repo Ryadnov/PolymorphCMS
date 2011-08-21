@@ -543,19 +543,13 @@ class Y extends CComponent
         $submitButton = Y::controller()->widget('AjaxSubmitButton', array(
             'name'=>'saveButton',
             'value'=>'Save',
-            'id'=>$id.'_save_button'
+            'id'=>$id.'_save_button',
+            'htmlOptions'=>array('class'=>'submit-button'),
+            'options'=>array(
+                'success'=>'js:function(){$("#submit-form-result").fadeIn(400).delay(2000).fadeOut(400)}'
+            )
         ), true);
 
-        CHtml::ajaxSubmitButton(
-            'Сохранить',
-            '',
-            array(
-                'beforeSend' => 'js:function() {alert($("form").serialize());return false;}',
-                'success'=>'js:function(){$("#submit-form-result").fadeIn(400).delay(2000).fadeOut(400)}'
-            ),
-            array('class'=>'submit-button', 'id'=>$id.'_submit_button')
-        );
-        
         $tabs = self::controller()->widget(
             'ExtTabs', array(
                 'tabs'=>self::$tabs,

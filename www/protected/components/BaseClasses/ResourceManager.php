@@ -28,9 +28,6 @@ class ResourceManager extends CApplicationComponent
 
         //deprecated
         $this->registerPlugins();
-
-        $this->registerWidgets();
-        
     }
 
     public function addRoutesFromModules($modules)
@@ -91,6 +88,9 @@ class ResourceManager extends CApplicationComponent
 
     public function getRegisteredWidgets()
     {
+        if ($this->_w === null)
+            $this->registerWidgets();
+                
         return $this->_w;
     }
 

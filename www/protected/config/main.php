@@ -14,7 +14,7 @@ Yii::app()->onBeginRequest = function($event) {
     Yii::import('components.BaseClasses.*');
     Yii::import('components.*');
 
-    //Yii::createComponent need. If don't make it, then setComponent() not call init() 
+    //Yii::createComponent need. If don't make it, then setComponent() not call init()
     $configs = array(
         'hooksManager'=>Yii::createComponent(array(
             'class'=>'HooksManager'

@@ -11,7 +11,6 @@ class ResourceManager extends CApplicationComponent
 
     public function init()
     {
-
         $modules = array();
 
 /*
@@ -31,21 +30,24 @@ class ResourceManager extends CApplicationComponent
         $this->registerPlugins();
 
         $this->registerWidgets();
+
     }
 
     public function addRoutesFromModules($modules)
     {
+        $urls = array();
         foreach ($modules as $moduleId) {
 
             //add routes from module
             $module = Yii::app()->getModule($moduleId);
 
             if(isset($module->urlRules))
-                Yii::app()->urlManager->addRules($module->urlRules);
+                $urls = CMap::mergeArray($urls, $module->urlRules);
         }
 
-        //in the end, add main rules
-        Yii::app()->urlManager->addRules($this->mainRoutes);
+       //in the end, add main rules
+        $urls = CMap::mergeArray($urls, $this->mainRoutes);
+        Yii::app()->urlManager->addRules($urls);
     }
 
     public function addPackages($modules)

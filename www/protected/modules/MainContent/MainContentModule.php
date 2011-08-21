@@ -47,10 +47,16 @@ class MainContentModule extends Package
 
     public function registerWidgets($event)
     {
-        $event->widgets = CMap::mergeArray($event->widgets, array('MainContentWidget' => array(
-            'title'=>'Главный контент',
-            'class'=>'MainContentWidget'
-        )));
+        $event->widgets = CMap::mergeArray($event->widgets, array(
+            'MainContentWidget' => array(
+                'title'=>'Главный контент',
+                'class'=>'MainContentWidget'
+            ),
+            'DummyWidget' => array(
+                'title'=>'Простой текст',
+                'class'=>'DummyWidget'
+            )
+        ));
     }
 
 }

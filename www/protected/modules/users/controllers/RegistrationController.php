@@ -1,6 +1,6 @@
 <?php
 
-class RegistrationController extends AdminBaseController
+class RegistrationController extends FrontBaseController
 {
 	public $defaultAction = 'registration';
 

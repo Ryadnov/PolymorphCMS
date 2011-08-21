@@ -4,6 +4,13 @@ class FrontBaseController extends Controller
     public function init()
     {
         Y::clientScript()->registerCoreScript('jquery')->registerCssFile('/css/style.css');
+
+        if (Yii::app()->request->isAjaxRequest) {
+            Y::clientScript()->scriptMap = array(
+                'jquery.js' => false,
+                'style.css' => false,
+            );
+        }
         parent::init();
     }
     

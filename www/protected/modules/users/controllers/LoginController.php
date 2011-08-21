@@ -1,9 +1,7 @@
 <?php
-class LoginController extends ModuleController
+class LoginController extends FrontBaseController
 {
     public $defaultAction = 'login';
-
-    public $layout='//layouts/main';
 
     /**
      * Displays the login page

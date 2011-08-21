@@ -1,6 +1,5 @@
 <?php
-
-class ProfileController extends AdminBaseController
+class ProfileController extends FrontBaseController
 {
 	public $defaultAction = 'profile';
 

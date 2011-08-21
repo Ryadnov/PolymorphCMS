@@ -1,0 +1,16 @@
+<ul id="exists-widgets">
+    {% for widget in existWidgets %}
+        <li class='exists-widget' id="exist-widget_{{ widget.class }}">
+            <div>
+                {% if widget.settings.title is defined %}
+                    {{ widget.settings.title }}
+                {% else %}
+                    {{ widget.title }}
+                {% endif %}
+            </div>
+        </li>
+    {% else %}
+        Нет доступных виджетов
+    {% endfor %}
+</ul>
+

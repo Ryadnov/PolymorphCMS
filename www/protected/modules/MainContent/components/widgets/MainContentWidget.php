@@ -91,7 +91,7 @@ class MainContentWidget extends Widget
 
     public function adminForm()
     {
-        $dir = 'mainContent.components.widgets.views.'.$this->widgetModel->pk.'.';
+        $dir = 'mainContent.components.widgets.views.MainContent.'.$this->widgetModel->pk.'.';
         Y::beginTab('Шаблон списка');
         $this->widget('CodeMirror', array(
             'type'=>'text/html',

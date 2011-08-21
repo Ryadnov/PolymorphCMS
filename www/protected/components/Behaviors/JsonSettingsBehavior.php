@@ -9,20 +9,27 @@
 
 class JsonSettingsBehavior extends CBehavior
 {
-	private $_arr_settings   = null;
-	
+	private $_arr_settings = array();
+
+    private function _constructId()
+    {
+        return get_class($this->owner).$this->owner->pk;
+    }
+
 	public function getSettings()
 	{
-        if ($this->_arr_settings === null) {
-			$this->_arr_settings = (array)json_decode($this->owner->json_settings);
+        $id = $this->_constructId();
+        if (!isset($this->_arr_settings[$id])) {
+            $this->_arr_settings[$id] = (array)CJSON::decode($this->owner->json_settings);
 		}
-		
-		return $this->_arr_settings;
+
+		return $this->_arr_settings[$id];
 	}
 	
 	public function setSettings($settings)
 	{
-		$this->owner->json_settings = json_encode(self::castArray($settings));
+        $id = $this->_constructId();
+		$this->_arr_settings[$id] = $this->owner->json_settings = json_encode(self::castArray($settings));
 	}
 
     /**

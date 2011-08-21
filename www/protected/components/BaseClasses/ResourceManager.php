@@ -30,7 +30,7 @@ class ResourceManager extends CApplicationComponent
         $this->registerPlugins();
 
         $this->registerWidgets();
-
+        
     }
 
     public function addRoutesFromModules($modules)

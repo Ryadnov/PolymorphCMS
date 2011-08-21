@@ -15,34 +15,7 @@ class MainContentModule extends Package
             'mainContent.components.widgets.*',
         ));
 
-        $this->addHandler('cmsAdminWidgetDetailsGetTabs', 'getTabs');
         $this->addHandler('cmsRegisterWidgets', 'registerWidgets');
-    }
-
-    public function handlerGetTabs($event)
-    {
-        $dir = 'mainContent.components.widgets.views.'.$event->widget->pk.'.';
-        Y::beginTab('Шаблон списка');
-        $this->widget('CodeMirror', $event, array(
-            'id'=>'main-content-list-template',
-            'content'=>file_get_contents(Yii::getPathOfAlias($dir.'listTemplate')),
-            'name'=>'list-template'
-        ));
-        Y::endTab();
-        Y::beginTab('Шаблон элемента');
-        $this->widget('CodeMirror', $event, array(
-            'id'=>'main-content-item',
-            'content'=>file_get_contents(Yii::getPathOfAlias($dir.'item')),
-            'name'=>'item'
-        ));
-        Y::endTab();
-        Y::beginTab('Шаблон полный');
-        $this->widget('CodeMirror', $event, array(
-            'id'=>'main-content-full',
-            'content'=>file_get_contents(Yii::getPathOfAlias($dir.'full')),
-            'name'=>'full'
-        ));
-        Y::endTab();
     }
 
     public function handlerRegisterWidgets($event)

@@ -69,8 +69,8 @@ class WidgetsController extends AdminBaseController
 
     public function actionGallery()
     {
-        $existWidgets = TemplateWidget::model()->findAll();
-//        $registeredWidgets = Y::resources()->registeredWidgets;
-        $this->render('gallery', array('existWidgets'=>$existWidgets));
+        $createdWidgets = TemplateWidget::model()->findAll();
+        $registeredWidgets = Y::resources()->registeredWidgets;
+        $this->render('gallery', array('createdWidgets'=>$createdWidgets, 'registeredWidgets'=>$registeredWidgets));
     }
 }

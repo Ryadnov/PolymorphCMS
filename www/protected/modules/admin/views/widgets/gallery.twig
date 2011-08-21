@@ -1,6 +1,6 @@
-<ul id="exists-widgets">
-    {% for widget in existWidgets %}
-        <li class='exists-widget' id="exist-widget_{{ widget.class }}">
+<ul id="created-widgets">
+    {% for widget in createdWidgets %}
+        <li class='created-widget' id="created-widgets_{{ widget.pk }}">
             <div>
                 {% if widget.settings.title is defined %}
                     {{ widget.settings.title }}
@@ -10,7 +10,23 @@
             </div>
         </li>
     {% else %}
-        Нет доступных виджетов
+        {{ Admin.t('No created widgets') }}
+    {% endfor %}
+</ul>
+
+<ul id="registered-widgets">
+    {% for widget in registeredWidgets %}
+        <li class='registered-widget' id="registered-widgets_{{ widget.pk }}">
+            <div>
+                {% if widget.settings.title is defined %}
+                    {{ widget.settings.title }}
+                {% else %}
+                    {{ widget.title }}
+                {% endif %}
+            </div>
+        </li>
+    {% else %}
+        {{ Admin.t('No registered widgets') }}
     {% endfor %}
 </ul>
 

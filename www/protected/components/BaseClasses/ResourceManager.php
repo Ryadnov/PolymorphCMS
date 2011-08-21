@@ -89,7 +89,7 @@ class ResourceManager extends CApplicationComponent
         $this->_w = $res['widgets'];
     }
 
-    public function getExistsWidgets()
+    public function getRegisteredWidgets()
     {
         return $this->_w;
     }

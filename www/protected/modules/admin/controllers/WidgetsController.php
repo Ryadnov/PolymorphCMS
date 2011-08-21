@@ -30,8 +30,8 @@ class WidgetsController extends AdminBaseController
             foreach ($_POST['newWidgets'] as $class) {
                 $model = TemplateWidget::model();
                 $model->class = $class;
-                $widget = $this->loadWidget($model);
-                $model->settings = $widget->defaultSettings;
+                $widgetName = $class.'Widget';
+                $model->settings = $widgetName::getDefaultSettings();
                 $widgets[] = $model;
             }
 

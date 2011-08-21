@@ -76,7 +76,7 @@ class MainContentWidget extends Widget
 
     public function update()
     {
-        $dir = 'mainContent.components.widgets.views.'.$this->widgetModel->pk.'.';
+        $dir = 'mainContent.components.widgets.views.MainContent.'.$this->widgetModel->pk.'.';
                 
         if (isset($_POST['list-template'])) {
             FileSystem::write(Yii::getPathOfAlias($dir.'listTemplate').'.twig', $_POST['list-template']);

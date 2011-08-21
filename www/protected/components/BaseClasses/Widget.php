@@ -80,7 +80,7 @@ abstract class Widget extends CPortlet
         return parent::render($folder.'/'.$view, $data, $return);
     }
 
-    public function getDefaultSettings()
+    public static function getDefaultSettings()
     {
         return array();
     }

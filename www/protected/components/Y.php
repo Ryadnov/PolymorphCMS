@@ -542,9 +542,8 @@ class Y extends CComponent
     {
         $submitButton = Y::controller()->widget('AjaxSubmitButton', array(
             'name'=>'saveButton',
-            'value'=>'Save',
             'id'=>$id.'_save_button',
-            'htmlOptions'=>array('class'=>'submit-button'),
+            'htmlOptions'=>array('class'=>'submit-button','value'=>'Save',),
             'options'=>array(
                 'success'=>'js:function(){$("#submit-form-result").fadeIn(400).delay(2000).fadeOut(400)}'
             )

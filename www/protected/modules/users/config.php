@@ -7,6 +7,6 @@ return array('users'=>array(
     'sendActivationMail' => false,
     'loginNotActiv' => true,
     'activeAfterRegister' => true,
-    'isRegistrationClose' => true,
+    'isRegistrationClose' => false,
     
 ));

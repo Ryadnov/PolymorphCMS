@@ -22,7 +22,7 @@ class ProfileController extends AdminBaseController
 
 	public function actionCabinet()
 	{
-		$model = $this->loadUser();
+        $model = $this->loadUser();
 	    $this->render('cabinet',array(
 	    	'model'=>$model,
 			'profile'=>$model->profile,

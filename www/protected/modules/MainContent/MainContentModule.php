@@ -19,7 +19,7 @@ class MainContentModule extends Package
         $this->addHandler('cmsRegisterWidgets', 'registerWidgets');
     }
 
-    public function getTabs($event)
+    public function handlerGetTabs($event)
     {
         $dir = 'mainContent.components.widgets.views.'.$event->widget->pk.'.';
         Y::beginTab('Шаблон списка');
@@ -45,7 +45,7 @@ class MainContentModule extends Package
         Y::endTab();
     }
 
-    public function registerWidgets($event)
+    public function handlerRegisterWidgets($event)
     {
         $event->widgets = CMap::mergeArray($event->widgets, array(
             'MainContentWidget' => array(

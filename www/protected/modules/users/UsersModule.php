@@ -72,12 +72,12 @@ class UsersModule extends Package
 	 * @desc login after registration (need loginNotActiv or activeAfterRegister = true)
 	 */
 	public $autoLogin=true;
-	
+
 	public $registrationUrl = "registration";
 	public $recoveryUrl = "recovery";
 	public $loginUrl = "login";
 	public $logoutUrl = "logout";
-	public $cabinetUrl = "profile/cabinet";
+	public $cabinetUrl = "cabinet";
 	public $profileUrl = "profile";
 	public $adminReturnUrl = "/admin";
     public $returnUrl = "/profile";
@@ -131,12 +131,13 @@ class UsersModule extends Package
 		$this->setImport(array(
 			'users.models.*',
 			'users.components.*',
+            'users.components.widgets.*',
 		));
 
         $this->category = Y::category($this->categoryAlias);
 
         $this->addHandler('cmsAdminGetSystemMenu', 'adminMenu');
-        
+        $this->addHandler('cmsRegisterWidgets', 'registerWidgets');
 	}
 
     public function handlerAdminMenu($event)
@@ -145,6 +146,17 @@ class UsersModule extends Package
             'users'=>array('text'=>Admin::link('Пользователи', 'users/admin')),
         ));
     }
+
+    public function handlerRegisterWidgets($event)
+    {
+        $event->widgets = CMap::mergeArray($event->widgets, array(
+            'UserMenu' => array(
+                'title'=>'Меню пользователя',
+                'class'=>'UserMenuWidget'
+            )
+        ));
+    }
+
 	
 	//simple add lang in url
 	private function createUrls($base_urls)

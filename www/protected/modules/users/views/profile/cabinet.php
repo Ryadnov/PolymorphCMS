@@ -4,16 +4,16 @@ $this->breadcrumbs=array(
 );
 ?>
 <h2><?php echo Users::t('Your profile'); ?></h2>
-<?php if(Y::isGuest()) {$this->widget('GuestMenu');}
-	  else {$this->widget('UserMenu');}
+<?php if(Y::isGuest()) {$this->widget('GuestMenuWidget');}
+	  else {$this->widget('UserMenuWidget');}
 ?>
 		
 
-<?php if(Y::hasFlash('profileMessage')): ?>
-<div class="success">
-<?php echo Y::flash('profileMessage'); ?>
-</div>
-<?php endif; ?>
+<?php if(Y::hasFlash('profileMessage')) { ?>
+    <div class="success">
+    <?php echo Y::flash('profileMessage'); ?>
+    </div>
+<?php } ?>
 <table class="dataGrid">
 <tr>
 	<th class="label"><?php echo CHtml::encode($model->getAttributeLabel('username')); ?>

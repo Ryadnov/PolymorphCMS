@@ -6,7 +6,7 @@ class RegistrationController extends AdminBaseController
 
 	public function accessRules()
 	{
-		if(Y::module('users')->isRegistrationClose) {
+		if(Y::module()->isRegistrationClose) {
 			$register = array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('registration'),
 				'users'=>array('moderator'),
@@ -25,8 +25,8 @@ class RegistrationController extends AdminBaseController
 		        'users'=>array('*'),
 	        );
 		}
-		
-		return array(
+
+        return array(
 			$register,
 			$close,
 			array('allow', // allow authenticated users to perform any action
@@ -58,7 +58,8 @@ class RegistrationController extends AdminBaseController
 	 */
 	public function actionRegistration() 
 	{
-		if(Y::module()->isRegistrationClose) $this->redirect('close');
+        
+        if(Y::module()->isRegistrationClose) $this->redirect('close');
 		$model = new RegistrationForm;
         $profile=new Profile;
         $profile->regMode = true;
@@ -68,7 +69,7 @@ class RegistrationController extends AdminBaseController
 			Y::end(UActiveForm::validate(array($model,$profile)));
 		
 		if (Y::userId()) {
-			$this->redirect(Y::module()->profileUrl);
+			$this->redirect(Y::module()->cabinetUrl);
 		} else {
 			if(isset($_POST['RegistrationForm'])) {
 				$model->attributes=$_POST['RegistrationForm'];

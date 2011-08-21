@@ -79,4 +79,9 @@ abstract class Widget extends CPortlet
         $folder = str_replace('Widget', '', get_class($this));
         return parent::render($folder.'/'.$view, $data, $return);
     }
+
+    public function getDefaultSettings()
+    {
+        return array();
+    }
 }

@@ -23,19 +23,47 @@ class WidgetsController extends AdminBaseController
         return $widget;
     }
 
-    public function actionCreate($blockPk, $alias)
+    public function actionCreate()
     {
-        $widget = TemplateWidget::model();
-        $widget->block_id = $blockPk;
-        $widget->alias = $alias;
-        $this->performAjaxValidation($widget);
+        if (isset($_POST['newWidgets'])) {
+            $widgets = array();
+            $transaction = Yii::app()->db->beginTransaction();
 
-        if ($widget->save()) {
-            $content = Admin::link('', 'components/see', array('pk'=>$widget->pk), array('class'=>'widget-preview'));
-            $content.= Admin::link('', 'components/settings', array('pk'=>$widget->pk), array('class'=>'widget-settings'));
+            foreach ($_POST['newWidgets'] as $class) {
+                $model = TemplateWidget::model();
+                $model->class = $class;
+                $widget = $this->loadWidget($model);
+                $model->settings = $widget->defaultSettings;
+                $widgets[] = $model;
+            }
+
+            //save all widgets in transaction
+            try {
+                foreach ($widgets as $model)
+                    if (!$model->save())
+                        throw new CException('Sorry, adding widgets proved unsuccessful. Try again');
+                $transaction->commit();
+            } catch(Exception $e) { 
+                $transaction->rollBack();
+                Y::end(Admin::t($e->getMessage()));
+            }
+
+            //some output
+            /*
+            $content = Admin::link('', 'widgets/see', array('pk'=>$widget->pk), array('class'=>'widget-preview'));
+            $content.= Admin::link('', 'widgets/settings', array('pk'=>$widget->pk), array('class'=>'widget-settings'));
             $content.= CHtml::tag('div', array(), $widget->alias);
-            $content.= Admin::link('x', 'components/delete', array('pk'=>$widget->pk), array('class'=>'widget-delete'));
+            $content.= Admin::link('x', 'widgets/delete', array('pk'=>$widget->pk), array('class'=>'widget-delete'));
             echo CHtml::tag('li', array('class'=>'widget btn-blue'), $content);
+        
+             */
+            //$this->renderPartial('item', array('models'=>$widgets));
+        } else {
+            //make list of widgets
+            $widgets = Y::resources()->registeredWidgets;
+            $list = CHtml::listData($widgets, 'pk', 'title');
+
+            $this->renderPartial("/widgets/widgetChangeForm", array('widgets'=>$list, 'action'=>Admin::url('widgets/create')), false, true);
         }
     }
 
@@ -70,7 +98,6 @@ class WidgetsController extends AdminBaseController
     public function actionGallery()
     {
         $createdWidgets = TemplateWidget::model()->findAll();
-        $registeredWidgets = Y::resources()->registeredWidgets;
         $this->render('gallery', array('createdWidgets'=>$createdWidgets, 'registeredWidgets'=>$registeredWidgets));
     }
 }

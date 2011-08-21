@@ -52,7 +52,6 @@ class BlocksController extends AdminBaseController
     public function actionAddWidgets($blockPk)
     {
         if (isset($_POST['newWidgets'])) {
-            Y::dump($_POST);
             $widgets = array();
             foreach ($_POST['newWidgets'] as $pk) {
                 $widgets[] = TemplateWidget::model()->findByPk($pk);
@@ -62,7 +61,7 @@ class BlocksController extends AdminBaseController
             
             $this->renderPartial('item', array('models'=>$widgets));
         } else {
-            //make list og widgets
+            //make list of widgets
             $widgets = TemplateWidget::model()->notInBlock($blockPk)->findAll();
             $list = CHtml::listData($widgets, 'pk', 'title');
 

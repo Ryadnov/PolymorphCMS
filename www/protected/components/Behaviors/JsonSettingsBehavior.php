@@ -1,21 +1,29 @@
 <?php
 /**
- * EAdvancedRelations class file.
+ * JsonSettingsBehavior class file.
  *
- * @author Jeanluca
- * @link http://www.yiiframework.com/extension/eadvancedarbehavior/
- * @version 0.2
+ * requirements: owner model must have json_settings field
+ *
+ * @author Alexey Sharov
+ * @link https://github.com/nizsheanez/PolymorphCMS/blob/master/www/protected/components/Behaviors/JsonSettingsBehavior.php
+ * @version 1.0
  */
-
 class JsonSettingsBehavior extends CBehavior
 {
 	private $_arr_settings = array();
 
+
+    /**
+     * @return string owner id(not pk, because bahavior can add to other models)
+     */
     private function _constructId()
     {
         return get_class($this->owner).$this->owner->pk;
     }
 
+    /**
+     * @return array
+     */
 	public function getSettings()
 	{
         $id = $this->_constructId();
@@ -25,7 +33,12 @@ class JsonSettingsBehavior extends CBehavior
 
 		return $this->_arr_settings[$id];
 	}
-	
+
+    /**
+     * set new settings in field
+     * @param $settings array
+     * @return void
+     */
 	public function setSettings($settings)
 	{
         $id = $this->_constructId();

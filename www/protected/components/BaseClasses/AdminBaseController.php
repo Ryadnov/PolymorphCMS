@@ -60,10 +60,10 @@ class AdminBaseController extends Controller
 	
 	public function getSystemMenu()
 	{
-		return array(
-		    array('text'=>Admin::link('Категории', 'categories/admin')),
-		    array('text'=>Admin::link('Настройки Сайта', 'settings/admin')),
-		    array('text'=>Admin::link('Пользователи', 'users/admin')),
+        $menu = array(
+		    'categories' => array('text'=>Admin::link('Категории', 'categories/admin')),
+		    'settings' => array('text'=>Admin::link('Настройки Сайта', 'settings/admin')),
+		    /*array('text'=>Admin::link('Пользователи', 'users/admin')),
 			array(
 				'text'=>'Списки', 
 				'children'=>array(
@@ -71,9 +71,11 @@ class AdminBaseController extends Controller
 					array('text'=>Admin::link('Виды деятельности', 'portfolioWorkTypes/admin')),
 					array('text'=>Admin::link('Города', 'cities/admin')),
 				)
-			),
-			array('text'=> Users::link('Выход', 'logout'))
+			),*/
+			//'logout' => array('text'=> Users::link('Выход', 'logout'))
 		);
+        $res = Y::hooks()->cmsAdminGetSystemMenu($this, array('menu'=>$menu));
+        return $res['menu'];
 	}
 	
 	public function getCategoryMenu()
@@ -86,7 +88,7 @@ class AdminBaseController extends Controller
 	{
 		$children = $node->children()->findAll();
 		$res = array();
-        
+           
 		foreach ($children as $child) {
 			$tmp = array(
                 'text'=>ModelFactory::adminViewCategoryLink($child),

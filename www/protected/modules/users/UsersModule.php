@@ -8,10 +8,28 @@
  * @version $Id: UserModule.php 105 2011-02-16 13:05:56Z mishamx $
  */
 
-class UsersModule extends CWebModule
+class UsersModule extends Package
 {
     public $categoryAlias = 'users';
     public $category = null;
+
+    public $urlRules = array(
+        //user module links
+        'login'=>'users/login',
+        'registration'=>'users/registration',
+        'recovery/<email>/<activkey>'=>'users/recovery',
+        'recovery'=>'users/recovery',
+        'logout'=>'users/logout',
+        'activation/<email>/<activkey>'=>'users/activation',
+        'profile/<id:\d+>'=>'users/profile',
+        'cabinet/'=>'users/profile/cabinet',
+        'user/edit'=>'users/profile/edit',
+        'changepassword'=>'users/profile/changepassword',
+        'close' => 'users/registration/close',
+        'admin/users/admin'=>'users/admin',
+        'admin/users/create'=>'users/admin/create',
+        '<controller:(user|profileField)>/<action:(admin|view|create|update|delete)>'=>'users/<controller>/<action>',
+    );
     
 	/**
 	 * @var int
@@ -116,31 +134,21 @@ class UsersModule extends CWebModule
 		));
 
         $this->category = Y::category($this->categoryAlias);
-				
-		$urls = array(
-			'registrationUrl'	=> $this->registrationUrl,
-			'recoveryUrl'		=> $this->recoveryUrl,
-			'loginUrl'			=> $this->loginUrl,
-			'logoutUrl'			=> $this->logoutUrl,
-			'profileUrl'		=> $this->profileUrl,
-			'returnLogoutUrl'	=> $this->returnLogoutUrl,
-			'editProfileUrl'	=> $this->editProfileUrl,
-			'changePassUrl'		=> $this->changePassUrl,
-			'cabinetUrl'		=> $this->cabinetUrl,
-		);
-		
-		if($this->isRegistrationClose) {
-			$urls['registrationUrl'] = 'registration/close';
-		}
-		
-		$this->createUrls($urls);
-		
+
+        $this->addHandler('cmsAdminGetSystemMenu', 'adminMenu');
+        
 	}
+
+    public function handlerAdminMenu($event)
+    {
+        $event->menu = CMap::mergeArray($event->menu, array(
+            'users'=>array('text'=>Admin::link('Пользователи', 'users/admin')),
+        ));
+    }
 	
 	//simple add lang in url
 	private function createUrls($base_urls)
     {
-		
 		foreach ($base_urls as $var=>$url) {
 			$this->{$var} = Users::url($url);
 		}
@@ -180,7 +188,7 @@ class UsersModule extends CWebModule
 	 * @return hash string.
 	 */
 	public static function encrypting($string="") {
-		$hash = Yii::app()->getModule('users')->hash;
+		$hash = Y::module('users')->hash;
 		if ($hash=="md5")
 			return md5($string);
 		if ($hash=="sha1")

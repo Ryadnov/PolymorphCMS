@@ -19,7 +19,7 @@ class Package extends CWebModule
             $handler[0] = $ca[0];
             $handler[1] = 'handler'.ucfirst($handler[1]);
         } else {
-            $handler = array($this, $handler);
+            $handler = array($this, 'handler'.ucfirst($handler));
         }
 
         Y::hooks()->$eventName = $handler;
@@ -30,6 +30,8 @@ class Package extends CWebModule
         $params = CMap::mergeArray($event->params, $additionParams);
         Y::controller()->widget($widgetName, $params);
     }
+
+    
 
 
 }

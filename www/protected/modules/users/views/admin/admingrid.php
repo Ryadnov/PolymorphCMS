@@ -1,4 +1,4 @@
-<?php $this->widget('zii.components.grid.CGridView', array(
+<?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'users-grid',
 	'dataProvider'=>$model->search(),
 	'ajaxVar'=> 'ajax',

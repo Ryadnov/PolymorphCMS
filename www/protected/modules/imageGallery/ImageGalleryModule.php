@@ -22,7 +22,7 @@ class ImageGalleryModule extends Package
         $this->addHandler('cmsRegisterWidgets', 'registerWidgets');
 	}
 
-    public function addRecordRelations($event)
+    public function handlerAddRecordRelations($event)
     {
         $event->relations = CMap::mergeArray(
             $event->relations,
@@ -30,12 +30,12 @@ class ImageGalleryModule extends Package
         );
     }
 
-    public function addRecordBehaviors($event)
+    public function handlerAddRecordBehaviors($event)
     {
         $event->sander->attachBehavior('someBehavior', new SomeBehavior);
     }
 
-    public function registerWidgets($event)
+    public function handlerRegisterWidgets($event)
     {
         $event->widgets = CMap::mergeArray($event->widgets, array('ImageGalleryWidget' => array(
             'title'=>'Галлерея изображений',

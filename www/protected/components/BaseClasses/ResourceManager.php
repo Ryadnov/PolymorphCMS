@@ -62,9 +62,9 @@ class ResourceManager extends CApplicationComponent
             $ids[] = $item['text'];
 
         foreach ($ids as $id) {
-            if (is_file(Yii::getPathOfAlias("packages.$id.config").'.php')) {
-                $config = require(Yii::getPathOfAlias("packages.$id.config").'.php');
-                Yii::app()->setModules($config);
+            $path = Yii::getPathOfAlias("packages.$id.config").'.php';
+            if (is_file($path)) {
+                Yii::app()->setModules(require($path));
                 $modules[] = $id;
             }
         }

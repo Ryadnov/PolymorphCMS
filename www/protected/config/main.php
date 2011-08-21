@@ -27,6 +27,13 @@ Yii::app()->onBeginRequest = function($event) {
     //            'atom/<blog_id:\d+>'=>'site/atom',
     //            'sitemap.xml'=>'site/sitemapxml',
 
+            //	'admin/<m>/<c>/<a>' => '<m>/<c>/<a>',
+            //	'admin/<m>/<c>' => '<m>/<c>/index',
+                'admin' => 'admin/manage/index',
+                'admin/<m>/<c>/<a>' => 'admin/<m>/<c>/<a>',
+                'admin/<c>/<a>' => 'admin/<c>/<a>',
+                'admin/login' => 'users/login',
+
                 '<cat1>/<cat2>/<pk:\d+>' => 'site',
                 '<cat1>/<pk:\d+>' => 'site',
 
@@ -76,13 +83,7 @@ return array(
 		'components.Other.*',
 
         //models and components
-		'modules.users.components.*',
-		'modules.users.models.*',
-		'modules.admin.components.*',
-        'modules.admin.models.*',
-        'modules.records.components.*',
-        'modules.records.models.*',
-        'modules.cms.components.*',
+		'modules.cms.components.*',
         'modules.cms.models.*',
 
         //ext
@@ -92,17 +93,7 @@ return array(
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
 		//'gii'=>require("gii.php"),
-        'users'=>array(
-			'class'=>'application.modules.users.UsersModule',
-			'tableUsers' => 'users',
-			'tableProfiles' => 'profiles',
-			'tableProfileFields' => 'profiles_fields',
-			'sendActivationMail' => false,
-			'loginNotActiv' => true,
-			'activeAfterRegister' => true,
-			'isRegistrationClose' => true
-		),
-		'rbam'=>array(
+        'rbam'=>array(
 		    'class'=>'modules.rbam.RbamModule',
 			'initialise'=>TRUE,
 		),

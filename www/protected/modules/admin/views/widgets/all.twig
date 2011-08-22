@@ -1,11 +1,15 @@
-<ul class="widgets" style="display: none">
-
-    {% for widget in block.widgets %}
-        <li id="widgets_{{ widget.pk }}">
-            {{ widget.detailsLink }}
+<ul id="created-widgets">
+    {% for widget in createdWidgets %}
+        <li class='created-widget' id="created-widgets_{{ widget.pk }}">
+            <div>
+                {% if widget.settings.title is defined %}
+                    {{ widget.settings.title }}
+                {% else %}
+                    {{ widget.title }}
+                {% endif %}
+            </div>
         </li>
     {% else %}
-        Пока не создано ни одного блока
+        {{ Admin.t('No created widgets') }}
     {% endfor %}
-
 </ul>

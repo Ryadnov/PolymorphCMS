@@ -74,9 +74,11 @@ class WidgetsController extends AdminBaseController
         } else {
             $model = $this->loadModel($pk);
             $widget = $this->loadWidget($model);
-            
+
+            //load widgets tabs
             $widget->adminForm();
 
+            //render all tabs
             $id  = get_class($this).'_setttings_tabs';
             $this->renderPartial('details', array('id'=>$id, 'model'=>$model), false, true);
         }
@@ -89,7 +91,12 @@ class WidgetsController extends AdminBaseController
 
     public function actionGallery()
     {
+        $this->render('gallery');
+    }
+
+    public function actionAll()
+    {
         $createdWidgets = TemplateWidget::model()->findAll();
-        $this->render('gallery', array('createdWidgets'=>$createdWidgets));
+        $this->renderPartial('all', array('createdWidgets'=>$createdWidgets));
     }
 }

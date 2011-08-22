@@ -4,8 +4,7 @@ class AjaxSubmitButton extends JuiButton
     public  function init()
     {
         Y::clientScript()->registerScriptFile('/js/plugins/jquery.form.js');
-        //Y::ajaxExclude('jquery.form.js');
-        
+
         $options = CJavaScript::encode($this->options);
         Y::clientScript()->registerScript('save-button', "
             $(document).ready(function() {

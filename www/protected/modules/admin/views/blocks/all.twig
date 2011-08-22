@@ -43,39 +43,52 @@ $(document).ready(function() {
         }
     });
 
+    $('#blocks > li').droppable({
+        drop: function(e, ui) {
+            var from = $(ui.draggable).closest('ul').parent().attr('id').split('_')[1],
+                to = $(this).attr('id').split('_')[1],
+                itemPk = $(ui.draggable).attr('id').split('_')[1],
+                url = '/admin/blocks/saveWidgetsPosition?to='+to+'&from='+from+'&widgetPk='+itemPk;
+
+                $.post(url,{}, function(){
+                    var t = $("#block-tabs");
+                    t.tabs('load', t.tabs('option', 'selected'));
+                });
+        },
+        hoverClass: "accept"
+    });
+    
+    //you can dnd widgets between blocks
     $("#blocks ul").sortable({
-        connectWith: "#blocks ul",
+        //connectWith: "#blocks ul",
         helper: "clone",
         opacity: 0.6,
         scroll: true,
 
-        stop: function(event, ui) {
-            var objects = [];   //deferred objects
-                
-            $("#blocks > li").each(function() {
-                var id = $(this).attr('id').split('_')[1],
-                    data = $(this).children('ul').sortable('serialize'),
-                    url = '/admin/blocks/saveWidgetsPosition?blockPk='+id+'&'+data;
-                    
-                objects.push($.post(url));     //push deferred object
-            });
-            
+        change: function(event, ui) {
+            var id = $(this).closest('li').attr('id').split('_')[1],
+                data = $(this).children('ul').sortable('serialize'),
+                url = '/admin/blocks/saveWidgetsPosition?blockPk='+id+'&'+data;
+
+            $.post(url);
+
             //array to $.when using apply, see http://docs.jquery.com/Types#Context.2C_Call_and_Apply
-            $.when.apply(null, objects).then(function() {
-                var t = $("#block-tabs");
-                t.tabs('load', t.tabs('option', 'selected'));
-            });
+//            $.when.apply(null, objects).then(function() {
+//
+//            });
         }
     });
 
     //delete blocks
+
+});
+
     $("#trash").droppable({
         drop: function(e, ui) {
             var params = $(ui.draggable).attr("id").split('_'),
                 type = params[0],
                 pk = params[1],
                 url;
-
             if (type == 'widgets') {
                 url = "/admin/widgets/delete";
             } else if (type == 'blocks') {
@@ -88,6 +101,4 @@ $(document).ready(function() {
         },
         hoverClass: "accept"
     });
-
-});
 </script>

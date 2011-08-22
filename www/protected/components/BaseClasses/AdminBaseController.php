@@ -60,7 +60,7 @@ class AdminBaseController extends Controller
 	{
         $menu = array(
 		    'categories' => array('text'=>Admin::link('Категории', 'categories/admin')),
-            'components' => array('text'=>Admin::link('Компоненты', 'widgets/gallery')),
+            'components' => array('text'=>Admin::link('Компоненты', 'manage/componentsGallery')),
 		    'settings' => array('text'=>Admin::link('Настройки Сайта', 'settings/admin')),
 		    /*array('text'=>Admin::link('Пользователи', 'users/admin')),
 			array(

@@ -70,4 +70,9 @@ class ManageController extends AdminBaseController
 	    $result=htmlspecialchars(json_encode($result), ENT_NOQUOTES);
 	    echo $result;// it's array
 	}
+
+    public function actionComponentGallery()
+    {
+        $this->render('componentsGallery');
+    }
 }

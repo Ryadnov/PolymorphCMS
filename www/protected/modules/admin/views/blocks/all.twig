@@ -43,6 +43,7 @@ $(document).ready(function() {
         }
     });
 
+    //you can dnd widgets between blocks
     $('#blocks > li').droppable({
         drop: function(e, ui) {
             var from = $(ui.draggable).closest('ul').parent().attr('id').split('_')[1],
@@ -57,8 +58,7 @@ $(document).ready(function() {
         },
         hoverClass: "accept"
     });
-    
-    //you can dnd widgets between blocks
+
     $("#blocks ul").sortable({
         //connectWith: "#blocks ul",
         helper: "clone",

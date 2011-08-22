@@ -26,33 +26,6 @@ abstract class Widget extends CPortlet
 
     abstract public function adminForm();
     
-	public function adminTabs()
-	{
-        $this->adminForm();
-
-        $id  = get_class($this).'_setttings_tabs';
-        return $this->getTabs($id);
-	}
-
-    public function getTabs($id = null, $return = true)
-    {
-        Y::tab('Дополнительно', $this->renderExternalFields());
-        return Y::getTabs($id, $return);
-    }
-
-    private function renderExternalFields()
-    {
-        $res = '<div class="row">';
-            $res .= CHtml::label('Название', 'Extra[title]');
-            $res .= CHtml::textField('Extra[title]', $this->widgetModel->title);
-        $res .= '</div>';
-        $res .= '<div class="row">';
-        $res .= CHtml::label('Опубликован', 'Extra[published]');
-            $res .= CHtml::checkBox('Extra[published]', $this->widgetModel->published);
-        $res .= '</div>';
-        return $res;
-    }
-
     public function setWidgetModel($widgetModel)
     {
         $this->widgetModel = $widgetModel;

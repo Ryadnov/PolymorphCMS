@@ -75,12 +75,10 @@ class WidgetsController extends AdminBaseController
             $model = $this->loadModel($pk);
             $widget = $this->loadWidget($model);
             
-            $output = $widget->adminTabs($model);
-            Y::clientScript()->render($output);
+            $widget->adminForm();
 
-            echo CHtml::form();
-            echo $output;
-            echo CHtml::endForm();
+            $id  = get_class($this).'_setttings_tabs';
+            $this->renderPartial('details', array('id'=>$id, 'model'=>$model), false, true);
         }
     }
 

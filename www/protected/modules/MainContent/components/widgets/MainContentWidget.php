@@ -116,6 +116,5 @@ class MainContentWidget extends Widget
             'name'=>'full'
         ));
         Y::endTab();
-
     }
 }

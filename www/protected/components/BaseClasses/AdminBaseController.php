@@ -18,21 +18,19 @@ class AdminBaseController extends Controller
 //            ->registerCssFile('/js/plugins/chosen/chosen.css')
             ->registerScriptFile('/js/plugins/cms/asc.js');
 
-        if (Yii::app()->request->isAjaxRequest) {
-            Y::clientScript()->scriptMap = array(
-                'jquery.js' => false,
-                'jquery-ui.min.js' => false,
-                'jquery-ui.css' => false,
+        Y::ajaxExclude(array(
+            'jquery.js',
+            'jquery-ui.min.js',
+            'jquery-ui.css',
 
-                //treeview
-                'jquery.treeview.js' => false,
-                'jquery.cookie.js' => false,
-                'jquery.treeview.edit.js' => false,
-                'jquery.treeview.async.js' => false,
+            //treeview
+            'jquery.treeview.js',
+            'jquery.cookie.js',
+            'jquery.treeview.edit.js',
+            'jquery.treeview.async.js',
 
-                'asc.js'=>false
-            );
-        }
+            'asc.js'
+        ));
 	}
 	
 	public $layout='//layouts/admin';

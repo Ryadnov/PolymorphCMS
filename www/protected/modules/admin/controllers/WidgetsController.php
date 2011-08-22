@@ -47,10 +47,10 @@ class WidgetsController extends AdminBaseController
             }
 
             //some output
-            $content = Admin::link('', 'widgets/see', array('pk'=>$widget->pk), array('class'=>'widget-preview'));
-            $content.= Admin::link('', 'widgets/settings', array('pk'=>$widget->pk), array('class'=>'widget-settings'));
-            $content.= CHtml::tag('div', array(), $widget->alias);
-            $content.= Admin::link('x', 'widgets/delete', array('pk'=>$widget->pk), array('class'=>'widget-delete'));
+            $content = Admin::link('', 'widgets/see', array('pk'=>$model->pk), array('class'=>'widget-preview'));
+            $content.= Admin::link('', 'widgets/settings', array('pk'=>$model->pk), array('class'=>'widget-settings'));
+            $content.= CHtml::tag('div', array(), $model->alias);
+            $content.= Admin::link('x', 'widgets/delete', array('pk'=>$model->pk), array('class'=>'widget-delete'));
             echo CHtml::tag('li', array('class'=>'widget'), $content);
         } else {
             //make list of widgets

@@ -45,7 +45,7 @@ return array(
     ),
 
     'clientScript' => array(
-        'class' => 'CClientScript',//'ext.minify.EClientScript',
+        'class' => 'ClientScript',//'ext.minify.EClientScript',
 //			'combineScriptFiles' => false, // By default this is set to false, set this to true if you'd like to combine the script files
 //			'combineCssFiles' => false, // By default this is set to false, set this to true if you'd like to combine the css files
 //			'optimizeCssFiles' => false,  // @since: 2.2

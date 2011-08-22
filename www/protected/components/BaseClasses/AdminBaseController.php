@@ -18,7 +18,7 @@ class AdminBaseController extends Controller
 //            ->registerCssFile('/js/plugins/chosen/chosen.css')
             ->registerScriptFile('/js/plugins/cms/asc.js');
 
-        Y::ajaxExclude(array(
+        Y::clientScript()->ajaxExclude(array(
             'jquery.js',
             'jquery-ui.min.js',
             'jquery-ui.css',

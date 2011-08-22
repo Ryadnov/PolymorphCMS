@@ -60,17 +60,20 @@ $(document).ready(function() {
         scroll: true,
 
         stop: function(event, ui) {
-            var blocks = $("#blocks > li"),
-                objects = [];
-            blocks.each(function() {
+            var objects = [];   //deffered objects
+                
+            $("#blocks > li").each(function() {
                 var id = $(this).attr('id').split('_')[1],
-                    data = $(this).children('ul').sortable('serialize');
-                objects.push($.post('/admin/blocks/saveWidgetsPosition?blockPk='+id+'&'+data));
+                    data = $(this).children('ul').sortable('serialize'),
+                    url = '/admin/blocks/saveWidgetsPosition?blockPk='+id+'&'+data;
+                    
+                objects.push($.post($url));     //push deffered object
             });
             
             //array to $.when using apply, see http://jsfiddle.net/YNGcm/21/
             $.when.apply(null, objects).then(function() {
-                $("#block-tabs").tabs('load', $("#block-tabs").tabs('option', 'selected'));
+                var t = $("#block-tabs");
+                t.tabs('load', t.tabs('option', 'selected'));
             });
         }
     });

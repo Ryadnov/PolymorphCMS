@@ -44,40 +44,7 @@
 
     <script type="text/javascript">
     $(document).ready(function() {
-        $("#block-tabs").delegate('#blocks li', "mouseenter", function() {
-              var $t = $(this);
-              if($t.is(":data(draggable)")) return;
-              $t.draggable({
-                helper: "clone",
-                opacity: .75,
-                refreshPositions: true, // Performance?
-                revert: "invalid",
-                revertDuration: 300,
-                scroll: true
-            });
-        });
-
-        //delete blocks
-        $("#trash").droppable({
-            drop: function(e, ui) {
-                var params = $(ui.draggable).attr("id").split('_'),
-                    type = params[0],
-                    pk = params[1],
-                    url;
-
-                if (type == 'widgets') {
-                    url = "/admin/widgets/delete";
-                } else if (type == 'blocks') {
-                    url = "/admin/blocks/delete"
-                }
-
-                $.get(url, {pk : pk}, function() {
-                    $(ui.draggable).remove();
-                });
-            },
-            hoverClass: "accept"
-        });
-
+        
     });
     </script>
 </div>

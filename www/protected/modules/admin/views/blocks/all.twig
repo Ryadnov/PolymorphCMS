@@ -6,7 +6,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-    $('#blocks .widgets a').click(function() {
+    $('#blocks li.widget-link a').click(function() {
         $('#widget-details').load($(this).attr('href'));
         return false;
     }).asc({
@@ -43,42 +43,70 @@ $(document).ready(function() {
         }
     });
 
-    $("#blocks-accordion > li > a").draggable({
+    $("#blocks").sortable({
         helper: "clone",
-        opacity: .75,
-        refreshPositions: true, // Performance?
-        revert: "invalid",
-        revertDuration: 300,
-        scroll: true
+        opacity: 0.6,
+        scroll: true,
+
+        stop: function(event, ui) {
+            alert(event.type);
+        }
     });
 
-	$('.widgets').each(function() {
-        var $t = $(this),
-            blockPk = $t.closest('.template-block').attr('id').split('_')[1];
+    $("#blocks ul").sortable({
+        connectWith: "#blocks ul",
+        helper: "clone",
+        opacity: 0.6,
+        scroll: true,
 
-        $t.sortable({
-            stop: function() {
-                $.post('/admin/blocks/saveWidgetsPosition?blockPk='+blockPk,
-                    $t.sortable('serialize')
-                );
+        stop: function(event, ui) {
+            var blocks = $("#blocks > li"),
+                objects = [];
+            blocks.each(function() {
+                var id = $(this).attr('id').split('_')[1],
+                    data = $(this).children('ul').sortable('serialize');
+                objects.push($.post('/admin/blocks/saveWidgetsPosition?blockPk='+id+'&'+data));
+            });
+            
+            //array to $.when using apply, see http://jsfiddle.net/YNGcm/21/
+            $.when.apply(null, objects).then(function() {
+                $("#block-tabs").tabs('load', $("#block-tabs").tabs('option', 'selected'));
+            });
+        }
+    });
+
+    //delete blocks
+    $("#trash").droppable({
+        drop: function(e, ui) {
+            var params = $(ui.draggable).attr("id").split('_'),
+                type = params[0],
+                pk = params[1],
+                url;
+
+            if (type == 'widgets') {
+                url = "/admin/widgets/delete";
+            } else if (type == 'blocks') {
+                url = "/admin/blocks/delete"
             }
-        });
+
+            $.get(url, {pk : pk}, function() {
+                $(ui.draggable).remove();
+            });
+        },
+        hoverClass: "accept"
     });
+
+//	$('.widget-link').each(function() {
+//        var $t = $(this),
+//            blockPk = $t.closest('li').attr('id').split('_')[1];
+//
+//        $t.sortable({
+//            stop: function() {
+//                $.post('/admin/blocks/saveWidgetsPosition?blockPk='+blockPk,
+//                    $t.sortable('serialize')
+//                );
+//            }
+//        });
+//    });
 });
 </script>
-
-<style type="text/css">
-.widgets {
-    list-style: disc;
-    margin-left: 15px;
-    list-style-position: inside;
-}
-
-#blocks-accordion {
-    margin-left: 5px;
-}
-.template-block a {
-    font-weight: bold;
-    text-decoration: none;
-}
-</style>

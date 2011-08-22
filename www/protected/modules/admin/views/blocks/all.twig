@@ -43,16 +43,6 @@ $(document).ready(function() {
         }
     });
 
-    $("#blocks").sortable({
-        helper: "clone",
-        opacity: 0.6,
-        scroll: true,
-
-        stop: function(event, ui) {
-            alert(event.type);
-        }
-    });
-
     $("#blocks ul").sortable({
         connectWith: "#blocks ul",
         helper: "clone",
@@ -60,17 +50,17 @@ $(document).ready(function() {
         scroll: true,
 
         stop: function(event, ui) {
-            var objects = [];   //deffered objects
+            var objects = [];   //deferred objects
                 
             $("#blocks > li").each(function() {
                 var id = $(this).attr('id').split('_')[1],
                     data = $(this).children('ul').sortable('serialize'),
                     url = '/admin/blocks/saveWidgetsPosition?blockPk='+id+'&'+data;
                     
-                objects.push($.post($url));     //push deffered object
+                objects.push($.post(url));     //push deferred object
             });
             
-            //array to $.when using apply, see http://jsfiddle.net/YNGcm/21/
+            //array to $.when using apply, see http://docs.jquery.com/Types#Context.2C_Call_and_Apply
             $.when.apply(null, objects).then(function() {
                 var t = $("#block-tabs");
                 t.tabs('load', t.tabs('option', 'selected'));
@@ -99,17 +89,5 @@ $(document).ready(function() {
         hoverClass: "accept"
     });
 
-//	$('.widget-link').each(function() {
-//        var $t = $(this),
-//            blockPk = $t.closest('li').attr('id').split('_')[1];
-//
-//        $t.sortable({
-//            stop: function() {
-//                $.post('/admin/blocks/saveWidgetsPosition?blockPk='+blockPk,
-//                    $t.sortable('serialize')
-//                );
-//            }
-//        });
-//    });
 });
 </script>

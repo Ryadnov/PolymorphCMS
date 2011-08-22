@@ -32,9 +32,9 @@ class BlocksController extends AdminBaseController
         }
 	}
 	
-	public function actionSaveWidgetsPosition()
+	public function actionSaveWidgetsPosition($blockPk, $widgets)
 	{
-		Y::dump($_POST);
+		Y::dump($widgets);
 	}
 
 	public function actionDetails($pk)

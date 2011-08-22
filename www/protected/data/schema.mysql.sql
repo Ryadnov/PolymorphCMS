@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 19 2011 г., 20:13
+-- Время создания: Авг 22 2011 г., 11:37
 -- Версия сервера: 5.1.40
 -- Версия PHP: 5.3.3
 
@@ -285,9 +285,6 @@ CREATE TABLE IF NOT EXISTS `plugins` (
 --
 
 INSERT INTO `plugins` (`plugin_id`, `json_settings`, `published`, `class`, `title`, `load_level`) VALUES
-(4, '{}', 1, 'MainContent', 'Главный контент', 2),
-(6, '{"alias":"main"}', 1, 'Menu', 'Менюшка', 2),
-(3, '{}', 1, 'Dummy', 'Текст', 2),
 (1, '{}', 1, 'Pages', 'Статические страницы', 1);
 
 -- --------------------------------------------------------
@@ -477,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `template_widgets` (
 
 INSERT INTO `template_widgets` (`widget_id`, `json_settings`, `published`, `class`, `title`) VALUES
 (1, '{}', 1, 'MainContent', 'Главный контент'),
-(2, '{"alias":"main"}', 1, 'Menu', 'Менюшка'),
+(2, '{"alias":"main","title":"Главное меню"}', 1, 'Menu', 'Менюшка'),
 (10, '{}', 1, 'Dummy', 'Текст');
 
 -- --------------------------------------------------------
@@ -510,4 +507,4 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `role`, `username`, `password`, `createtime`, `email`, `activated`, `banned`, `banned_reason`, `blog_id`, `lastvisit`, `superuser`, `status`, `activkey`) VALUES
 (12, 'webmaster', 'nizsheanez', '827ccb0eea8a706c4c34a16891f84e7b', 1305201336, 'www.pismeco@gmail.com', 0, 0, '', 0, 1305277117, 0, 1, '759e2e75999f483fa135f94cd59942ff'),
-(56, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1307533423, 'admin@admin.ru', 0, 0, '', 0, 1313683507, 0, 1, '12655e2b7cddcb300d16c530caf24a23');
+(56, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1307533423, 'admin@admin.ru', 0, 0, '', 0, 1313951661, 0, 1, '12655e2b7cddcb300d16c530caf24a23');

@@ -32,7 +32,7 @@ class ManageController extends AdminBaseController
 				'roles'=>array('moderator'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('delete'),
+				'actions'=>array('delete', 'componentsGallery'),
 				'roles'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -71,7 +71,7 @@ class ManageController extends AdminBaseController
 	    echo $result;// it's array
 	}
 
-    public function actionComponentGallery()
+    public function actionComponentsGallery()
     {
         $this->render('componentsGallery');
     }

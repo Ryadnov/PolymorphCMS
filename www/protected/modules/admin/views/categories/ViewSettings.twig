@@ -6,13 +6,9 @@
 .widget_settings_tabs .ui-tabs-panel {
     margin: 0 0 0 3px;
 }
-/*
-.blue-head {position: relative; background: #e5ecf4; height: 27px; overflow: hidden;
-*/
 
-.dark-blue-head {padding: 2px 0 2px 15px; background: #1A3852;}
-.add-block{color: #FFF !important; font-weight: bold; text-decoration: none !important;}
-.add-block:hover{color: #FFF !important; font-weight: bold; text-decoration: none !important;}
+.add-block{}
+.add-block:hover{}
 
 </style>
 <div id="design-wrapper">
@@ -48,43 +44,6 @@
 
     <script type="text/javascript">
     $(document).ready(function() {
-        $('#block-tabs').delegate('#blocks li.widget-link a', 'click', function() {
-            $('#widget-details').load($(this).attr('href'));
-            return false;
-        }).asc({
-            linkClass: 'add-widgets-btn'
-        }).asc({
-            linkClass: 'make-own-btn',
-            isStatic: true,
-            buttons: {
-                "Да" : function() {
-                    var $t = $('#blocks .make-own-btn'),
-                        url = $t.attr('href'),
-                        res = '';
-                        
-                    for(var a in $(this))
-                        res += a+' = '+$(this)[a]+"</br>\n";
-                    alert($(this).attr('id'));
-                    return false;
-                    //make own and reload tab
-                    $.get(url, {}, function(data) {
-                        if (data == 'ok')
-                            $('#block-tabs').tabs('load', 0);
-                    });
-                    
-                    $(this).dialog("close");
-                },
-                "Отмена" : function() {
-                    $(this).dialog("close");
-                }
-            }
-        }).asc({
-            linkClass: 'add-block',
-            success: function() {
-               $('#block-tabs').tabs('load', 0);
-            }
-        });
-
         $("#block-tabs").delegate('#blocks li', "mouseenter", function() {
               var $t = $(this);
               if($t.is(":data(draggable)")) return;

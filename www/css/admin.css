@@ -358,3 +358,6 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 .submit-button {float: right;}
 #submit-form-result {float: right;display: none;}
 
+.dark-blue-head {padding: 2px 0 2px 15px; background: #1A3852;}
+.dark-blue-head a{color: #FFF !important; font-weight: bold; text-decoration: none !important;}
+.dark-blue-head a:hover{color: #FFF !important; font-weight: bold; text-decoration: none !important;}

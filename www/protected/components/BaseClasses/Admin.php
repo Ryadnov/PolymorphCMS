@@ -15,9 +15,14 @@ class Admin
     	return Y::absUrl('admin/'.$url, $params);
     }
 	
-    public static function link($text, $url, $urlParams = array(), $linkParams = array())
+    public static function link($text, $url, $urlParams = array(), $htmlOptions = array())
     {
-        return CHtml::link($text, self::url($url, $urlParams), $linkParams);
+        return CHtml::link($text, self::url($url, $urlParams), $htmlOptions);
+    }
+
+    public static function ajaxLink($text, $url, $urlParams = array(), $htmlOptions, $ajaxOptions)
+    {
+        return CHtml::ajaxLink($text, self::url($url, $urlParams), $htmlOptions, $ajaxOptions);
     }
     
     public static function absLink($url, $text, $urlParams = array(), $linkParams = array())

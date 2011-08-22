@@ -92,6 +92,17 @@ class WidgetsController extends AdminBaseController
     public function actionAll()
     {
         $createdWidgets = TemplateWidget::model()->findAll();
-        $this->renderPartial('all', array('createdWidgets'=>$createdWidgets));
+
+        $widgets = array();
+        foreach ($createdWidgets as $model) {
+            $widgets[] = array(
+                'text'=>$model->detailsLink,
+                'htmlOptions'=>array(
+                    'id'=>"widgets_".$model->pk,
+                    'class'=>'widget-link'
+                )
+            );
+        }
+        $this->renderPartial('all', array('widgets'=>$widgets), false, true);
     }
 }

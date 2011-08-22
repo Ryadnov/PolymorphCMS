@@ -1,11 +1,46 @@
-<div class="dark-blue-head"><a href="{{ Admin.url('blocks/add', {'catPk':cat.pk}) }}" class="add-block">Добавить блок +</a></div>
+<div class="dark-blue-head">
+    {{ Admin.link('Добавить блок +', 'blocks/add', {'catPk':cat.pk}, {'class':'add-block'}) }}
+</div>
+
 {{ this.widget('CTreeView', {'collapsed':true,'data':blocks, 'id':'blocks'}, true) }}
 <script type="text/javascript">
 $(document).ready(function() {
 
-    $('#blocks-accordion .widgets a').click(function() {
+    $('#blocks .widgets a').click(function() {
         $('#widget-details').load($(this).attr('href'));
         return false;
+    }).asc({
+        linkClass: 'add-widgets-btn'
+    }).asc({
+        linkClass: 'make-own-btn',
+        isStatic: true,
+        buttons: {
+            "Да" : function() {
+                var $t = $('#blocks .make-own-btn'),
+                    url = $t.attr('href'),
+                    res = '';
+
+                for(var a in $(this))
+                    res += a+' = '+$(this)[a]+"</br>\n";
+                alert($(this).attr('id'));
+                return false;
+                //make own and reload tab
+                $.get(url, {}, function(data) {
+                    if (data == 'ok')
+                        $('#block-tabs').tabs('load', 0);
+                });
+
+                $(this).dialog("close");
+            },
+            "Отмена" : function() {
+                $(this).dialog("close");
+            }
+        }
+    }).asc({
+        linkClass: 'add-block',
+        success: function() {
+           $('#block-tabs').tabs('load', 0);
+        }
     });
 
     $("#blocks-accordion > li > a").draggable({
@@ -16,11 +51,11 @@ $(document).ready(function() {
         revertDuration: 300,
         scroll: true
     });
-            
+
 	$('.widgets').each(function() {
         var $t = $(this),
             blockPk = $t.closest('.template-block').attr('id').split('_')[1];
-            
+
         $t.sortable({
             stop: function() {
                 $.post('/admin/blocks/saveWidgetsPosition?blockPk='+blockPk,

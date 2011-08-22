@@ -104,8 +104,16 @@ class TemplateWidget extends ActiveRecord
 		return CHtml::link($this->alias, $this->adminUrl);
 	}
 
-    public function getDetailsLink($htmlOptions = array())
+    public function getDetailsLink($htmlOptions = array(), $ajaxOptions = null)
     {
-        return Admin::link($this->title, 'widgets/details', array('pk'=>$this->pk), $htmlOptions);
+        $title = isset($this->settings['title']) ? $this->settings['title'] : $this->title;
+        $url = 'widgets/details';
+        $params = array('pk'=>$this->pk);
+        if ($ajaxOptions === null) {
+            return Admin::link($title, $url, $params, $htmlOptions);
+        } else {
+            return Admin::ajaxLink($title, $url, $params, $htmlOptions, $ajaxOptions);
+        }
+
     }
 }

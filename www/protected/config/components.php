@@ -52,7 +52,11 @@ return array(
 //			'optimizeScriptFiles' => false,   // @since: 2.2
     ),
 
-    'urlManager'=> require("route.php"),
+    'urlManager'=> array(
+        'urlFormat'=>'path',
+        'rules'=>'',    //all routes set onBeginRequest. see main.php
+        'showScriptName' => false,
+    ),
     'assetManager'=>array(			// assets, see http://www.yiiframework.com/doc/api/CAssetManager
         'basePath'=>dirname(__FILE__).'/../../assets/',   // change the path on disk
         'baseUrl'=>'/assets/'   // change the url

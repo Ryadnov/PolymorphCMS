@@ -4,9 +4,9 @@ class ImageGalleryModule extends Package
 {
     //_records is noconflict rule
     public $urlRules = array(
-        '_imageGallery/<c>/<a>'=>'imageGallery/<c>/<a>',
-        '_imageGallery/<c>'=>'imageGallery/<c>',
-        '_imageGallery'=>'imageGallery',
+        '_imageGallery/<c>/<a>' => 'imageGallery/<c>/<a>',
+        '_imageGallery/<c>' => 'imageGallery/<c>',
+        '_imageGallery' => 'imageGallery',
     );
 
     public $eventMap = array(

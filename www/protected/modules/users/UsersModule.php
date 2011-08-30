@@ -13,7 +13,7 @@ class UsersModule extends Package
     public $categoryAlias = 'users';
     public $category = null;
 
-    public $urlRules = array(
+    public $routeMap = array(
         //user module links
         'login' => 'users/login',
         'registration' => 'users/registration',

@@ -2,12 +2,13 @@
 class Package extends CWebModule
 {
     public $eventMap = null;
+    public $routeMap = null;
     
     public function init()
     {
         parent::init();
 
-        //set events handlers
+        //set handlers, must have 'cms' prefix
         foreach(get_class_methods($this) as $method) {
             if (strncasecmp($method, 'cms', 3) === 0)
             $this->addHandler($method, $method);

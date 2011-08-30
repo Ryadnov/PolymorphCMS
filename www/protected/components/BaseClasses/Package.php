@@ -1,6 +1,23 @@
 <?php
 class Package extends CWebModule
 {
+    public $eventMap = null;
+    
+    public function init()
+    {
+        parent::init();
+
+        //set events handlers
+        foreach(get_class_methods($this) as $method) {
+            if (strncasecmp($method, 'cms', 3) === 0)
+            $this->addHandler($method, $method);
+        }
+
+        //attach events from $this->eventMap
+        foreach ($this->eventMap as $event=>$handler) {
+            $this->addHandler($event, $handler);
+        }
+    }
 
     public function install()
     {
@@ -17,9 +34,9 @@ class Package extends CWebModule
         if (is_array($handler)) {
             $ca = Yii::app()->createController(ucfirst($handler[0]), $this);
             $handler[0] = $ca[0];
-            $handler[1] = 'handler'.ucfirst($handler[1]);
+            $handler[1] = 'cms'.ucfirst($handler[1]);
         } else {
-            $handler = array($this, 'handler'.ucfirst($handler));
+            $handler = array($this, $handler);
         }
 
         Y::hooks()->$eventName = $handler;

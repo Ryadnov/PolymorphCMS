@@ -4,7 +4,8 @@ class MenuWidget extends Widget
 {
     public $alias;
     public $expand;
-        
+    public $title;
+    
 	protected function renderContent()
     {
         $alias = $this->alias;
@@ -26,14 +27,14 @@ class MenuWidget extends Widget
 	
     public function remove()
     {
-        
     }
 
     public function update()
     {
-
     }
 
-    public function adminForm(){}
+    public function adminForm()
+    {
+    }
 
 }

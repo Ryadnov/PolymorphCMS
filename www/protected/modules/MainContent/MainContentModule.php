@@ -14,11 +14,9 @@ class MainContentModule extends Package
             'mainContent.components.*',
             'mainContent.components.widgets.*',
         ));
-
-        $this->addHandler('cmsRegisterWidgets', 'registerWidgets');
     }
 
-    public function handlerRegisterWidgets($event)
+    public function cmsRegisterWidgets($event)
     {
         $event->widgets = CMap::mergeArray($event->widgets, array(
             'MainContentWidget' => array(

@@ -5,7 +5,7 @@ abstract class Widget extends CPortlet
 {
 	public $category;
     public $widgetModel;    //external param
-    public $blockModel;          //external param
+    public $blockModel;     //external param
     public $block;          //external param
     public $model;          //see Plugins.init()
     
@@ -16,16 +16,14 @@ abstract class Widget extends CPortlet
 	public $titleCssClass='portlet-title';
 	public $contentCssClass='portlet-content';
 
-    public $ajaxGet;
-    public $ajaxPost;
-    
-	public function init()
-	{
-        parent::init();
-	}
+    public function adminForm()
+    {
+    }
 
-    abstract public function adminForm();
-    
+    public function update()
+    {
+    }
+
     public function setWidgetModel($widgetModel)
     {
         $this->widgetModel = $widgetModel;
@@ -38,13 +36,6 @@ abstract class Widget extends CPortlet
 	            'class' => 'behaviors.JsonSettingsBehavior'
 	      	),
         );
-    }
-
-    abstract public function update();
-
-    public static function register($category)
-    {
-        
     }
 
     public function render($view, $data = array(), $return = false)

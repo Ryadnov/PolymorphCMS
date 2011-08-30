@@ -8,13 +8,13 @@ class RecordsController extends Controller
 
     }
 
-    public function handlerGetAdminTabs($event)
+    public function cmsGetAdminTabs($event)
     {
         if (get_class($event->model) == 'Record')
             $this->renderPartial('_adminTabs', array('model'=>$event->model, 'form'=>$event->form));
     }
 
-    public function handlerAdminGetGridColumns($event)
+    public function cmsAdminGetGridColumns($event)
     {
         if (get_class($event->model) == 'Record') {
             $event->columns = CMap::mergeArray($event->columns, array(

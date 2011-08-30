@@ -9,20 +9,20 @@ class ImageGalleryModule extends Package
         '_imageGallery'=>'imageGallery',
     );
 
+    public $eventMap = array(
+        'cmsAdminGetTabs' => array('imageGallery', 'addGalleryTab')
+    );
+
 	public function init()
 	{
         $this->setImport(array(
 			'imageGallery.models.*',
 			'imageGallery.components.behaviors.*',
 		));
-
-        $this->addHandler('cmsDataTypeRelations', 'addRecordRelations');
-        $this->addHandler('cmsAddDataTypeBehaviors', 'addRecordBehaviors');
-        $this->addHandler('cmsAdminGetTabs', array('imageGallery', 'addGalleryTab'));
-        $this->addHandler('cmsRegisterWidgets', 'registerWidgets');
+        parent::init();
 	}
 
-    public function handlerAddRecordRelations($event)
+    public function cmsDataTypeRelations($event)
     {
         $event->relations = CMap::mergeArray(
             $event->relations,
@@ -30,12 +30,12 @@ class ImageGalleryModule extends Package
         );
     }
 
-    public function handlerAddRecordBehaviors($event)
+    public function cmsAddDataTypeBehaviors($event)
     {
         $event->sander->attachBehavior('someBehavior', new SomeBehavior);
     }
 
-    public function handlerRegisterWidgets($event)
+    public function cmsRegisterWidgets($event)
     {
         $event->widgets = CMap::mergeArray($event->widgets, array('ImageGalleryWidget' => array(
             'title'=>'Галлерея изображений',

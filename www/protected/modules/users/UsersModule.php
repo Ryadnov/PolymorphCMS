@@ -15,22 +15,39 @@ class UsersModule extends Package
 
     public $urlRules = array(
         //user module links
-        'login'=>'users/login',
-        'registration'=>'users/registration',
-        'recovery/<email>/<activkey>'=>'users/recovery',
-        'recovery'=>'users/recovery',
-        'logout'=>'users/logout',
-        'activation/<email>/<activkey>'=>'users/activation',
-        'profile/<id:\d+>'=>'users/profile',
-        'cabinet/'=>'users/profile/cabinet',
-        'user/edit'=>'users/profile/edit',
-        'changepassword'=>'users/profile/changepassword',
+        'login' => 'users/login',
+        'registration' => 'users/registration',
+        'recovery/<email>/<activkey>' => 'users/recovery',
+        'recovery' => 'users/recovery',
+        'logout' => 'users/logout',
+        'activation/<email>/<activkey>' => 'users/activation',
+        'profile/<id:\d+>' => 'users/profile',
+        'cabinet/' => 'users/profile/cabinet',
+        'user/edit' => 'users/profile/edit',
+        'changepassword' => 'users/profile/changepassword',
         'close' => 'users/registration/close',
-        'admin/users/admin'=>'users/admin',
-        'admin/users/create'=>'users/admin/create',
-        '<controller:(user|profileField)>/<action:(admin|view|create|update|delete)>'=>'users/<controller>/<action>',
+        'admin/users/admin' => 'users/admin',
+        'admin/users/create' => 'users/admin/create',
+        '<controller:(user|profileField)>/<action:(admin|view|create|update|delete)>' => 'users/<controller>/<action>',
     );
-    
+
+    public function cmsAdminGetSystemMenu($event)
+    {
+        $event->menu = CMap::mergeArray($event->menu, array(
+            'users'=>array('text'=>Admin::link('Пользователи', 'users/admin')),
+        ));
+    }
+
+    public function cmsRegisterWidgets($event)
+    {
+        $event->widgets = CMap::mergeArray($event->widgets, array(
+            'UserMenu' => array(
+                'title'=>'Меню пользователя',
+                'class'=>'UserMenuWidget'
+            )
+        ));
+    }
+
 	/**
 	 * @var int
 	 * @desc items on page
@@ -135,28 +152,7 @@ class UsersModule extends Package
 		));
 
         $this->category = Y::category($this->categoryAlias);
-
-        $this->addHandler('cmsAdminGetSystemMenu', 'adminMenu');
-        $this->addHandler('cmsRegisterWidgets', 'registerWidgets');
 	}
-
-    public function handlerAdminMenu($event)
-    {
-        $event->menu = CMap::mergeArray($event->menu, array(
-            'users'=>array('text'=>Admin::link('Пользователи', 'users/admin')),
-        ));
-    }
-
-    public function handlerRegisterWidgets($event)
-    {
-        $event->widgets = CMap::mergeArray($event->widgets, array(
-            'UserMenu' => array(
-                'title'=>'Меню пользователя',
-                'class'=>'UserMenuWidget'
-            )
-        ));
-    }
-
 	
 	//simple add lang in url
 	private function createUrls($base_urls)

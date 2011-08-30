@@ -11,6 +11,7 @@ class AdminBaseController extends Controller
         parent::init();
 
         Y::clientScript()
+            ->registerCoreScript('jquery')
             ->registerCoreScript('jquery.ui')
 //            ->registerScriptFile('/js/plugins/cms/deleteLi.js')
 //            ->registerScriptFile('/js/plugins/cms/openLi.js')

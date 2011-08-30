@@ -49,7 +49,7 @@ abstract class Widget extends CPortlet
 
     public function render($view, $data = array(), $return = false)
     {
-        $folder = str_replace('Widget', '', get_class($this));
+        $folder = str_replace('Widget', '', get_class($this)).'/'.$this->widgetModel->pk;
         return parent::render($folder.'/'.$view, $data, $return);
     }
 

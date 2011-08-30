@@ -24,15 +24,6 @@ class MainContentWidget extends Widget
         }
     }
 
-    public function render($view, $data = array(), $return = false)
-    {
-        if (isset($this->blockModel) && isset($this->model)) {
-            return parent::render($this->widgetModel->pk.'/'.$view, $data, $return);
-        } else {
-            return parent::render($view, $data, $return);
-        }
-    }
-
     public function getListView(&$criteria, $return = false)
     {
         $dp = new EActiveDataProvider(get_class($this->model), array(

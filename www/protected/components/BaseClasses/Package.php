@@ -1,8 +1,9 @@
 <?php
 class Package extends CWebModule
 {
-    public $eventMap = null;
-    public $routeMap = null;
+    public $routeMap = array();
+    public $eventMap = array();
+    public $imports = array();
     
     public function init()
     {
@@ -18,6 +19,9 @@ class Package extends CWebModule
         foreach ($this->eventMap as $event=>$handler) {
             $this->addHandler($event, $handler);
         }
+
+        //import
+        $this->setImport($this->imports);
     }
 
     public function install()

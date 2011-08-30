@@ -13,14 +13,10 @@ class ImageGalleryModule extends Package
         'cmsAdminGetTabs' => array('imageGallery', 'addGalleryTab')
     );
 
-	public function init()
-	{
-        $this->setImport(array(
-			'imageGallery.models.*',
-			'imageGallery.components.behaviors.*',
-		));
-        parent::init();
-	}
+    public $imports = array(
+        'imageGallery.models.*',
+        'imageGallery.components.behaviors.*',
+    );
 
     public function cmsDataTypeRelations($event)
     {

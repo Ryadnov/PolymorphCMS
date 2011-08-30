@@ -48,6 +48,13 @@ class UsersModule extends Package
         ));
     }
 
+    public $imports = array(
+        'users.models.*',
+        'users.components.*',
+        'users.components.widgets.*'
+    );
+
+
 	/**
 	 * @var int
 	 * @desc items on page
@@ -145,13 +152,7 @@ class UsersModule extends Package
 	
 	public function init()
 	{
-		$this->setImport(array(
-			'users.models.*',
-			'users.components.*',
-            'users.components.widgets.*',
-		));
-
-        $this->category = Y::category($this->categoryAlias);
+	    $this->category = Y::category($this->categoryAlias);
 	}
 	
 	//simple add lang in url

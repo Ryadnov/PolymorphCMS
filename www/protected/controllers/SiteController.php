@@ -19,30 +19,27 @@ class SiteController extends FrontBaseController
         $alias = isset($_GET['cat' . --$i]) ? $_GET['cat' . $i] : 'index';
 
         //find category by alias
-        $category = Category::model()->published()->findByAttributes(array('alias' => $alias));
+        $this->category = Category::model()->published()->findByAttributes(array('alias' => $alias));
 
-        if ($category == NULL) {
+        if ($this->category == NULL) {
             //if $alias is no category alias, may be it's model alias and $prev_alias it's category alias
             $prev_alias = isset($_GET['cat' . --$i]) ? $_GET['cat' . $i] : false;
 
             if ($prev_alias == false)
                 $this->redirect('/errors/not_found');
             
-            $category = Category::model()->published()->findByAttributes(array('alias' => $prev_alias));
+            $this->category = Category::model()->published()->findByAttributes(array('alias' => $prev_alias));
 
-            if ($category == NULL)
+            if ($this->category == NULL)
                 $this->redirect('/errors/not_found');
 
             $_GET['alias'] = $alias;
         }
 
-        $model = ModelFactory::getModel($category);
+        $this->model = ModelFactory::getModel($this->category);
         
-        if ($model == NULL)
+        if ($this->model == NULL)
             $this->redirect('/errors/not_found');
-
-        $this->model = $model;
-        $this->category = $category;
 
         //see parent render function
         $this->render('index');

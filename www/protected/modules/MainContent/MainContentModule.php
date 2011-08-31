@@ -12,19 +12,16 @@ class MainContentModule extends Package
         'mainContent.components.*',
         'mainContent.components.widgets.*'
     );
-    
-    public function cmsRegisterWidgets($event)
-    {
-        $event->widgets = CMap::mergeArray($event->widgets, array(
-            'MainContentWidget' => array(
-                'title'=>'Главный контент',
-                'class'=>'MainContentWidget'
-            ),
-            'DummyWidget' => array(
-                'title'=>'Простой текст',
-                'class'=>'DummyWidget'
-            )
-        ));
-    }
+
+    public $widgetsMap =array(
+        'MainContentWidget' => array(
+            'title'=>'Главный контент',
+            'class'=>'MainContentWidget'
+        ),
+        'DummyWidget' => array(
+            'title'=>'Простой текст',
+            'class'=>'DummyWidget'
+        )
+    );
 
 }

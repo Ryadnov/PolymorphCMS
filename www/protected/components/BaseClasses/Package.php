@@ -1,10 +1,24 @@
 <?php
 class Package extends CWebModule
 {
+    //urlManager rules
     public $routeMap = array();
+
+    //eventName => array(class, method)
     public $eventMap = array();
+
+    //path aliaces
     public $imports = array();
+
+    //simple modelNames
     public $dataTypesMap = array();
+
+    /*
+    array(
+        'title'=>widgetTitle,
+        'class'=>widgetClassName
+    )
+    */
     public $widgetsMap = array();
     
     public function init()

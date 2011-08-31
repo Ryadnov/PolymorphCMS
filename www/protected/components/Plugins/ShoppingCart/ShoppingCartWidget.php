@@ -106,8 +106,6 @@ class SoppingCartWidget extends Widget
         $quantity = Y::cart()->itemAt($this->ajaxParams['id'])->getQuantity();
     }
 
-    
-
     private function getModel()
     {
         list($className, $pk) = explode('_', $this->ajax['id']);

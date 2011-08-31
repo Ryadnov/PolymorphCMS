@@ -5,6 +5,7 @@ class Package extends CWebModule
     public $eventMap = array();
     public $imports = array();
     public $dataTypesMap = array();
+    public $widgetsMap = array();
     
     public function init()
     {
@@ -25,17 +26,18 @@ class Package extends CWebModule
         $this->setImport($this->imports);
 
         //dataTypes register
-            ModelFactory::registerDataTypes($this->dataTypesMap);
+        ModelFactory::registerDataTypes($this->dataTypesMap);
+
+        //register widets
+        Y::resources()->registerWidgets($this->widgetsMap);
     }
 
     public function install()
     {
-
     }
 
     public function uninstall()
     {
-
     }
 
     public function addHandler($eventName, $handler)

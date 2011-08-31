@@ -18,6 +18,13 @@ class ImageGalleryModule extends Package
         'imageGallery.components.behaviors.*',
     );
 
+    public $widgetsMap = array(
+        'ImageGalleryWidget' => array(
+            'title'=>'Галерея изображений',
+            'class'=>'ImageGalleryWidget'
+        )
+    );
+
     public function cmsDataTypeRelations($event)
     {
         $event->relations = CMap::mergeArray(
@@ -26,16 +33,10 @@ class ImageGalleryModule extends Package
         );
     }
 
+    //demo for refact
     public function cmsAddDataTypeBehaviors($event)
     {
         $event->sander->attachBehavior('someBehavior', new SomeBehavior);
     }
 
-    public function cmsRegisterWidgets($event)
-    {
-        $event->widgets = CMap::mergeArray($event->widgets, array('ImageGalleryWidget' => array(
-            'title'=>'Галлерея изображений',
-            'class'=>'ImageGalleryWidget'
-        )));
-    }
 }

@@ -82,12 +82,14 @@ class ResourceManager extends CApplicationComponent
 
     public function getRegisteredWidgets()
     {
-        if ($this->_w === null) {
-            $res = Y::hooks()->cmsRegisterWidgets($this, array('widgets'=>array()));
-            $this->_w = $res['widgets'];
-        }
-
         return $this->_w;
     }
+
+    public function registerWidgets($widgets)
+    {
+        foreach ((array)$widgets as $widget)
+            $this->_w[] = $widget;
+    }
+
 
 }

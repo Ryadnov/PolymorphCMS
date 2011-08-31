@@ -36,12 +36,6 @@ class SiteController extends FrontBaseController
             $_GET['alias'] = $alias;
         }
 
-        /*
-        Using expample:
-        ModelFactory::registerDataType(records::model());
-        */
-        Y::hooks()->cmsRegisterDataTypes($this);
-        
         $model = ModelFactory::getModel($category);
         
         if ($model == NULL)
@@ -52,6 +46,8 @@ class SiteController extends FrontBaseController
 
         //see parent render function
         $this->render('index');
+
+        //simple speed demonstration :-)
         echo Y::stats();
     }
 

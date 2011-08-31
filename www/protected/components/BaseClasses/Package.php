@@ -4,6 +4,7 @@ class Package extends CWebModule
     public $routeMap = array();
     public $eventMap = array();
     public $imports = array();
+    public $dataTypesMap = array();
     
     public function init()
     {
@@ -22,6 +23,9 @@ class Package extends CWebModule
 
         //import
         $this->setImport($this->imports);
+
+        //dataTypes register
+            ModelFactory::registerDataTypes($this->dataTypesMap);
     }
 
     public function install()
@@ -52,8 +56,5 @@ class Package extends CWebModule
         $params = CMap::mergeArray($event->params, $additionParams);
         Y::controller()->widget($widgetName, $params);
     }
-
-    
-
 
 }

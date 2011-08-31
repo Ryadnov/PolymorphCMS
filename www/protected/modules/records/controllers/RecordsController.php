@@ -4,8 +4,6 @@ class RecordsController extends Controller
     public function handlerUpdate($event)
     {
         Y::dump($this->getViewPath());
-//        $model = $event->model;
-
     }
 
     public function cmsGetAdminTabs($event)

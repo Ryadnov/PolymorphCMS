@@ -1,12 +1,13 @@
 <?php
 class ModelFactory
 {
-    private static $_m = array();
+    private static $_m;
 
-    public static function registerDataType($model)
+    public static function registerDataTypes($modelName)
     {
-        self::$_m[get_class($model)] = $model;
-    }
+        foreach ((array)$modelName as $name)
+            self::$_m[] = $name;
+     }
 
     /**
      * Chain of Responsability pattern
@@ -19,11 +20,23 @@ class ModelFactory
     public static function getModel($category)
     {
         $res = null;
-        foreach (self::$_m as $model) {
-            if ($res = $model->handleCategoryType($category))
-                return $res;
+        
+        foreach (self::$_m as $modelName) {
+            if ($category->type == $modelName)
+                $model = $modelName::model();
+            else
+                return null;
+
+            //if has alias or id of model, then find it
+            if (isset($_GET['alias']) || isset($_GET['pk'])) {
+                $value = isset($_GET['alias']) ? $_GET['alias'] : $_GET['pk'];
+                $attr = isset($_GET['alias']) ? 'alias' : $model->pkAttr;
+
+                $model = $model->published()->findByAttributes(array($attr => $value));
+                break;
+            }
         }
-        return $res;
+        return $model;
     }
 
 

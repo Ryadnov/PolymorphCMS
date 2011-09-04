@@ -37,7 +37,7 @@ class SiteController extends FrontBaseController
         }
 
         $this->model = ModelFactory::getModel($this->category);
-        
+
         if ($this->model == NULL)
             $this->redirect('/errors/not_found');
 

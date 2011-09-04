@@ -1,4 +1,6 @@
 <?php
+define(BASE_URL, 'http://216.231.135.91/polymorph/');
+
 // uncomment the following to define a path alias
 Yii::setPathOfAlias('modules',		'protected/modules');
 Yii::setPathOfAlias('components',	'protected/components');
@@ -58,8 +60,8 @@ Yii::app()->onBeginRequest = function($event) {
 return array(
 
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
- 
-    'name'=>'polymorphCMS.ru',	// access it using Yii::app()->name
+
+    'name'=>'polymorphCMS',	// access it using Yii::app()->name
     'defaultController'=>'site',   // default controller that will be executed when running the application
     'language'=>'ru',   	// user language (for Locale)
 	'sourceLanguage'=>'en',	//language for messages and views

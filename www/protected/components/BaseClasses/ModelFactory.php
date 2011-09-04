@@ -19,13 +19,11 @@ class ModelFactory
      */
     public static function getModel($category)
     {
-        $res = null;
-        
+        $model = null;
+
         foreach (self::$_m as $modelName) {
             if ($category->type == $modelName)
                 $model = $modelName::model();
-            else
-                return null;
 
             //if has alias or id of model, then find it
             if (isset($_GET['alias']) || isset($_GET['pk'])) {
@@ -34,6 +32,8 @@ class ModelFactory
 
                 $model = $model->published()->findByAttributes(array($attr => $value));
                 break;
+            } elseif($category->type == 'Page') {
+                $model = $category->page;
             }
         }
         return $model;

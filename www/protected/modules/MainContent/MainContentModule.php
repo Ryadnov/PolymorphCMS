@@ -10,6 +10,7 @@ class MainContentModule extends Package
 
     public $imports = array(
         'mainContent.components.*',
+        'mainContent.models.*',
         'mainContent.components.widgets.*'
     );
 
@@ -23,5 +24,10 @@ class MainContentModule extends Package
             'class'=>'DummyWidget'
         )
     );
+
+
+    public $dataTypesMap = array(
+         'Page'
+     );
 
 }

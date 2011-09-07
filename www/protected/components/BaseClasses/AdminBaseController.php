@@ -13,10 +13,6 @@ class AdminBaseController extends Controller
         Y::clientScript()
             ->registerCoreScript('jquery')
             ->registerCoreScript('jquery.ui')
-//            ->registerScriptFile('/js/plugins/cms/deleteLi.js')
-//            ->registerScriptFile('/js/plugins/cms/openLi.js')
-//            ->registerScriptFile('/js/plugins/chosen/chosen.js')
-//            ->registerCssFile('/js/plugins/chosen/chosen.css')
             ->registerScriptFile('/js/plugins/cms/asc.js');
 
         Y::clientScript()->ajaxExclude(array(

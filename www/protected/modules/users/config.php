@@ -1,6 +1,6 @@
 <?php
 return array('users'=>array(
-    'class'=>'packages.users.UsersModule',
+    'class'=>'modules.users.UsersModule',
     'tableUsers' => 'users',
     'tableProfiles' => 'profiles',
     'tableProfileFields' => 'profiles_fields',
@@ -8,5 +8,4 @@ return array('users'=>array(
     'loginNotActiv' => true,
     'activeAfterRegister' => true,
     'isRegistrationClose' => false,
-    
 ));

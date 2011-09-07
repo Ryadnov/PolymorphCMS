@@ -26,16 +26,9 @@ class Package extends CWebModule
     {
         parent::init();
 
-        //set handlers, must have 'cms' prefix
-        foreach(get_class_methods($this) as $method) {
-            if (strncasecmp($method, 'cms', 3) === 0)
-            $this->addHandler($method, $method);
-        }
-
         //attach events from $this->eventMap
-        foreach ($this->handlers() as $event=>$handler) {
+        foreach ($this->handlers() as $event=>$handler)
             $this->addHandler($event, $handler);
-        }
 
         //import
         $this->setImport($this->imports());

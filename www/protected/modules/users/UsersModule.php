@@ -33,29 +33,31 @@ class UsersModule extends Package
         );
     }
 
+    public function imports() {
+        
+        return array(
+            'users.models.*',
+            'users.components.*',
+            'users.components.widgets.*'
+        );
+    }
+
+    public function widgets()
+    {
+        return array(
+            'UserMenu' => array(
+                'title'=>'Меню пользователя',
+                'class'=>'UserMenuWidget'
+            )
+        );
+    }
+
     public function cmsAdminGetSystemMenu($event)
     {
         $event->menu = CMap::mergeArray($event->menu, array(
             'users'=>array('text'=>Admin::link('Пользователи', 'users/admin')),
         ));
     }
-
-    public function cmsRegisterWidgets($event)
-    {
-        $event->widgets = CMap::mergeArray($event->widgets, array(
-            'UserMenu' => array(
-                'title'=>'Меню пользователя',
-                'class'=>'UserMenuWidget'
-            )
-        ));
-    }
-
-    public $imports = array(
-        'users.models.*',
-        'users.components.*',
-        'users.components.widgets.*'
-    );
-
 
 	/**
 	 * @var int
@@ -155,6 +157,7 @@ class UsersModule extends Package
 	public function init()
 	{
 	    $this->category = Y::category($this->categoryAlias);
+        parent::init();
 	}
 	
 	//simple add lang in url

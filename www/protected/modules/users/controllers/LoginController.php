@@ -23,7 +23,10 @@ class LoginController extends FrontBaseController
             // validate user input and redirect to previous page if valid
             if ($model->validate()){
                 $this->lastVisit();
-                $this->redirect($this->module->returnUrl);
+                if (Y::checkAccess('moderator'))
+                    $this->redirect($this->module->adminReturnUrl);
+                else
+                    $this->redirect($this->module->returnUrl);
             }
         }
 

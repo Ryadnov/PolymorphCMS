@@ -2,16 +2,16 @@
 class Package extends CWebModule
 {
     //urlManager rules
-    public $routeMap = array();
+    public function getRouteRules() {return array();}
 
     //eventName => array(class, method)
-    public $eventMap = array();
+    public function handlers() {return array();}
 
     //path aliaces
-    public $imports = array();
+    public function imports() {return array();}
 
     //simple modelNames
-    public $dataTypesMap = array();
+    public function dataTypes() {return array();}
 
     /*
     array(
@@ -19,7 +19,8 @@ class Package extends CWebModule
         'class'=>widgetClassName
     )
     */
-    public $widgetsMap = array();
+    public function widgets() {return array();}
+
     
     public function init()
     {
@@ -32,18 +33,18 @@ class Package extends CWebModule
         }
 
         //attach events from $this->eventMap
-        foreach ($this->eventMap as $event=>$handler) {
+        foreach ($this->handlers() as $event=>$handler) {
             $this->addHandler($event, $handler);
         }
 
         //import
-        $this->setImport($this->imports);
+        $this->setImport($this->imports());
 
         //dataTypes register
-        ModelFactory::registerDataTypes($this->dataTypesMap);
+        ModelFactory::registerDataTypes($this->dataTypes());
 
         //register widets
-        Y::resources()->registerWidgets($this->widgetsMap);
+        Y::resources()->registerWidgets($this->widgets());
     }
 
     public function install()

@@ -36,11 +36,11 @@ class ResourceManager extends CApplicationComponent
             $module = Yii::app()->getModule($moduleId);
 
             if(isset($module->routeMap))
-                $routes = CMap::mergeArray($routes, $module->routeMap);
+                $routes = CMap::mergeArray($routes, $module->getRouteRules());
         }
 
        //in the end, add main rules
-        $routes = CMap::mergeArray($routes, $this->mainRoutes);
+        $routes = CMap::mergeArray($this->mainRoutes, $routes);
         Yii::app()->urlManager->addRules($routes);
     }
 

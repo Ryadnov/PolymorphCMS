@@ -13,23 +13,25 @@ class UsersModule extends Package
     public $categoryAlias = 'users';
     public $category = null;
 
-    public $routeMap = array(
-        //user module links
-        'login' => 'users/login',
-        'registration' => 'users/registration',
-        'recovery/<email>/<activkey>' => 'users/recovery',
-        'recovery' => 'users/recovery',
-        'logout' => 'users/logout',
-        'activation/<email>/<activkey>' => 'users/activation',
-        'profile/<id:\d+>' => 'users/profile',
-        'cabinet/' => 'users/profile/cabinet',
-        'user/edit' => 'users/profile/edit',
-        'changepassword' => 'users/profile/changepassword',
-        'close' => 'users/registration/close',
-        'admin/users/admin' => 'users/admin',
-        'admin/users/create' => 'users/admin/create',
-        '<controller:(user|profileField)>/<action:(admin|view|create|update|delete)>' => 'users/<controller>/<action>',
-    );
+    public function getRouteRules() {
+        return array(
+            //user module links
+            'login' => 'users/login',
+            'registration' => 'users/registration',
+            'recovery/<email>/<activkey>' => 'users/recovery',
+            'recovery' => 'users/recovery',
+            'logout' => 'users/logout',
+            'activation/<email>/<activkey>' => 'users/activation',
+            'profile/<id:\d+>' => 'users/profile',
+            'cabinet/' => 'users/profile/cabinet',
+            'user/edit' => 'users/profile/edit',
+            'changepassword' => 'users/profile/changepassword',
+            'close' => 'users/registration/close',
+            'admin/users/admin' => 'users/admin',
+            'admin/users/create' => 'users/admin/create',
+            '<controller:(user|profileField)>/<action:(admin|view|create|update|delete)>' => 'users/<controller>/<action>',
+        );
+    }
 
     public function cmsAdminGetSystemMenu($event)
     {

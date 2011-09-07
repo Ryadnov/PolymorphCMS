@@ -3,27 +3,39 @@
 class ImageGalleryModule extends Package
 {
     //_records is noconflict rule
-    public $urlRules = array(
-        '_imageGallery/<c>/<a>' => 'imageGallery/<c>/<a>',
-        '_imageGallery/<c>' => 'imageGallery/<c>',
-        '_imageGallery' => 'imageGallery',
-    );
+    public function getRouteRules()
+    {
+        return array(
+            '_imageGallery/<c>/<a>' => 'imageGallery/<c>/<a>',
+            '_imageGallery/<c>' => 'imageGallery/<c>',
+            '_imageGallery' => 'imageGallery',
+        );
+    }
 
-    public $eventMap = array(
-        'cmsAdminGetTabs' => array('imageGallery', 'addGalleryTab')
-    );
+    public function handlers()
+    {
+        return array(
+            'cmsAdminGetTabs' => array('imageGallery', 'addGalleryTab')
+        );
+    }
 
-    public $imports = array(
-        'imageGallery.models.*',
-        'imageGallery.components.behaviors.*',
-    );
+    public function imports()
+    {
+        return array(
+            'imageGallery.models.*',
+            'imageGallery.components.behaviors.*',
+        );
+    }
 
-    public $widgetsMap = array(
-        'ImageGalleryWidget' => array(
-            'title'=>'Галерея изображений',
-            'class'=>'ImageGalleryWidget'
-        )
-    );
+    public function widgets()
+    {
+        return array(
+            'ImageGalleryWidget' => array(
+                'title'=>'Галерея изображений',
+                'class'=>'ImageGalleryWidget'
+            )
+        );
+    }
 
     public function cmsDataTypeRelations($event)
     {

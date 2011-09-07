@@ -1,0 +1,2073 @@
+/* +------------------------------------------------------------------------+*/
+/* | cmf.css                                                                |*/
+/* +------------------------------------------------------------------------+*/
+/* | Copyright (c) Colin Verot 2005. All rights reserved.                   |*/
+/* | Version       0.21                                                     |*/
+/* | Email         colin@verot.net                                          |*/
+/* | Web           http:/*www.verot.net                                     |*/
+/* +------------------------------------------------------------------------+*/
+/* | This program is free software; you can redistribute it and/or modify   |*/
+/* | it under the terms of the GNU General Public License as published by   |*/
+/* | the Free Software Foundation; either version 2 of the License, or      |*/
+/* | (at your option) any later version.                                    |*/
+/* |                                                                        |*/
+/* | This program is distributed in the hope that it will be useful,        |*/
+/* | but WITHOUT ANY WARRANTY; without even the implied warranty of         |*/
+/* | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          |*/
+/* | GNU General Public License for more details.                           |*/
+/* |                                                                        |*/
+/* | You should have received a copy of the GNU General Public License      |*/
+/* | along with this program; if not, write to the                          |*/
+/* |   Free Software Foundation, Inc., 59 Temple Place, Suite 330,          |*/
+/* |   Boston, MA 02111-1307 USA                                            |*/
+/* |                                                                        |*/
+/* | Please give credit on sites that use CMF and submit changes            |*/
+/* | of the script so other people can use them as well.                    |*/
+/* | This script is free to use, don't abuse.                               |*/
+/* +------------------------------------------------------------------------+*/
+
+/**********************************/
+/* general elements               */
+/**********************************/
+body {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+/*html { font-size:100.01%; }
+body { font-size:1em; }*/
+
+.small, .cmf-small {
+    font-size: 85%;
+}
+.cmf-clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.cmf-clearfix {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .cmf-clearfix {height: 1%;}
+.cmf-clearfix {display: block;}
+/* End hide from IE-mac */
+
+img {
+	behavior: url("js/pngbehavior.htc");
+}
+
+
+/**********************************/
+/* general formatting             */
+/**********************************/
+code {
+    font-family: Courier New, Courier, mono;
+    display: block;
+}
+.code {
+    font-family: Courier New, Courier, mono;
+}
+span.code {
+    padding: 1px;
+}
+.cmf-warning {
+	color: #ff0000;
+}
+img {
+	border: 0;
+}
+form, .inline {
+    display: inline;
+	margin: 0px;
+	padding: 0px;
+}
+fieldset {
+	margin-bottom: 10px;
+}
+fieldset legend {
+	font-weight: bold;
+}
+fieldset p {
+	margin: 2px 0px;
+	padding: 0px;
+}
+fieldset ul {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+/**********************************/
+/* CMF : admin tables             */
+/**********************************/
+table.cmf-list {
+    padding: 0;
+    margin: 0 auto;
+}
+.cmf-list td {
+    font-size: .9em;
+    padding: 4px;
+    vertical-align: top;
+}
+.cmf-list td td {
+    padding: 0px;
+}
+td.cmf-top {
+    font-size: 1em;
+    font-weight: bold;
+}
+table.cmf-highlight tr td:hover {
+    border-width: 1px;
+}
+td.cmf-line {
+}
+td.cmf-line1 {
+}
+td.cmf-line2 {
+}
+span.cmf-compulsory {
+    font-weight: bold;
+}
+td.cmf-right {
+}
+td.cmf-left {
+    font-weight: bold;
+    text-align: left;
+}
+td.cmf-bottom {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: right;
+}
+
+
+
+/**********************************/
+/* CMF : admin widgets            */
+/**********************************/
+.cmf-filter {
+    border-width: 1px;
+	border-style: dotted;
+	padding: 2px 3px;
+	margin-bottom: 4px;
+	font-size: 90%;
+	overflow: auto;
+}
+.cmf-active {
+    border-width: 1px;
+	border-style: solid;
+}
+
+/**********************************/
+/* CMF : icons                    */
+/**********************************/
+.cmf-icon, .cmf-actionicon, .cmf-editlink-icon a, .mceToolbarTop a {
+	border: none !important;
+}
+a.cmf-actionicon {
+	/*text-decoration: none !important;*/
+}
+.cmf-actionlink .cmf-icon {
+	position: relative;
+	top: 3px;
+	filter:alpha(opacity=80);
+	opacity: 0.8;
+	-moz-opacity:0.8;
+}
+
+.cmf-actionlink:hover .cmf-icon, .cmf-actionlink:active .cmf-icon {
+	filter:alpha(opacity=100);
+	opacity: 1;
+	-moz-opacity:1;
+}
+
+.cmf-actionicon .cmf-icon {
+	filter:alpha(opacity=80);
+	opacity: 0.8;
+	-moz-opacity:0.8;
+}
+.cmf-actionicon:hover .cmf-icon, .cmf-actionicon:active .cmf-icon {
+	filter:alpha(opacity=100);
+	opacity: 1;
+	-moz-opacity:1;
+}
+
+
+/**********************************/
+/* CMF : forms                    */
+/**********************************/
+form.cmf-form input, form.cmf-form button, form.cmf-form select, form.cmf-form textarea, button {
+	padding: 1px 3px;
+}
+form.cmf-form input[type=submit], form.cmf-form button, a.cmf-actionbutton, form.cmf-form .cmf-submit {
+	font-weight: bold;
+}
+form.cmf-form input[type=radio], form.cmf-form input[type=checkbox] {
+	border: none;
+	background: none;
+}
+form.cmf-form .cmf-radio, form.cmf-form .cmf-checkbox {
+	border: none;
+	background: none;
+}
+.cmf-form-field {
+    margin-bottom: 15px;
+}
+.cmf-form-desc {
+    font-size: 80%;
+	font-weight: normal;
+	line-height: 95%;
+    margin: 3px 0px 5px 0px;
+}
+.cmf-form-label {
+	font-weight: bold;
+}
+.cmf-form-field .cmf-form-data {
+	margin-left: 15px;
+}
+.cmf-form-bottom {
+	text-align: center;
+}
+
+.cmf-form-field-error {
+}
+.cmf-form-label-error {
+}
+input.cmf-form-input-error, select.cmf-form-input-error  {
+}
+form.cmf-form textarea.cmf-small {
+    width: 97%;
+	height: 100px;
+}
+form.cmf-form textarea.cmf-medium {
+    width: 97%;
+	height: 150px;
+}
+form.cmf-form textarea.cmf-large {
+    width: 97%;
+	height: 300px;
+}
+form.cmf-form textarea.cmf-full {
+    width: 97%;
+	height: 400px;
+}
+
+
+form.cmf-form .cmf-form-list-option {
+	margin: 0px 0px 4px 0px;
+}
+
+
+/**********************************/
+/* CMF : buttons                  */
+/**********************************/
+.cmf-actionbutton {
+	padding: 0px 2px 0px 2px;
+	margin: 2px 0px 2px 0px;
+	text-decoration: none;
+}
+.cmf-actionlink, .cmf-actionlink:visited {
+	padding: 0px 2px 0px 2px;
+	margin: 2px 0px 2px 0px;
+    text-decoration: none;
+	/*vertical-align: middle;*/
+}
+.cmf-actionlink:hover, .cmf-actionlink:active {
+	padding: 0px 2px 0px 2px;
+	margin: 2px 0px 2px 0px;
+    text-decoration: none;
+}
+
+
+
+/**********************************/
+/* CMF : inline navigation        */
+/**********************************/
+.cmf-inlinenavigation {
+    padding: 2px;
+    margin: 0px 0px 4px 0px;
+    width: 98%;
+    text-align: center;
+}
+.cmf-inlinenavigation a, .cmf-inlinenavigation a:visited {
+    padding: 0px 2px 0px 2px;
+    margin: 2px 1px 2px 1px;
+    text-decoration: none;
+}
+.cmf-inlinenavigation a:hover, .cmf-inlinenavigation a:active {
+    padding: 0px 2px 0px 2px;
+    margin: 2px 1px 2px 1px;
+    text-decoration: none;
+}
+.cmf-inlinenavigation span.cmf-inlinenavigation-selected {
+    padding: 0px 2px 0px 2px;
+    margin: 2px 1px 2px 1px;
+    text-decoration: none;
+}
+
+
+/**********************************/
+/* CMF : messages                 */
+/**********************************/
+.cmf-messages {
+    color: #66ff66;
+    border-width: 1px;
+    padding: 2px 5px 2px 5px;
+    margin: 5px 0px 5px 0px;
+    text-align: center;
+}
+.cmf-errors {
+    color: #ff6666;
+    border-width: 1px;
+    padding: 2px 5px 2px 5px;
+    margin: 5px 0px 5px 0px;
+    text-align: center;
+}
+-.cmf-dialog {
+    padding: 10px 15px 5px 15px;
+    margin: 15px 50px 5px 50px;
+    text-align: left;
+}
+.cmf-dialog-inline {
+}
+.cmf-dialog-dialog {
+}
+.cmf-dialog-msgerr {
+}
+.cmf-dialog-errors {
+    color: #66ff66;
+}
+.cmf-dialog-messages {
+    color: #ff6666;
+}
+.cmf-dialog-infos {
+    color: #6666ff;
+}
+.cmf-dialog-title {
+    font-weight: bold;
+}
+.cmf-dialog-buttons {
+    margin: 20px 0px 10px 0px;
+    text-align: center;
+    font-weight: bold;
+}
+.cmf-dialog-buttons a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+
+
+/**********************************/
+/* CMF : modal box               */
+/**********************************/
+.cmf-modal-container {
+    border: 1px solid #333333;
+    padding: 10px 15px 5px 15px;
+    margin: 15px 50px 5px 50px;
+    text-align: left;
+	overflow:auto;
+	background-color: #ffffff;
+}
+
+.cmf-modal-overlay {
+	background-color:#fff;
+}
+
+
+
+
+
+/**********************************/
+/* CMF : system errors            */
+/**********************************/
+a.cmf-syserrors {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 10px;
+	height: 15px;
+	border: 1px solid #FF0000;
+	overflow: hidden;
+	text-decoration: none !important;
+	text-align: left;
+	z-index: 100;
+}
+a.cmf-syserrors div.cmf-syserrorsblock {
+	font-size: 75%;
+	border: 1px solid #FF0000;
+	background-color: #FFFFFF;
+	color: #FF0000;
+	font-size: 9px;
+	width: 500px;
+}
+a.cmf-syserrors div.cmf-syserrorslabel {
+	float: left;
+	background-color: #FF0000;
+	color: #FFFFFF;
+	width: 9px;
+	height: 15px;
+	margin-right: 10px;
+	font-weight: bold;
+	text-align: center;
+}
+a.cmf-syserrors div.cmf-syserrorscontent {
+	padding: 5px;
+}
+a:hover.cmf-syserrors {
+	overflow: visible;
+	border: none;
+}
+
+
+/**********************************/
+/* CMF : editlink                 */
+/**********************************/
+div.cmf-editlink {
+    float: right;
+    color: #999999;
+    background-color: #FFFFFF;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: left;
+    padding: 0px 2px 0px 2px;
+    border: #FF6666 solid 1px;
+	margin: 0px;
+}
+div.cmf-editlink a, div.cmf-editlink a:visited {
+    color: #FF6666;
+    text-decoration: none;
+    font-size: 9px;
+    margin: 0px;
+    padding: 0px;
+	display: block;
+}
+div.cmf-editlink a:hover, div.cmf-editlink a:active {
+    color: #FF0000;
+    text-decoration: none;
+    font-size: 9px;
+    margin: 0px;
+    padding: 0px;
+	display: block;
+}
+div.cmf-editlink-pos {
+    position: relative;
+}
+div.cmf-editlink-icon {
+    position: absolute;
+    /*float: right;*/
+    margin: 0px;
+    top: 0px;
+    right: 0px;
+}
+.cmf-editlink-icon .cmf-icon {
+	filter:alpha(opacity=80);
+	opacity: 0.8;
+	-moz-opacity:0.8;
+}
+.cmf-editlink-icon:hover .cmf-icon, .cmf-editlink-icon:active .cmf-icon {
+	filter:alpha(opacity=100);
+	opacity: 1;
+	-moz-opacity:1;
+}
+
+
+/**********************************/
+/* CMF : search                    */
+/**********************************/
+.cmf-searchresults {
+    margin: 0px 0px 0px 0px;
+}
+.cmf-searchresult {
+    margin: 0px 0px 10px 0px;
+}
+.cmf-searchresultlink {
+	font-weight: bold;
+}
+.cmf-searchresultinfo {
+	font-size: 80%;
+}
+.cmf-searchresultcontent {
+	font-size: 80%;
+}
+
+
+/**********************************/
+/* CMF : character counter        */
+/**********************************/
+.cmf-charactercounter span {
+  font-size: 10px !important;
+  font-weight: normal;
+}
+.cmf-charactercounter span.cmf-charactercounter-warning {
+  font-size: 10px !important;
+  font-weight: normal;
+  color: #FF7777;
+}
+
+
+/**********************************/
+/* CMF : lightbox                 */
+/**********************************/
+#cmf-lightbox {
+	background-color:#cccccc;
+	padding: 1px;
+	border-bottom: 1px solid #333333;
+	border-right: 1px solid #333333;
+}
+#cmf-lightboxContainer {
+}
+#cmf-lightboxPicContainer {
+}
+#cmf-lightboxLegend {
+}
+#cmf-lightbox img {
+	border: 5px solid #ffffff;
+	clear: both;
+}
+#cmf-lightboxLoading {
+	background-color:#ffffff;
+	padding: 10px;
+	text-align: center;
+	border: 1px solid #cccccc;
+	width: 120px;
+	height: 15px;
+	margin-left: -60px;
+}
+
+
+/**********************************/
+/* CMF : lightbox2                */
+/**********************************/
+#cmf-lightbox2-lightbox {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    text-align: center;
+    line-height: 0;
+}
+#cmf-lightbox2-lightbox img {
+    width: auto;
+    height: auto;
+}
+#cmf-lightbox2-lightbox a img {
+    border: none;
+}
+#cmf-lightbox2-outerImageContainer {
+    position: relative;
+    background-color: #fff;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+}
+#cmf-lightbox2-imageContainer {
+    padding: 10px;
+}
+#cmf-lightbox2-loading {
+    position: absolute;
+    top: 40%;
+    left: 0%;
+    height: 25%;
+    width: 100%;
+    text-align: center;
+    line-height: 0;
+}
+#cmf-lightbox2-hoverNav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+#cmf-lightbox2-imageContainer>#cmf-lightbox2-hoverNav {
+    left: 0;
+}
+#cmf-lightbox2-hoverNav a {
+    outline: none;
+}
+#cmf-lightbox2-prevLink, #cmf-lightbox2-nextLink {
+    width: 49%;
+    height: 100%;
+    background-image: url(data:image/gif;base64,AAAA); /* Trick IE into showing hover */
+    display: block;
+}
+#cmf-lightbox2-prevLink {
+    left: 0;
+    float: left;
+}
+#cmf-lightbox2-nextLink {
+    right: 0;
+    float: right;
+}
+#cmf-lightbox2-prevLink:hover, #cmf-lightbox2-prevLink:visited:hover {
+    background: url(js/lightbox/images/prevlabel.gif) left 15% no-repeat;
+}
+#cmf-lightbox2-nextLink:hover, #cmf-lightbox2-nextLink:visited:hover {
+    background: url(js/lightbox/images/nextlabel.gif) right 15% no-repeat;
+}
+#cmf-lightbox2-imageDataContainer {
+    font: 10px Verdana, Helvetica, sans-serif;
+    background-color: #fff;
+    margin: 0 auto;
+    line-height: 1.4em;
+    overflow: auto;
+    width: 100% ;
+}
+#cmf-lightbox2-imageData {
+    padding:0 10px; color: #666;
+}
+#cmf-lightbox2-imageData #cmf-lightbox2-imageDetails {
+    width: 70%;
+    float: left;
+    text-align: left;
+}
+#cmf-lightbox2-imageData #cmf-lightbox2-caption {
+    font-weight: bold;
+}
+#cmf-lightbox2-imageData #cmf-lightbox2-numberDisplay {
+    display: block;
+    clear: left;
+    padding-bottom: 1.0em;
+}
+#cmf-lightbox2-imageData #cmf-lightbox2-bottomNavClose {
+    width: 66px;
+    float: right;
+    padding-bottom: 0.7em;
+    outline: none;
+}
+#cmf-lightbox2-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    width: 100%;
+    height: 500px;
+    background-color: #000;
+}
+
+
+
+/**********************************/
+/* CMF : dropdown menus           */
+/**********************************/
+#cmf-cssdropdown, #cmf-cssdropdown ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-align: left;
+	font-family: arial, verdana;
+}
+
+#cmf-cssdropdown li {
+	float: left;
+	position: relative;
+}
+
+#cmf-cssdropdown .cmf-mainitems {
+	margin: 0px 0px;
+	/*padding-top: 4px;*/
+	height: 23px;
+	he\ight: 19px;
+	z-index: 0;
+}
+
+#cmf-cssdropdown .cmf-mainitems a {
+	text-decoration: none;
+	/*text-transform: uppercase;*/
+}
+
+#cmf-cssdropdown ul li {
+	width: 150px;
+	padding: 0px;
+	height: 18px;
+}
+
+.cmf-subuls {
+	display: none;
+	width: 150px;
+	position: absolute;
+	top: 23px;
+	left: 0;
+	background-color: #ffffff;
+	/*filter:alpha(opacity=80);
+	opacity: 0.8;
+	-moz-opacity:0.8;*/
+}
+
+.cmf-subuls li {
+	width: 150px;
+	padding: 0px;
+}
+
+.cmf-subuls li.over, .cmf-subuls li:hover {
+	background-color: #eeeeee;
+}
+
+#cmf-cssdropdown .cmf-subuls li a {
+	margin: 0px 1px;
+	padding: 2px 2px 1px 2px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: normal;
+	text-transform: capitalize;
+	display: block;
+}
+
+#cmf-cssdropdown li>ul {
+	top: auto;
+	left: auto;
+}
+
+#cmf-cssdropdown li ul li ul {
+	top: 0px;
+	left: 150px;
+}
+
+#cmf-cssdropdown li:hover ul, #cmf-cssdropdown li.over ul {
+	display: block;
+}
+
+#cmf-cssdropdown li:hover ul li ul, #cmf-cssdropdown li.over ul li ul {
+	display: none;
+}
+#cmf-cssdropdown li:hover ul li:hover ul, #cmf-cssdropdown li.over ul li.over ul {
+	display: block;
+}
+
+/* use this code to make the menu vertical */
+/*#cmf-cssdropdown .cmf-mainitems {
+	float: none;
+	display: block;
+	width: 150px;
+}
+#cmf-cssdropdown li ul {
+	top: 0px;
+	left: 150px;
+}*/
+
+
+/**********************************/
+/* CMF : DHTML tabs               */
+/**********************************/
+.cmf-tabsystem {
+    border: none;
+    width: 100%;
+}
+.cmf-tabsystem .cmf-tabcontainer ul, .cmf-tabsystem .cmf-tabcontainer ul li, .cmf-tabsystem li, .cmf-tabsystem ul {
+    list-style-type: none;
+	background-image: none !important;
+    margin: 0;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    padding-bottom: 0 !important;
+    border: none !important;
+    display: inline;
+}
+.cmf-tabsystem .cmf-tabcontainer {
+    float: left;
+    width: 100%;
+    margin-bottom: -1px;
+    margin-bottom: 10px;
+}
+.cmf-tabsystem h4, .cmf-tabsystem h3 {
+	background-image: none;
+}
+.cmf-tabsystem h4.hide, .cmf-tabsystem h3.hide {
+    display: none;
+}
+.cmf-tabsystem .cmf-tabpage {
+    padding: 5px 0px 5px 0px;
+    /*background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    clear: right;*/
+    margin: 0px 0px 10px 0px;
+}
+.cmf-tabsystem .cmf-tabpage h4, .cmf-tabsystem .cmf-tabpage h3 {
+    margin: 0px 0px 3px 0px;
+    padding: 0;
+}
+.cmf-tabsystem .cmf-tabpage ul {
+	padding: 0px;
+	margin: 5px 0px 10px 0px;
+    list-style-type: none;
+}
+.cmf-tabsystem .cmf-tabpage li {
+	margin: 0px;
+	padding: 0px;
+}
+.cmf-tabsystem .cmf-tabpage ul li ul {
+	margin: 2px 0px 10px 0px;
+	padding: 0px;
+}
+.cmf-tabsystem .cmf-tabcontainer .cmf-tab {
+    display: inline;
+    background-color: #fefefe;
+    background-image: none;
+    float: left;
+    border: 1px solid #CCCCCC;
+    z-index: 1;
+    font-size: 10px;
+    font-weight: normal !important;
+    color: #999999;
+    white-space: nowrap;
+    text-align: center;
+	padding: 1px 4px 1px 4px;
+	margin: 2px 2px 2px 0px;
+}
+.cmf-tabsystem .cmf-tabcontainer .cmf-tab-hover {
+    border: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    color: #333333 !important;
+}
+.cmf-tabsystem .cmf-tabcontainer .cmf-tab-active {
+    background-color: #FFFFFF;
+    color: #333333 !important;
+    font-weight: normal !important;
+    border: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+
+
+/**********************************/
+/* CMF : gallery                 */
+/**********************************/
+.cmf-gallery {
+	text-align: center;
+	margin: 10px auto;
+}
+.cmf-gallery-item {
+    float:left;
+	margin: 0px 10px 10px 0px;
+	text-align: center;
+	width: 160px;
+    overflow: hidden;
+}
+.cmf-gallery-oneitem {
+	margin: 0px 0px 15px 0px;
+	text-align: center;
+}
+.cmf-gallery-legend, .cmf-gallery-oneitem-legend {
+	margin: 3px 0px 0px 0px;
+}
+.cmf-gallery-credits, .cmf-gallery-oneitem-credits {
+	margin: 1px 0px 0px 0px;
+}
+.cmf-gallery-break {
+	clear: left;
+}
+.cmf-gallery-line {
+    overflow: hidden;
+}
+
+/**********************************/
+/* CMF : news                     */
+/**********************************/
+.cmf-newss {
+}
+.cmf-news {
+
+}
+.cmf-news-info {
+	font-size: 85%;
+}
+.cmf-news-header {
+}
+.cmf-news-text {
+	font-size: 90%
+}
+.cmf-news-clear {
+	clear: both;
+}
+
+
+
+/**********************************/
+/* CMF : blog                     */
+/**********************************/
+.cmf-blogs {
+}
+.cmf-blog {
+	margin-bottom: 15px;
+}
+.cmf-blog-info {
+	font-size: 85%;
+}
+.cmf-blog-tags {
+	font-size: 85%;
+}
+.cmf-blog-header {
+}
+.cmf-blog-text {
+	/*font-size: 90%*/
+	margin-top: 15px;
+}
+.cmf-blog-clear {
+	clear: both;
+}
+.cmf-blog-pic {
+	float: right;
+	margin: 5px 0px 5px 5px;
+}
+
+/**********************************/
+/* CMF : locations                */
+/**********************************/
+.cmf-locations {
+	width: 30%;
+	float: right;
+}
+.cmf-locations-map {
+	width: 65%;
+	float: left;
+}
+.cmf-location {
+}
+.cmf-location-info {
+	font-size: 85%;
+	font-style: italic;
+}
+.cmf-location-link {
+}
+.cmf-location-title {
+	font-weight: bold;
+}
+.cmf-location-address {
+	font-size: 85%;
+	font-style: italic;
+}
+.cmf-location-comment {
+	font-size: 90%;
+}
+.cmf-location-links {
+	font-size: 90%;
+	text-align: right;
+}
+
+
+/**********************************/
+/* CMF : jobs                     */
+/**********************************/
+.cmf-jobs {
+}
+.cmf-job {
+
+}
+.cmf-job-form {
+
+}
+.cmf-job-info {
+	font-size: 85%;
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	width: 40%;
+}
+.cmf-job-header {
+}
+.cmf-job-info-title {
+}
+.cmf-job-text {
+	font-size: 90%
+}
+.cmf-job-notes {
+	font-size: 85%
+}
+.cmf-job-clear {
+	clear: both;
+}
+.cmf-job-form {
+	margin: 15px 0px;
+	padding-top: 10px;
+}
+
+
+
+
+/**********************************/
+/* CMF : comments                 */
+/**********************************/
+.cmf-comments {
+    margin: 10px 0px 0px 0px;
+}
+.cmf-comment {
+    margin: 2px 0px 8px 0px;
+}
+.cmf-comment-hidden {
+	padding: 1px;
+}
+.cmf-comment-anchor {
+    height: 0px;
+    border: none;
+    display: block;
+}
+.cmf-comment-title {
+    font-weight: bold;
+	margin-bottom: 5px;
+}
+.cmf-comment-flag {
+	font-size: 70%;
+	color: #ff0000;
+}
+.cmf-comment-text {
+    padding: 3px 5px 3px 5px;
+	font-size: 90%;
+	margin-top: 3px;
+}
+.cmf-comment-info {
+	font-size: 85%;
+}
+.cmf-comment-author {
+}
+.cmf-comment-links {
+	float: right;
+	font-size: 80%;
+}
+.cmf-comment-togglethread {
+	margin-top: -15px;
+	float: right;
+	text-align: right;
+	font-size: 60%;
+}
+.cmf-comment-children .cmf-comment-title {
+	font-size: 85%;
+}
+.cmf-comment-children {
+	padding-top: 2px;
+}
+.cmf-comment-picture {
+}
+.cmf-comment-picturepreview {
+	float:right;
+	margin: 8px 8px 5px 8px;
+	text-align: center;
+	font-size: 70%;
+}
+.cmf-comment-clear {
+	clear: both;
+}
+.cmf-comment-threads .cmf-comment {
+	padding: 3px;
+}
+.cmf-comment-threads .cmf-comment-hidden {
+	padding: 3px;
+}
+
+/**********************************/
+/* CMF : videos                   */
+/**********************************/
+.cmf-videos {
+	margin: 10px auto;
+}
+.cmf-video {
+	margin: 0px 0px 10px 0px;
+	padding: 0;
+	text-align: left;
+}
+.cmf-video-play {
+	text-align: center;
+}
+.cmf-video-info {
+	margin: 5px 0px;
+	text-align: left;
+}
+.cmf-video-title {
+}
+.cmf-video-text {
+	font-size: 90%;
+}
+.cmf-video-link {
+	font-size: 80%;
+	text-align: center;
+}
+.cmf-video-clear {
+	clear: both;
+}
+/* video player plug */
+.cmf-video-player-clear {
+	clear: both;
+}
+.cmf-video-player {
+	text-align:center;
+	padding: 10px;
+}
+.cmf-videoplayer-google, .cmf-videoplayer-youtube, .cmf-videoplayer-personalplayer, .cmf-videoplayer-quicktime {
+	padding: 0px;
+	margin: 0px auto;
+}
+.cmf-videoplayer img, .cmf-videoplayer object {
+	margin: 0px auto;
+	padding: 0px;
+}
+.cmf-video-pic {
+    float: right;
+    margin: 0px 0px 5px 5px;
+}
+
+
+/**********************************/
+/* CMF : mp3                      */
+/**********************************/
+.cmf-mp3s {
+	margin: 10px auto;
+}
+.cmf-mp3 {
+	margin: 0px 10px 10px 0px;
+	text-align: left;
+}
+.cmf-mp3-pic {
+	float: left;
+	margin: 0px 10px 5px 0px;
+}
+.cmf-mp3 a:hover img {
+}
+.cmf-mp3-play {
+  float: right;
+  padding: 3px 0px 0px 3px;
+}
+.cmf-mp3-info {
+  float: right;
+  clear: right;
+  padding: 3px 0px 0px 3px;
+  font-size: 85%;
+}
+.cmf-mp3-text {
+}
+.cmf-mp3-clear {
+	clear: both;
+}
+
+
+/**********************************/
+/* CMF : doc                      */
+/**********************************/
+.cmf-docs {
+	margin: 10px auto;
+}
+.cmf-doc {
+	margin: 0px 10px 10px 0px;
+	text-align: left;
+}
+.cmf-doc-download {
+  float: right;
+  padding: 3px 0px 0px 3px;
+}
+.cmf-doc-info {
+  float: right;
+  clear: right;
+  padding: 3px 0px 0px 3px;
+  font-size: 85%;
+}
+.cmf-doc-text {
+}
+.cmf-doc-clear {
+	clear: both;
+}
+
+/**********************************/
+/* CMF : doc                      */
+/**********************************/
+.cmf-sendnewsletter-preview-text-div {
+	font-family: Courier New, Courier, mono;
+}
+
+
+/**********************************/
+/* CMF : links                    */
+/**********************************/
+.cmf-links {
+	margin: 10px auto;
+}
+.cmf-link {
+	margin: 0px 10px 10px 0px;
+	text-align: left;
+}
+.cmf-link-pic {
+	float: left;
+	margin: 0px 10px 5px 0px;
+}
+.cmf-link a:hover img {
+}
+.cmf-link-text {
+	font-size: 85%;
+}
+.cmf-link-clear {
+	clear: left;
+}
+
+/**********************************/
+/* CMF : products                    */
+/**********************************/
+.cmf-products {
+	text-align: center;
+	margin: 10px auto;
+}
+.cmf-product {
+	margin: 0px 0px 10px 0px;
+	text-align: left;
+}
+.cmf-product-buy {
+}
+.cmf-product-header {
+	margin: 5px 0;
+}
+.cmf-product-form {
+	vertical-align: bottom;
+}
+.cmf-product-price {
+	margin: 0px 10px 0px 0px;
+	padding: 0px;
+}
+.cmf-product-form input[type=text] {
+	margin: 0px 10px 0px 0px;
+	padding: 0px;
+	width: 2em;
+}
+.cmf-product-pic {
+	float: left;
+	margin: 0px 10px 0px 0px;
+}
+.cmf-product a:hover img {
+}
+.cmf-product-header {
+	font-size: 90%;
+}
+.cmf-product-clear {
+	clear: left;
+}
+
+
+/**********************************/
+/* CMF : cds                      */
+/**********************************/
+
+
+.cmf-cds {
+}
+
+.cmf-cd-item {
+}
+
+.cmf-cd-title {
+}
+
+.cmf-cd-image {
+	float: right;
+	margin: 0px 0px 15px 10px;
+}
+
+.cmf-cd-info {
+	font-style: italic;
+}
+
+.cmf-cd-text {
+}
+
+.cmf-cd-tracks {
+	font-size: 85%;
+	margin: 5px 5px 0px 5px;
+	padding-left: 5px;
+}
+.cmf-cd-clear {
+	clear: both;
+}
+
+
+/**********************************/
+/* CMF : cart                     */
+/**********************************/
+
+.cmf-cart-inline {
+}
+.cmf-cart-inline-total {
+}
+.cmf-cart-inline-qty {
+}
+.cmf-cart-inline-buttons {
+}
+.cmf-cart-inline-total-price {
+}
+.cmf-cart-msg-top {
+	font-size: 90%;
+	font-style: italic;
+}
+.cmf-cart-msg-bottom {
+	font-size: 90%;
+	font-style: italic;
+}
+
+.cmf-cart-item-options {
+	margin-left: 10px;
+	font-size: 90%;
+}
+
+.cmf-cart-table-item {
+}
+.cmf-cart-table-price {
+}
+.cmf-cart-table-weight {
+}
+.cmf-cart-table-qty {
+}
+.cmf-cart-table-total {
+}
+.cmf-cart-table-actions {
+}
+
+
+
+/**********************************/
+/* CMF : captcha                  */
+/**********************************/
+.cmf-captcha-block {
+}
+.cmf-captcha {
+	float: right;
+	text-align: center;
+	margin-left: 5px;
+	margin-right: 5px;
+	width: 90px;
+}
+.cmf-captcha-block input {
+	width: 80px;
+}
+.cmf-captcha img {
+	border: 0px !important;
+}
+
+
+/**********************************/
+/* CMF : translate                */
+/**********************************/
+.cmf-translate-toggle {
+	font-weight: bold;
+}
+.cmf-translate-section {
+	/*clear: both; */
+}
+.cmf-translate-section {
+}
+.cmf-translate-textarea {
+}
+.cmf-translate-textarea-big {
+	height: 2.9em !important;
+}
+.cmf-translate-textarea-normal {
+	height: 1.5em !important;
+}
+.cmf-translate-emptylink {
+	font-weight: bold;
+	float: right;
+}
+
+
+/**********************************/
+/* CMF : jcarousel                */
+/**********************************/
+.jcarousel-container {
+    position: relative;
+}
+.jcarousel-clip {
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+.jcarousel-list {
+    z-index: 1;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+.jcarousel-item {
+    float: left;
+    list-style: none;
+    /* We set the width/height explicitly. No width/height causes infinite loops. */
+    width: 120px;
+    height: 70px;
+}
+.jcarousel-next {
+    z-index: 3;
+    display: none;
+}
+.jcarousel-prev {
+    z-index: 3;
+    display: none;
+}
+
+
+/**********************************/
+/* CMF : sIFR                     */
+/**********************************/
+/* These are standard sIFR styles... do not modify */
+
+.sIFR-flash {
+    visibility: visible !important;
+    margin: 0;
+}
+
+.sIFR-replaced {
+    visibility: visible !important;
+}
+
+span.sIFR-alternate {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    display: block;
+    overflow: hidden;
+}
+
+/* Hide Adblock Object tab: the text should show up just fine, not poorly with a tab laid over it. */
+.sIFR-flash + div[adblocktab=true] {
+  display: none !important;
+}
+
+/* These "decoy" styles are used to hide the browser text before it is replaced... the negative-letter spacing in this case is used to make the browser text metrics match up with the sIFR text metrics since the sIFR text in this example is so much narrower... your own settings may vary... any weird sizing issues you may run into are usually fixed by tweaking these decoy styles */
+
+.sIFR-hasFlash h1 {
+    visibility: hidden;
+}
+
+.sIFR-hasFlash h2 {
+    visibility: hidden;
+    letter-spacing: -9px;
+    font-size: 55px;
+}
+
+.sIFR-hasFlash h3 {
+    visibility: hidden;
+    letter-spacing: -6px;
+    font-size: 25px;
+}
+
+.sIFR-hasFlash h4 {
+    visibility: hidden;
+    letter-spacing: -5px;
+    font-size: 21px;
+}
+
+.sIFR-hasFlash h5#pullquote {
+    letter-spacing: -4px;
+    visibility: hidden;
+    font-size: 24px;
+}
+
+
+
+
+
+
+
+
+/**********************************/
+/* CMF : jScrollPane              */
+/**********************************/
+.jScrollPaneContainer {
+    position: relative;
+    z-index: 1;
+}
+.jScrollPaneWrapper {
+    overflow: hidden;
+}
+.jScrollPaneTrack {
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: #aaa;
+}
+
+.jScrollIntervalTrack {
+    position: absolute;
+}
+.jScrollPaneDrag {
+    position: absolute;
+    background: #666;
+    cursor: pointer;
+    overflow: hidden;
+}
+.jScrollPaneDragTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.jScrollPaneDragBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+a.jScrollArrowUp {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    text-indent: -2000px;
+    overflow: hidden;
+    background-color: #666;
+    height: 9px;
+}
+a.jScrollArrowUp:hover {
+    background-color: #f60;
+}
+
+a.jScrollArrowDown {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    text-indent: -2000px;
+    overflow: hidden;
+    background-color: #666;
+    height: 9px;
+}
+a.jScrollArrowDown:hover {
+    background-color: #f60;
+}
+a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
+    background-color: #f00;
+}
+
+
+.jScrollHPaneContainer {
+    position: relative;
+    z-index: 1;
+}
+.jScrollHPaneWrapper {
+    overflow: hidden;
+}
+.jScrollHPaneTrack {
+    position: absolute;
+    cursor: pointer;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #aaa;
+}
+.jScrollHPaneDrag {
+    position: absolute;
+    background: #666;
+    cursor: pointer;
+    overflow: hidden;
+}
+.jScrollPaneDragRight {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+}
+a.jScrollArrowLeft {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    text-indent: -2000px !important;
+    overflow: hidden;
+    background-color: #666;
+    height: 9px;
+    width: 10px;
+}
+a.jScrollArrowLeft:hover {
+    background-color: #f60;
+}
+
+a.jScrollArrowRight {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    text-indent: -2000px !important;
+    overflow: hidden;
+    background-color: #666;
+    height: 9px;
+    width: 10px;
+}
+a.jScrollArrowRight:hover {
+    background-color: #f60;
+}
+a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
+    background-color: #f00;
+}
+
+
+
+
+
+
+
+/**********************************/
+/* CMF : jGrowl                   */
+/**********************************/
+div.jGrowl {
+    padding:            10px;
+    z-index:            9999;
+}
+div.ie6 {
+    position:           absolute;
+}
+div.ie6.top-right {
+    right:              auto;
+    bottom:             auto;
+    left:               expression( ( 0 - jGrowl.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top:                expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+div.ie6.top-left {
+    left:               expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top:                expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+div.ie6.bottom-right {
+    left:               expression( ( 0 - jGrowl.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top:                expression( ( 0 - jGrowl.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+div.ie6.bottom-left {
+    left:               expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top:                expression( ( 0 - jGrowl.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+div.ie6.center {
+    left:               expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top:                expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+    width:              100%;
+}
+body > div.jGrowl {
+    position:           fixed;
+}
+body > div.jGrowl.top-left {
+    left:               0px;
+    top:                0px;
+}
+body > div.jGrowl.top-right {
+    right:              0px;
+    top:                0px;
+}
+body > div.jGrowl.bottom-left {
+    left:               0px;
+    bottom:             0px;
+}
+body > div.jGrowl.bottom-right {
+    right:              0px;
+    bottom:             0px;
+}
+body > div.jGrowl.center {
+    top:                0px;
+    width:              50%;
+    left:               25%;
+}
+/** Cross Browser Styling **/
+div.center div.jGrowl-notification, div.center div.jGrowl-closer {
+    margin-left:        auto;
+    margin-right:       auto;
+}
+div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer {
+    background-color:       #000;
+    color:                  #fff;
+    opacity:                .95;
+    filter:                 alpha(opacity = 95);
+    zoom:                   1;
+    width:                  235px;
+    padding:                10px;
+    margin-top:             5px;
+    margin-bottom:          5px;
+    font-family:            Tahoma, Arial, Helvetica, sans-serif;
+    font-size:              12px;
+    text-align:             left;
+    display:                none;
+    -moz-border-radius:     5px;
+    -webkit-border-radius:  5px;
+}
+div.jGrowl div.jGrowl-notification {
+    min-height:             40px;
+}
+div.jGrowl div.jGrowl-notification div.header {
+    font-weight:            bold;
+    font-size:              10px;
+}
+div.jGrowl div.jGrowl-notification div.close {
+    float:                  right;
+    font-weight:            bold;
+    font-size:              12px;
+    cursor:                 pointer;
+}
+div.jGrowl div.jGrowl-closer {
+    height:                 15px;
+    padding-top:            4px;
+    padding-bottom:         4px;
+    cursor:                 pointer;
+    font-size:              11px;
+    font-weight:            bold;
+    text-align:             center;
+}
+
+
+/**********************************/
+/* CMF : jqModal                  */
+/**********************************/
+.cmf-jqmodal {
+    display: none;
+    position: fixed;
+    top: 17%;
+    left: 50%;
+    margin-left: -300px;
+    width: 600px;
+    background-color: #EEE;
+    color: #333;
+    border: 1px solid black;
+    padding: 12px;
+}
+.cmf-jqmodal-overlay { background-color: #000; }
+* iframe.jqm {position:absolute;top:0;left:0;z-index:-1;
+    width: expression(this.parentNode.offsetWidth+'px');
+    height: expression(this.parentNode.offsetHeight+'px');
+}
+* html .cmf-jqmodal {
+     position: absolute;
+     top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
+}
+
+/**********************************/
+/* CMF : jQuery lightbox          */
+/**********************************/
+#jquery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    width: 100%;
+    height: 500px;
+}
+#jquery-lightbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    text-align: center;
+    line-height: 0;
+}
+#jquery-lightbox a img { border: none; }
+#lightbox-container-image-box {
+    position: relative;
+    background-color: #fff;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+}
+#lightbox-container-image { padding: 10px; }
+#lightbox-loading {
+    position: absolute;
+    top: 40%;
+    left: 0%;
+    height: 25%;
+    width: 100%;
+    text-align: center;
+    line-height: 0;
+}
+#lightbox-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+#lightbox-container-image-box > #lightbox-nav { left: 0; }
+#lightbox-nav a { outline: none;}
+#lightbox-nav-btnPrev, #lightbox-nav-btnNext {
+    width: 49%;
+    height: 100%;
+    zoom: 1;
+    display: block;
+}
+#lightbox-nav-btnPrev {
+    left: 0;
+    float: left;
+}
+#lightbox-nav-btnNext {
+    right: 0;
+    float: right;
+}
+#lightbox-container-image-data-box {
+    font: 10px Verdana, Helvetica, sans-serif;
+    background-color: #fff;
+    margin: 0 auto;
+    line-height: 1.4em;
+    overflow: auto;
+    width: 100%;
+    padding: 0 10px 0;
+}
+#lightbox-container-image-data {
+    padding: 0 10px;
+    color: #666;
+}
+#lightbox-container-image-data #lightbox-image-details {
+    width: 70%;
+    float: left;
+    text-align: left;
+}
+#lightbox-image-details-caption { font-weight: bold; }
+#lightbox-image-details-currentNumber {
+    display: block;
+    clear: left;
+    padding-bottom: 1.0em;
+}
+#lightbox-secNav-btnClose {
+    width: 66px;
+    float: right;
+    padding-bottom: 0.7em;
+}
+/**********************************/
+/* CMF : jQuery color picker      */
+/**********************************/
+.farbtastic {
+  position: relative;
+}
+.farbtastic * {
+  position: absolute;
+  cursor: crosshair;
+}
+.farbtastic, .farbtastic .wheel {
+  width: 195px;
+  height: 195px;
+}
+.farbtastic .color, .farbtastic .overlay {
+  top: 47px;
+  left: 47px;
+  width: 101px;
+  height: 101px;
+}
+.farbtastic .wheel {
+  background: url(js/jquery/farbtastic/wheel.png) no-repeat;
+  width: 195px;
+  height: 195px;
+}
+.farbtastic .overlay {
+  background: url(js/jquery/farbtastic/mask.png) no-repeat;
+}
+.farbtastic .marker {
+  width: 17px;
+  height: 17px;
+  margin: -8px 0 0 -8px;
+  overflow: hidden; 
+  background: url(js/jquery/farbtastic/marker.png) no-repeat;
+}
+
+/**********************************/
+/* CMF : social bookmarks         */
+/**********************************/
+.cmf-social-services:after {
+   content: ".";
+   display: block;
+   clear: both;
+   visibility: hidden;
+   line-height: 0;
+   height: 0;
+}
+.cmf-social-services {
+   display: inline-block;
+   margin-bottom: 5px;
+}
+.cmf-social-label {
+  float:left;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  margin-right: 8px;
+}
+.cmf-social-service {
+  float:left;
+  height: 16px;
+  width: 16px;
+  margin: 0px 3px 0px 0px;
+}
+.cmf-social-service a {
+  display: block;
+  height: 16px;
+  width: 16px;
+  background-image: url(js/icons/social.png);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  text-indent: -5000px;
+}
+.cmf-social-service-addtoany a {
+  background-position: 0 0px;
+}
+.cmf-social-service-ask a {
+  background-position: 0 -16px;
+}
+.cmf-social-service-bebo a {
+  background-position: 0 -32px;
+}
+.cmf-social-service-blinkbits a {
+  background-position: 0 -48px;
+}
+.cmf-social-service-blinklist a {
+  background-position: 0 -64px;
+}
+.cmf-social-service-bloglines a {
+  background-position: 0 -80px;
+}
+.cmf-social-service-blogmarks a {
+  background-position: 0 -96px;
+}
+.cmf-social-service-blogmemes a {
+  background-position: 0 -112px;
+}
+.cmf-social-service-bluedot a {
+  background-position: 0 -128px;
+}
+.cmf-social-service-bookmarks a {
+  background-position: 0 -144px;
+}
+.cmf-social-service-care2 a {
+  background-position: 0 -160px;
+}
+.cmf-social-service-connotea a {
+  background-position: 0 -176px;
+}
+.cmf-social-service-delicious a {
+  background-position: 0 -192px;
+}
+.cmf-social-service-digg a {
+  background-position: 0 -208px;
+}
+.cmf-social-service-diigo a {
+  background-position: 0 -224px;
+}
+.cmf-social-service-dzone a {
+  background-position: 0 -240px;
+}
+.cmf-social-service-facebook a {
+  background-position: 0 -256px;
+}
+.cmf-social-service-fark a {
+  background-position: 0 -272px;
+}
+.cmf-social-service-furl a {
+  background-position: 0 -288px;
+}
+.cmf-social-service-google_bookmarks a {
+  background-position: 0 -304px;
+}
+.cmf-social-service-hellotxt a {
+  background-position: 0 -320px;
+}
+.cmf-social-service-identica a {
+  background-position: 0 -336px;
+}
+.cmf-social-service-igoogle a {
+  background-position: 0 -352px;
+}
+.cmf-social-service-linkedin a {
+  background-position: 0 -368px;
+}
+.cmf-social-service-magnolia a {
+  background-position: 0 -384px;
+}
+.cmf-social-service-myspace a {
+  background-position: 0 -400px;
+}
+.cmf-social-service-netscape a {
+  background-position: 0 -416px;
+}
+.cmf-social-service-netvibes a {
+  background-position: 0 -432px;
+}
+.cmf-social-service-netvibes_feed a {
+  background-position: 0 -448px;
+}
+.cmf-social-service-newsvine a {
+  background-position: 0 -464px;
+}
+.cmf-social-service-rawsugar a {
+  background-position: 0 -480px;
+}
+.cmf-social-service-reddit a {
+  background-position: 0 -496px;
+}
+.cmf-social-service-shoutwire a {
+  background-position: 0 -512px;
+}
+.cmf-social-service-simpy a {
+  background-position: 0 -528px;
+}
+.cmf-social-service-slashdot a {
+  background-position: 0 -544px;
+}
+.cmf-social-service-smarking a {
+  background-position: 0 -560px;
+}
+.cmf-social-service-sphere a {
+  background-position: 0 -576px;
+}
+.cmf-social-service-spurl a {
+  background-position: 0 -592px;
+}
+.cmf-social-service-squidoo a {
+  background-position: 0 -608px;
+}
+.cmf-social-service-stumbleupon a {
+  background-position: 0 -624px;
+}
+.cmf-social-service-swik a {
+  background-position: 0 -640px;
+}
+.cmf-social-service-tailrank a {
+  background-position: 0 -656px;
+}
+.cmf-social-service-tapemoi a {
+  background-position: 0 -672px;
+}
+.cmf-social-service-technorati a {
+  background-position: 0 -688px;
+}
+.cmf-social-service-twitter a {
+  background-position: 0 -704px;
+}
+.cmf-social-service-viadeo a {
+  background-position: 0 -720px;
+}
+.cmf-social-service-wikio a {
+  background-position: 0 -736px;
+}
+.cmf-social-service-windows_live a {
+  background-position: 0 -752px;
+}
+.cmf-social-service-wists a {
+  background-position: 0 -768px;
+}
+.cmf-social-service-yahoo_bookmarks a {
+  background-position: 0 -784px;
+}
+.cmf-social-service-yahoo_buzz {
+  display: none;
+}
+.cmf-social-service-yahoo_buzz a {
+  background-position: 0 -800px;
+}
+.cmf-social-service-yahoo_feed a {
+  background-position: 0 -816px;
+}
+.cmf-social-service-yahoo_my_web a {
+  background-position: 0 -832px;
+}
+.cmf-social-service-yoolink a {
+  background-position: 0 -848px;
+}
+.cmf-social-service-mailto a {
+  background-position: 0 -864px;
+}
+

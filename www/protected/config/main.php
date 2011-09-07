@@ -1,5 +1,5 @@
 <?php
-define(BASE_URL, 'http://216.231.135.91/polymorph/');
+define('BASE_URL', 'http://216.231.135.91/polymorph/');
 
 // uncomment the following to define a path alias
 Yii::setPathOfAlias('modules',		'protected/modules');
@@ -11,16 +11,13 @@ Yii::setPathOfAlias('events',	'protected/components/Events');
 Yii::setPathOfAlias('plugins',	'protected/components/Plugins');
 Yii::setPathOfAlias('packages',	'protected/modules');
 
-Yii::app()->onBeginRequest = function($event) {
+Yii::import('components.BaseClasses.*');
+Yii::import('components.*');
 
-    Yii::import('components.BaseClasses.*');
-    Yii::import('components.*');
+Yii::app()->onBeginRequest = function($event) {
 
     //Yii::createComponent need. If don't make it, then setComponent() not call init()
     $configs = array(
-        'hooksManager'=>Yii::createComponent(array(
-            'class'=>'HooksManager'
-        )),
         'resourceManager'=>Yii::createComponent(array(
             'class'=>'ResourceManager',
             'mainRoutes'=> array(
@@ -91,7 +88,7 @@ return array(
         //ext
         'ext.yiiext.shoppingCart.*'
     ),
-
+    'preload'=>array('hooksManager'),
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
 		//'gii'=>require("gii.php"),
@@ -100,7 +97,7 @@ return array(
 			'initialise'=>TRUE,
 		),
         'admin',
-		'cms',
+		'cms'
     ),
 
 	// application components

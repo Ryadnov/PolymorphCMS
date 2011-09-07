@@ -10,6 +10,12 @@ class JuiTabs extends CJuiTabs
     public $theme='base';
     public $cssFile='jquery-ui.css';
     public $themeUrl='/css/jui';
+
+    public function init()
+    {
+        $this->themeUrl = Yii::app()->baseUrl.$this->themeUrl;
+        parent::init();
+    }
     
     public function run()
     {

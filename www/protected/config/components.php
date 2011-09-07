@@ -1,5 +1,9 @@
 <?php
 return array(
+    'hooksManager'=>array(
+        'class'=>'components.BaseClasses.HooksManager'
+    ),
+
     'file'=>array(
         'class'=>'application.components.CFile.CFile',
     ),

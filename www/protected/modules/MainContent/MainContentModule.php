@@ -2,32 +2,43 @@
 class MainContentModule extends Package
 {
     //_records is noconflict rule
-    public $routeMap = array(
-        '_imageGallery/<c>/<a>' => 'imageGallery/<c>/<a>',
-        '_imageGallery/<c>' => 'imageGallery/<c>',
-        '_imageGallery' => 'imageGallery',
-    );
+    public function getRouteRules()
+    {
+        return array(
+            '_mainContent/<c>/<a>' => 'mainContent/<c>/<a>',
+            '_mainContent/<c>' => 'mainContent/<c>',
+            '_mainContent' => 'mainContent',
+        );
+    }
 
-    public $imports = array(
-        'mainContent.components.*',
-        'mainContent.models.*',
-        'mainContent.components.widgets.*'
-    );
+    public function imports()
+    {
+        return array(
+            'mainContent.components.*',
+            'mainContent.models.*',
+            'mainContent.components.widgets.*'
+        );
+    }
 
-    public $widgetsMap =array(
-        'MainContentWidget' => array(
-            'title'=>'Главный контент',
-            'class'=>'MainContentWidget'
-        ),
-        'DummyWidget' => array(
-            'title'=>'Простой текст',
-            'class'=>'DummyWidget'
-        )
-    );
+    public function widgets()
+    {
+        return array(
+            'MainContentWidget' => array(
+                'title'=>'Главный контент',
+                'class'=>'MainContentWidget'
+            ),
+            'DummyWidget' => array(
+                'title'=>'Простой текст',
+                'class'=>'DummyWidget'
+            )
+        );
+    }
 
-
-    public $dataTypesMap = array(
-         'Page'
-     );
+    public function dataTypes()
+    {
+        return array(
+            'Page'
+        );
+    }
 
 }

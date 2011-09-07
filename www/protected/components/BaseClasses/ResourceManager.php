@@ -1,6 +1,6 @@
 <?php
 /**
- * registration resources, such as components, plug-ins
+ * registration resources, such as components
  */
 class ResourceManager extends CApplicationComponent
 {
@@ -25,9 +25,6 @@ class ResourceManager extends CApplicationComponent
         $modules = $this->addPackages($modules);
 
         $this->addRoutesFromModules($modules);
-
-        //deprecated
-        $this->registerPlugins();
     }
 
     public function addRoutesFromModules($modules)
@@ -49,7 +46,6 @@ class ResourceManager extends CApplicationComponent
 
     public function addPackages($modules)
     {
-        //load plugins
         Yii::import('components.*');
         Yii::import('components.helpers.*');
 
@@ -67,17 +63,6 @@ class ResourceManager extends CApplicationComponent
         }
 
         return $modules;
-    }
-
-    public function registerPlugins()
-    {
-        foreach (PluginModel::model()->published()->findAll() as $plugin) {
-            Yii::import('plugins.'.$plugin->class.'.*');
-            $pluginName = $plugin->class.'Plugin';
-            $p = new $pluginName();
-            $p->register();
-            $this->_p[] = $plugin->pk;
-        }
     }
 
     public function getRegisteredWidgets()

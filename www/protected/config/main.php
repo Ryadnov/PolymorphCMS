@@ -63,7 +63,7 @@ return array(
     'language'=>'ru',   	// user language (for Locale)
 	'sourceLanguage'=>'en',	//language for messages and views
     'charset'=>'utf-8',     // charset to use
-	'preload'=>array('log', 'maintenanceMode'),	// preloading 'log' component
+	'preload'=>array('log', 'maintenanceMode', 'hooksManager'),	// preloading 'log' component
 
 	// autoloading model and component classes
 	'import'=>array(

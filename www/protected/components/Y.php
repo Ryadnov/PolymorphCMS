@@ -17,6 +17,11 @@ class Y extends CComponent
 	private static $startSkipCount = 0;
 	private static $skipCount = 0;
 
+    public static function asset($alias, $hashByName=false,$level=-1,$forceCopy=false)
+    {
+        return Yii::app()->baseUrl.Yii::app()->getAssetManager()->publish(Yii::getPathOfAlias($alias),$hashByName,$level,$forceCopy);
+    }
+        
     public static function category($alias = null)
     {
         if ($alias) {

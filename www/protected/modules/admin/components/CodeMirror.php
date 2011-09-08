@@ -21,19 +21,20 @@ class CodeMirror extends CWidget
 			if (!($this->id && $this->form && $this->model && $this->attr))
 				throw new CException("Обязательные поля для CodeMirror: id, form, model, attr");
     	}
-    	
+
+        $folder = Y::asset('admin.assets');
     	Y::clientScript()
-    		->registerScriptFile('/js/CodeMirror/lib/codemirror.js')
-			->registerCssFile('/js/CodeMirror/lib/codemirror.css')
-            ->registerCssFile('/js/CodeMirror/theme/default.css')
-			->registerScriptFile('/js/CodeMirror/mode/javascript/javascript.js')
-			->registerCssFile('/js/CodeMirror/mode/javascript/javascript.css')
-			->registerScriptFile('/js/CodeMirror/mode/css/css.js')
-			->registerCssFile('/js/CodeMirror/mode/css/css.css')
-			->registerScriptFile('/js/CodeMirror/mode/xml/xml.js')
-			->registerCssFile('/js/CodeMirror/mode/xml/xml.css')
-			->registerScriptFile('/js/CodeMirror/mode/htmlmixed/htmlmixed.js')
-			->registerScriptFile('/js/CodeMirror/lib/overlay.js')	
+    		->registerScriptFile($folder.'/js/CodeMirror/lib/codemirror.js')
+			->registerCssFile($folder.'/js/CodeMirror/lib/codemirror.css')
+            ->registerCssFile($folder.'/js/CodeMirror/theme/default.css')
+			->registerScriptFile($folder.'/js/CodeMirror/mode/javascript/javascript.js')
+			->registerCssFile($folder.'/js/CodeMirror/mode/javascript/javascript.css')
+			->registerScriptFile($folder.'/js/CodeMirror/mode/css/css.js')
+			->registerCssFile($folder.'/js/CodeMirror/mode/css/css.css')
+			->registerScriptFile($folder.'/js/CodeMirror/mode/xml/xml.js')
+			->registerCssFile($folder.'/js/CodeMirror/mode/xml/xml.css')
+			->registerScriptFile($folder.'/js/CodeMirror/mode/htmlmixed/htmlmixed.js')
+			->registerScriptFile($folder.'/js/CodeMirror/lib/overlay.js')
         	->registerScript('autocomplete_'.$this->id, '
         	$(document).ready(function() {
 			  // autocomplite

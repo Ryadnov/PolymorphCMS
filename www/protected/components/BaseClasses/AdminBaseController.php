@@ -10,10 +10,11 @@ class AdminBaseController extends Controller
 
         parent::init();
 
+        $folder = Y::asset('admin.assets');
         Y::clientScript()
             ->registerCoreScript('jquery')
             ->registerCoreScript('jquery.ui')
-            ->registerScriptFile('/js/plugins/cms/asc.js');
+            ->registerScriptFile($folder.'/js/plugins/cms/asc.js');
 
         Y::clientScript()->ajaxExclude(array(
             'jquery.js',
@@ -119,7 +120,7 @@ class AdminBaseController extends Controller
 	
 	public function actionUpdate($catPk, $pk =  null, $otherParams = array())
 	{
-		$model=$this->loadModel($catPk, $pk, 'update');
+        $model=$this->loadModel($catPk, $pk, 'update');
 		
 		$this->performAjaxValidation($model);
 

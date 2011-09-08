@@ -62,7 +62,6 @@ return array(
     ),
     'assetManager'=>array(			// assets, see http://www.yiiframework.com/doc/api/CAssetManager
         'basePath'=>dirname(__FILE__).'/../../assets/',   // change the path on disk
-        'baseUrl'=>'/assets/'   // change the url
     ),
     // uncomment the following to use a MySQL database
 

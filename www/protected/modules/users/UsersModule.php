@@ -170,6 +170,7 @@ class UsersModule extends Package
         $this->editProfileUrl = $baseUrl."/profile/edit";
         $this->changePassUrl = $baseUrl."/profile/changepassword";
 
+        $this->category = Y::category('index');
 
         parent::init();
 	}

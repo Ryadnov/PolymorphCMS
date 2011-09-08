@@ -4,37 +4,35 @@
  */
 class ResourceManager extends CApplicationComponent
 {
-    private $_p;
-    private $_w;
+    private $_w; //widget classes
+    private $_m; //module ids
+    private $_r; //routes
 
     public $mainRoutes;
 
     public function init()
     {
-        $modules = array();
-
         //register packages
-        $modules = $this->addPackages($modules);
-
-        $this->addRoutesFromModules($modules);
+        $this->addPackages();
+        $this->addRoutesFromModules();
     }
 
-    public function addRoutesFromModules($modules)
+    public function addRoutesFromModules()
     {
         $routes = array();
-        foreach ($modules as $moduleId) {
+        foreach ($this->_m as $moduleId) {
             //add routes from module
             $module = Yii::app()->getModule($moduleId);
-            $routes = CMap::mergeArray($routes, $module->getRouteRules());
+            $this->_r = CMap::mergeArray($this->_r, $module->getRouteRules());
         }
 
        //in the end, add main rules
-        $routes = CMap::mergeArray($routes, $this->mainRoutes);
+       $this->_r = CMap::mergeArray($this->_r, $this->mainRoutes);
         
-        Yii::app()->urlManager->addRules($routes);
+        Yii::app()->urlManager->addRules($this->_r);
     }
 
-    public function addPackages($modules)
+    public function addPackages()
     {
         Yii::import('components.*');
         Yii::import('components.helpers.*');
@@ -44,15 +42,16 @@ class ResourceManager extends CApplicationComponent
         foreach ($packagesFolder as $item)
             $ids[] = $item['text'];
 
+        $folder = Yii::getPathOfAlias("packages").'/';
+        $modules = array();
         foreach ($ids as $id) {
-            $path = Yii::getPathOfAlias("packages.$id.config").'.php';
+            $path = $folder.$id.'/config.php';
             if (is_file($path)) {
-                Yii::app()->setModules(require($path));
-                $modules[] = $id;
+                $modules = CMap::mergeArray($modules, require($path));
+                $this->_m[] = $id;
             }
         }
-
-        return $modules;
+        Yii::app()->setModules($modules);
     }
 
     public function getRegisteredWidgets()

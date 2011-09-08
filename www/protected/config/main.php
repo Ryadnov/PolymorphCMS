@@ -1,5 +1,4 @@
 <?php
-define('BASE_URL', 'http://216.231.135.91/polymorph/');
 
 // uncomment the following to define a path alias
 Yii::setPathOfAlias('modules',		'protected/modules');
@@ -63,7 +62,7 @@ return array(
     'language'=>'ru',   	// user language (for Locale)
 	'sourceLanguage'=>'en',	//language for messages and views
     'charset'=>'utf-8',     // charset to use
-	'preload'=>array('log', 'maintenanceMode', 'hooksManager'),	// preloading 'log' component
+	'preload'=>array('log', 'maintenanceMode', 'users', 'hooksManager', 'resourceManager'),	// preloading 'log' component
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -81,10 +80,6 @@ return array(
 		'components.Interfaces.*',
 		'components.Other.*',
 
-        //models and components
-		'modules.cms.components.*',
-        'modules.cms.models.*',
-
         //ext
         'ext.yiiext.shoppingCart.*'
     ),
@@ -97,7 +92,7 @@ return array(
 			'initialise'=>TRUE,
 		),
         'admin',
-		'cms'
+		'users'
     ),
 
 	// application components

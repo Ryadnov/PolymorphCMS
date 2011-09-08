@@ -12,6 +12,7 @@ class AdminModule extends CWebModule
 			'admin.models.*',
 			'admin.components.*',
 		));
+        parent::init();
 	}
 
 	public function beforeControllerAction($controller, $action)

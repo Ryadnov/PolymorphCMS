@@ -4,10 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="en" />
 
-        <!--
-        <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen, projection" />
-        -->
-        <link rel="stylesheet" type="text/css" href="/css/admin.css" media="screen, projection" />
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl ?>/css/admin.css" media="screen, projection" />
 
         <title>Панель Администратора</title>
     </head>

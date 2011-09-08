@@ -7,12 +7,12 @@ class Admin
 
 	public static function url($url, $params = array()) 
     {
-    	return Y::url('admin/'.$url, $params);
+    	return Y::url('/admin/'.$url, $params);
     }
 
     public static function absUrl($url, $params = array()) 
     {
-    	return Y::absUrl('admin/'.$url, $params);
+    	return Y::absUrl('/admin/'.$url, $params);
     }
 	
     public static function link($text, $url, $urlParams = array(), $htmlOptions = array())

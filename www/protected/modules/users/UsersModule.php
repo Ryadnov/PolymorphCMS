@@ -13,7 +13,8 @@ class UsersModule extends Package
     public $categoryAlias = 'users';
     public $category = null;
 
-    public function getRouteRules() {
+    public function getRouteRules()
+    {
         return array(
             //user module links
             'login' => 'users/login',
@@ -156,7 +157,20 @@ class UsersModule extends Package
 	
 	public function init()
 	{
-	    $this->category = Y::category($this->categoryAlias);
+        $baseUrl = Yii::app()->baseUrl;
+	    $this->registrationUrl = $baseUrl."/registration";
+        $this->recoveryUrl = $baseUrl."/recovery";
+        $this->loginUrl = $baseUrl."/login";
+        $this->logoutUrl = $baseUrl."/logout";
+        $this->cabinetUrl = $baseUrl."/cabinet";
+        $this->profileUrl = $baseUrl."/profile";
+        $this->adminReturnUrl = $baseUrl."/admin";
+        $this->returnUrl = $baseUrl."/profile";
+        $this->returnLogoutUrl = $baseUrl."/login";
+        $this->editProfileUrl = $baseUrl."/profile/edit";
+        $this->changePassUrl = $baseUrl."/profile/changepassword";
+
+
         parent::init();
 	}
 	

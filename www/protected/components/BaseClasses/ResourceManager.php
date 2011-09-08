@@ -13,14 +13,6 @@ class ResourceManager extends CApplicationComponent
     {
         $modules = array();
 
-/*
-        // if it module add moduleId to array
-        $route = Yii::app()->getRequest()->getPathInfo();
-        $module = substr($route,0,strpos($route,'/'));
-        if(Yii::app()->hasModule($module))
-            $modules[] = $module;
-//*/
-        
         //register packages
         $modules = $this->addPackages($modules);
 
@@ -38,6 +30,7 @@ class ResourceManager extends CApplicationComponent
 
        //in the end, add main rules
         $routes = CMap::mergeArray($routes, $this->mainRoutes);
+        
         Yii::app()->urlManager->addRules($routes);
     }
 

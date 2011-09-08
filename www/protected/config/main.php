@@ -14,8 +14,8 @@ Yii::setPathOfAlias('packages',	'protected/modules');
 Yii::import('components.BaseClasses.*');
 Yii::import('components.*');
 
-Yii::app()->onBeginRequest = function($event) {
-
+Yii::app()->onBeginRequest = function($event)
+{
     //Yii::createComponent need. If don't make it, then setComponent() not call init()
     $configs = array(
         'resourceManager'=>Yii::createComponent(array(

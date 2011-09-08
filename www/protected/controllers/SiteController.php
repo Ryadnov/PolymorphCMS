@@ -12,6 +12,7 @@ class SiteController extends FrontBaseController
      */
     public function actionIndex()
     {
+
         $i = 0;
         //check last category segment
         while (isset($_GET['cat' . ++$i])) {}

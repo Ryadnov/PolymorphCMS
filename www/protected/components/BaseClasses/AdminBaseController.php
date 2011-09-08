@@ -3,8 +3,8 @@ class AdminBaseController extends Controller
 {
 	public function init()
 	{
-		if(Y::isGuest())
-			Y::redir(Admin::url('login'));
+        if(Y::isGuest())
+			$this->redirect(Admin::url('login'));
 		if(!Y::checkAccess('moderator'))
 			Y::end($this->render('accessDenied'));
 

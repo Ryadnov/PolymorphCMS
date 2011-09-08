@@ -1,11 +1,10 @@
 <?php
-
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Mein Service Check',
-	'language' => 'de',
+	'language' => 'en',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

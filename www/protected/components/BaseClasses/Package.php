@@ -21,6 +21,7 @@ class Package extends CWebModule
     */
     public function widgets() {return array();}
 
+    public $scriptPath;
     
     public function init()
     {
@@ -38,6 +39,11 @@ class Package extends CWebModule
 
         //register widets
         Y::resources()->registerWidgets($this->widgets());
+
+        //set assets path
+        if (is_dir($path = Yii::getPathOfAlias($this->getId().'.assets'))) {
+            $this->scriptPath = Yii::app()->getAssetManager()->publish($path);
+        }
     }
 
     public function install()

@@ -3,7 +3,7 @@
 	echo CHtml::link('Создать категорию', Admin::url('categories/createNode'));
 	$this->widget('ext.QTreeGridView.CQTreeGridView',array(
 		'dataProvider'=>$dp,
-		'cssFile'=>'/css/grid/styles.css',
+		'cssFile'=>Yii::app()->baseUrl.'/css/grid/styles.css',
 		'template'=>'{items}',
 		'hideHeader'=>false,
 		//'pager'=>array('cssFile'=>'/css/pager/pager-styles.css'),
@@ -42,7 +42,7 @@
 	            	'blocks' => array(
 	        			'label' => 'Редактирование Визуальных Блоков',
 						'url'   => 'Admin::url("categories/viewSettings", array("pk"=>$data->pk))',
-	        			'imageUrl'   => '/images/template-edit.png'
+	        			'imageUrl'   => Yii::app()->baseUrl.'/images/template-edit.png'
 					),
 	            	'view' => array(
 						'url'   => '$data->adminViewUrl',
@@ -53,7 +53,7 @@
 					
 					'remove' => array(
 						'url' => '$data->deleteUrl',
-						'imageUrl'=>'/images/delete.png',
+						'imageUrl'=>Yii::app()->baseUrl.'/images/delete.png',
 						'options'=>array('onClick'=>'$("#delete-category").dialog("open"); $("#delete-category").find("input[name=\'category_id\']").val($(this).closest("tr").attr("id")); return false;')
 					),
 				)

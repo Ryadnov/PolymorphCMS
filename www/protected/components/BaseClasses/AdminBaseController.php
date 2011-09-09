@@ -262,6 +262,7 @@ class AdminBaseController extends Controller
 
 	public function loadModel($catPk, $pk = null, $scenario = '')
 	{
+        
         $cat = Category::model()->findByPk($catPk);
         $modelName = $cat->type;
 

@@ -44,7 +44,7 @@ class MainContentWidget extends Widget
             'dataProvider'=>$dp,
             'pager'=>array(
                 'id'=>$this->widgetModel->pk.'Pager', 'class'=>'LinkPager', 'htmlOptions'=>array('class'=>'pager'),
-                'cssFile'=>'/css/pager.css'
+                'cssFile'=>Yii::app()->baseUrl.'/css/pager.css'
             ),
             'ajaxUpdate'=>true,
             'template'=>$this->render('listTemplate', array(), true),

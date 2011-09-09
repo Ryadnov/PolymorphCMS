@@ -45,8 +45,7 @@ class ResourceManager extends CApplicationComponent
         $folder = Yii::getPathOfAlias("packages").'/';
         $modules = array();
         foreach ($ids as $id) {
-            $path = $folder.$id.'/config.php';
-            if (is_file($path)) {
+            if (is_file($path = $folder.$id.'/config.php')) {
                 $modules = CMap::mergeArray($modules, require($path));
                 $this->_m[] = $id;
             }

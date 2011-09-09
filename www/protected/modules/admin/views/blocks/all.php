@@ -1,18 +1,19 @@
 <div class="dark-blue-head">
-    {{ Admin.link('Добавить блок +', 'blocks/add', {'catPk':cat.pk}, {'class':'add-block'}) }}
+    <?php echo Admin::ascLink('Добавить блок +', 'blocks/add', array('catPk'=>$cat->pk), array('id'=>'add-block-btn'),
+        array('success'=> "js:function() {
+           $('#block-tabs').tabs('load', 0);
+        });")) ?>
 </div>
 
-{{ this.widget('CTreeView', {'collapsed':true,'data':blocks, 'id':'blocks'}, true) }}
+<?php echo $this->widget('CTreeView', array('collapsed'=>true,'data'=>blocks, 'id'=>'blocks')) ?>
 <script type="text/javascript">
 $(document).ready(function() {
 
     $('#blocks li.widget-link a').click(function() {
         $('#widget-details').load($(this).attr('href'));
         return false;
-    }).asc({
-        linkClass: 'add-widgets-btn'
-    }).asc({
-        linkClass: 'make-own-btn',
+    })
+    $('.make-own-btn').asc({
         isStatic: true,
         buttons: {
             "Да" : function() {
@@ -35,11 +36,6 @@ $(document).ready(function() {
             "Отмена" : function() {
                 $(this).dialog("close");
             }
-        }
-    }).asc({
-        linkClass: 'add-block',
-        success: function() {
-           $('#block-tabs').tabs('load', 0);
         }
     });
 

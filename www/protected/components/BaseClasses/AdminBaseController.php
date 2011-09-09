@@ -13,8 +13,7 @@ class AdminBaseController extends Controller
         $folder = Y::asset('admin.assets');
         Y::clientScript()
             ->registerCoreScript('jquery')
-            ->registerCoreScript('jquery.ui')
-            ->registerScriptFile($folder.'/js/plugins/cms/asc.js');
+            ->registerCoreScript('jquery.ui');
 
         Y::clientScript()->ajaxExclude(array(
             'jquery.js',
@@ -27,7 +26,6 @@ class AdminBaseController extends Controller
             'jquery.treeview.edit.js',
             'jquery.treeview.async.js',
 
-            'asc.js'
         ));
 	}
 	

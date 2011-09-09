@@ -92,7 +92,7 @@ class WidgetsController extends AdminBaseController
     public function actionAll()
     {
         $createdWidgets = TemplateWidget::model()->findAll();
-
+        
         $widgets = array();
         foreach ($createdWidgets as $model) {
             $widgets[] = array(

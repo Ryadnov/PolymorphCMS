@@ -4,7 +4,6 @@
 
         var defaults = {
             version : '1.0',
-            linkClass : 'add-components',
             dialog : null,
             doCloseDialog : true,
             insertResponse : true,
@@ -23,7 +22,7 @@
         return this.each(plugin);
 
         function plugin () {
-            $(this).delegate('.'+opts.linkClass, 'click', function () {
+            $(this).click(function () {
                 var $t = $(this),
                     url = $t.attr('href'),
                     data = new Object();

@@ -96,7 +96,7 @@ class WidgetsController extends AdminBaseController
         $widgets = array();
         foreach ($createdWidgets as $model) {
             $widgets[] = array(
-                'text'=>$model->detailsLink,
+                'text'=>$model->getDetailsLink(array(), array('update'=>"#widget-details")),
                 'htmlOptions'=>array(
                     'id'=>"widgets_".$model->pk,
                     'class'=>'widget-link'

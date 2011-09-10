@@ -21,8 +21,7 @@ $this->widget('ext.QTreeGridView.CQGridView', array(
 	'filter'=>	$model,
 	'ajaxVar'=> 'ajax',	
     'ajaxUpdate'=> 'ajax',
-	'cssFile'=>'/css/grid/styles.css',
+	'cssFile'=>Yii::app()->baseUrl.'/css/grid/styles.css',
     'columns'=>$columns,
-    /*
-*/)); ?>
+)); ?>
 

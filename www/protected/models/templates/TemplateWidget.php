@@ -112,7 +112,8 @@ class TemplateWidget extends ActiveRecord
         if ($ajaxOptions === null) {
             return Admin::link($title, $url, $params, $htmlOptions);
         } else {
-            return Admin::ajaxLink($title, $url, $params, $htmlOptions, $ajaxOptions);
+//            Y::dump($ajaxOptions);
+            return Admin::ajaxLink($title, $url, $params, $ajaxOptions, $htmlOptions);
         }
 
     }

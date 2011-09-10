@@ -7,9 +7,6 @@ class Package extends CWebModule
     //eventName => array(class, method)
     public function handlers() {return array();}
 
-    //path aliaces
-    public function imports() {return array();}
-
     //simple modelNames
     public function dataTypes() {return array();}
 
@@ -30,9 +27,6 @@ class Package extends CWebModule
         //attach events from $this->eventMap
         foreach ($this->handlers() as $event=>$handler)
             $this->addHandler($event, $handler);
-
-        //import
-        $this->setImport($this->imports());
 
         //dataTypes register
         ModelFactory::registerDataTypes($this->dataTypes());

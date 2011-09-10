@@ -34,15 +34,6 @@ class UsersModule extends Package
         );
     }
 
-    public function imports() {
-        
-        return array(
-            'users.models.*',
-            'users.components.*',
-            'users.components.widgets.*'
-        );
-    }
-
     public function widgets()
     {
         return array(
@@ -157,6 +148,8 @@ class UsersModule extends Package
 	
 	public function init()
 	{
+        parent::init();
+        
         $baseUrl = Yii::app()->baseUrl;
 	    $this->registrationUrl = $baseUrl."/registration";
         $this->recoveryUrl = $baseUrl."/recovery";
@@ -172,7 +165,11 @@ class UsersModule extends Package
 
         $this->category = Y::category('index');
 
-        parent::init();
+        $this->setImport(array(
+            'users.models.*',
+            'users.components.*',
+            'users.components.widgets.*'
+        ));
 	}
 	
 	//simple add lang in url

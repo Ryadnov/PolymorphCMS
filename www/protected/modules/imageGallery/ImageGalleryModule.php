@@ -19,14 +19,6 @@ class ImageGalleryModule extends Package
         );
     }
 
-    public function imports()
-    {
-        return array(
-            'imageGallery.models.*',
-            'imageGallery.components.behaviors.*',
-        );
-    }
-
     public function widgets()
     {
         return array(
@@ -36,6 +28,16 @@ class ImageGalleryModule extends Package
             )
         );
     }
+
+    public function init()
+    {
+        parent::init();
+        $this->setImport(array(
+              'imageGallery.models.*',
+              'imageGallery.components.behaviors.*',
+        ));
+    }
+
 
     public function cmsDataTypeRelations($event)
     {

@@ -10,6 +10,12 @@ class ExtTabs extends JuiTabs
     public $buttons;
     public $extHeaderHtml;
 
+    public function init()
+    {
+        parent::init();
+        $this->registerScritps();
+    }
+    
     public function run()
     {
         $id = $this->getId();
@@ -55,12 +61,17 @@ class ExtTabs extends JuiTabs
         echo $contentOut;
 
         echo CHtml::closeTag($this->tagName)."\n";
+    }
 
+    public function registerScritps()
+    {
         $options = empty($this->options) ? '' : CJavaScript::encode($this->options);
-        Y::clientScript()->registerScript($id.'-form-submit', "
-            $(document).ready(function(){
-                $('#{$id}').tabs({$options});
-            });
-        ");
+        Y::clientScript()
+            ->registerScript($this->getId().'-form-submit', "
+                $(document).ready(function(){
+                    $('#{$this->getId()}').tabs({$options});
+                });
+            ")
+            ->registerScriptFile('');
     }
 }

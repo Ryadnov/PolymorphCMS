@@ -11,15 +11,6 @@ class MainContentModule extends Package
         );
     }
 
-    public function imports()
-    {
-        return array(
-            'mainContent.components.*',
-            'mainContent.models.*',
-            'mainContent.components.widgets.*'
-        );
-    }
-
     public function widgets()
     {
         return array(
@@ -39,6 +30,16 @@ class MainContentModule extends Package
         return array(
             'Page'
         );
+    }
+
+    public function init()
+    {
+        parent::init();
+        $this->setImport(array(
+            'mainContent.components.*',
+            'mainContent.models.*',
+            'mainContent.components.widgets.*'
+        ));
     }
 
 }
